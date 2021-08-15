@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApp">
         <activity
+            android:name=".FeedbackList"
+            android:exported="true" />
+        <activity
             android:name=".PendingApprovals"
             android:exported="true" />
         <activity
