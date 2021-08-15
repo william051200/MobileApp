@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MobileApp</string>
+    <string name="favourite_list_label">Favourite List</string>
+    <string name="pending_approvals_label">Pending Approvals</string>
+    <string name="feedback_list_label">Feedbacks</string>
+    <string name="sort_label">Sort</string>
+    <string name="filter_label">Filter</string>
+    <string name="facility_category_label">Facility Category</string>
+    <string name="my_profile_label">My Profile</string>
 </resources>

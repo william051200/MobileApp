@@ -6,4 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".FeedbackList">
 
+    <TextView
+        android:id="@+id/lblFavouriteListHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/favourite_list_label"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSortFavourite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/sort_label"
+        android:textColor="@color/cardview_dark_background"
+        app:backgroundTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/btnFilterFavourite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblFavouriteListHeader"
+        app:strokeColor="@color/material_on_primary_disabled" />
+
+    <Button
+        android:id="@+id/btnFilterFavourite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/filter_label"
+        android:textColor="@color/cardview_dark_background"
+        app:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnSortFavourite"
+        app:layout_constraintTop_toBottomOf="@+id/lblFavouriteListHeader"
+        app:strokeColor="@color/material_on_primary_disabled" />
+
+    <Button
+        android:id="@+id/btnCategoryFavourite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/facility_category_label"
+        android:textColor="@color/cardview_dark_background"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnFilterFavourite"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/material_on_primary_disabled" />
+
+    <Button
+        android:id="@+id/btnMyProfileFavourite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/my_profile_label"
+        android:textColor="@color/cardview_dark_background"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btnSortFavourite"
+        app:strokeColor="@color/material_on_primary_disabled" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
