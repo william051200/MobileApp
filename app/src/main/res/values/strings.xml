@@ -7,4 +7,12 @@
     <string name="filter_label">Filter</string>
     <string name="facility_category_label">Facility Category</string>
     <string name="my_profile_label">My Profile</string>
+
+    // User Profile
+    <string name="txtView_full_name_label">Full Name</string>
+    <string name="txtView_email_label">Email</string>
+    <string name="txtView_password_label">Password</string>
+    <string name="txtView_location_label">Location</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_save">Save</string>
 </resources>
