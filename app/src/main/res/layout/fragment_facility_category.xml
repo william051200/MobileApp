@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FacilityCategory">
+
+    <Button
+        android:id="@+id/btn_BusStop_Category"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
+        android:drawableTop="@drawable/ic_bus"
+        android:text="@string/bus_station_label"
+        android:textSize="12sp"
+        app:backgroundTint="#0693EF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Parking_Category" />
+
+    <Button
+        android:id="@+id/btn_Park_Category"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="16dp"
+        android:drawableTop="@drawable/ic_park"
+        android:text="@string/okuPark_label"
+        android:textSize="12sp"
+        app:backgroundTint="#0693EF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Toilet_Category" />
+
+    <Button
+        android:id="@+id/btn_Parking_Category"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
+        android:drawableTop="@drawable/ic_parking"
+        android:text="@string/okuParking_label"
+        android:textSize="12sp"
+        app:backgroundTint="#0693EF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_Favorite_Category"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="16dp"
+        android:drawableTop="@drawable/ic_favorite"
+        android:text="@string/favorites_label"
+        android:textSize="12sp"
+        app:backgroundTint="#0693EF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Park_Category" />
+
+    <Button
+        android:id="@+id/btn_Toilet_Category"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="100dp"
+        android:drawableTop="@drawable/ic_toilet"
+        android:text="@string/okuToilet_label"
+        android:textSize="12sp"
+        app:backgroundTint="#0693EF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
