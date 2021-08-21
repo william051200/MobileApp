@@ -19,7 +19,7 @@
         tools:src="@tools:sample/avatars" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingBtnImgEdit"
+        android:id="@+id/floatingBtn_ImgEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="124dp"
@@ -29,10 +29,11 @@
         app:backgroundTint="#F6F1F1"
         app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewFullName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -44,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewProfile" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -56,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewPwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -68,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtUserEmail" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -80,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtUserPwd" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -92,7 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtUserLocation" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
@@ -120,7 +121,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewFullName" />
 
     <EditText
         android:id="@+id/txtUserEmail"
@@ -138,7 +139,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtUserPwd"
@@ -154,7 +155,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPwd"
         app:passwordToggleEnabled="true"/>
 
     <EditText
@@ -173,5 +174,5 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLocation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

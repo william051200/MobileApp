@@ -44,6 +44,7 @@
         <item>9pm</item>
         <item>10pm</item>
     </string-array>
+    <string name="exampleAddress_label">Eg: Street Address</string>
     <string name="txtView_city_label">City</string>
     <string name="exampleCity_label">Eg: George Town</string>
     <string name="txtView_state_label">State</string>

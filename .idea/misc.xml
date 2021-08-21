@@ -3,15 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/drawable/ic_edit_img.xml" value="0.28615384615384615" />
         <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/drawable/ic_edit_pen.xml" value="0.15989583333333332" />
         <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/drawable/ic_imageUpload.xml" value="0.290625" />
+        <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/drawable/ic_upload.xml" value="0.28615384615384615" />
+        <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/drawable/ic_upload_img_facility.xml" value="0.28615384615384615" />
         <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/layout/activity_favourite_list.xml" value="0.16304347826086957" />
         <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/layout/activity_feedback_list.xml" value="0.264" />
         <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.16304347826086957" />
         <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/layout/activity_pending_approvals.xml" value="0.16304347826086957" />
-        <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/layout/activity_upload_facility.xml" value="0.25" />
+        <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/layout/activity_upload_facility.xml" value="0.264" />
         <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
-        <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/layout/fragment_user_profile.xml" value="0.264" />
+        <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/layout/fragment_upload_facility.xml" value="0.4" />
+        <entry key="..\:/Mobile Assignment/MobileApp/app/src/main/res/layout/fragment_user_profile.xml" value="0.536" />
         <entry key="..\:/MobileApp/app/src/main/res/layout/activity_favourite_list.xml" value="0.1693840579710145" />
         <entry key="..\:/MobileApp/app/src/main/res/layout/activity_feedback_list.xml" value="0.264" />
         <entry key="..\:/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.1693840579710145" />
@@ -27,5 +31,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.264" />
+      </ProjectState>
+    </option>
   </component>
 </project>
