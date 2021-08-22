@@ -61,4 +61,6 @@
     <string name="okuPark_label">OKU Park</string>
     <string name="bus_station_label">Bus Station</string>
     <string name="favorites_label">Favorites</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
