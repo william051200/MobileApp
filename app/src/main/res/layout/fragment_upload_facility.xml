@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UploadFacility">
+
+    <ImageView
+        android:id="@+id/imageViewFacility"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_upload_img_facility" />
+
+    <TextView
+        android:id="@+id/textViewUploadImgFacility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="152dp"
+        android:layout_marginRight="152dp"
+        android:layout_marginBottom="2dp"
+        android:text="@string/txtView_uploadImage_label"
+        android:textColor="#0693EF"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewFacility"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewFacilityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/txtView_facility_name_label"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFacility" />
+
+    <TextView
+        android:id="@+id/textViewOperationHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/txtView_operationHrs_label"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFacilityName" />
+
+    <TextView
+        android:id="@+id/textViewST"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/txtView_start_time_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewOperationHour" />
+
+    <TextView
+        android:id="@+id/textViewCT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:text="@string/txtView_close_time_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewST" />
+
+    <TextView
+        android:id="@+id/textViewState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/txtView_state_label"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/txtFacility_City"
+        app:layout_constraintTop_toBottomOf="@+id/txtFacilityAddress" />
+
+    <TextView
+        android:id="@+id/textViewAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/txtView_address_label"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerST" />
+
+    <TextView
+        android:id="@+id/textViewCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/txtView_city_label"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFacilityAddress" />
+
+    <TextView
+        android:id="@+id/textViewFeature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/txtView_oku_feature_label"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFacility_City" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/btn_cancel"
+        app:backgroundTint="#737373"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtOKU_Feature" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="@string/btnUpload"
+        app:backgroundTint="#0693EF"
+        app:icon="@drawable/ic_upload"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtOKU_Feature" />
+
+    <EditText
+        android:id="@+id/txtFacilityName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:ems="10"
+        android:hint="@string/txtView_facility_name_label"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFacilityName" />
+
+    <Spinner
+        android:id="@+id/spinnerST"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="2dp"
+        android:entries="@array/spinner_operation_hours"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewST" />
+
+    <Spinner
+        android:id="@+id/spinnerCT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginRight="68dp"
+        android:entries="@array/spinner_operation_hours"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCT" />
+
+    <TextView
+        android:id="@+id/textViewZipcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@string/txtView_zipcode_label"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFacilityAddress" />
+
+    <EditText
+        android:id="@+id/txtFacilityAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:ems="10"
+        android:hint="@string/exampleAddress_label"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
+
+    <EditText
+        android:id="@+id/txtFacility_City"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:hint="@string/exampleCity_label"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCity" />
+
+    <EditText
+        android:id="@+id/txtFacility_State"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:ems="10"
+        android:hint="@string/exampleState_label"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/txtFacility_City"
+        app:layout_constraintTop_toBottomOf="@+id/textViewState" />
+
+    <EditText
+        android:id="@+id/txtFacility_Zip_Code"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:hint="@string/exampleZipcode_label"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/txtFacility_State"
+        app:layout_constraintTop_toBottomOf="@+id/textViewZipcode" />
+
+    <Spinner
+        android:id="@+id/txtOKU_Feature"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:entries="@array/spinner_oku_feature"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFeature" />
+</androidx.constraintlayout.widget.ConstraintLayout>

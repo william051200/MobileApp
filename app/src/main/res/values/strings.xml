@@ -44,6 +44,7 @@
         <item>9pm</item>
         <item>10pm</item>
     </string-array>
+    <string name="exampleAddress_label">Eg: Street Address</string>
     <string name="txtView_city_label">City</string>
     <string name="exampleCity_label">Eg: George Town</string>
     <string name="txtView_state_label">State</string>
@@ -53,4 +54,11 @@
     <string-array name="spinner_oku_feature">
         <item>None</item>
     </string-array>
+
+    // Facility Category
+    <string name="okuToilet_label">OKU Toilet</string>
+    <string name="okuParking_label">OKU Parking</string>
+    <string name="okuPark_label">OKU Park</string>
+    <string name="bus_station_label">Bus Station</string>
+    <string name="favorites_label">Favorites</string>
 </resources>

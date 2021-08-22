@@ -13,9 +13,6 @@
             android:name=".UploadFacility"
             android:exported="true" />
         <activity
-            android:name=".UserProfile"
-            android:exported="true" />
-        <activity
             android:name=".FeedbackList"
             android:exported="true" />
         <activity
