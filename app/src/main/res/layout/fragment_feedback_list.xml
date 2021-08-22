@@ -52,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/facility_category_label"
+            android:text="@string/pending_approvals_label"
             android:textColor="#000000"
             app:backgroundTint="#FFFFFF" />
 
@@ -62,7 +62,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/my_profile_label"
+            android:text="@string/feedback_list_label"
             android:textColor="#000000"
             app:backgroundTint="#FFFFFF" />
     </LinearLayout>
