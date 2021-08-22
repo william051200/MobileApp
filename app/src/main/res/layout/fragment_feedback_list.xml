@@ -8,7 +8,7 @@
     tools:context=".FavouriteListFragment">
 
     <LinearLayout
-        android:id="@+id/pendingApprovals_linearLayout1"
+        android:id="@+id/feedbackList_linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/pendingApprovals_btnSort"
+            android:id="@+id/feedbackList_btnSort"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
             app:backgroundTint="#FFFFFF" />
 
         <Button
-            android:id="@+id/pendingApprovals_btnFilter"
+            android:id="@+id/feedbackList_btnFilter"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/pendingApprovals_linearLayout2"
+        android:id="@+id/feedbackList_linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -47,28 +47,28 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/pendingApprovals_btnPendingApprovals"
+            android:id="@+id/feedbackList_btnPendingApprovals"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/pending_approvals_label"
+            android:text="@string/facility_category_label"
             android:textColor="#000000"
             app:backgroundTint="#FFFFFF" />
 
         <Button
-            android:id="@+id/pendingApprovals_btnFeedback"
+            android:id="@+id/feedbackList_btnFeedback"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/feedback_list_label"
+            android:text="@string/my_profile_label"
             android:textColor="#000000"
             app:backgroundTint="#FFFFFF" />
     </LinearLayout>
 
     <ListView
-        android:id="@+id/pendingApprovals_listView"
+        android:id="@+id/feedbackList_listView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -79,10 +79,10 @@
         android:layout_marginBottom="16dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp"
-        app:layout_constraintBottom_toTopOf="@+id/pendingApprovals_linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/feedbackList_linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pendingApprovals_linearLayout1"
+        app:layout_constraintTop_toBottomOf="@+id/feedbackList_linearLayout1"
         tools:listitem="@layout/facility_layout" />
 
 
