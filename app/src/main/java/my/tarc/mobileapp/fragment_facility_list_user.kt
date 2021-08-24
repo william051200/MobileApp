@@ -34,7 +34,7 @@ class FavouriteListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favourite_list, container, false)
+        return inflater.inflate(R.layout.fragment_facility_list_user, container, false)
     }
 
     companion object {
