@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FacilityDetailsFragment" >
+    tools:context=".PendingFacilityFragment" >
 
     <ImageView
         android:id="@+id/imageView3"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/textViewFacilityDetailsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -25,37 +25,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-    <RatingBar
-        android:id="@+id/smallRating"
-        style="?android:attr/ratingBarStyleIndicator"
+    <TextView
+        android:id="@+id/textViewFacilityDetailsAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:progressTint="#FFCC01"
-        android:rating="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
-
-    <TextView
-        android:id="@+id/textViewRatingCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/smallRating"
-        app:layout_constraintStart_toEndOf="@+id/smallRating"
-        app:layout_constraintTop_toTopOf="@+id/smallRating" />
-
-    <TextView
-        android:id="@+id/textViewAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/smallRating" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewFacilityDetailsName" />
 
     <TextView
         android:id="@+id/textViewLabelHours"
@@ -65,7 +43,7 @@
         android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewFacilityDetailsAddress" />
 
     <TextView
         android:id="@+id/textViewHours"
@@ -132,17 +110,6 @@
         app:layout_constraintStart_toEndOf="@+id/imageViewTick"
         app:layout_constraintTop_toTopOf="@+id/textViewFeature" />
 
-    <TextView
-        android:id="@+id/textViewFeedback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:textColor="#0693EF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
-
     <Button
         android:drawableLeft="@drawable/ic_iconoir_delete_circled_outline"
         android:id="@+id/buttonDeny"
@@ -157,12 +124,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:drawableLeft="@drawable/ic_edit"
         android:id="@+id/buttonApprove"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
+        android:drawableLeft="@drawable/ic_teenyicons_tick_circle_outline_white"
         android:text="Button"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"

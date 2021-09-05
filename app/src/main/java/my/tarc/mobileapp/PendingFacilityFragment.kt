@@ -12,10 +12,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FacilityDetailsFragment.newInstance] factory method to
+ * Use the [PendingFacilityFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FacilityDetailsFragment : Fragment() {
+class PendingFacilityFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -28,11 +28,10 @@ class FacilityDetailsFragment : Fragment() {
         }
     }
 
-    // TODO: Change layout based on user's role (admin/user)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_facility_details, container, false)
+        return inflater.inflate(R.layout.fragment_pending_facility, container, false)
     }
 
     companion object {
@@ -42,11 +41,11 @@ class FacilityDetailsFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment FacilityDetailsFragment.
+         * @return A new instance of fragment PendingFacilityFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic fun newInstance(param1: String, param2: String) =
-                FacilityDetailsFragment().apply {
+                PendingFacilityFragment().apply {
                     arguments = Bundle().apply {
                         putString(ARG_PARAM1, param1)
                         putString(ARG_PARAM2, param2)
