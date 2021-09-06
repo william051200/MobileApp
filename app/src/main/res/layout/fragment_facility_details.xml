@@ -144,7 +144,6 @@
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <Button
-        android:drawableLeft="@drawable/ic_iconoir_delete_circled_outline"
         android:id="@+id/buttonDeny"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
@@ -153,11 +152,11 @@
         android:text="Button"
         android:textSize="12sp"
         app:backgroundTint="#B73333"
+        app:icon="@drawable/ic_iconoir_delete_circled_outline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:drawableLeft="@drawable/ic_edit"
         android:id="@+id/buttonApprove"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
@@ -166,7 +165,18 @@
         android:text="Button"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
+        app:icon="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/ic_favorite_button"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
