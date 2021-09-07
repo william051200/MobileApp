@@ -2,4 +2,29 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph" />
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/facilityListAdminFragment">
+    <fragment
+        android:id="@+id/facilityListAdminFragment"
+        android:name="my.tarc.mobileapp.FacilityListAdminFragment"
+        android:label="fragment_facility_list_admin"
+        tools:layout="@layout/fragment_facility_list_admin" >
+        <action
+            android:id="@+id/action_facilityListAdminFragment_to_facilityDetailsFragment"
+            app:destination="@id/facilityDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/facilityListUserFragment"
+        android:name="my.tarc.mobileapp.FacilityListUserFragment"
+        android:label="fragment_facility_list_user"
+        tools:layout="@layout/fragment_facility_list_user" >
+        <action
+            android:id="@+id/action_facilityListUserFragment_to_facilityDetailsFragment"
+            app:destination="@id/facilityDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/facilityDetailsFragment"
+        android:name="my.tarc.mobileapp.FacilityDetailsFragment"
+        android:label="fragment_facility_details"
+        tools:layout="@layout/fragment_facility_details" />
+</navigation>
