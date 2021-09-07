@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UploadFacility">
+    tools:context=".EditFacility">
 
     <ImageView
         android:id="@+id/imageViewFacility"
@@ -14,18 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_upload_img_facility" />
-
-    <TextView
-        android:id="@+id/textViewUploadImgFacility"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="152dp"
-        android:text="@string/txtView_uploadImage_label"
-        android:textColor="#0693EF"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewFacility"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewFacilityName"
@@ -139,10 +128,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/btnUpload"
+        android:text="@string/btn_save"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
-        app:icon="@drawable/ic_upload"
+        app:icon="@drawable/ic_save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtOKU_Feature" />
 
@@ -151,18 +140,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:ems="10"
-        android:hint="@string/txtView_facility_name_label"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFacilityName" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewFacilityName"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Spinner
         android:id="@+id/spinnerST"
@@ -205,62 +192,57 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:ems="10"
-        android:hint="@string/exampleAddress_label"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewAddress"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/txtFacility_City"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="2dp"
         android:ems="10"
-        android:hint="@string/exampleCity_label"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCity" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCity"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/txtFacility_State"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:ems="10"
-        android:hint="@string/exampleState_label"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/txtFacility_City"
-        app:layout_constraintTop_toBottomOf="@+id/textViewState" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewState"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/txtFacility_Zip_Code"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:layout_marginTop="2dp"
         android:ems="10"
-        android:hint="@string/exampleZipcode_label"
         android:inputType="number"
         android:minHeight="48dp"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/txtFacility_State"
-        app:layout_constraintTop_toBottomOf="@+id/textViewZipcode" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewZipcode"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Spinner
         android:id="@+id/txtOKU_Feature"
