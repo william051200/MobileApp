@@ -68,6 +68,8 @@
     <string name="welcome">Welcome</string>
     <string name="logintext">Login to your account</string>
     <string name="search_facility">Search facility</string>
+    <string name="delete_this_image">Delete this image?</string>
+    <string name="delete">Delete</string>
 
 </resources>
 
