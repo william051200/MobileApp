@@ -67,6 +67,7 @@
     //Login
     <string name="welcome">Welcome</string>
     <string name="logintext">Login to your account</string>
+    <string name="search_facility">Search facility</string>
 
 </resources>
 

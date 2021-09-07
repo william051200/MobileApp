@@ -22,8 +22,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:drawableLeft="@drawable/ic_sort"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
             android:text="@string/sort_label"
-            android:textColor="#000000"
+            android:textColor="#757575"
             app:backgroundTint="#FFFFFF" />
 
         <Button
@@ -32,8 +35,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:drawableLeft="@drawable/ic_filter"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
             android:text="@string/filter_label"
-            android:textColor="#000000"
+            android:textColor="#757575"
             app:backgroundTint="#FFFFFF" />
     </LinearLayout>
 
