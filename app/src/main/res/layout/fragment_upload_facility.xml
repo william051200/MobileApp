@@ -22,8 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="152dp"
-        android:layout_marginRight="152dp"
-        android:layout_marginBottom="2dp"
         android:text="@string/txtView_uploadImage_label"
         android:textColor="#0693EF"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewFacility"
@@ -124,7 +122,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtFacility_City" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnFacilityCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -136,7 +134,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtOKU_Feature" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnFacilityUpload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
