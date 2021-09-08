@@ -8,7 +8,11 @@
     <string name="facility_category_label">Facility Category</string>
     <string name="my_profile_label">My Profile</string>
 
-    // User Profile
+    //Common
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+
+    //User Profile
     <string name="txtView_full_name_label">Full Name</string>
     <string name="txtView_email_label">Email</string>
     <string name="txtView_password_label">Password</string>
@@ -55,7 +59,7 @@
         <item>None</item>
     </string-array>
 
-    // Facility Category
+    //Facility Category
     <string name="okuToilet_label">OKU Toilet</string>
     <string name="okuParking_label">OKU Parking</string>
     <string name="okuPark_label">OKU Park</string>
@@ -69,8 +73,24 @@
     <string name="logintext">Login to your account</string>
     <string name="search_facility">Search facility</string>
     <string name="delete_this_image">Delete this image?</string>
-    <string name="delete">Delete</string>
 
+    //Facility Details
+    <string name="status">Available</string>
+    <string name="hours">Operation Hours:</string>
+    <string name="address">Address:</string>
+    <string name="feedback">View Feedbacks</string>
+
+    //Pending Facility
+    <string name="deny">Deny</string>
+    <string name="approve">Approve</string>
+
+    //Submit Feedback Dialog
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
+    <string name="title">Title</string>
+    <string name="comment">Comment</string>
+    <string name="suggested_edit">Suggested Edit</string>
+    <string name="hint">Enter something</string>
 </resources>
 
 

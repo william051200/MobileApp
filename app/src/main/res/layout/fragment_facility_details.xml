@@ -48,12 +48,12 @@
         app:layout_constraintTop_toTopOf="@+id/smallRating" />
 
     <TextView
-        android:id="@+id/textViewAddress"
+        android:id="@+id/textViewLabelAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
+        android:text="@string/address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/smallRating" />
 
@@ -63,9 +63,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="@string/hours"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelAddress" />
 
     <TextView
         android:id="@+id/textViewHours"
@@ -73,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="TextView"
+        android:textColor="#99000000"
         app:layout_constraintStart_toEndOf="@+id/textViewLabelHours"
         app:layout_constraintTop_toTopOf="@+id/textViewLabelHours" />
 
@@ -126,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="TextView"
+        android:text="@string/exampleState_label"
         android:textColor="#11A604"
         app:layout_constraintBottom_toBottomOf="@+id/textViewFeature"
         app:layout_constraintStart_toEndOf="@+id/imageViewTick"
@@ -138,7 +139,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="@string/feedback"
         android:textColor="#0693EF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
@@ -149,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="16dp"
-        android:text="Button"
+        android:text="@string/delete"
         android:textSize="12sp"
         app:backgroundTint="#B73333"
         app:icon="@drawable/ic_iconoir_delete_circled_outline"
@@ -162,7 +163,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
-        android:text="Button"
+        android:text="@string/edit"
+        android:textAllCaps="true"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:icon="@drawable/ic_edit"
@@ -178,5 +180,16 @@
         app:layout_constraintBottom_toBottomOf="@+id/textViewName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewName" />
+
+    <TextView
+        android:id="@+id/textViewAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textColor="#99000000"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewLabelAddress"
+        app:layout_constraintStart_toEndOf="@+id/textViewLabelAddress"
+        app:layout_constraintTop_toTopOf="@+id/textViewLabelAddress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
