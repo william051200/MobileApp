@@ -86,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtFacilityAddress" />
 
     <TextView
-        android:id="@+id/textViewAddress"
+        android:id="@+id/textViewLabelAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -128,6 +128,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="@string/btn_cancel"
+        android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#737373"
         app:layout_constraintStart_toStartOf="parent"
@@ -140,6 +141,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:text="@string/btnUpload"
+        android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:icon="@drawable/ic_upload"
@@ -216,7 +218,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelAddress" />
 
     <EditText
         android:id="@+id/txtFacility_City"

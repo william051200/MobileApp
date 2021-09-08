@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content "
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:context=".SubmitFeedbackDialogFragment">
 
@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="@string/title"
+        android:textColor="#99000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,20 +26,22 @@
         android:layout_marginEnd="24dp"
         android:background="@drawable/edit_text_border"
         android:ems="10"
-        android:hint="Title"
+        android:hint="@string/hint"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColor="#99000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
     <TextView
-        android:id="@+id/textViewComment"
+        android:id="@+id/textViewLabelComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="@string/comment"
+        android:textColor="#99000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTitle" />
 
@@ -51,20 +54,22 @@
         android:layout_marginEnd="24dp"
         android:background="@drawable/edit_text_border"
         android:ems="10"
-        android:hint="Comment"
+        android:hint="@string/hint"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColor="#99000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewComment" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelComment" />
 
     <TextView
-        android:id="@+id/textViewSuggestedEdit"
+        android:id="@+id/textViewLabelSuggestedEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="@string/suggested_edit"
+        android:textColor="#99000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextComment" />
 
@@ -77,20 +82,22 @@
         android:layout_marginEnd="24dp"
         android:background="@drawable/edit_text_border"
         android:ems="10"
-        android:hint="Edit"
+        android:hint="@string/hint"
         android:inputType="textPersonName"
+        android:textColor="#99000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSuggestedEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelSuggestedEdit" />
 
     <Button
+        android:textAllCaps="false"
         android:id="@+id/buttonEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:text="Button"
+        android:text="@string/submit"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:icon="@drawable/ic_upload"
@@ -99,13 +106,14 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
     <Button
+        android:textAllCaps="false"
         android:id="@+id/buttonDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
-        android:text="Button"
+        android:text="@string/cancel"
         android:textSize="12sp"
         app:backgroundTint="#737373"
         app:layout_constraintBottom_toBottomOf="parent"

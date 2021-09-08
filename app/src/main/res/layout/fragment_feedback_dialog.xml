@@ -7,55 +7,26 @@
     tools:context=".FeedbackDialogFragment">
 
     <TextView
-        android:id="@+id/textViewComment"
+        android:id="@+id/textViewLabelComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="@string/title"
+        android:textColor="#99000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextComment"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edit_text_border"
-        android:ems="10"
-        android:hint="Comment"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewComment" />
-
     <TextView
-        android:id="@+id/textViewSuggestedEdit"
+        android:id="@+id/textViewLabelSuggestedEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="@string/suggested_edit"
+        android:textColor="#99000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextComment" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edit_text_border"
-        android:ems="10"
-        android:hint="Edit"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSuggestedEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewComment" />
 
     <Button
         android:id="@+id/buttonEdit"
@@ -63,14 +34,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:text="Button"
+        android:layout_marginBottom="16dp"
+        android:text="@string/edit_facility"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:icon="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSuggestedEdit"
+        android:textAllCaps="false"/>
 
     <Button
         android:id="@+id/buttonDelete"
@@ -78,12 +50,39 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
-        android:text="Button"
+        android:text="@string/delete"
         android:textSize="12sp"
         app:backgroundTint="#B73333"
         app:icon="@drawable/ic_iconoir_delete_circled_outline"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonEdit"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewSuggestedEdit"
+        android:textAllCaps="false"/>
+
+    <TextView
+        android:id="@+id/textViewComment"
+        android:layout_width="330dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/edit_text_border"
+        android:text="TextView"
+        android:textColor="#99000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelComment" />
+
+    <TextView
+        android:id="@+id/textViewSuggestedEdit"
+        android:layout_width="330dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/edit_text_border"
+        android:text="TextView"
+        android:textColor="#99000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelSuggestedEdit" />
 </androidx.constraintlayout.widget.ConstraintLayout>

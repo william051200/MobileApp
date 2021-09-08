@@ -60,6 +60,7 @@
             android:layout_weight="0.5"
             android:background="#0693EF"
             android:text="@string/facility_category_label"
+            android:textAllCaps="false"
             android:textColor="#212121"
             app:backgroundTint="#0693EF" />
 
@@ -73,6 +74,7 @@
             android:paddingLeft="35dp"
             android:paddingRight="35dp"
             android:text="@string/my_profile_label"
+            android:textAllCaps="false"
             android:textColor="#757575"
             app:backgroundTint="#FFFFFF" />
     </LinearLayout>
