@@ -21,10 +21,38 @@
         <action
             android:id="@+id/action_facilityListUserFragment_to_facilityDetailsFragment"
             app:destination="@id/facilityDetailsFragment" />
+        <action
+            android:id="@+id/action_facilityListUserFragment_to_userProfile"
+            app:destination="@id/userProfile" />
+        <action
+            android:id="@+id/action_facilityListUserFragment_to_navigationFragment"
+            app:destination="@id/navigationFragment" />
     </fragment>
     <fragment
         android:id="@+id/facilityDetailsFragment"
         android:name="my.tarc.mobileapp.FacilityDetailsFragment"
         android:label="fragment_facility_details"
         tools:layout="@layout/fragment_facility_details" />
+    <fragment
+        android:id="@+id/userProfile"
+        android:name="my.tarc.mobileapp.UserProfile"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" />
+    <fragment
+        android:id="@+id/navigationFragment"
+        android:name="my.tarc.mobileapp.NavigationFragment"
+        android:label="fragment_navigation"
+        tools:layout="@layout/fragment_navigation" />
+    <fragment
+        android:id="@+id/facilityCategory"
+        android:name="my.tarc.mobileapp.FacilityCategory"
+        android:label="fragment_facility_category"
+        tools:layout="@layout/fragment_facility_category" >
+        <action
+            android:id="@+id/action_facilityCategory_to_facilityListUserFragment"
+            app:destination="@id/facilityListUserFragment" />
+        <action
+            android:id="@+id/action_facilityCategory_to_navigationFragment"
+            app:destination="@id/navigationFragment" />
+    </fragment>
 </navigation>
