@@ -73,6 +73,14 @@
     <string name="logintext">Login to your account</string>
     <string name="search_facility">Search facility</string>
     <string name="delete_this_image">Delete this image?</string>
+    <string name="signin">Sign in</string>
+
+    //Register
+    <string name="registertxt">Create your account here</string>\
+    <string name="signup">Sign up</string>
+
+    //Admin
+    <string name="admintxt">Login as admin</string>
 
     //Facility Details
     <string name="status">Available</string>
