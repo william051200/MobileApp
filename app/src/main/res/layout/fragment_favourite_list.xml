@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FacilityListUserFragment">
+    tools:context=".FavouriteListFragment">
 
     <LinearLayout
         android:id="@+id/favouriteList_linearLayout1"
@@ -96,6 +96,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/favouriteList_linearLayout1"
         tools:listitem="@layout/facility_layout" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
