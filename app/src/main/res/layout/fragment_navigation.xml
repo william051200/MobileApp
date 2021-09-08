@@ -29,7 +29,7 @@
         android:drawablePadding="20dp"
         android:ems="10"
         android:hint="@string/search_facility"
-        android:hintTextColor="#757575"
+
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:minHeight="48dp"
