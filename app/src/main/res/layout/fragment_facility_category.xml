@@ -76,4 +76,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textAllCaps="false" />
+
+    <LinearLayout
+        android:id="@+id/facilityCategory_linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/facilityCategory_btnPendingApprovals"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="#0693EF"
+            android:text="@string/facility_category_label"
+            android:textAllCaps="false"
+            android:textColor="#212121"
+            app:backgroundTint="#0693EF" />
+
+        <Button
+            android:id="@+id/facilityCategory_btnFeedback"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:drawableLeft="@drawable/ic_profile"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp"
+            android:text="@string/my_profile_label"
+            android:textAllCaps="false"
+            android:textColor="#757575"
+            app:backgroundTint="#FFFFFF" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
