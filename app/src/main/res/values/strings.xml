@@ -91,6 +91,9 @@
     <string name="comment">Comment</string>
     <string name="suggested_edit">Suggested Edit</string>
     <string name="hint">Enter something</string>
+
+    //Feedback Dialog
+    <string name="edit_facility">Edit Facility</string>
 </resources>
 
 
