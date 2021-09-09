@@ -82,6 +82,15 @@
     //Admin
     <string name="admintxt">Login as admin</string>
 
+    //Admin Homepage
+    <string name="welcomeadmin">Welcome Admin</string>
+    <string name="actiontxt">Please select your action</string>
+    <string name="facility">All Facilities</string>
+    <string name="pending">Pending Approvals</string>
+    <string name="feedbacklist">Feedback List</string>
+
+
+
     //Facility Details
     <string name="status">Available</string>
     <string name="hours">Operation Hours:</string>
