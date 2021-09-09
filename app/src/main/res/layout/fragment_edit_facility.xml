@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout2"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EditFacility">
 
     <ImageView
-        android:id="@+id/imageViewFacility"
+        android:id="@+id/imageViewEdit_Facility_Image"
         android:layout_width="0dp"
         android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,7 @@
         android:text="@string/txtView_facility_name_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewFacility" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewEdit_Facility_Image" />
 
     <TextView
         android:id="@+id/textViewOperationHour"
@@ -38,7 +38,7 @@
         android:text="@string/txtView_operationHrs_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFacilityName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEdit_Facility_Name" />
 
     <TextView
         android:id="@+id/textViewST"
@@ -71,8 +71,8 @@
         android:layout_marginTop="12dp"
         android:text="@string/txtView_state_label"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/txtFacility_City"
-        app:layout_constraintTop_toBottomOf="@+id/txtFacilityAddress" />
+        app:layout_constraintStart_toEndOf="@+id/txtEdit_Facility_City"
+        app:layout_constraintTop_toBottomOf="@+id/txtEdit_Facility_Address" />
 
     <TextView
         android:id="@+id/textViewLabelAddress"
@@ -84,7 +84,7 @@
         android:text="@string/txtView_address_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerST" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerEdit_ST" />
 
     <TextView
         android:id="@+id/textViewCity"
@@ -96,7 +96,7 @@
         android:text="@string/txtView_city_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFacilityAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEdit_Facility_Address" />
 
     <TextView
         android:id="@+id/textViewFeature"
@@ -108,10 +108,10 @@
         android:text="@string/txtView_oku_feature_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFacility_City" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEdit_Facility_City" />
 
     <Button
-        android:id="@+id/btnFacilityCancel"
+        android:id="@+id/btnEdit_Facility_Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -121,10 +121,10 @@
         android:textSize="12sp"
         app:backgroundTint="#737373"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtOKU_Feature" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEdit_OKU_Feature" />
 
     <Button
-        android:id="@+id/btnEditFacility_Save"
+        android:id="@+id/btnEdit_Facility_Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -135,10 +135,10 @@
         app:backgroundTint="#0693EF"
         app:icon="@drawable/ic_save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtOKU_Feature" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEdit_OKU_Feature" />
 
     <EditText
-        android:id="@+id/txtFacilityName"
+        android:id="@+id/txtEdit_Facility_Name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -154,7 +154,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Spinner
-        android:id="@+id/spinnerST"
+        android:id="@+id/spinnerEdit_ST"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -166,7 +166,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewST" />
 
     <Spinner
-        android:id="@+id/spinnerCT"
+        android:id="@+id/spinnerEdit_CT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -187,10 +187,10 @@
         android:text="@string/txtView_zipcode_label"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFacilityAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEdit_Facility_Address" />
 
     <EditText
-        android:id="@+id/txtFacilityAddress"
+        android:id="@+id/txtEdit_Facility_Address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -206,7 +206,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/txtFacility_City"
+        android:id="@+id/txtEdit_Facility_City"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -220,7 +220,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/txtFacility_State"
+        android:id="@+id/txtEdit_Facility_State"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -228,12 +228,12 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/txtFacility_City"
+        app:layout_constraintStart_toEndOf="@+id/txtEdit_Facility_City"
         app:layout_constraintTop_toBottomOf="@+id/textViewState"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/txtFacility_Zip_Code"
+        android:id="@+id/txtEdit_Facility_Zip_Code"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -242,12 +242,12 @@
         android:inputType="number"
         android:minHeight="48dp"
         android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/txtFacility_State"
+        app:layout_constraintStart_toEndOf="@+id/txtEdit_Facility_State"
         app:layout_constraintTop_toBottomOf="@+id/textViewZipcode"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Spinner
-        android:id="@+id/txtOKU_Feature"
+        android:id="@+id/txtEdit_OKU_Feature"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

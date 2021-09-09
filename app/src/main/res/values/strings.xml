@@ -21,7 +21,7 @@
     <string name="btn_save">Save</string>
 
     //Upload Facility
-    <string name="txtView_uploadImage_label">Upload an image</string>
+    <string name="btn_pickImage">Pick Image</string>
     <string name="txtView_facility_name_label">Facility Name</string>
     <string name="txtView_operationHrs_label">Operation Hours</string>
     <string name="txtView_start_time_label">Start Time</string>
@@ -81,6 +81,14 @@
 
     //Admin
     <string name="admintxt">Login as admin</string>
+
+    //Admin Homepage
+    <string name="welcomeadmin">Welcome Admin</string>
+    <string name="actiontxt">Please select your action</string>
+    <string name="facility">All Facilities</string>
+    <string name="pending">Pending Approvals</string>
+    <string name="feedbacklist">Feedback List</string>
+
 
     //Facility Details
     <string name="status">Available</string>
