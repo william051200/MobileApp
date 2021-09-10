@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1076129139119",
+    "project_id": "mobile-app-f3440",
+    "storage_bucket": "mobile-app-f3440.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076129139119:android:c328257d22713e3550075a",
+        "android_client_info": {
+          "package_name": "my.tarc.mobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076129139119-j9rivin4fche5pjh54qpgtk760dsubn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxmI-n4CfrkixOdXA_Q7wcp9bO51dBwr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076129139119-j9rivin4fche5pjh54qpgtk760dsubn5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
