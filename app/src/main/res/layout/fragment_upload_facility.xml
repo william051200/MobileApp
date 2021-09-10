@@ -17,14 +17,14 @@
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <Button
-        android:id="@+id/btn_Upload_Facility_Image"
+        android:id="@+id/btn_Pick_Facility_Image"
         android:layout_width="97dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="156dp"
         android:text="@string/btn_pickImage"
         android:textSize="10sp"
         app:backgroundTint="#0693EF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgView_Facility" />
 
     <TextView
@@ -36,7 +36,7 @@
         android:text="@string/txtView_facility_name_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Upload_Facility_Image" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Pick_Facility_Image" />
 
     <TextView
         android:id="@+id/textViewOperationHour"
