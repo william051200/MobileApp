@@ -5,12 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import my.tarc.mobileapp.databinding.FragmentLoginPageBinding
 
 
-class dialogFilter : Fragment() {
+class UserLoginFragment : Fragment() {
+    private var _binding: FragmentLoginPageBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
     }
 
@@ -19,9 +24,11 @@ class dialogFilter : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var rootView: View= inflater.inflate(R.layout.fragment_dialog_filter, container, false)
-        return rootView
+        return inflater.inflate(R.layout.fragment_login_page, container, false)
+
+
     }
+
 
 
 }

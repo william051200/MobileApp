@@ -1,4 +1,4 @@
 package my.tarc.mobileapp
 
-class Register {
+class RegisterFragment {
 }

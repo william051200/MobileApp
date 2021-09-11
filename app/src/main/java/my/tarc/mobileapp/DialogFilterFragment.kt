@@ -5,11 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 
 
-
-
-class Admin : Fragment() {
+class DialogFilterFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +20,8 @@ class Admin : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin, container, false)
+        var rootView: View= inflater.inflate(R.layout.fragment_dialog_filter, container, false)
+        return rootView
     }
 
 

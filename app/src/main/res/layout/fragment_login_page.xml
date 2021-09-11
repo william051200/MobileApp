@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".UserLoginFragment">
 
     <ImageView
         android:id="@+id/imageView2"
+        android:src="@drawable/login"
         android:layout_width="257dp"
         android:layout_height="244dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
 
-        app:srcCompat="@drawable/login" />
+        android:layout_marginTop="43dp" />
 
     <TextView
         android:id="@+id/welcome"
@@ -28,9 +26,7 @@
         android:textColor="#191818"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
     <TextView
         android:id="@+id/textView3"
@@ -41,10 +37,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="8dp"
         android:text="@string/logintext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome" />
+     />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -121,6 +114,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -129,6 +123,7 @@
         android:layout_marginRight="62dp"
         android:layout_marginBottom="190dp"
         android:background="@drawable/blue_fill__rounded_color"
+        android:clickable="true"
         android:gravity="center"
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
@@ -138,8 +133,6 @@
 
 
         />
-
-
 
 
 </RelativeLayout>

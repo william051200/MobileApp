@@ -12,7 +12,7 @@ import my.tarc.mobileapp.databinding.FragmentAdminHomepageBinding
 import my.tarc.mobileapp.databinding.FragmentFacilityListAdminBinding
 
 
-class AdminHomepage : Fragment() {
+class AdminHomepageFragment : Fragment() {
     private var _binding: FragmentAdminHomepageBinding? = null
     private val binding get() = _binding!!
 
