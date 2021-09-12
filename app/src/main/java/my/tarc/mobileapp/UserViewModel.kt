@@ -1,22 +1,29 @@
 package my.tarc.mobileapp
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import java.net.URL
 
-class UserViewModel(application: Application) : AndroidViewModel(application) {
-    var id: String = ""
-    var type: String = ""
-    var username: String = ""
-    var password: String = ""
-    var email: String = ""
-    var fullName: String = ""
-    var profilePicture = ""
-    var favouriteFacility = emptyArray<String>()
+class UserViewModel : ViewModel() {
+    private val users: MutableLiveData<List<User>> by lazy {
+        MutableLiveData<List<User>>().also {
+            loadUsers()
+        }
+    }
 
-//    init {
-//        Log.d("ViewModel", "Initialize")
-//        val contactDao = ContactDatabase.getDatabase(application).contactDao()
-//        repository = ContactRepository(contactDao)
-//        contactList = repository.allContact
-//    }
+    fun getUsers(): LiveData<List<User>> {
+        return users
+    }
+
+    private fun loadUsers() {
+        lateinit var id: String
+        lateinit var type: String
+        lateinit var username: String
+        lateinit var password: String
+        lateinit var email: String
+        lateinit var fullName: String
+        lateinit var profilePicture: URL
+        lateinit var favouriteFacility: Array<String>
+    }
 }
