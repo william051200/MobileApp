@@ -32,7 +32,6 @@ class FacilityListAdminFragment : Fragment() {
 
         // Open filter dialog
         binding.facilityListAdminBtnFilter.setOnClickListener { openFilterDialog() }
-
     }
 
     // Update the facility list recycle view
