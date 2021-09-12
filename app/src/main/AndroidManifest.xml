@@ -11,8 +11,8 @@
         android:theme="@style/Theme.MobileApp">
 
 
-        <activity
-            android:name=".UploadFacility"
+        <!--<activity
+            android:name=".UploadFacilityFragment"
             android:exported="true" />
         <activity
             android:name=".FeedbackList"
@@ -22,7 +22,7 @@
             android:exported="true" />
         <activity
             android:name=".FavouriteList"
-            android:exported="true" />
+            android:exported="true" />-->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

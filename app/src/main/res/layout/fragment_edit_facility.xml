@@ -5,28 +5,40 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditFacility">
+    tools:context=".EditFacilityFragment">
 
     <ImageView
         android:id="@+id/imageViewEdit_Facility_Image"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="160dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Pick_Facility_Image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <Button
+        android:id="@+id/btn_Pick_Facility_Image"
+        android:layout_width="97dp"
+        android:layout_height="48dp"
+        android:text="@string/btn_pickImage"
+        android:textSize="10sp"
+        app:backgroundTint="#0693EF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewEdit_Facility_Image" />
 
     <TextView
         android:id="@+id/textViewFacilityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:text="@string/txtView_facility_name_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewEdit_Facility_Image" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Pick_Facility_Image" />
 
     <TextView
         android:id="@+id/textViewOperationHour"
@@ -260,4 +272,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewFeature" />
+
+    <Button
+        android:id="@+id/btn_Previous_Img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/round_button"
+        app:backgroundTint="#4D2196F3"
+        app:icon="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_Next_Img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/round_button"
+        app:backgroundTint="#4D2196F3"
+        app:icon="@drawable/ic_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
