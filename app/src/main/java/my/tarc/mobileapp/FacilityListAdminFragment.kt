@@ -19,4 +19,9 @@ class FacilityListAdminFragment : Fragment() {
         _binding = FragmentFacilityListAdminBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
 }
