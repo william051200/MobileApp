@@ -129,10 +129,74 @@
         android:paddingBottom="14dp"
         android:text="@string/signin"
         android:textColor="#ffffff"
-        android:textSize="12dp"
+        android:textSize="12dp" />
 
 
-        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="62dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginBottom="90dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:text="@string/registernavtext"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/signupnav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="162dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginBottom="90dp"
+        android:clickable="true"
+        android:paddingLeft="50dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:text="@string/registenav"
+        android:textColor="	#0693EF"
+        android:textSize="12dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="62dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginBottom="60dp"
+        android:paddingLeft="40dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:text="@string/adminnavtext"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/adminloginnav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="162dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginBottom="60dp"
+        android:clickable="true"
+        android:paddingLeft="50dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:text="@string/adminnav"
+        android:textColor="	#0693EF"
+        android:textSize="12dp" />
+
+
 
 
 </RelativeLayout>
