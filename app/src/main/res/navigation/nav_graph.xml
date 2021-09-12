@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_facilityListAdminFragment_to_facilityDetailsFragment"
             app:destination="@id/facilityDetailsFragment" />
+        <action
+            android:id="@+id/action_facilityListAdminFragment_to_dialogFilterFragment"
+            app:destination="@id/dialogFilterFragment" />
     </fragment>
     <fragment
         android:id="@+id/facilityDetailsFragment"
@@ -26,6 +29,9 @@
         <action
             android:id="@+id/action_userProfile_to_favouriteListFragment"
             app:destination="@id/favouriteListFragment" />
+        <action
+            android:id="@+id/action_userProfile_to_uploadFacilityFragment"
+            app:destination="@id/uploadFacilityFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigationFragment"
@@ -50,6 +56,9 @@
         <action
             android:id="@+id/action_facilityCategory_to_userProfile"
             app:destination="@id/userProfile" />
+        <action
+            android:id="@+id/action_facilityCategory_to_uploadFacilityFragment"
+            app:destination="@id/uploadFacilityFragment" />
     </fragment>
     <fragment
         android:id="@+id/favouriteListFragment"
@@ -62,5 +71,59 @@
         <action
             android:id="@+id/action_favouriteListFragment_to_facilityDetailsFragment"
             app:destination="@id/facilityDetailsFragment" />
+        <action
+            android:id="@+id/action_favouriteListFragment_to_dialogFilterFragment"
+            app:destination="@id/dialogFilterFragment" />
+        <action
+            android:id="@+id/action_favouriteListFragment_to_uploadFacilityFragment"
+            app:destination="@id/uploadFacilityFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/adminHomepageFragment"
+        android:name="my.tarc.mobileapp.AdminHomepageFragment"
+        android:label="fragment_admin_homepage"
+        tools:layout="@layout/fragment_admin_homepage" >
+        <action
+            android:id="@+id/action_adminHomepageFragment_to_facilityListAdminFragment"
+            app:destination="@id/facilityListAdminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminLoginFragment"
+        android:name="my.tarc.mobileapp.AdminLoginFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" >
+        <action
+            android:id="@+id/action_adminLoginFragment_to_adminHomepageFragment"
+            app:destination="@id/adminHomepageFragment" />
+        <action
+            android:id="@+id/action_adminLoginFragment_to_userLoginFragment"
+            app:destination="@id/userLoginFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/dialogFilterFragment"
+        android:name="my.tarc.mobileapp.DialogFilterFragment"
+        android:label="fragment_dialog_filter"
+        tools:layout="@layout/fragment_dialog_filter" />
+    <fragment
+        android:id="@+id/editFacilityFragment"
+        android:name="my.tarc.mobileapp.EditFacilityFragment"
+        android:label="fragment_edit_facility"
+        tools:layout="@layout/fragment_edit_facility" />
+    <fragment
+        android:id="@+id/userLoginFragment"
+        android:name="my.tarc.mobileapp.UserLoginFragment"
+        android:label="fragment_login_page"
+        tools:layout="@layout/fragment_login_page" >
+        <action
+            android:id="@+id/action_userLoginFragment_to_facilityCategory"
+            app:destination="@id/facilityCategory" />
+        <action
+            android:id="@+id/action_userLoginFragment_to_adminLoginFragment"
+            app:destination="@id/adminLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadFacilityFragment"
+        android:name="my.tarc.mobileapp.UploadFacilityFragment"
+        android:label="fragment_upload_facility"
+        tools:layout="@layout/fragment_upload_facility" />
 </navigation>
