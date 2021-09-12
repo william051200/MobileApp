@@ -20,7 +20,7 @@
         tools:layout="@layout/fragment_facility_details" />
     <fragment
         android:id="@+id/userProfile"
-        android:name="my.tarc.mobileapp.UserProfile"
+        android:name="my.tarc.mobileapp.UserProfileFragment"
         android:label="fragment_user_profile"
         tools:layout="@layout/fragment_user_profile" >
         <action
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/facilityCategory"
-        android:name="my.tarc.mobileapp.FacilityCategory"
+        android:name="my.tarc.mobileapp.FacilityCategoryFragment"
         android:label="fragment_facility_category"
         tools:layout="@layout/fragment_facility_category" >
         <action

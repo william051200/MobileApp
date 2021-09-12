@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 
-class dialogFilter : Fragment() {
+class UserProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,9 +19,6 @@ class dialogFilter : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var rootView: View= inflater.inflate(R.layout.fragment_dialog_filter, container, false)
-        return rootView
+        return inflater.inflate(R.layout.fragment_user_profile, container, false)
     }
-
-
 }

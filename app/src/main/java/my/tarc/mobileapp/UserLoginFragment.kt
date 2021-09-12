@@ -5,14 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import my.tarc.mobileapp.databinding.FragmentLoginPageBinding
 
 
-
-
-class Admin : Fragment() {
+class UserLoginFragment : Fragment() {
+    private var _binding: FragmentLoginPageBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
     }
 
@@ -21,8 +24,11 @@ class Admin : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin, container, false)
+        return inflater.inflate(R.layout.fragment_login_page, container, false)
+
+
     }
+
 
 
 }
