@@ -74,6 +74,10 @@
     <string name="search_facility">Search facility</string>
     <string name="delete_this_image">Delete this image?</string>
     <string name="signin">Sign in</string>
+    <string name="registernavtext">Don\'t have an account?</string>
+    <string name="registenav">Sign up here</string>
+    <string name="adminnavtext">You are an Admin?</string>
+    <string name="adminnav">Login Here</string>
 
     //Register
     <string name="registertxt">Create your account here</string>\
@@ -81,6 +85,7 @@
 
     //Admin
     <string name="admintxt">Login as admin</string>
+    <string name="usernavtext">Not an Admin?</string>
 
     //Admin Homepage
     <string name="welcomeadmin">Welcome Admin</string>
