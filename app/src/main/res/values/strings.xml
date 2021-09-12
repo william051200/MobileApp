@@ -7,11 +7,15 @@
     <string name="filter_label">Filter</string>
     <string name="facility_category_label">Facility Category</string>
     <string name="my_profile_label">My Profile</string>
-    <string-array name="spinner_sort">
+    <string-array name="spinner_sort_user">
         <item>Sort ascending</item>
         <item>Sort descending</item>
         <item>Sort nearest</item>
         <item>Sort furthest</item>
+    </string-array>
+    <string-array name="spinner_sort_admin">
+        <item>Sort ascending</item>
+        <item>Sort descending</item>
     </string-array>
 
     //Common

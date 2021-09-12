@@ -16,18 +16,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/facilityListAdmin_btnSort"
-            style="?android:attr/buttonBarButtonStyle"
+        <Spinner
+            android:id="@+id/facilityListAdmin_spinnerSort"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:drawableLeft="@drawable/ic_sort"
-            android:paddingLeft="60dp"
-            android:paddingRight="60dp"
-            android:text="@string/sort_label"
-            android:textColor="#757575"
-            app:backgroundTint="#FFFFFF" />
+            android:entries="@array/spinner_sort_admin" />
 
         <Button
             android:id="@+id/facilityListAdmin_btnFilter"
