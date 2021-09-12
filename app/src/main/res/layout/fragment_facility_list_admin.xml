@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout4"
+    android:id="@+id/facilityListAdmin_frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FacilityListAdminFragment">
 
     <LinearLayout
-        android:id="@+id/pendingApprovals_linearLayout1"
+        android:id="@+id/facilityListAdmin_linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/pendingApprovals_btnSort"
+            android:id="@+id/facilityListAdmin_btnSort"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             app:backgroundTint="#FFFFFF" />
 
         <Button
-            android:id="@+id/pendingApprovals_btnFilter"
+            android:id="@+id/facilityListAdmin_btnFilter"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -43,22 +43,18 @@
             app:backgroundTint="#FFFFFF" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/pendingApprovals_listView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/facilityListAdmin_recycleView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="32dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10.0sp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pendingApprovals_linearLayout1"
+        app:layout_constraintTop_toBottomOf="@+id/facilityListAdmin_linearLayout"
         tools:listitem="@layout/facility_layout" />
 
 
