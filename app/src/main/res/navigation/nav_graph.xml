@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/userLoginFragment">
+    app:startDestination="@id/userProfile">
     <fragment
         android:id="@+id/facilityListAdminFragment"
         android:name="my.tarc.mobileapp.FacilityListAdminFragment"
@@ -110,10 +110,15 @@
         android:label="fragment_edit_facility"
         tools:layout="@layout/fragment_edit_facility" />
     <fragment
+        android:id="@+id/uploadFacilityFragment"
+        android:name="my.tarc.mobileapp.UploadFacilityFragment"
+        android:label="fragment_upload_facility"
+        tools:layout="@layout/fragment_upload_facility" />
+    <fragment
         android:id="@+id/userLoginFragment"
         android:name="my.tarc.mobileapp.UserLoginFragment"
-        android:label="fragment_login_page"
-        tools:layout="@layout/fragment_login_page">
+        android:label="fragment_user_login"
+        tools:layout="@layout/fragment_user_login">
         <action
             android:id="@+id/action_userLoginFragment_to_facilityCategory"
             app:destination="@id/facilityCategory" />
@@ -121,9 +126,4 @@
             android:id="@+id/action_userLoginFragment_to_adminLoginFragment"
             app:destination="@id/adminLoginFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/uploadFacilityFragment"
-        android:name="my.tarc.mobileapp.UploadFacilityFragment"
-        android:label="fragment_upload_facility"
-        tools:layout="@layout/fragment_upload_facility" />
 </navigation>
