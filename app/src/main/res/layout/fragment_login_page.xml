@@ -48,9 +48,8 @@
         android:background="@drawable/blue_border_rounded_cornwe">
 
 
-
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/loginUser_txtUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/username_icon"
@@ -85,9 +84,8 @@
         android:background="@drawable/blue_border_rounded_cornwe">
 
 
-
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/loginUser_txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/password_icon"
@@ -114,7 +112,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/login"
+        android:id="@+id/loginUser_btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
