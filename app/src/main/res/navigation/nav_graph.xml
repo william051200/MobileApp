@@ -118,7 +118,7 @@
         android:id="@+id/userLoginFragment"
         android:name="my.tarc.mobileapp.UserLoginFragment"
         android:label="fragment_user_login"
-        tools:layout="@layout/fragment_user_login" >
+        tools:layout="@layout/fragment_user_login">
         <action
             android:id="@+id/action_userLoginFragment_to_facilityCategory"
             app:destination="@id/facilityCategory" />
