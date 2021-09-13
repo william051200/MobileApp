@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/facilityListAdminFragment">
+    app:startDestination="@id/userLoginFragment">
     <fragment
         android:id="@+id/facilityListAdminFragment"
         android:name="my.tarc.mobileapp.FacilityListAdminFragment"
         android:label="fragment_facility_list_admin"
-        tools:layout="@layout/fragment_facility_list_admin" >
+        tools:layout="@layout/fragment_facility_list_admin">
         <action
             android:id="@+id/action_facilityListAdminFragment_to_facilityDetailsFragment"
             app:destination="@id/facilityDetailsFragment" />
@@ -25,7 +25,7 @@
         android:id="@+id/userProfile"
         android:name="my.tarc.mobileapp.UserProfileFragment"
         android:label="fragment_user_profile"
-        tools:layout="@layout/fragment_user_profile" >
+        tools:layout="@layout/fragment_user_profile">
         <action
             android:id="@+id/action_userProfile_to_favouriteListFragment"
             app:destination="@id/favouriteListFragment" />
@@ -37,7 +37,7 @@
         android:id="@+id/navigationFragment"
         android:name="my.tarc.mobileapp.NavigationFragment"
         android:label="fragment_navigation"
-        tools:layout="@layout/fragment_navigation" >
+        tools:layout="@layout/fragment_navigation">
         <action
             android:id="@+id/action_navigationFragment_to_facilityDetailsFragment"
             app:destination="@id/facilityDetailsFragment" />
@@ -46,7 +46,7 @@
         android:id="@+id/facilityCategory"
         android:name="my.tarc.mobileapp.FacilityCategoryFragment"
         android:label="fragment_facility_category"
-        tools:layout="@layout/fragment_facility_category" >
+        tools:layout="@layout/fragment_facility_category">
         <action
             android:id="@+id/action_facilityCategory_to_navigationFragment"
             app:destination="@id/navigationFragment" />
@@ -64,7 +64,7 @@
         android:id="@+id/favouriteListFragment"
         android:name="my.tarc.mobileapp.FavouriteListFragment"
         android:label="fragment_favourite_list"
-        tools:layout="@layout/fragment_favourite_list" >
+        tools:layout="@layout/fragment_favourite_list">
         <action
             android:id="@+id/action_favouriteListFragment_to_userProfile"
             app:destination="@id/userProfile" />
@@ -82,7 +82,7 @@
         android:id="@+id/adminHomepageFragment"
         android:name="my.tarc.mobileapp.AdminHomepageFragment"
         android:label="fragment_admin_homepage"
-        tools:layout="@layout/fragment_admin_homepage" >
+        tools:layout="@layout/fragment_admin_homepage">
         <action
             android:id="@+id/action_adminHomepageFragment_to_facilityListAdminFragment"
             app:destination="@id/facilityListAdminFragment" />
@@ -91,7 +91,7 @@
         android:id="@+id/adminLoginFragment"
         android:name="my.tarc.mobileapp.AdminLoginFragment"
         android:label="fragment_admin"
-        tools:layout="@layout/fragment_admin" >
+        tools:layout="@layout/fragment_admin">
         <action
             android:id="@+id/action_adminLoginFragment_to_adminHomepageFragment"
             app:destination="@id/adminHomepageFragment" />
@@ -113,7 +113,7 @@
         android:id="@+id/userLoginFragment"
         android:name="my.tarc.mobileapp.UserLoginFragment"
         android:label="fragment_login_page"
-        tools:layout="@layout/fragment_login_page" >
+        tools:layout="@layout/fragment_login_page">
         <action
             android:id="@+id/action_userLoginFragment_to_facilityCategory"
             app:destination="@id/facilityCategory" />
