@@ -152,7 +152,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/userProfile_btnPendingApprovals"
+            android:id="@+id/userProfile_btnFacilityCategory"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
             app:backgroundTint="#FFFFFF" />
 
         <Button
-            android:id="@+id/userProfile_btnFeedback"
+            android:id="@+id/userProfile_btnMyProfile"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
