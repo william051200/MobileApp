@@ -28,6 +28,7 @@ class FacilityListAdminFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         reset()
         updateFacilityList()
 
@@ -52,8 +53,6 @@ class FacilityListAdminFragment : Fragment() {
 
     // Update the facility list recycle view
     private fun updateFacilityList() {
-        val facilityAdapter = FacilityAdapter()
-
         if (sort == "Sort ascending") {
 
         } else if (sort == "Sort descending") {
@@ -64,10 +63,9 @@ class FacilityListAdminFragment : Fragment() {
 
         }
 
-
         // need view model
 //        facilityAdapter.setFacility(facilityViewModel.facilityList)
-        binding.facilityListAdminRecycleView.adapter = facilityAdapter
+//        binding.facilityListAdminRecycleView.adapter = FacilityAdapter(facilityList)
     }
 
     private fun openFilterDialog() {
