@@ -7,14 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".UploadFacilityFragment">
 
-    <ImageView
-        android:id="@+id/imgView_Facility"
+    <ImageSwitcher
+        android:id="@+id/imgSwitcher_Facility"
         android:layout_width="0dp"
         android:layout_height="160dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_Pick_Facility_Image"
@@ -25,7 +24,7 @@
         app:backgroundTint="#0693EF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgView_Facility" />
+        app:layout_constraintTop_toBottomOf="@+id/imgSwitcher_Facility" />
 
     <TextView
         android:id="@+id/textViewFacilityName"
@@ -42,8 +41,7 @@
         android:id="@+id/textViewOperationHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:text="@string/txtView_operationHrs_label"
         android:textSize="16sp"
@@ -54,8 +52,7 @@
         android:id="@+id/textViewST"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="2dp"
         android:text="@string/txtView_start_time_label"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,24 +62,23 @@
         android:id="@+id/textViewCT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginRight="104dp"
+        android:layout_marginStart="70dp"
         android:text="@string/txtView_close_time_label"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewST"
+        app:layout_constraintStart_toEndOf="@+id/textViewST"
         app:layout_constraintTop_toTopOf="@+id/textViewST" />
 
     <TextView
         android:id="@+id/textViewState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="117dp"
         android:text="@string/txtView_state_label"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/txtFacility_City"
-        app:layout_constraintTop_toBottomOf="@+id/txtFacility_Address" />
+        app:layout_constraintBottom_toBottomOf="@+id/textViewCity"
+        app:layout_constraintStart_toEndOf="@+id/textViewCity"
+        app:layout_constraintTop_toTopOf="@+id/textViewCity"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textViewLabelAddress"
@@ -112,40 +108,39 @@
         android:id="@+id/textViewFeature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="60dp"
         android:text="@string/txtView_oku_feature_label"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFacility_City" />
+        app:layout_constraintBottom_toBottomOf="@+id/textViewCT"
+        app:layout_constraintStart_toEndOf="@+id/textViewCT"
+        app:layout_constraintTop_toTopOf="@+id/textViewCT" />
 
     <Button
         android:id="@+id/btnUpload_Facility_Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
         android:text="@string/btn_cancel"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#737373"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtOKU_Feature" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFacility_State" />
 
     <Button
         android:id="@+id/btnUpload_Facility_Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/btnUpload"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:icon="@drawable/ic_upload"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtOKU_Feature" />
+        app:layout_constraintTop_toBottomOf="@+id/txtFacility_State" />
 
     <EditText
         android:id="@+id/txtFacility_Name"
@@ -169,8 +164,7 @@
         android:id="@+id/spinnerST"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="2dp"
         android:entries="@array/spinner_operation_hours"
         android:minHeight="48dp"
@@ -181,25 +175,24 @@
         android:id="@+id/spinnerCT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
+        android:layout_marginStart="30dp"
         android:entries="@array/spinner_operation_hours"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCT" />
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerST"
+        app:layout_constraintStart_toEndOf="@+id/spinnerST"
+        app:layout_constraintTop_toTopOf="@+id/spinnerST" />
 
     <TextView
         android:id="@+id/textViewZipcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginStart="107dp"
         android:text="@string/txtView_zipcode_label"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFacility_Address" />
+        app:layout_constraintBottom_toBottomOf="@+id/textViewState"
+        app:layout_constraintStart_toEndOf="@+id/textViewState"
+        app:layout_constraintTop_toTopOf="@+id/textViewState"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/txtFacility_Address"
@@ -239,44 +232,39 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:ems="10"
         android:hint="@string/exampleState_label"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtFacility_City"
         app:layout_constraintStart_toEndOf="@+id/txtFacility_City"
-        app:layout_constraintTop_toBottomOf="@+id/textViewState" />
+        app:layout_constraintTop_toTopOf="@+id/txtFacility_City" />
 
     <EditText
         android:id="@+id/txtFacility_Zip_Code"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="2dp"
         android:ems="10"
         android:hint="@string/exampleZipcode_label"
         android:inputType="number"
         android:minHeight="48dp"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtFacility_State"
         app:layout_constraintStart_toEndOf="@+id/txtFacility_State"
-        app:layout_constraintTop_toBottomOf="@+id/textViewZipcode" />
+        app:layout_constraintTop_toTopOf="@+id/txtFacility_State" />
 
     <Spinner
         android:id="@+id/txtOKU_Feature"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginStart="25dp"
         android:entries="@array/spinner_oku_feature"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFeature" />
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerCT"
+        app:layout_constraintStart_toEndOf="@+id/spinnerCT"
+        app:layout_constraintTop_toTopOf="@+id/spinnerCT" />
 
     <Button
         android:id="@+id/btn_Previous_Img"
@@ -285,10 +273,11 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="55dp"
         android:background="@drawable/round_button"
-        app:backgroundTint="#4D2196F3"
+        app:backgroundTint="#33737373"
         app:icon="@drawable/ic_back"
-        app:layout_constraintStart_toStartOf="@+id/imgView_Facility"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/imgSwitcher_Facility"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btn_Next_Img"
@@ -297,10 +286,11 @@
         android:layout_marginTop="55dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/round_button"
-        app:backgroundTint="#4D2196F3"
+        app:backgroundTint="#33737373"
         app:icon="@drawable/ic_next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

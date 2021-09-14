@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/facilityCategory">
+    app:startDestination="@id/uploadFacilityFragment">
     <fragment
         android:id="@+id/facilityListAdminFragment"
         android:name="my.tarc.mobileapp.FacilityListAdminFragment"
@@ -116,7 +116,11 @@
         android:id="@+id/uploadFacilityFragment"
         android:name="my.tarc.mobileapp.UploadFacilityFragment"
         android:label="fragment_upload_facility"
-        tools:layout="@layout/fragment_upload_facility" />
+        tools:layout="@layout/fragment_upload_facility" >
+        <action
+            android:id="@+id/action_uploadFacilityFragment_to_facilityCategory"
+            app:destination="@id/facilityCategory" />
+    </fragment>
     <fragment
         android:id="@+id/userLoginFragment"
         android:name="my.tarc.mobileapp.UserLoginFragment"
