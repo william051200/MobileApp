@@ -9,8 +9,9 @@
 
     <ImageView
         android:id="@+id/facilityLayout_imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/facilityLayout_guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
