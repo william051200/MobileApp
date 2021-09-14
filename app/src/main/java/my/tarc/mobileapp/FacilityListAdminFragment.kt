@@ -69,7 +69,6 @@ class FacilityListAdminFragment : Fragment() {
                     position: Int,
                     id: Long
                 ) {
-                    sort = parent?.getItemAtPosition(position).toString()
                     sortFacility()
                     recycleView.adapter = FacilityAdapter(facilityList)
                 }
@@ -90,11 +89,18 @@ class FacilityListAdminFragment : Fragment() {
                         var facilityName = document.get("name").toString()
                         var facilityImage = document.get("image").toString()
                         var firstImage = facilityImage.substring(1, facilityImage.indexOf(".png"))
-                        var facilityImageBmp = getImage(facilityId, "$firstImage.png")
-                        var facility = Facility(facilityImageBmp, facilityName)
-                        facilityList.add(facility)
+
+                        var bmp: Bitmap? = null
+                        val imageReference = storageRef.child(facilityId).child("$firstImage.png")
+                        val ONE_MEGABYTE: Long = 1024 * 1024
+
+                        imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
+                            bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+                            var facility = Facility(bmp, facilityName)
+                            facilityList.add(facility)
+                            recycleView.adapter = FacilityAdapter(facilityList)
+                        }
                     }
-                    recycleView.adapter = FacilityAdapter(facilityList)
                 }
         } else {
             db.collection("facility")
@@ -105,17 +111,25 @@ class FacilityListAdminFragment : Fragment() {
                         var facilityName = document.get("name").toString()
                         var facilityImage = document.get("image").toString()
                         var firstImage = facilityImage.substring(1, facilityImage.indexOf(".png"))
-                        var facilityImageBmp = getImage(facilityId, "$firstImage.png")
-                        var facility = Facility(facilityImageBmp, facilityName)
-                        facilityList.add(facility)
+
+                        var bmp: Bitmap? = null
+                        val imageReference = storageRef.child(facilityId).child("$firstImage.png")
+                        val ONE_MEGABYTE: Long = 1024 * 1024
+
+                        imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
+                            bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+                            var facility = Facility(bmp, facilityName)
+                            facilityList.add(facility)
+                            recycleView.adapter = FacilityAdapter(facilityList)
+                        }
                     }
-                    recycleView.adapter = FacilityAdapter(facilityList)
                 }
         }
     }
 
     // Update the facility list recycle view
     private fun sortFacility() {
+        sort = binding.facilityListAdminSpinnerSort.selectedItem.toString()
         if (sort == "Sort ascending") {
             facilityList.sortBy { it.name }
         } else if (sort == "Sort descending") {
@@ -137,17 +151,5 @@ class FacilityListAdminFragment : Fragment() {
             // get filter value in array
             dialog.dismiss()
         }
-    }
-
-    private fun getImage(facilityId: String, imageName: String): Bitmap? {
-        var bmp: Bitmap? = null
-        val imageReference = storageRef.child(facilityId).child(imageName)
-        val ONE_MEGABYTE: Long = 1024 * 1024
-
-        imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
-            bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-        }
-
-        return bmp
     }
 }

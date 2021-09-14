@@ -4,16 +4,15 @@ import android.app.AlertDialog
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -31,10 +30,12 @@ class FavouriteListFragment : Fragment() {
     // Binding
     private var _binding: FragmentFavouriteListBinding? = null
     private val binding get() = _binding!!
-    private val facilityViewModel: FacilityViewModel by activityViewModels()
 
-    // Private lateinit var filter: Array<String>
+    // Recycle view
     private lateinit var facilityList: ArrayList<Facility>
+    private lateinit var recycleView: RecyclerView
+
+    private lateinit var filter: Array<String>
     private lateinit var sort: String
 
     override fun onCreateView(
@@ -47,12 +48,14 @@ class FavouriteListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.favouriteListRecycleView.layoutManager = LinearLayoutManager(this.context)
-        binding.favouriteListRecycleView.setHasFixedSize(true)
+        // Recycle view
+        recycleView = binding.favouriteListRecycleView
+        recycleView.layoutManager = LinearLayoutManager(this.context)
+        recycleView.setHasFixedSize(true)
         facilityList = arrayListOf<Facility>()
-
         getFacilitiesFromFirebase()
 
+        // Get sorting type (default: ascending)
         sort = binding.favouriteListSpinnerSort.getItemAtPosition(0).toString()
 
         // Get value from sorting spinner everytime user select 1 value
@@ -65,10 +68,8 @@ class FavouriteListFragment : Fragment() {
                     position: Int,
                     id: Long
                 ) {
-                    sort = parent?.getItemAtPosition(position).toString()
                     sortFacility()
-                    binding.favouriteListRecycleView.adapter =
-                        FacilityAdapter(facilityViewModel.getFacilities())
+                    recycleView.adapter = FacilityAdapter(facilityList)
                 }
             }
 
@@ -82,7 +83,6 @@ class FavouriteListFragment : Fragment() {
     }
 
     private fun getFacilitiesFromFirebase() {
-
         db.collection("facility")
             .whereEqualTo("status", "Approved")
             .get()
@@ -100,23 +100,20 @@ class FavouriteListFragment : Fragment() {
                     imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
                         bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
                         var facility = Facility(bmp, facilityName)
-                        facilityViewModel.addFacility(facility)
-                        binding.favouriteListRecycleView.adapter =
-                            FacilityAdapter(facilityViewModel.getFacilities())
+                        facilityList.add(facility)
+                        recycleView.adapter = FacilityAdapter(facilityList)
                     }
                 }
-
-//                binding.favouriteListRecycleView.adapter =
-//                    FacilityAdapter(facilityViewModel.getFacilities())
             }
     }
 
     // Update the facility list recycle view
     private fun sortFacility() {
+        sort = binding.favouriteListSpinnerSort.selectedItem.toString()
         if (sort == "Sort ascending") {
-            facilityViewModel.sortAscending()
+            facilityList.sortBy { it.name }
         } else if (sort == "Sort descending") {
-            facilityViewModel.sortDescending()
+            facilityList.sortByDescending { it.name }
         }
     }
 
@@ -135,16 +132,4 @@ class FavouriteListFragment : Fragment() {
             dialog.dismiss()
         }
     }
-
-//    private fun getImage(facilityId: String, imageName: String): Bitmap? {
-//        var bmp: Bitmap? = null
-//        val imageReference = storageRef.child(facilityId).child(imageName)
-//        val ONE_MEGABYTE: Long = 1024 * 1024
-//
-//        imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
-//            bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-//        }
-//
-//        return bmp
-//    }
 }
