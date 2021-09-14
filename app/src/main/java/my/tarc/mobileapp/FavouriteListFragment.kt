@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -81,6 +82,7 @@ class FavouriteListFragment : Fragment() {
     }
 
     private fun getFacilitiesFromFirebase() {
+
         db.collection("facility")
             .whereEqualTo("status", "Approved")
             .get()
@@ -90,12 +92,22 @@ class FavouriteListFragment : Fragment() {
                     var facilityName = document.get("name").toString()
                     var facilityImage = document.get("image").toString()
                     var firstImage = facilityImage.substring(1, facilityImage.indexOf(".png"))
-                    var facilityImageBmp = getImage(facilityId, "$firstImage.png")
-                    var facility = Facility(facilityImageBmp, facilityName)
-                    facilityViewModel.addFacility(facility)
+
+                    var bmp: Bitmap? = null
+                    val imageReference = storageRef.child(facilityId).child("$firstImage.png")
+                    val ONE_MEGABYTE: Long = 1024 * 1024
+
+                    imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
+                        bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+                        var facility = Facility(bmp, facilityName)
+                        facilityViewModel.addFacility(facility)
+                        binding.favouriteListRecycleView.adapter =
+                            FacilityAdapter(facilityViewModel.getFacilities())
+                    }
                 }
-                binding.favouriteListRecycleView.adapter =
-                    FacilityAdapter(facilityViewModel.getFacilities())
+
+//                binding.favouriteListRecycleView.adapter =
+//                    FacilityAdapter(facilityViewModel.getFacilities())
             }
     }
 
@@ -124,15 +136,15 @@ class FavouriteListFragment : Fragment() {
         }
     }
 
-    private fun getImage(facilityId: String, imageName: String): Bitmap? {
-        var bmp: Bitmap? = null
-        val imageReference = storageRef.child(facilityId).child(imageName)
-        val ONE_MEGABYTE: Long = 1024 * 1024
-
-        imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
-            bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-        }
-
-        return bmp
-    }
+//    private fun getImage(facilityId: String, imageName: String): Bitmap? {
+//        var bmp: Bitmap? = null
+//        val imageReference = storageRef.child(facilityId).child(imageName)
+//        val ONE_MEGABYTE: Long = 1024 * 1024
+//
+//        imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
+//            bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+//        }
+//
+//        return bmp
+//    }
 }
