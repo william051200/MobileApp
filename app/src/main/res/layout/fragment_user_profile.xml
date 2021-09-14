@@ -11,24 +11,11 @@
         android:id="@+id/imageViewProfile"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="144dp"
         android:layout_marginTop="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingBtn_ImgEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="124dp"
-        android:clickable="true"
-        app:srcCompat="@drawable/ic_edit_pen"
-        app:backgroundTint="#F6F1F1"
-        app:fabSize="mini"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textViewFullName"
@@ -177,4 +164,20 @@
             android:textColor="#212121"
             app:backgroundTint="#0693EF"  />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_UserProfile_Edit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="120dp"
+        android:background="@drawable/round_button"
+        app:backgroundTint="#0693EF"
+        app:cornerRadius="20dp"
+        app:icon="@drawable/ic_edit_pen"
+        app:iconTint="#FBF8F8"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewProfile"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
