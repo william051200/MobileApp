@@ -1,6 +1,8 @@
 package my.tarc.mobileapp
 
 import android.app.AlertDialog
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,16 +12,29 @@ import android.widget.AdapterView
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import my.tarc.mobileapp.databinding.FragmentFavouriteListBinding
 
 
 class FavouriteListFragment : Fragment() {
 
+    // Firestore database
+    private val db = Firebase.firestore
+
+    // Firebase storage
+    private val storage = Firebase.storage("gs://mobile-app-f3440.appspot.com")
+    private var storageRef = storage.reference.child("Facility photos")
+
+    // Binding
     private var _binding: FragmentFavouriteListBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var sort: String
-    private lateinit var filter: Array<String>
+    //    private lateinit var filter: Array<String>
+    private lateinit var facilityList: ArrayList<Facility>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,11 +44,28 @@ class FavouriteListFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        reset()
-        updateFacilityList()
+
+        facilityList = arrayListOf<Facility>()
+
+        db.collection("facility")
+            .whereEqualTo("status", "Approved")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    var facilityId = document.get("id").toString()
+                    var facilityName = document.get("name").toString()
+                    var facilityPicture = document.get("picture").toString()
+                    var firstPicture = facilityPicture.substring(1, facilityPicture.indexOf(","))
+                    var facility = Facility(getImage(facilityId, firstPicture), facilityName)
+                    facilityList.add(facility)
+                }
+
+                binding.favouriteListRecycleView.adapter = FacilityAdapter(facilityList)
+            }
+
+        sort = binding.favouriteListSpinnerSort.getItemAtPosition(0).toString()
 
         // Get value from sorting spinner everytime user select 1 value
         binding.favouriteListSpinnerSort.onItemSelectedListener =
@@ -46,7 +78,6 @@ class FavouriteListFragment : Fragment() {
                     id: Long
                 ) {
                     sort = parent?.getItemAtPosition(position).toString()
-                    updateFacilityList()
                 }
             }
 
@@ -61,8 +92,6 @@ class FavouriteListFragment : Fragment() {
 
     // Update the facility list recycle view
     private fun updateFacilityList() {
-        val facilityAdapter = FacilityAdapter()
-
         if (sort == "Sort ascending") {
 
         } else if (sort == "Sort descending") {
@@ -72,10 +101,6 @@ class FavouriteListFragment : Fragment() {
         } else if (sort == "Sort furthest") {
 
         }
-
-        // need view model
-//        facilityAdapter.setFacility(facilityViewModel.facilityList)
-//        binding.favouriteListRecycleView.adapter = facilityAdapter
     }
 
     private fun openFilterDialog() {
@@ -94,8 +119,15 @@ class FavouriteListFragment : Fragment() {
         }
     }
 
-    private fun reset() {
-        binding.favouriteListSpinnerSort.setSelection(0)
-        sort = binding.favouriteListSpinnerSort.getItemAtPosition(0).toString()
+    private fun getImage(facilityId: String, imageName: String): Bitmap? {
+        val imageReference = storageRef.child(facilityId).child(imageName)
+        val ONE_MEGABYTE: Long = 1024 * 1024
+        var bmp: Bitmap? = null
+
+        imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
+            bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+        }
+
+        return bmp
     }
 }

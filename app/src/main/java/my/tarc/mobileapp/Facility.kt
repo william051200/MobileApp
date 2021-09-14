@@ -1,3 +1,5 @@
 package my.tarc.mobileapp
 
-data class Facility(var facilityImage: Int, var facilityName: String)
+import android.graphics.Bitmap
+
+data class Facility(var picture: Bitmap?, var name: String)

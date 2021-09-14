@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 
-class FacilityAdapter internal constructor() : RecyclerView.Adapter<FacilityAdapter.ViewHolder>() {
-    private var facilityList = ArrayList<Facility>()
+class FacilityAdapter(private val facilityList: ArrayList<Facility>) :
+    RecyclerView.Adapter<FacilityAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val facilityImage: ShapeableImageView = itemView.findViewById(R.id.facilityLayout_imageView)
@@ -24,12 +24,12 @@ class FacilityAdapter internal constructor() : RecyclerView.Adapter<FacilityAdap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = facilityList[position]
-        holder.facilityImage.setImageResource(currentItem.facilityImage)
-        holder.facilityName.text = currentItem.facilityName
+        holder.facilityImage.setImageBitmap(currentItem.picture)
+        holder.facilityName.text = currentItem.name
         holder.itemView.setOnClickListener {
             Toast.makeText(
                 it.context,
-                "Facility Name:" + facilityList[position].facilityName,
+                "Facility Name:" + facilityList[position].name,
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -37,10 +37,5 @@ class FacilityAdapter internal constructor() : RecyclerView.Adapter<FacilityAdap
 
     override fun getItemCount(): Int {
         return facilityList.size
-    }
-
-    // Pass the list of facility into this adapter
-    internal fun setFacility(facility: ArrayList<Facility>) {
-        facilityList = facility
     }
 }
