@@ -1,12 +1,10 @@
 package my.tarc.mobileapp
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class FacilityAdapter(private val facilityList: ArrayList<Facility>) :
@@ -27,13 +25,6 @@ class FacilityAdapter(private val facilityList: ArrayList<Facility>) :
         val currentItem = facilityList[position]
         holder.facilityImage.setImageBitmap(currentItem.picture)
         holder.facilityName.text = currentItem.name
-        holder.itemView.setOnClickListener {
-            Toast.makeText(
-                it.context,
-                "Facility Name:" + facilityList[position].name,
-                Toast.LENGTH_SHORT
-            ).show()
-        }
     }
 
     override fun getItemCount(): Int {

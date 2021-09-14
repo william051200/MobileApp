@@ -11,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -28,8 +29,11 @@ class FacilityListAdminFragment : Fragment() {
     private var _binding: FragmentFacilityListAdminBinding? = null
     private val binding get() = _binding!!
 
-    // Private lateinit var filter: Array<String>
+    // Recycle view
     private lateinit var facilityList: ArrayList<Facility>
+    private lateinit var recycleView: RecyclerView
+
+    private lateinit var filter: Array<String>
     private lateinit var sort: String
 
     override fun onCreateView(
@@ -42,13 +46,17 @@ class FacilityListAdminFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.facilityListAdminRecycleView.layoutManager = LinearLayoutManager(this.context)
-        binding.facilityListAdminRecycleView.setHasFixedSize(true)
-        facilityList = arrayListOf<Facility>()
-        var type = ""
+        // Category type ("All" or "Pending")
+        var type = "All"
 
+        // Recycle view
+        recycleView = binding.facilityListAdminRecycleView
+        recycleView.layoutManager = LinearLayoutManager(this.context)
+        recycleView.setHasFixedSize(true)
+        facilityList = arrayListOf<Facility>()
         getFacilitiesFromFirebase(type)
 
+        // Get sorting type (default: ascending)
         sort = binding.facilityListAdminSpinnerSort.getItemAtPosition(0).toString()
 
         // Get value from sorting spinner everytime user select 1 value
@@ -63,7 +71,7 @@ class FacilityListAdminFragment : Fragment() {
                 ) {
                     sort = parent?.getItemAtPosition(position).toString()
                     sortFacility()
-                    binding.facilityListAdminRecycleView.adapter = FacilityAdapter(facilityList)
+                    recycleView.adapter = FacilityAdapter(facilityList)
                 }
             }
 
@@ -86,7 +94,7 @@ class FacilityListAdminFragment : Fragment() {
                         var facility = Facility(facilityImageBmp, facilityName)
                         facilityList.add(facility)
                     }
-                    binding.facilityListAdminRecycleView.adapter = FacilityAdapter(facilityList)
+                    recycleView.adapter = FacilityAdapter(facilityList)
                 }
         } else {
             db.collection("facility")
@@ -101,7 +109,7 @@ class FacilityListAdminFragment : Fragment() {
                         var facility = Facility(facilityImageBmp, facilityName)
                         facilityList.add(facility)
                     }
-                    binding.facilityListAdminRecycleView.adapter = FacilityAdapter(facilityList)
+                    recycleView.adapter = FacilityAdapter(facilityList)
                 }
         }
     }
