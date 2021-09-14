@@ -19,7 +19,8 @@
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Parking_Category" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Parking_Category"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/btn_Park_Category"
@@ -33,7 +34,8 @@
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Toilet_Category" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Toilet_Category"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/btn_Parking_Category"
@@ -47,7 +49,8 @@
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/btn_Favorite_Category"
@@ -61,7 +64,8 @@
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Park_Category" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Park_Category"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/btn_Toilet_Category"
@@ -71,11 +75,12 @@
         android:layout_marginTop="100dp"
         android:drawableTop="@drawable/ic_toilet"
         android:text="@string/okuToilet_label"
+        android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textAllCaps="false" />
+        tools:ignore="TextContrastCheck" />
 
     <LinearLayout
         android:id="@+id/facilityCategory_linearLayout2"
@@ -87,7 +92,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/facilityCategory_btnPendingApprovals"
+            android:id="@+id/facilityCategory_btnFacilityCategory"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -99,12 +104,12 @@
             app:backgroundTint="#0693EF" />
 
         <Button
-            android:id="@+id/facilityCategory_btnFeedback"
+            android:id="@+id/facilityCategory_btnMyProfile"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:drawableLeft="@drawable/ic_profile"
+            android:drawableStart="@drawable/ic_profile"
             android:paddingLeft="35dp"
             android:paddingRight="35dp"
             android:text="@string/my_profile_label"

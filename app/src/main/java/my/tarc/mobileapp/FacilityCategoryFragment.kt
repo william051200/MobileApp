@@ -24,9 +24,19 @@ class FacilityCategoryFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         // Navigate to favourite category page
         binding.btnFavoriteCategory.setOnClickListener {
             findNavController().navigate(R.id.action_facilityCategory_to_favouriteListFragment)
+        }
+
+        // Navigate to User Profile
+        binding.facilityCategoryBtnMyProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_facilityCategory_to_userProfile)
         }
     }
 }
