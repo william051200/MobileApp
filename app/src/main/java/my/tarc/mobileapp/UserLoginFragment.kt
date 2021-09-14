@@ -23,6 +23,12 @@ class UserLoginFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         // Navigate to facility category page
         binding.loginUserBtnLogin.setOnClickListener {
             findNavController().navigate(R.id.action_userLoginFragment_to_facilityCategory)
