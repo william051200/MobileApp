@@ -2,6 +2,7 @@ package my.tarc.mobileapp
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,31 +13,34 @@ import my.tarc.mobileapp.databinding.FragmentFavouriteListBinding
 
 class FavouriteListFragment : Fragment() {
 
-    private var _binding: FragmentFavouriteListBinding? = null
-    private val binding get() = _binding!!
+//    private var _binding: FragmentFavouriteListBinding? = null
+//    private val binding get() = _binding!!
 
-    private var sort: Int = binding.favouriteListSpinnerSort.selectedItemPosition
+//    private var sort: Int = binding.favouriteListSpinnerSort.selectedItemPosition
     private lateinit var filter: Array<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentFavouriteListBinding.inflate(inflater, container, false)
-        return binding.root
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_favourite_list, container, false)
+//        _binding = FragmentFavouriteListBinding.inflate(inflater, container, false)
+//        return binding.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i("Test", "test")
         super.onCreate(savedInstanceState)
         updateFacilityList()
 
         // Open filter dialog
-        binding.favouriteListBtnFilter.setOnClickListener { openFilterDialog() }
+//        binding.favouriteListBtnFilter.setOnClickListener { openFilterDialog() }
 
         // Navigate to user profile page
-        binding.favouriteListBtnMyProfile.setOnClickListener {
-            findNavController().navigate(R.id.action_favouriteListFragment_to_userProfile)
-        }
+//        binding.favouriteListBtnMyProfile.setOnClickListener {
+//            findNavController().navigate(R.id.action_favouriteListFragment_to_userProfile)
+//        }
 
     }
 
@@ -44,20 +48,20 @@ class FavouriteListFragment : Fragment() {
     private fun updateFacilityList() {
         val facilityAdapter = FacilityAdapter()
 
-        if (sort == 0) {
-            // Sort ascending
-        } else if (sort == 1) {
-            // Sort descending
-        } else if (sort == 2) {
-            // Sort nearest
-        } else if (sort == 3) {
-            // Sort furthest
-        }
+//        if (sort == 0) {
+//            // Sort ascending
+//        } else if (sort == 1) {
+//            // Sort descending
+//        } else if (sort == 2) {
+//            // Sort nearest
+//        } else if (sort == 3) {
+//            // Sort furthest
+//        }
 
 
         // need view model
 //        facilityAdapter.setFacility(facilityViewModel.facilityList)
-        binding.favouriteListRecycleView.adapter = facilityAdapter
+//        binding.favouriteListRecycleView.adapter = facilityAdapter
     }
 
     private fun openFilterDialog() {
