@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +20,6 @@ import my.tarc.mobileapp.databinding.FragmentFavouriteListBinding
 
 
 class FavouriteListFragment : Fragment() {
-
     // Firestore database
     private val db = Firebase.firestore
 
@@ -34,10 +32,9 @@ class FavouriteListFragment : Fragment() {
     private val binding get() = _binding!!
     private val facilityViewModel: FacilityViewModel by activityViewModels()
 
-    private lateinit var sort: String
-
-    //    private lateinit var filter: Array<String>
+    // Private lateinit var filter: Array<String>
     private lateinit var facilityList: ArrayList<Facility>
+    private lateinit var sort: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -134,9 +131,8 @@ class FavouriteListFragment : Fragment() {
 
         imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
             bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-            Log.e("second", bmp.toString())
         }
-        Log.e("first", bmp.toString())
+
         return bmp
     }
 }
