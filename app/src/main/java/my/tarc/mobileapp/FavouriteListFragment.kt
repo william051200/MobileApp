@@ -101,6 +101,7 @@ class FavouriteListFragment : Fragment() {
                         bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
                         var facility = Facility(bmp, facilityName)
                         facilityList.add(facility)
+                        sortFacility()
                         recycleView.adapter = FacilityAdapter(facilityList)
                     }
                 }
