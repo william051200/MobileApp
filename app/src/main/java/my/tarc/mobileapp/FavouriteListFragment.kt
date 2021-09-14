@@ -2,20 +2,23 @@ package my.tarc.mobileapp
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import my.tarc.mobileapp.databinding.FragmentFavouriteListBinding
+
 
 class FavouriteListFragment : Fragment() {
 
     private var _binding: FragmentFavouriteListBinding? = null
     private val binding get() = _binding!!
 
-    //    private var sort: Int = binding.favouriteListSpinnerSort.selectedItemPosition
+    private lateinit var sort: String
     private lateinit var filter: Array<String>
 
     override fun onCreateView(
@@ -29,12 +32,28 @@ class FavouriteListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        reset()
         updateFacilityList()
 
-//         Open filter dialog
+        // Get value from sorting spinner everytime user select 1 value
+        binding.favouriteListSpinnerSort.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    sort = parent?.getItemAtPosition(position).toString()
+                    updateFacilityList()
+                }
+            }
+
+        // Open filter dialog
         binding.favouriteListBtnFilter.setOnClickListener { openFilterDialog() }
 
-//         Navigate to user profile page
+        // Navigate to user profile page
         binding.favouriteListBtnMyProfile.setOnClickListener {
             findNavController().navigate(R.id.action_favouriteListFragment_to_userProfile)
         }
@@ -44,16 +63,15 @@ class FavouriteListFragment : Fragment() {
     private fun updateFacilityList() {
         val facilityAdapter = FacilityAdapter()
 
-//        if (sort == 0) {
-//            // Sort ascending
-//        } else if (sort == 1) {
-//            // Sort descending
-//        } else if (sort == 2) {
-//            // Sort nearest
-//        } else if (sort == 3) {
-//            // Sort furthest
-//        }
+        if (sort == "Sort ascending") {
 
+        } else if (sort == "Sort descending") {
+
+        } else if (sort == "Sort nearest") {
+
+        } else if (sort == "Sort furthest") {
+
+        }
 
         // need view model
 //        facilityAdapter.setFacility(facilityViewModel.facilityList)
@@ -68,12 +86,16 @@ class FavouriteListFragment : Fragment() {
 
         val dialog = builder.create()
         dialog.show()
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         val btnOk: Button = view.findViewById(R.id.filterDialog_btnApply)
         btnOk.setOnClickListener {
             // get filter value in array
             dialog.dismiss()
         }
+    }
+
+    private fun reset() {
+        binding.favouriteListSpinnerSort.setSelection(0)
+        sort = binding.favouriteListSpinnerSort.getItemAtPosition(0).toString()
     }
 }

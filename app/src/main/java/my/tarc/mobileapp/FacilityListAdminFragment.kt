@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import my.tarc.mobileapp.databinding.FragmentFacilityListAdminBinding
 
 class FacilityListAdminFragment : Fragment() {
@@ -15,7 +15,7 @@ class FacilityListAdminFragment : Fragment() {
     private var _binding: FragmentFacilityListAdminBinding? = null
     private val binding get() = _binding!!
 
-    private var sort: Int = binding.facilityListAdminSpinnerSort.selectedItemPosition
+    private lateinit var sort: String
     private lateinit var filter: Array<String>
 
     override fun onCreateView(
@@ -26,9 +26,25 @@ class FacilityListAdminFragment : Fragment() {
         return binding.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        reset()
         updateFacilityList()
+
+        // Get value from sorting spinner everytime user select 1 value
+        binding.facilityListAdminSpinnerSort.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    sort = parent?.getItemAtPosition(position).toString()
+                    updateFacilityList()
+                }
+            }
 
         // Open filter dialog
         binding.facilityListAdminBtnFilter.setOnClickListener { openFilterDialog() }
@@ -38,14 +54,14 @@ class FacilityListAdminFragment : Fragment() {
     private fun updateFacilityList() {
         val facilityAdapter = FacilityAdapter()
 
-        if (sort == 0) {
-            // Sort ascending
-        } else if (sort == 1) {
-            // Sort descending
-        } else if (sort == 2) {
-            // Sort nearest
-        } else if (sort == 3) {
-            // Sort furthest
+        if (sort == "Sort ascending") {
+
+        } else if (sort == "Sort descending") {
+
+        } else if (sort == "Sort nearest") {
+
+        } else if (sort == "Sort furthest") {
+
         }
 
 
@@ -62,12 +78,16 @@ class FacilityListAdminFragment : Fragment() {
 
         val dialog = builder.create()
         dialog.show()
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         val btnOk: Button = view.findViewById(R.id.filterDialog_btnApply)
         btnOk.setOnClickListener {
             // get filter value in array
             dialog.dismiss()
         }
+    }
+
+    private fun reset() {
+        binding.facilityListAdminSpinnerSort.setSelection(0)
+        sort = binding.facilityListAdminSpinnerSort.getItemAtPosition(0).toString()
     }
 }
