@@ -3,11 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-<<<<<<< HEAD
     app:startDestination="@id/favouriteListFragment">
-=======
-    app:startDestination="@id/uploadFacilityFragment">
->>>>>>> 8887ef2cadc8842211f04c9ae596810d3f6f3cdf
     <fragment
         android:id="@+id/facilityListAdminFragment"
         android:name="my.tarc.mobileapp.FacilityListAdminFragment"

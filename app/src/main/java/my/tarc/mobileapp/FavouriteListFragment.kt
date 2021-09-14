@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.ktx.firestore
@@ -26,13 +27,15 @@ class FavouriteListFragment : Fragment() {
 
     // Firebase storage
     private val storage = Firebase.storage("gs://mobile-app-f3440.appspot.com")
-    private var storageRef = storage.reference.child("Facility photos")
+    private var storageRef = storage.reference.child("Facility images")
 
     // Binding
     private var _binding: FragmentFavouriteListBinding? = null
     private val binding get() = _binding!!
+    private val facilityViewModel: FacilityViewModel by activityViewModels()
 
     private lateinit var sort: String
+
     //    private lateinit var filter: Array<String>
     private lateinit var facilityList: ArrayList<Facility>
 
@@ -46,24 +49,11 @@ class FavouriteListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.favouriteListRecycleView.layoutManager = LinearLayoutManager(this.context)
+        binding.favouriteListRecycleView.setHasFixedSize(true)
         facilityList = arrayListOf<Facility>()
 
-        db.collection("facility")
-            .whereEqualTo("status", "Approved")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    var facilityId = document.get("id").toString()
-                    var facilityName = document.get("name").toString()
-                    var facilityPicture = document.get("picture").toString()
-                    var firstPicture = facilityPicture.substring(1, facilityPicture.indexOf(","))
-                    var facility = Facility(getImage(facilityId, firstPicture), facilityName)
-                    facilityList.add(facility)
-                }
-
-                binding.favouriteListRecycleView.adapter = FacilityAdapter(facilityList)
-            }
+        getFacilitiesFromFirebase()
 
         sort = binding.favouriteListSpinnerSort.getItemAtPosition(0).toString()
 
@@ -78,6 +68,9 @@ class FavouriteListFragment : Fragment() {
                     id: Long
                 ) {
                     sort = parent?.getItemAtPosition(position).toString()
+                    sortFacility()
+                    binding.favouriteListRecycleView.adapter =
+                        FacilityAdapter(facilityViewModel.getFacilities())
                 }
             }
 
@@ -90,16 +83,31 @@ class FavouriteListFragment : Fragment() {
         }
     }
 
+    private fun getFacilitiesFromFirebase() {
+        db.collection("facility")
+            .whereEqualTo("status", "Approved")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    var facilityId = document.get("id").toString()
+                    var facilityName = document.get("name").toString()
+                    var facilityImage = document.get("image").toString()
+                    var firstImage = facilityImage.substring(1, facilityImage.indexOf(".png"))
+                    var facilityImageBmp = getImage(facilityId, "$firstImage.png")
+                    var facility = Facility(facilityImageBmp, facilityName)
+                    facilityViewModel.addFacility(facility)
+                }
+                binding.favouriteListRecycleView.adapter =
+                    FacilityAdapter(facilityViewModel.getFacilities())
+            }
+    }
+
     // Update the facility list recycle view
-    private fun updateFacilityList() {
+    private fun sortFacility() {
         if (sort == "Sort ascending") {
-
+            facilityViewModel.sortAscending()
         } else if (sort == "Sort descending") {
-
-        } else if (sort == "Sort nearest") {
-
-        } else if (sort == "Sort furthest") {
-
+            facilityViewModel.sortDescending()
         }
     }
 
@@ -120,14 +128,15 @@ class FavouriteListFragment : Fragment() {
     }
 
     private fun getImage(facilityId: String, imageName: String): Bitmap? {
+        var bmp: Bitmap? = null
         val imageReference = storageRef.child(facilityId).child(imageName)
         val ONE_MEGABYTE: Long = 1024 * 1024
-        var bmp: Bitmap? = null
 
         imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
             bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+            Log.e("second", bmp.toString())
         }
-
+        Log.e("first", bmp.toString())
         return bmp
     }
 }
