@@ -116,7 +116,7 @@
         android:id="@+id/uploadFacilityFragment"
         android:name="my.tarc.mobileapp.UploadFacilityFragment"
         android:label="fragment_upload_facility"
-        tools:layout="@layout/fragment_upload_facility" >
+        tools:layout="@layout/fragment_upload_facility">
         <action
             android:id="@+id/action_uploadFacilityFragment_to_facilityCategory"
             app:destination="@id/facilityCategory" />

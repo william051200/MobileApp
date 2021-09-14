@@ -110,27 +110,25 @@ class UploadFacilityFragment : Fragment() {
 
         if(requestCode == PICK_IMAGES_CODE){
 
-            if(requestCode == Activity.RESULT_OK){
-                if(data!!.clipData != null){
-                    //picked multiple images
-                    //get number of picked images
-                    val count = data.clipData!!.itemCount
-                    for(i in 0 until count){
-                        val imageUri = data.clipData!!.getItemAt(i).uri
-                        //add image to list
-                        images!!.add(imageUri)
-                    }
-                    // set first image from array list to image switcher
-                    binding.imgSwitcherFacility.setImageURI(images!![0])
-                    position = 0
+            if(data!!.clipData != null){
+                //picked multiple images
+                //get number of picked images
+                val count = data.clipData!!.itemCount
+                for(i in 0 until count){
+                    val imageUri = data.clipData!!.getItemAt(i).uri
+                    //add image to list
+                    images!!.add(imageUri)
                 }
-                else{
-                    //picked single image
-                    val imageUri = data.data
-                    //set image to image switcher
-                    binding.imgSwitcherFacility.setImageURI(imageUri)
-                    position = 0
-                }
+                // set first image from array list to image switcher
+                binding.imgSwitcherFacility.setImageURI(images!![0])
+                position = 0
+            }
+            else{
+                //picked single image
+                val imageUri = data.data
+                //set image to image switcher
+                binding.imgSwitcherFacility.setImageURI(imageUri)
+                position = 0
             }
         }
     }
