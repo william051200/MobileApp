@@ -11,22 +11,20 @@
         android:layout_height="244dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp"
-
-      android:src="@drawable/admin"/>
+        android:src="@drawable/admin" />
 
     <TextView
         android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="268dp"
         android:layout_marginEnd="8dp"
         android:text="@string/welcome"
-        android:layout_centerHorizontal="true"
         android:textColor="#191818"
         android:textSize="34sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView3"
@@ -50,7 +48,7 @@
 
 
         <EditText
-            android:id="@+id/loginUser_txtUsername"
+            android:id="@+id/adminLogin_txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/username_icon"
@@ -69,11 +67,7 @@
             android:layout_height="20.3dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="17dp"
-            android:src="@drawable/man"
-
-            />
-
-
+            android:src="@drawable/man" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -86,9 +80,8 @@
         android:layout_marginRight="62dp"
         android:background="@drawable/blue_border_rounded_cornwe">
 
-
         <EditText
-            android:id="@+id/loginUser_txtPassword"
+            android:id="@+id/adminLogin_txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/password_icon"
@@ -107,15 +100,11 @@
             android:layout_height="20.3dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="17dp"
-            android:src="@drawable/password"
-
-            />
-
-
+            android:src="@drawable/password" />
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/adminhomepage"
+        android:id="@+id/adminLogin_btnLogIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/adminpass"
@@ -127,15 +116,13 @@
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
         android:text="@string/signin"
-
-
         android:textColor="#ffffff"
         android:textSize="12dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/adminhomepage"
+        android:layout_below="@+id/adminLogin_btnLogIn"
         android:layout_marginLeft="52dp"
         android:layout_marginTop="38dp"
         android:layout_marginRight="62dp"
@@ -150,7 +137,7 @@
         android:id="@+id/userlogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/adminhomepage"
+        android:layout_below="@+id/adminLogin_btnLogIn"
         android:layout_marginLeft="152dp"
         android:layout_marginTop="38dp"
         android:layout_marginRight="62dp"
@@ -161,5 +148,4 @@
         android:text="@string/adminnav"
         android:textColor="	#0693EF"
         android:textSize="12dp" />
-
 </RelativeLayout>

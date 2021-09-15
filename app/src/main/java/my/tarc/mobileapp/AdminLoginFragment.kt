@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import my.tarc.mobileapp.databinding.FragmentAdminBinding
+import my.tarc.mobileapp.databinding.FragmentAdminLoginBinding
 
 
 class AdminLoginFragment : Fragment() {
     // Binding
-    private var _binding: FragmentAdminBinding? = null
+    private var _binding: FragmentAdminLoginBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -20,7 +20,7 @@ class AdminLoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentAdminBinding.inflate(inflater, container, false)
+        _binding = FragmentAdminLoginBinding.inflate(inflater, container, false)
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         return binding.root
     }
@@ -34,7 +34,7 @@ class AdminLoginFragment : Fragment() {
         }
 
         // Login as admin, navigate to admin category
-        binding.adminhomepage.setOnClickListener {
+        binding.adminLoginBtnLogIn.setOnClickListener {
             findNavController().navigate(R.id.action_adminLoginFragment_to_adminHomepageFragment)
             (activity as AppCompatActivity?)!!.supportActionBar!!.show()
         }
