@@ -39,13 +39,14 @@
         android:text="@string/registertxt" />
 
     <RelativeLayout
+        android:id="@+id/adminuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
         android:layout_marginLeft="62dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="31dp"
         android:layout_marginRight="62dp"
         android:background="@drawable/blue_border_rounded_cornwe">
-
 
 
         <EditText
@@ -76,13 +77,14 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/adminpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/adminuser"
         android:layout_marginLeft="62dp"
-        android:layout_marginTop="430dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="62dp"
         android:background="@drawable/blue_border_rounded_cornwe">
-
 
 
         <EditText
@@ -116,30 +118,27 @@
         android:id="@+id/adminhomepage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/adminpass"
         android:layout_marginLeft="62dp"
+        android:layout_marginTop="31dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="180dp"
         android:background="@drawable/blue_fill__rounded_color"
         android:gravity="center"
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
         android:text="@string/signin"
+
+
         android:textColor="#ffffff"
-        android:textSize="12dp"
-
-
-        />
+        android:textSize="12dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/adminhomepage"
         android:layout_marginLeft="52dp"
+        android:layout_marginTop="38dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="90dp"
         android:paddingLeft="60dp"
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
@@ -151,11 +150,10 @@
         android:id="@+id/userlogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/adminhomepage"
         android:layout_marginLeft="152dp"
+        android:layout_marginTop="38dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="90dp"
         android:clickable="true"
         android:paddingLeft="50dp"
         android:paddingTop="14dp"

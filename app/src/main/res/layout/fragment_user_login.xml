@@ -40,10 +40,12 @@
         />
 
     <RelativeLayout
+        android:id="@+id/loginuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
         android:layout_marginLeft="62dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="31dp"
         android:layout_marginRight="62dp"
         android:background="@drawable/blue_border_rounded_cornwe">
 
@@ -76,10 +78,12 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/passworduser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/loginuser"
         android:layout_marginLeft="62dp"
-        android:layout_marginTop="430dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="62dp"
         android:background="@drawable/blue_border_rounded_cornwe">
 
@@ -115,11 +119,10 @@
         android:id="@+id/loginUser_btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/passworduser"
         android:layout_marginLeft="62dp"
+        android:layout_marginTop="24dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="180dp"
         android:background="@drawable/blue_fill__rounded_color"
         android:clickable="true"
         android:gravity="center"
@@ -133,11 +136,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/loginUser_btnLogin"
         android:layout_marginLeft="62dp"
+        android:layout_marginTop="47dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="90dp"
         android:paddingLeft="20dp"
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
@@ -149,11 +151,10 @@
         android:id="@+id/signupnav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/loginUser_btnLogin"
         android:layout_marginLeft="162dp"
+        android:layout_marginTop="47dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="90dp"
         android:clickable="true"
         android:paddingLeft="50dp"
         android:paddingTop="14dp"
@@ -166,7 +167,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
         android:layout_marginLeft="62dp"
         android:layout_marginRight="62dp"
         android:layout_marginBottom="60dp"
@@ -182,7 +182,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
         android:layout_marginLeft="162dp"
         android:layout_marginRight="62dp"
         android:layout_marginBottom="60dp"
