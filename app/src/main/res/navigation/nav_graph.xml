@@ -18,9 +18,6 @@
             android:id="@+id/action_userProfile_to_favouriteListFragment"
             app:destination="@id/favouriteListFragment" />
         <action
-            android:id="@+id/action_userProfile_to_uploadFacilityFragment"
-            app:destination="@id/uploadFacilityFragment" />
-        <action
             android:id="@+id/action_userProfile_to_facilityCategory"
             app:destination="@id/facilityCategory" />
     </fragment>
@@ -80,6 +77,9 @@
         <action
             android:id="@+id/action_adminHomepageFragment_to_adminPendingApprovalsFragment"
             app:destination="@id/adminPendingApprovalsFragment" />
+        <action
+            android:id="@+id/action_adminHomepageFragment_to_adminLoginFragment"
+            app:destination="@id/adminLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminLoginFragment"
