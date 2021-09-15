@@ -1,17 +1,12 @@
 package my.tarc.mobileapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import my.tarc.mobileapp.databinding.FragmentAdminHomepageBinding
-import my.tarc.mobileapp.databinding.FragmentFacilityListAdminBinding
-
 
 class AdminHomepageFragment : Fragment() {
     private var _binding: FragmentAdminHomepageBinding? = null
@@ -20,8 +15,6 @@ class AdminHomepageFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
 
     override fun onCreateView(
@@ -36,7 +29,6 @@ class AdminHomepageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val animationFadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.slideup1)
         val animationFadeIn1 = AnimationUtils.loadAnimation(getContext(), R.anim.slideup2)
         val animationFadeIn2 = AnimationUtils.loadAnimation(getContext(), R.anim.slideup3)
@@ -48,12 +40,5 @@ class AdminHomepageFragment : Fragment() {
         binding.activity1.startAnimation(animationFadeIn2)
         binding.activity2.startAnimation(animationFadeIn3)
         binding.activity3.startAnimation(animationFadeIn4)
-
-
     }
-
-
-
-
-
 }

@@ -5,10 +5,10 @@
     android:id="@+id/facilityListAdmin_frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FacilityListAdminFragment">
+    tools:context=".AdminPendingApprovalsFragment">
 
     <LinearLayout
-        android:id="@+id/facilityListAdmin_linearLayout"
+        android:id="@+id/adminPendingApprovals_linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -17,14 +17,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Spinner
-            android:id="@+id/facilityListAdmin_spinnerSort"
+            android:id="@+id/adminPendingApprovals_spinnerSort"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:entries="@array/spinner_sort_admin" />
 
         <Button
-            android:id="@+id/facilityListAdmin_btnFilter"
+            android:id="@+id/adminPendingApprovals_btnFilter"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/facilityListAdmin_recycleView"
+        android:id="@+id/adminPendingApprovals_recycleView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -48,8 +48,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facilityListAdmin_linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/adminPendingApprovals_linearLayout"
         tools:listitem="@layout/facility_layout" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

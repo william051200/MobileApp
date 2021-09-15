@@ -3,19 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/userLoginFragment">
-    <fragment
-        android:id="@+id/facilityListAdminFragment"
-        android:name="my.tarc.mobileapp.FacilityListAdminFragment"
-        android:label="fragment_facility_list_admin"
-        tools:layout="@layout/fragment_facility_list_admin">
-        <action
-            android:id="@+id/action_facilityListAdminFragment_to_facilityDetailsFragment"
-            app:destination="@id/facilityDetailsFragment" />
-        <action
-            android:id="@+id/action_facilityListAdminFragment_to_dialogFilterFragment"
-            app:destination="@id/dialogFilterFragment" />
-    </fragment>
+    app:startDestination="@id/adminPendingApprovalsFragment">
     <fragment
         android:id="@+id/facilityDetailsFragment"
         android:name="my.tarc.mobileapp.FacilityDetailsFragment"
@@ -87,8 +75,11 @@
         android:label="fragment_admin_homepage"
         tools:layout="@layout/fragment_admin_homepage">
         <action
-            android:id="@+id/action_adminHomepageFragment_to_facilityListAdminFragment"
-            app:destination="@id/facilityListAdminFragment" />
+            android:id="@+id/action_adminHomepageFragment_to_adminAllFacilityFragment"
+            app:destination="@id/adminAllFacilityFragment" />
+        <action
+            android:id="@+id/action_adminHomepageFragment_to_adminPendingApprovalsFragment"
+            app:destination="@id/adminPendingApprovalsFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminLoginFragment"
@@ -140,12 +131,30 @@
         android:id="@+id/userRegisterFragment"
         android:name="my.tarc.mobileapp.UserRegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_userRegisterFragment_to_adminLoginFragment"
             app:destination="@id/adminLoginFragment" />
         <action
             android:id="@+id/action_userRegisterFragment_to_userLoginFragment"
             app:destination="@id/userLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminAllFacilityFragment"
+        android:name="my.tarc.mobileapp.AdminAllFacilityFragment"
+        android:label="fragment_admin_all_facility"
+        tools:layout="@layout/fragment_admin_all_facility">
+        <action
+            android:id="@+id/action_adminAllFacilityFragment_to_facilityDetailsFragment"
+            app:destination="@id/facilityDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminPendingApprovalsFragment"
+        android:name="my.tarc.mobileapp.AdminPendingApprovalsFragment"
+        android:label="fragment_admin_pending_approvals"
+        tools:layout="@layout/fragment_admin_pending_approvals">
+        <action
+            android:id="@+id/action_adminPendingApprovalsFragment_to_facilityDetailsFragment"
+            app:destination="@id/facilityDetailsFragment" />
     </fragment>
 </navigation>
