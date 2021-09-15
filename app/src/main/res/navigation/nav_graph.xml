@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/adminPendingApprovalsFragment">
+    app:startDestination="@id/favouriteListFragment">
     <fragment
         android:id="@+id/facilityDetailsFragment"
         android:name="my.tarc.mobileapp.FacilityDetailsFragment"
         android:label="fragment_facility_details"
-        tools:layout="@layout/fragment_facility_details" />
+        tools:layout="@layout/fragment_favourite_list" />
     <fragment
         android:id="@+id/userProfile"
         android:name="my.tarc.mobileapp.UserProfileFragment"
@@ -63,9 +63,6 @@
             android:id="@+id/action_favouriteListFragment_to_facilityDetailsFragment"
             app:destination="@id/facilityDetailsFragment" />
         <action
-            android:id="@+id/action_favouriteListFragment_to_dialogFilterFragment"
-            app:destination="@id/dialogFilterFragment" />
-        <action
             android:id="@+id/action_favouriteListFragment_to_uploadFacilityFragment"
             app:destination="@id/uploadFacilityFragment" />
     </fragment>
@@ -93,11 +90,6 @@
             android:id="@+id/action_adminLoginFragment_to_userLoginFragment"
             app:destination="@id/userLoginFragment" />
     </fragment>
-    <dialog
-        android:id="@+id/dialogFilterFragment"
-        android:name="my.tarc.mobileapp.DialogFilterFragment"
-        android:label="fragment_dialog_filter"
-        tools:layout="@layout/fragment_dialog_filter" />
     <fragment
         android:id="@+id/editFacilityFragment"
         android:name="my.tarc.mobileapp.EditFacilityFragment"

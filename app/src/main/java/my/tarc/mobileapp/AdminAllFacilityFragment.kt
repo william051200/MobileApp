@@ -106,14 +106,6 @@ class AdminAllFacilityFragment : Fragment() {
                     }
                 }
             }
-
-        // Show no data text
-        if (facilityList.size < 1) {
-            var txtNoData = binding.adminAllFacilityTxtNoData
-            txtNoData.visibility = View.VISIBLE
-            txtNoData.text = "No facility found"
-            recycleView.visibility = View.INVISIBLE
-        }
     }
 
     // Update the facility list recycle view
