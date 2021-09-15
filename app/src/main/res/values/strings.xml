@@ -10,8 +10,8 @@
     <string-array name="spinner_sort_user">
         <item>Sort ascending</item>
         <item>Sort descending</item>
-<!--        <item>Sort nearest</item>-->
-<!--        <item>Sort furthest</item>-->
+        <!--        <item>Sort nearest</item>-->
+        <!--        <item>Sort furthest</item>-->
     </string-array>
     <string-array name="spinner_sort_admin">
         <item>Sort ascending</item>

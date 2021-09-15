@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import my.tarc.mobileapp.R
 
-class SubmitFeedbackDialogFragment : Fragment() {
-
+class DialogSubmitFeedbackFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -18,6 +17,6 @@ class SubmitFeedbackDialogFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_submit_feedback_dialog, container, false)
+        return inflater.inflate(R.layout.fragment_dialog_submit_feedback, container, false)
     }
 }

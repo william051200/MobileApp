@@ -53,6 +53,7 @@ class FeedbackListFragment : Fragment() {
                 feedbackList.add(feedback)
             }
             recyclerView.adapter = FeedbackAdapter(feedbackList)
+            binding.feedbackListFeedbackCount.text = "Total feedbacks (${feedbackList.size})"
         }
     }
 }

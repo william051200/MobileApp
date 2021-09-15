@@ -6,16 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentAdminHomepageBinding
 
 class AdminHomepageFragment : Fragment() {
     private var _binding: FragmentAdminHomepageBinding? = null
     private val binding get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,11 +31,29 @@ class AdminHomepageFragment : Fragment() {
         val animationFadeIn2 = AnimationUtils.loadAnimation(getContext(), R.anim.slideup3)
         val animationFadeIn3 = AnimationUtils.loadAnimation(getContext(), R.anim.slideup4)
         val animationFadeIn4 = AnimationUtils.loadAnimation(getContext(), R.anim.slideup5)
+        val btnAllFacility = binding.adminHomeBtnAllFacility
+        val btnPendingApprovals = binding.adminHomeBtnPendingApprovals
+        val btnFeedbackList = binding.adminHomeBtnFeedbackList
 
         binding.hi.startAnimation(animationFadeIn)
         binding.actiontext.startAnimation(animationFadeIn1)
-        binding.activity1.startAnimation(animationFadeIn2)
-        binding.activity2.startAnimation(animationFadeIn3)
-        binding.activity3.startAnimation(animationFadeIn4)
+        btnAllFacility.startAnimation(animationFadeIn2)
+        btnPendingApprovals.startAnimation(animationFadeIn3)
+        btnFeedbackList.startAnimation(animationFadeIn4)
+
+        // Navigate to all facility page
+        btnAllFacility.setOnClickListener {
+            findNavController().navigate(R.id.action_adminHomepageFragment_to_adminAllFacilityFragment)
+        }
+
+        // Navigate to pending approvals page
+        btnPendingApprovals.setOnClickListener {
+            findNavController().navigate(R.id.action_adminHomepageFragment_to_adminPendingApprovalsFragment)
+        }
+
+        // Navigate to feedback list page
+        btnFeedbackList.setOnClickListener {
+            findNavController().navigate(R.id.action_adminHomepageFragment_to_feedbackListFragment)
+        }
     }
 }

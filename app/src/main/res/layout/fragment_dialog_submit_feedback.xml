@@ -4,62 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".facility.FeedbackDialogFragment">
+    tools:context=".facility.DialogSubmitFeedbackFragment">
 
     <TextView
-        android:id="@+id/textViewLabelComment"
+        android:id="@+id/textViewLabelTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/title"
         android:textColor="#99000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewLabelSuggestedEdit"
+        android:id="@+id/dialogSubmitFeedback_txtComment"
+        android:layout_width="330dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/edit_text_border"
+        android:text="TextView"
+        android:textColor="#99000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelComment" />
+
+    <TextView
+        android:id="@+id/textViewLabelComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="@string/suggested_edit"
+        android:text="@string/comment"
         android:textColor="#99000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewComment" />
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_txtTitle" />
 
     <Button
-        android:id="@+id/buttonEdit"
+        android:id="@+id/dialogSubmitFeedback_btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/edit_facility"
+        android:text="@string/submit"
+        android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
-        app:icon="@drawable/ic_edit"
+        app:icon="@drawable/ic_upload"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSuggestedEdit"
-        android:textAllCaps="false"/>
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_txtSuggestion" />
 
     <Button
-        android:id="@+id/buttonDelete"
+        android:id="@+id/dialogSubmitFeedback_btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/delete"
+        android:layout_marginEnd="24dp"
+        android:text="@string/btn_cancel"
+        android:textAllCaps="false"
         android:textSize="12sp"
-        app:backgroundTint="#B73333"
+        app:backgroundTint="#737373"
         app:icon="@drawable/ic_iconoir_delete_circled_outline"
-        app:layout_constraintEnd_toStartOf="@+id/buttonEdit"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSuggestedEdit"
-        android:textAllCaps="false"/>
+        app:layout_constraintBottom_toBottomOf="@+id/dialogSubmitFeedback_btnSubmit"
+        app:layout_constraintEnd_toStartOf="@+id/dialogSubmitFeedback_btnSubmit"
+        app:layout_constraintTop_toTopOf="@+id/dialogSubmitFeedback_btnSubmit" />
 
     <TextView
-        android:id="@+id/textViewComment"
+        android:id="@+id/dialogSubmitFeedback_txtTitle"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/edit_text_border"
+        android:text="TextView"
+        android:textColor="#99000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelTitle" />
+
+    <TextView
+        android:id="@+id/dialogSubmitFeedback_txtSuggestion"
         android:layout_width="330dp"
         android:layout_height="100dp"
         android:layout_marginStart="24dp"
@@ -69,20 +98,17 @@
         android:text="TextView"
         android:textColor="#99000000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLabelComment" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelSuggestion" />
 
     <TextView
-        android:id="@+id/textViewSuggestedEdit"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
+        android:id="@+id/textViewLabelSuggestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edit_text_border"
-        android:text="TextView"
-        android:textColor="#99000000"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:text="@string/suggested_edit"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLabelSuggestedEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_txtComment" />
 </androidx.constraintlayout.widget.ConstraintLayout>
