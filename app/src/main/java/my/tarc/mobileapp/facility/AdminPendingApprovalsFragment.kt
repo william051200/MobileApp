@@ -124,25 +124,25 @@ class AdminPendingApprovalsFragment : Fragment() {
 
     // Sort facility according to state
     private fun filterFacility() {
-        var filteredCategory: ArrayList<Facility> = arrayListOf()
-        var finalFilterList: ArrayList<Facility> = arrayListOf()
-
-        // Filter facility according to category
-        if (filterCategory != "All") {
-            collectedFacilityList.map {
-                if (it.category == filterCategory) filteredCategory.add(it)
-            }
-        } else filteredCategory = collectedFacilityList
-
-        // Filter facility according to location
-        if (filterLocation != "All") {
-            filteredCategory.map {
-                if (it.address_state == filterLocation) finalFilterList.add(it)
-            }
-        } else finalFilterList = filteredCategory
-
-        facilityList = finalFilterList
-        sortFacility()
+//        var filteredCategory: ArrayList<Facility> = arrayListOf()
+//        var finalFilterList: ArrayList<Facility> = arrayListOf()
+//
+//        // Filter facility according to category
+//        if (filterCategory != "All") {
+//            collectedFacilityList.map {
+//                if (it.category == filterCategory) filteredCategory.add(it)
+//            }
+//        } else filteredCategory = collectedFacilityList
+//
+//        // Filter facility according to location
+//        if (filterLocation != "All") {
+//            filteredCategory.map {
+//                if (it.address_state == filterLocation) finalFilterList.add(it)
+//            }
+//        } else finalFilterList = filteredCategory
+//
+//        facilityList = finalFilterList
+//        sortFacility()
     }
 
     private fun openFilterDialog() {
