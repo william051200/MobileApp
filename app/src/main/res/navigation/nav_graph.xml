@@ -3,11 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-<<<<<<< HEAD
     app:startDestination="@id/userLoginFragment">
-=======
-    app:startDestination="@id/uploadFacilityFragment">
->>>>>>> ad5759b276988a357a7a3454db53bf8719562ff9
     <fragment
         android:id="@+id/facilityDetailsFragment"
         android:name="my.tarc.mobileapp.facility.FacilityDetailsFragment"
@@ -88,15 +84,12 @@
         <action
             android:id="@+id/action_adminHomepageFragment_to_adminPendingApprovalsFragment"
             app:destination="@id/adminPendingApprovalsFragment" />
-<<<<<<< HEAD
         <action
             android:id="@+id/action_adminHomepageFragment_to_feedbackListFragment"
             app:destination="@id/feedbackListFragment" />
         <action
             android:id="@+id/action_adminHomepageFragment_to_adminLoginFragment"
             app:destination="@id/adminLoginFragment" />
-=======
->>>>>>> ad5759b276988a357a7a3454db53bf8719562ff9
     </fragment>
     <fragment
         android:id="@+id/editFacilityFragment"
@@ -182,18 +175,17 @@
             android:id="@+id/action_adminLoginFragment_to_adminHomepageFragment"
             app:destination="@id/adminHomepageFragment" />
     </fragment>
-<<<<<<< HEAD
     <fragment
         android:id="@+id/feedbackListFragment"
         android:name="my.tarc.mobileapp.facility.FeedbackListFragment"
         android:label="fragment_feedback_list"
         tools:layout="@layout/fragment_feedback_list">
         <action
-            android:id="@+id/action_feedbackListFragment_to_facilityDetailsFragment"
-            app:destination="@id/facilityDetailsFragment" />
-        <action
             android:id="@+id/action_feedbackListFragment_to_adminHomepageFragment"
             app:destination="@id/adminHomepageFragment" />
+        <action
+            android:id="@+id/action_feedbackListFragment_to_facilityDetailsFragment"
+            app:destination="@id/facilityDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/pendingFacilityFragment"
@@ -204,6 +196,4 @@
             android:id="@+id/action_pendingFacilityFragment_to_adminPendingApprovalsFragment"
             app:destination="@id/adminPendingApprovalsFragment" />
     </fragment>
-=======
->>>>>>> ad5759b276988a357a7a3454db53bf8719562ff9
 </navigation>
