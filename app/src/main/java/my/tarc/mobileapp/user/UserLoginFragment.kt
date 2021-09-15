@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUserLoginBinding
@@ -23,6 +24,10 @@ class UserLoginFragment : Fragment() {
 
     // Firebase authentication
     private lateinit var auth: FirebaseAuth
+
+    // Firestore database
+    private val db = Firebase.firestore
+    private val userRef = db.collection("user")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,6 +70,9 @@ class UserLoginFragment : Fragment() {
             error = true
         } else if (password.isEmpty()) {
             Toast.makeText(context, "Invalid password", Toast.LENGTH_SHORT).show()
+            error = true
+        } else if (email == "admin@gmail.com") {
+            Toast.makeText(context, "Invalid email", Toast.LENGTH_SHORT).show()
             error = true
         }
 

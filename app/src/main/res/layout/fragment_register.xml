@@ -169,7 +169,7 @@
         android:textSize="12dp" />
 
     <TextView
-        android:id="@+id/adminlogin"
+        android:id="@+id/register_btnAdminLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/register_btnSignUp"
@@ -187,7 +187,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/adminlogin"
+        android:layout_below="@+id/register_btnAdminLogin"
         android:layout_marginLeft="52dp"
         android:layout_marginTop="-14dp"
         android:layout_marginRight="62dp"
@@ -199,10 +199,10 @@
         android:textSize="12dp" />
 
     <TextView
-        android:id="@+id/userlogin"
+        android:id="@+id/register_btnUserLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/adminlogin"
+        android:layout_below="@+id/register_btnAdminLogin"
         android:layout_marginLeft="187dp"
         android:layout_marginTop="-14dp"
         android:layout_marginRight="62dp"

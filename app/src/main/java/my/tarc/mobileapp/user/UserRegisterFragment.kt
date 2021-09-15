@@ -53,12 +53,12 @@ class UserRegisterFragment : Fragment() {
         }
 
         // Switch to admin login
-        binding.adminlogin.setOnClickListener {
+        binding.registerBtnAdminLogin.setOnClickListener {
             findNavController().navigate(R.id.action_userRegisterFragment_to_adminLoginFragment)
         }
 
         // Switch to user login
-        binding.userlogin.setOnClickListener {
+        binding.registerBtnUserLogin.setOnClickListener {
             findNavController().navigate(R.id.action_userRegisterFragment_to_userLoginFragment)
         }
     }
