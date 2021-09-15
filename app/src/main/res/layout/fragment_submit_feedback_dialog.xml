@@ -91,7 +91,7 @@
 
     <Button
         android:textAllCaps="false"
-        android:id="@+id/buttonEdit"
+        android:id="@+id/dialogFeedback_btnEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -107,7 +107,7 @@
 
     <Button
         android:textAllCaps="false"
-        android:id="@+id/buttonDelete"
+        android:id="@+id/dialogFeedback_btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -117,6 +117,6 @@
         android:textSize="12sp"
         app:backgroundTint="#737373"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonEdit"
+        app:layout_constraintEnd_toStartOf="@+id/dialogFeedback_btnEdit"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
