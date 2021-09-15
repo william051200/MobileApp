@@ -3,23 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/feedbackListFragment">
+    app:startDestination="@id/userLoginFragment">
     <fragment
         android:id="@+id/facilityDetailsFragment"
         android:name="my.tarc.mobileapp.facility.FacilityDetailsFragment"
         android:label="fragment_facility_details"
-        tools:layout="@layout/fragment_facility_details" />
+        tools:layout="@layout/fragment_facility_details" >
+        <action
+            android:id="@+id/action_facilityDetailsFragment_to_editFacilityFragment"
+            app:destination="@id/editFacilityFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userProfile"
         android:name="my.tarc.mobileapp.user.UserProfileFragment"
         android:label="fragment_user_profile"
         tools:layout="@layout/fragment_user_login">
         <action
-            android:id="@+id/action_userProfile_to_favouriteListFragment"
-            app:destination="@id/favouriteListFragment" />
-        <action
-            android:id="@+id/action_userProfile_to_uploadFacilityFragment"
-            app:destination="@id/uploadFacilityFragment" />
+            android:id="@+id/action_userProfile_to_userLoginFragment"
+            app:destination="@id/userLoginFragment" />
         <action
             android:id="@+id/action_userProfile_to_facilityCategory"
             app:destination="@id/facilityCategory" />
@@ -50,6 +51,9 @@
         <action
             android:id="@+id/action_facilityCategory_to_uploadFacilityFragment"
             app:destination="@id/uploadFacilityFragment" />
+        <action
+            android:id="@+id/action_facilityCategory_to_userLoginFragment"
+            app:destination="@id/userLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/favouriteListFragment"
@@ -57,17 +61,17 @@
         android:label="fragment_favourite_list"
         tools:layout="@layout/fragment_favourite_list">
         <action
-            android:id="@+id/action_favouriteListFragment_to_userProfile"
-            app:destination="@id/userProfile" />
-        <action
             android:id="@+id/action_favouriteListFragment_to_facilityDetailsFragment"
             app:destination="@id/facilityDetailsFragment" />
         <action
-            android:id="@+id/action_favouriteListFragment_to_dialogFilterFragment"
-            app:destination="@id/dialogFilterFragment" />
+            android:id="@+id/action_favouriteListFragment_to_userProfile"
+            app:destination="@id/userProfile" />
         <action
             android:id="@+id/action_favouriteListFragment_to_uploadFacilityFragment"
             app:destination="@id/uploadFacilityFragment" />
+        <action
+            android:id="@+id/action_favouriteListFragment_to_userLoginFragment"
+            app:destination="@id/userLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminHomepageFragment"
@@ -83,20 +87,18 @@
         <action
             android:id="@+id/action_adminHomepageFragment_to_feedbackListFragment"
             app:destination="@id/feedbackListFragment" />
+        <action
+            android:id="@+id/action_adminHomepageFragment_to_adminLoginFragment"
+            app:destination="@id/adminLoginFragment" />
     </fragment>
-    <dialog
-        android:id="@+id/dialogFilterFragment"
-        android:name="my.tarc.mobileapp.facility.DialogFilterFragment"
-        android:label="fragment_dialog_filter"
-        tools:layout="@layout/fragment_dialog_filter" />
     <fragment
         android:id="@+id/editFacilityFragment"
         android:name="my.tarc.mobileapp.facility.EditFacilityFragment"
         android:label="fragment_edit_facility"
         tools:layout="@layout/fragment_edit_facility">
         <action
-            android:id="@+id/action_editFacilityFragment_to_adminAllFacilityFragment"
-            app:destination="@id/adminAllFacilityFragment" />
+            android:id="@+id/action_editFacilityFragment_to_facilityDetailsFragment"
+            app:destination="@id/facilityDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/uploadFacilityFragment"
@@ -106,6 +108,9 @@
         <action
             android:id="@+id/action_uploadFacilityFragment_to_facilityCategory"
             app:destination="@id/facilityCategory" />
+        <action
+            android:id="@+id/action_uploadFacilityFragment_to_favouriteListFragment"
+            app:destination="@id/favouriteListFragment" />
     </fragment>
     <fragment
         android:id="@+id/userLoginFragment"
@@ -142,6 +147,9 @@
         <action
             android:id="@+id/action_adminAllFacilityFragment_to_facilityDetailsFragment"
             app:destination="@id/facilityDetailsFragment" />
+        <action
+            android:id="@+id/action_adminAllFacilityFragment_to_adminHomepageFragment"
+            app:destination="@id/adminHomepageFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminPendingApprovalsFragment"
@@ -149,8 +157,11 @@
         android:label="fragment_admin_pending_approvals"
         tools:layout="@layout/fragment_admin_pending_approvals">
         <action
-            android:id="@+id/action_adminPendingApprovalsFragment_to_facilityDetailsFragment"
-            app:destination="@id/facilityDetailsFragment" />
+            android:id="@+id/action_adminPendingApprovalsFragment_to_adminHomepageFragment"
+            app:destination="@id/adminHomepageFragment" />
+        <action
+            android:id="@+id/action_adminPendingApprovalsFragment_to_pendingFacilityFragment"
+            app:destination="@id/pendingFacilityFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminLoginFragment"
@@ -168,9 +179,21 @@
         android:id="@+id/feedbackListFragment"
         android:name="my.tarc.mobileapp.facility.FeedbackListFragment"
         android:label="fragment_feedback_list"
-        tools:layout="@layout/fragment_feedback_list" >
+        tools:layout="@layout/fragment_feedback_list">
         <action
             android:id="@+id/action_feedbackListFragment_to_facilityDetailsFragment"
             app:destination="@id/facilityDetailsFragment" />
+        <action
+            android:id="@+id/action_feedbackListFragment_to_adminHomepageFragment"
+            app:destination="@id/adminHomepageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pendingFacilityFragment"
+        android:name="my.tarc.mobileapp.facility.PendingFacilityFragment"
+        android:label="fragment_pending_facility"
+        tools:layout="@layout/fragment_pending_facility" >
+        <action
+            android:id="@+id/action_pendingFacilityFragment_to_adminPendingApprovalsFragment"
+            app:destination="@id/adminPendingApprovalsFragment" />
     </fragment>
 </navigation>

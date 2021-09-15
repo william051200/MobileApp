@@ -94,9 +94,9 @@ class EditFacilityFragment : Fragment() {
             // Apply confirmation dialog here
         }
 
-        // Navigate to Admin Facility List
+        // Navigate to facility details
         binding.btnEditFacilityCancel.setOnClickListener {
-            findNavController().navigate(R.id.action_editFacilityFragment_to_adminAllFacilityFragment)
+            findNavController().navigate(R.id.action_editFacilityFragment_to_facilityDetailsFragment)
         }
 
         // Navigate to Admin Facility List
@@ -104,7 +104,7 @@ class EditFacilityFragment : Fragment() {
 
             Toast.makeText(activity, "Facility Details Update Successful", Toast.LENGTH_SHORT).show()
 
-            findNavController().navigate(R.id.action_editFacilityFragment_to_adminAllFacilityFragment)
+            findNavController().navigate(R.id.action_editFacilityFragment_to_facilityDetailsFragment)
         }
 
     }
