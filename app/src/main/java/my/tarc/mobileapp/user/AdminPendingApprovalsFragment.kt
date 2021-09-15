@@ -34,14 +34,14 @@ class AdminPendingApprovalsFragment : Fragment() {
     private val binding get() = _binding!!
 
     // Recycle view
+    private lateinit var collectedFacilityList: ArrayList<Facility>
     private lateinit var facilityList: ArrayList<Facility>
     private lateinit var recycleView: RecyclerView
 
-    // Spinner
     private lateinit var spinner: Spinner
-
-    private lateinit var filter: Array<String>
     private lateinit var sort: String
+    private lateinit var filterLocation: String
+    private lateinit var filterCategory: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,12 +58,13 @@ class AdminPendingApprovalsFragment : Fragment() {
         recycleView.layoutManager = LinearLayoutManager(this.context)
         recycleView.setHasFixedSize(true)
         facilityList = arrayListOf<Facility>()
-
-        // Spinner
-        spinner = binding.adminPendingApprovalsSpinnerSort
+        collectedFacilityList = arrayListOf<Facility>()
 
         // Get data from firebase
         getFacilitiesFromFirebase()
+
+        // Spinner
+        spinner = binding.adminPendingApprovalsSpinnerSort
 
         // Get sorting type (default: ascending)
         sort = spinner.getItemAtPosition(0).toString()
@@ -94,16 +95,16 @@ class AdminPendingApprovalsFragment : Fragment() {
                 for (document in documents) {
                     var facilityId = document.get("id").toString()
                     var facilityName = document.get("name").toString()
-                    var facilityImage = document.get("image").toString()
-                    var firstImage = facilityImage.substring(1, facilityImage.indexOf(".png"))
+                    var facilityState = document.get("address_state").toString()
 
                     var bmp: Bitmap? = null
-                    val imageReference = storageRef.child(facilityId).child("$firstImage.png")
+                    val imageReference = storageRef.child(facilityId).child("0.png")
                     val ONE_MEGABYTE: Long = 1024 * 1024
 
                     imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
                         bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                        var facility = Facility(bmp, facilityName)
+                        var facility = Facility(bmp, facilityName,facilityState)
+                        collectedFacilityList.add(facility)
                         facilityList.add(facility)
                         sortFacility()
                         recycleView.adapter = FacilityAdapter(facilityList)
@@ -122,6 +123,29 @@ class AdminPendingApprovalsFragment : Fragment() {
         }
     }
 
+    // Sort facility according to state
+    private fun filterFacility() {
+        var filteredCategory: ArrayList<Facility> = arrayListOf()
+        var finalFilterList: ArrayList<Facility> = arrayListOf()
+
+        // Filter facility according to category
+        if (filterCategory != "All") {
+            collectedFacilityList.map {
+                if (it.category == filterCategory) filteredCategory.add(it)
+            }
+        } else filteredCategory = collectedFacilityList
+
+        // Filter facility according to location
+        if (filterLocation != "All") {
+            filteredCategory.map {
+                if (it.address_state == filterLocation) finalFilterList.add(it)
+            }
+        } else finalFilterList = filteredCategory
+
+        facilityList = finalFilterList
+        sortFacility()
+    }
+
     private fun openFilterDialog() {
         val view = View.inflate(this.context, R.layout.fragment_dialog_filter, null)
 
@@ -132,8 +156,13 @@ class AdminPendingApprovalsFragment : Fragment() {
         dialog.show()
 
         val btnOk: Button = view.findViewById(R.id.filterDialog_btnApply)
+        val spinnerCategory: Spinner = view.findViewById(R.id.filterDialog_spinnerCategory)
+        val spinnerLocation: Spinner = view.findViewById(R.id.filterDialog_spinnerLocation)
         btnOk.setOnClickListener {
-            // get filter value in array
+            filterCategory = spinnerCategory.selectedItem.toString()
+            filterLocation = spinnerLocation.selectedItem.toString()
+            filterFacility()
+            recycleView.adapter = FacilityAdapter(facilityList)
             dialog.dismiss()
         }
     }

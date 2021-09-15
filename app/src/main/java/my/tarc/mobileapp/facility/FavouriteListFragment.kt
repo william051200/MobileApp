@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Button
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,11 +34,14 @@ class FavouriteListFragment : Fragment() {
     private val binding get() = _binding!!
 
     // Recycle view
+    private lateinit var collectedFacilityList: ArrayList<Facility>
     private lateinit var facilityList: ArrayList<Facility>
     private lateinit var recycleView: RecyclerView
 
-    private lateinit var filter: Array<String>
+    private lateinit var spinner: Spinner
     private lateinit var sort: String
+    private lateinit var filterLocation: String
+    private lateinit var filterCategory: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,25 +58,30 @@ class FavouriteListFragment : Fragment() {
         recycleView.layoutManager = LinearLayoutManager(this.context)
         recycleView.setHasFixedSize(true)
         facilityList = arrayListOf<Facility>()
+        collectedFacilityList = arrayListOf<Facility>()
+
+        // Get data from firebase
         getFacilitiesFromFirebase()
 
+        //Spinner
+        spinner = binding.favouriteListSpinnerSort
+
         // Get sorting type (default: ascending)
-        sort = binding.favouriteListSpinnerSort.getItemAtPosition(0).toString()
+        sort = spinner.getItemAtPosition(0).toString()
 
         // Get value from sorting spinner everytime user select 1 value
-        binding.favouriteListSpinnerSort.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    sortFacility()
-                    recycleView.adapter = FacilityAdapter(facilityList)
-                }
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                sortFacility()
+                recycleView.adapter = FacilityAdapter(facilityList)
             }
+        }
 
         // Open filter dialog
         binding.favouriteListBtnFilter.setOnClickListener { openFilterDialog() }
@@ -91,6 +100,7 @@ class FavouriteListFragment : Fragment() {
                 for (document in documents) {
                     var facilityId = document.get("id").toString()
                     var facilityName = document.get("name").toString()
+                    var facilityState = document.get("address_state").toString()
 
                     var bmp: Bitmap? = null
                     val imageReference = storageRef.child(facilityId).child("0.png")
@@ -98,7 +108,8 @@ class FavouriteListFragment : Fragment() {
 
                     imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
                         bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                        var facility = Facility(bmp, facilityName)
+                        var facility = Facility(bmp, facilityName, facilityState)
+                        collectedFacilityList.add(facility)
                         facilityList.add(facility)
                         sortFacility()
                         recycleView.adapter = FacilityAdapter(facilityList)
@@ -109,7 +120,7 @@ class FavouriteListFragment : Fragment() {
 
     // Update the facility list recycle view
     private fun sortFacility() {
-        sort = binding.favouriteListSpinnerSort.selectedItem.toString()
+        sort = spinner.selectedItem.toString()
         if (sort == "Sort ascending") {
             facilityList.sortBy { it.name }
         } else if (sort == "Sort descending") {
@@ -117,6 +128,30 @@ class FavouriteListFragment : Fragment() {
         }
     }
 
+    // Sort facility according to state
+    private fun filterFacility() {
+        var filteredCategory: ArrayList<Facility> = arrayListOf()
+        var finalFilterList: ArrayList<Facility> = arrayListOf()
+
+        // Filter facility according to category
+        if (filterCategory != "All") {
+            collectedFacilityList.map {
+                if (it.category == filterCategory) filteredCategory.add(it)
+            }
+        } else filteredCategory = collectedFacilityList
+
+        // Filter facility according to location
+        if (filterLocation != "All") {
+            filteredCategory.map {
+                if (it.address_state == filterLocation) finalFilterList.add(it)
+            }
+        } else finalFilterList = filteredCategory
+
+        facilityList = finalFilterList
+        sortFacility()
+    }
+
+    // Open filter dialog and get filter category or location
     private fun openFilterDialog() {
         val view = View.inflate(this.context, R.layout.fragment_dialog_filter, null)
 
@@ -127,8 +162,13 @@ class FavouriteListFragment : Fragment() {
         dialog.show()
 
         val btnOk: Button = view.findViewById(R.id.filterDialog_btnApply)
+        val spinnerCategory: Spinner = view.findViewById(R.id.filterDialog_spinnerCategory)
+        val spinnerLocation: Spinner = view.findViewById(R.id.filterDialog_spinnerLocation)
         btnOk.setOnClickListener {
-            // get filter value in array
+            filterCategory = spinnerCategory.selectedItem.toString()
+            filterLocation = spinnerLocation.selectedItem.toString()
+            filterFacility()
+            recycleView.adapter = FacilityAdapter(facilityList)
             dialog.dismiss()
         }
     }

@@ -17,6 +17,29 @@
         <item>Sort ascending</item>
         <item>Sort descending</item>
     </string-array>
+    <string-array name="spinner_filter_category">
+        <item>All</item>
+        <item>Toilet</item>
+        <item>Parking</item>
+        <item>Park</item>
+        <item>Bus station</item>
+    </string-array>
+    <string-array name="spinner_filter_location">
+        <item>All</item>
+        <item>Johor</item>
+        <item>Kedah</item>
+        <item>Kelantan</item>
+        <item>Malacca</item>
+        <item>Negeri Sembilan</item>
+        <item>Pahang</item>
+        <item>Penang</item>
+        <item>Perak</item>
+        <item>Perlis</item>
+        <item>Sabah</item>
+        <item>Sarawak</item>
+        <item>Selangor</item>
+        <item>Terengganu</item>
+    </string-array>
 
     //Common
     <string name="delete">Delete</string>
@@ -144,6 +167,9 @@
     <string name="log_out">Log Out</string>
     <string name="upload_facility">Upload facility</string>
     <string name="locate_me">Locate me</string>
+    <string name="location">LOCATION</string>
+    <string name="apply">Apply</string>
+    <string name="category">CATEGORY</string>
 </resources>
 
 

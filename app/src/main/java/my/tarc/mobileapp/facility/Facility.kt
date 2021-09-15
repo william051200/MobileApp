@@ -19,13 +19,13 @@ class Facility(
 ) {
     var picture: Bitmap? = null
 
-    constructor(picture: Bitmap?, name: String) : this(
+    constructor(picture: Bitmap?, name: String, address_state: String) : this(
         "",
         name,
         "",
         "",
         "",
-        "",
+        address_state,
         "",
         arrayOf(""),
         "",
