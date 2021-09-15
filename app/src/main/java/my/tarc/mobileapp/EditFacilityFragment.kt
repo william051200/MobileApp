@@ -94,18 +94,18 @@ class EditFacilityFragment : Fragment() {
             // Apply confirmation dialog here
         }
 
-//        // Navigate to Admin Facility List
-//        binding.btnEditFacilityCancel.setOnClickListener {
-//            findNavController().navigate(R.id.action_editFacilityFragment_to_facilityListAdminFragment)
-//        }
-//
-//        // Navigate to Admin Facility List
-//        binding.btnEditFacilitySave.setOnClickListener {
-//
-//            Toast.makeText(activity, "Facility Details Update Successful", Toast.LENGTH_SHORT).show()
-//
-//            findNavController().navigate(R.id.action_editFacilityFragment_to_facilityListAdminFragment)
-//        }
+        // Navigate to Admin Facility List
+        binding.btnEditFacilityCancel.setOnClickListener {
+            findNavController().navigate(R.id.action_editFacilityFragment_to_adminAllFacilityFragment)
+        }
+
+        // Navigate to Admin Facility List
+        binding.btnEditFacilitySave.setOnClickListener {
+
+            Toast.makeText(activity, "Facility Details Update Successful", Toast.LENGTH_SHORT).show()
+
+            findNavController().navigate(R.id.action_editFacilityFragment_to_adminAllFacilityFragment)
+        }
 
     }
 
