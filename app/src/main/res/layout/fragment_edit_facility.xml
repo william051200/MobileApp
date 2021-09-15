@@ -280,7 +280,8 @@
         app:backgroundTint="#2196F3"
         app:icon="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btn_Next_Img"
@@ -292,6 +293,7 @@
         app:backgroundTint="#2196F3"
         app:icon="@drawable/ic_next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
