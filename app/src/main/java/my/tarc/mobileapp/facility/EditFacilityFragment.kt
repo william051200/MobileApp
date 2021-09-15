@@ -1,4 +1,4 @@
-package my.tarc.mobileapp
+package my.tarc.mobileapp.facility
 
 import android.content.Intent
 import android.net.Uri
@@ -12,8 +12,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
+import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentEditFacilityBinding
-import my.tarc.mobileapp.databinding.FragmentUploadFacilityBinding
 
 class EditFacilityFragment : Fragment() {
 

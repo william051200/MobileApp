@@ -5,7 +5,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UploadFacilityFragment">
+    tools:context=".facility.UploadFacilityFragment">
 
     <ImageSwitcher
         android:id="@+id/imgSwitcher_Facility"

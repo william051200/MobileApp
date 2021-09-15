@@ -37,13 +37,7 @@
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/activity_pending_approvals.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/activity_upload_facility.xml" value="0.4" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/activity_user_profile.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/content_main.xml" value="0.24230072463768115" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/facility_layout.xml" value="0.4" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragmeng_admin_login.xml" value="0.25317028985507245" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_admin.xml" value="0.25317028985507245" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_all_facility.xml" value="0.24010416666666667" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_homepage.xml" value="0.24230072463768115" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_pending_approvals.xml" value="0.24230072463768115" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_filter.xml" value="0.4" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_edit_facility.xml" value="0.223731884057971" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_facility_category.xml" value="0.2477355072463768" />
@@ -54,11 +48,9 @@
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_feedback_list.xml" value="0.23505434782608695" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_navigation.xml" value="0.223731884057971" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_pending_approvals.xml" value="0.264" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_register.xml" value="0.264" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_upload_facility.xml" value="0.264" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_user_login.xml" value="0.25317028985507245" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_user_profile.xml" value="0.2477355072463768" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/menu/menu_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ooije/Desktop/MobileApp/app/src/main/res/drawable/ic_park.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_edit.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_edit_pen.xml" value="0.21614583333333334" />
@@ -77,7 +69,7 @@
         <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/facility_name.xml" value="0.2" />
         <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_admin.xml" value="0.12129629629629629" />
         <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_facility_category.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_facility_details.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_facility_details.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_facility_list_admin.xml" value="0.22" />
         <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_facility_list_user.xml" value="0.12129629629629629" />
         <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_favourite_list.xml" value="0.14444444444444443" />

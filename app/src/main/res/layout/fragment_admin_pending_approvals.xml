@@ -5,7 +5,7 @@
     android:id="@+id/facilityListAdmin_frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminPendingApprovalsFragment">
+    tools:context=".user.AdminPendingApprovalsFragment">
 
     <LinearLayout
         android:id="@+id/adminPendingApprovals_linearLayout"

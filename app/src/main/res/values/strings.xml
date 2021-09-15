@@ -115,6 +115,7 @@
     <string name="hours">Operation Hours:</string>
     <string name="address">Address:</string>
     <string name="feedback">View Feedbacks</string>
+    <string name="navigate">Navigate</string>
 
     //Pending Facility
     <string name="deny">Deny</string>

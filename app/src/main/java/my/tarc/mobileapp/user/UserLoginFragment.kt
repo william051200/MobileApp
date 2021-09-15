@@ -1,4 +1,4 @@
-package my.tarc.mobileapp
+package my.tarc.mobileapp.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUserLoginBinding
 
 

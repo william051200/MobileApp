@@ -1,10 +1,8 @@
-package my.tarc.mobileapp
+package my.tarc.mobileapp.facility
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 
 import androidx.fragment.app.DialogFragment
 

@@ -1,4 +1,4 @@
-package my.tarc.mobileapp
+package my.tarc.mobileapp.user
 
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentRegisterBinding
 import java.util.regex.Pattern
 

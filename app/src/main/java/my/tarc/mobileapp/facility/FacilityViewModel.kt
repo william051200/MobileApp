@@ -1,4 +1,4 @@
-package my.tarc.mobileapp
+package my.tarc.mobileapp.facility
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
