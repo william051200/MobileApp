@@ -49,7 +49,7 @@ class UserRegisterFragment : Fragment() {
 
         // Register a new account
         binding.registerBtnSignUp.setOnClickListener {
-            if (!register()) createNewAccount()
+            if (!validation()) createNewAccount()
         }
 
         // Switch to admin login
@@ -63,7 +63,7 @@ class UserRegisterFragment : Fragment() {
         }
     }
 
-    private fun register(): Boolean {
+    private fun validation(): Boolean {
         var fullName = binding.registerTxtFullName.text.toString()
         var email = binding.registerTxtEmail.text.toString()
         var password = binding.registerTxtPassword.text.toString()

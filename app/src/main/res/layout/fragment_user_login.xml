@@ -51,7 +51,7 @@
 
 
         <EditText
-            android:id="@+id/loginUser_txtEmail"
+            android:id="@+id/userLogin_txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/username_icon"
@@ -89,7 +89,7 @@
 
 
         <EditText
-            android:id="@+id/loginUser_txtPassword"
+            android:id="@+id/userLogin_txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/password_icon"
@@ -116,7 +116,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/loginUser_btnLogin"
+        android:id="@+id/userLogin_btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/passworduser"
@@ -136,7 +136,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginUser_btnLogin"
+        android:layout_below="@+id/userLogin_btnLogin"
         android:layout_marginLeft="62dp"
         android:layout_marginTop="47dp"
         android:layout_marginRight="62dp"
@@ -148,10 +148,10 @@
         android:textSize="12dp" />
 
     <TextView
-        android:id="@+id/signupnav"
+        android:id="@+id/userLogin_btnSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginUser_btnLogin"
+        android:layout_below="@+id/userLogin_btnLogin"
         android:layout_marginLeft="162dp"
         android:layout_marginTop="47dp"
         android:layout_marginRight="62dp"
@@ -178,7 +178,7 @@
         android:textSize="12dp" />
 
     <TextView
-        android:id="@+id/adminloginnav"
+        android:id="@+id/userLogin_btnAdminLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
