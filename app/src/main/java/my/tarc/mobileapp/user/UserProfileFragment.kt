@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUserProfileBinding
 
@@ -16,6 +19,13 @@ class UserProfileFragment : Fragment() {
     //Binding fragment
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
+
+    // Firebase authentication
+    private lateinit var auth: FirebaseAuth
+
+    // Firestore database
+    private val db = Firebase.firestore
+    private val userRef = db.collection("user")
 
     //request code to pick image
     private val IMAGE_PICK_CODE = 0
