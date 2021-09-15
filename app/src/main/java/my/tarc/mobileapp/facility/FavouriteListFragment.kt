@@ -21,7 +21,6 @@ import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentFavouriteListBinding
 
-
 class FavouriteListFragment : Fragment() {
     // Firestore database
     private val db = Firebase.firestore

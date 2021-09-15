@@ -1,35 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
     android:background="@drawable/border">
 
-    <ImageView
-        android:id="@+id/facilityLayout_imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/facilityLayout_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <TextView
         android:id="@+id/feedbackLayout_txtFeedbackTitle"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:text="Facility Name"
+        android:text="Feedback"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/facilityLayout_guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/facilityLayout_imageView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -37,5 +21,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="129dp" />
+        app:layout_constraintGuide_begin="77dp" />
+
+    <TextView
+        android:id="@+id/feedbackLayout_btnView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="@string/view"
+        android:textColor="#1976D2"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/feedbackLayout_txtFeedbackTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/feedbackLayout_txtFeedbackTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>
