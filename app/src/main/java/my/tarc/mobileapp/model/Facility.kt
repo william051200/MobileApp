@@ -15,7 +15,19 @@ class Facility(
     val status: String
 ) {
     var picture: Bitmap? = null
-    constructor(picture: Bitmap?, name: String) : this("", name, Address("",0,"",""), "", arrayOf(), "", "", "", -1, ""){
+
+    constructor(picture: Bitmap?, name: String, state: String) : this(
+        "",
+        name,
+        Address("",0,"",state),
+        "",
+        arrayOf(),
+        "",
+        "",
+        "",
+        -1,
+        ""
+    ) {
         this.picture = picture
     }
 }

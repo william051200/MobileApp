@@ -144,7 +144,7 @@ class FavouriteListFragment : Fragment() {
         // Filter facility according to location
         if (filterLocation != "All") {
             filteredCategory.map {
-                if (it.address_state == filterLocation) finalFilterList.add(it)
+                if (it.address.state == filterLocation) finalFilterList.add(it)
             }
         } else finalFilterList = filteredCategory
 
