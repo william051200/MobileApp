@@ -1,4 +1,4 @@
-package my.tarc.mobileapp
+package my.tarc.mobileapp.facility
 
 import android.os.Bundle
 import android.view.LayoutInflater

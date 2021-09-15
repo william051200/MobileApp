@@ -1,21 +1,17 @@
-package my.tarc.mobileapp
+package my.tarc.mobileapp.user
 
 
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.PermissionChecker.checkSelfPermission
 import androidx.navigation.fragment.findNavController
+import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUserProfileBinding
-import java.util.jar.Manifest
 
 
 class UserProfileFragment : Fragment() {

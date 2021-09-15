@@ -5,7 +5,7 @@
     android:id="@+id/favouriteList_frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FavouriteListFragment">
+    tools:context=".facility.FavouriteListFragment">
 
     <LinearLayout
         android:id="@+id/favouriteList_linearLayout"

@@ -1,6 +1,5 @@
-package my.tarc.mobileapp
+package my.tarc.mobileapp.facility
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -10,18 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUploadFacilityBinding
-import org.w3c.dom.Text
 
 class UploadFacilityFragment : Fragment() {
 

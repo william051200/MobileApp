@@ -1,12 +1,14 @@
-package my.tarc.mobileapp
+package my.tarc.mobileapp.facility
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import my.tarc.mobileapp.R
 
-class FacilityDetailsFragment : Fragment() {
+class SubmitFeedbackDialogFragment : Fragment() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -16,6 +18,6 @@ class FacilityDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_facility_details, container, false)
+        return inflater.inflate(R.layout.fragment_submit_feedback_dialog, container, false)
     }
 }

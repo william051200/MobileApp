@@ -1,4 +1,4 @@
-package my.tarc.mobileapp
+package my.tarc.mobileapp.user
 
 import android.app.AlertDialog
 import android.graphics.Bitmap
@@ -16,7 +16,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentAdminPendingApprovalsBinding
+import my.tarc.mobileapp.facility.Facility
+import my.tarc.mobileapp.facility.FacilityAdapter
 
 class AdminPendingApprovalsFragment : Fragment() {
     // Firestore database

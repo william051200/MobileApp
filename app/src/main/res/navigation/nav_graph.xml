@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/editFacilityFragment">
+    app:startDestination="@id/favouriteListFragment">
     <fragment
         android:id="@+id/facilityDetailsFragment"
-        android:name="my.tarc.mobileapp.FacilityDetailsFragment"
+        android:name="my.tarc.mobileapp.facility.FacilityDetailsFragment"
         android:label="fragment_facility_details"
         tools:layout="@layout/fragment_facility_details" />
     <fragment
         android:id="@+id/userProfile"
-        android:name="my.tarc.mobileapp.UserProfileFragment"
+        android:name="my.tarc.mobileapp.user.UserProfileFragment"
         android:label="fragment_user_profile"
         tools:layout="@layout/fragment_user_login">
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigationFragment"
-        android:name="my.tarc.mobileapp.NavigationFragment"
+        android:name="my.tarc.mobileapp.facility.NavigationFragment"
         android:label="fragment_navigation"
         tools:layout="@layout/fragment_navigation">
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/facilityCategory"
-        android:name="my.tarc.mobileapp.FacilityCategoryFragment"
+        android:name="my.tarc.mobileapp.facility.FacilityCategoryFragment"
         android:label="fragment_facility_category"
         tools:layout="@layout/fragment_facility_category">
         <action
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/favouriteListFragment"
-        android:name="my.tarc.mobileapp.FavouriteListFragment"
+        android:name="my.tarc.mobileapp.facility.FavouriteListFragment"
         android:label="fragment_favourite_list"
         tools:layout="@layout/fragment_favourite_list">
         <action
@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/adminHomepageFragment"
-        android:name="my.tarc.mobileapp.AdminHomepageFragment"
+        android:name="my.tarc.mobileapp.user.AdminHomepageFragment"
         android:label="fragment_admin_homepage"
         tools:layout="@layout/fragment_admin_homepage">
         <action
@@ -83,7 +83,7 @@
     </fragment>
     <fragment
         android:id="@+id/adminLoginFragment"
-        android:name="my.tarc.mobileapp.AdminLoginFragment"
+        android:name="my.tarc.mobileapp.user.AdminLoginFragment"
         android:label="fragment_admin"
         tools:layout="@layout/fragment_admin">
         <action
@@ -95,12 +95,12 @@
     </fragment>
     <dialog
         android:id="@+id/dialogFilterFragment"
-        android:name="my.tarc.mobileapp.DialogFilterFragment"
+        android:name="my.tarc.mobileapp.facility.DialogFilterFragment"
         android:label="fragment_dialog_filter"
         tools:layout="@layout/fragment_dialog_filter" />
     <fragment
         android:id="@+id/editFacilityFragment"
-        android:name="my.tarc.mobileapp.EditFacilityFragment"
+        android:name="my.tarc.mobileapp.facility.EditFacilityFragment"
         android:label="fragment_edit_facility"
         tools:layout="@layout/fragment_edit_facility">
         <action
@@ -109,7 +109,7 @@
     </fragment>
     <fragment
         android:id="@+id/uploadFacilityFragment"
-        android:name="my.tarc.mobileapp.UploadFacilityFragment"
+        android:name="my.tarc.mobileapp.facility.UploadFacilityFragment"
         android:label="fragment_upload_facility"
         tools:layout="@layout/fragment_upload_facility">
         <action
@@ -118,7 +118,7 @@
     </fragment>
     <fragment
         android:id="@+id/userLoginFragment"
-        android:name="my.tarc.mobileapp.UserLoginFragment"
+        android:name="my.tarc.mobileapp.user.UserLoginFragment"
         android:label="fragment_user_login"
         tools:layout="@layout/fragment_user_login">
         <action
@@ -133,7 +133,7 @@
     </fragment>
     <fragment
         android:id="@+id/userRegisterFragment"
-        android:name="my.tarc.mobileapp.UserRegisterFragment"
+        android:name="my.tarc.mobileapp.user.UserRegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register">
         <action
@@ -145,7 +145,7 @@
     </fragment>
     <fragment
         android:id="@+id/adminAllFacilityFragment"
-        android:name="my.tarc.mobileapp.AdminAllFacilityFragment"
+        android:name="my.tarc.mobileapp.user.AdminAllFacilityFragment"
         android:label="fragment_admin_all_facility"
         tools:layout="@layout/fragment_admin_all_facility">
         <action
@@ -154,7 +154,7 @@
     </fragment>
     <fragment
         android:id="@+id/adminPendingApprovalsFragment"
-        android:name="my.tarc.mobileapp.AdminPendingApprovalsFragment"
+        android:name="my.tarc.mobileapp.user.AdminPendingApprovalsFragment"
         android:label="fragment_admin_pending_approvals"
         tools:layout="@layout/fragment_admin_pending_approvals">
         <action
