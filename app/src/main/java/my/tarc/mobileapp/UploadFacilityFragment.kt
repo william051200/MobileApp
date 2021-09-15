@@ -97,7 +97,7 @@ class UploadFacilityFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     private fun pickImagesIntent (){
         val intent = Intent()
-        intent.type = "image/*"
+        intent.type = "image/png"
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
         intent.action = Intent.ACTION_GET_CONTENT
         // Deprecated issues
@@ -108,7 +108,7 @@ class UploadFacilityFragment : Fragment() {
         //Deprecated issues
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == PICK_IMAGES_CODE){
+        //if(requestCode == PICK_IMAGES_CODE){
 
             if(data!!.clipData != null){
                 //picked multiple images
@@ -130,7 +130,6 @@ class UploadFacilityFragment : Fragment() {
                 binding.imgSwitcherFacility.setImageURI(imageUri)
                 position = 0
             }
-        }
+        //}
     }
-
 }
