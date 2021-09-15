@@ -25,10 +25,6 @@ class UserLoginFragment : Fragment() {
     // Firebase authentication
     private lateinit var auth: FirebaseAuth
 
-    // Firestore database
-    private val db = Firebase.firestore
-    private val userRef = db.collection("user")
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
