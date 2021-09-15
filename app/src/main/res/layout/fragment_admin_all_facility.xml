@@ -50,4 +50,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adminAllFacility_linearLayout"
         tools:listitem="@layout/facility_layout" />
+
+    <TextView
+        android:id="@+id/adminAllFacility_txtNoData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/adminAllFacility_recycleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/adminAllFacility_recycleView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

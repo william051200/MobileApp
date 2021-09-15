@@ -107,6 +107,14 @@ class AdminPendingApprovalsFragment : Fragment() {
                     }
                 }
             }
+
+        // Show no data text
+        if (facilityList.size < 1) {
+            var txtNoData = binding.adminPendingApprovalsTxtNoData
+            txtNoData.visibility = View.VISIBLE
+            txtNoData.text = "No pending facility"
+            recycleView.visibility = View.INVISIBLE
+        }
     }
 
     // Update the facility list recycle view
