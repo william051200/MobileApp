@@ -43,6 +43,10 @@ class UserRegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.registerTxtFullName.setText("")
+        binding.registerTxtEmail.setText("")
+        binding.registerTxtPassword.setText("")
+
 
         // Initialize Firebase Auth
         auth = Firebase.auth

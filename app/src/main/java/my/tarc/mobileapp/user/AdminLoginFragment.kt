@@ -35,6 +35,9 @@ class AdminLoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.adminLoginTxtEmail.setText("")
+        binding.adminLoginTxtPassword.setText("")
+
 
         // Initialize Firebase Auth
         auth = Firebase.auth
