@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentFavouriteListBinding
 

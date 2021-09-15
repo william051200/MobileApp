@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.R
 
 class FacilityAdapter(private val facilityList: ArrayList<Facility>) :
