@@ -11,7 +11,6 @@
         android:layout_height="228dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-
         android:layout_marginTop="23dp"
         android:src="@drawable/login" />
 
@@ -50,14 +49,13 @@
         android:layout_marginRight="62dp"
         android:background="@drawable/blue_border_rounded_cornwe">
 
-
         <EditText
-            android:id="@+id/loginUser_txtUsername"
+            android:id="@+id/register_txtFullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/username_icon"
             android:background="@android:color/transparent"
-            android:hint="Username"
+            android:hint="Full name"
             android:maxLines="1"
             android:paddingLeft="17dp"
             android:paddingTop="15dp"
@@ -71,11 +69,7 @@
             android:layout_height="20.3dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="17dp"
-            android:src="@drawable/man"
-
-            />
-
-
+            android:src="@drawable/man" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -88,9 +82,8 @@
         android:layout_marginRight="62dp"
         android:background="@drawable/blue_border_rounded_cornwe">
 
-
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/register_txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/email_icon"
@@ -109,11 +102,7 @@
             android:layout_height="20.3dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="17dp"
-            android:src="@drawable/email"
-
-            />
-
-
+            android:src="@drawable/email" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -126,9 +115,8 @@
         android:layout_marginRight="62dp"
         android:background="@drawable/blue_border_rounded_cornwe">
 
-
         <EditText
-            android:id="@+id/loginUser_txtPassword"
+            android:id="@+id/register_txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/password_icon"
@@ -147,15 +135,11 @@
             android:layout_height="20.3dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="17dp"
-            android:src="@drawable/password"
-
-            />
-
-
+            android:src="@drawable/password" />
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/signup"
+        android:id="@+id/register_btnSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/registerpass"
@@ -167,18 +151,15 @@
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
         android:text="@string/signup"
-
-
         android:textColor="#ffffff"
         android:textSize="12dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/signup"
+        android:layout_below="@+id/register_btnSignUp"
         android:layout_marginLeft="62dp"
         android:layout_marginTop="15dp"
-
         android:layout_marginRight="62dp"
         android:paddingLeft="40dp"
         android:paddingTop="14dp"
@@ -191,7 +172,7 @@
         android:id="@+id/adminlogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/signup"
+        android:layout_below="@+id/register_btnSignUp"
         android:layout_marginLeft="162dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="62dp"
@@ -202,7 +183,6 @@
         android:text="@string/adminnav"
         android:textColor="	#0693EF"
         android:textSize="12dp" />
-
 
     <TextView
         android:layout_width="match_parent"
@@ -233,7 +213,4 @@
         android:text="@string/adminnav"
         android:textColor="	#0693EF"
         android:textSize="12dp" />
-
-
-
 </RelativeLayout>

@@ -1,14 +1,21 @@
 package my.tarc.mobileapp
 
 import android.os.Bundle
+import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import my.tarc.mobileapp.databinding.FragmentRegisterBinding
+import java.util.regex.Pattern
 
 
 class UserRegisterFragment : Fragment() {
@@ -18,6 +25,10 @@ class UserRegisterFragment : Fragment() {
 
     // Firebase authentication
     private lateinit var auth: FirebaseAuth
+
+    // Firestore database
+    private val db = Firebase.firestore
+    private val userRef = db.collection("user")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +43,14 @@ class UserRegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initialize Firebase Auth
+        auth = Firebase.auth
+
+        // Register a new account
+        binding.registerBtnSignUp.setOnClickListener {
+            if (!register()) createNewAccount()
+        }
+
         // Switch to admin login
         binding.adminlogin.setOnClickListener {
             findNavController().navigate(R.id.action_userRegisterFragment_to_adminLoginFragment)
@@ -43,5 +62,65 @@ class UserRegisterFragment : Fragment() {
         }
     }
 
-    fun register() {}
+    private fun register(): Boolean {
+        var fullName = binding.registerTxtFullName.text.toString()
+        var email = binding.registerTxtEmail.text.toString()
+        var password = binding.registerTxtPassword.text.toString()
+        var error = false
+
+        // Email pattern
+        val pattern: Pattern = Patterns.EMAIL_ADDRESS
+
+        if (fullName.isEmpty()) {
+            Toast.makeText(context, "Invalid full name", Toast.LENGTH_SHORT).show()
+            error = true
+        } else if (email.isEmpty() || !pattern.matcher(email).matches()) {
+            Toast.makeText(context, "Invalid email", Toast.LENGTH_SHORT).show()
+            error = true
+        } else if (password.isEmpty()) {
+            Toast.makeText(context, "Invalid password", Toast.LENGTH_SHORT).show()
+            error = true
+        } else if (password.length < 8) {
+            Toast.makeText(context, "Password is too weak", Toast.LENGTH_SHORT).show()
+            error = true
+        }
+
+        return error
+    }
+
+    private fun createNewAccount() {
+        var fullName = binding.registerTxtFullName.text.toString()
+        var email = binding.registerTxtEmail.text.toString()
+        var password = binding.registerTxtPassword.text.toString()
+        var emptyArray = ArrayList<String>()
+
+        // Create new user in Firebase auth
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener() { task ->
+            if (task.isSuccessful) {
+                Log.e("Firebase Auth", "Success creating user in auth")
+
+                // Generate new user
+                val user = hashMapOf(
+                    "email" to email,
+                    "user_type" to "user",
+                    "full_name" to fullName,
+                    "profile_pic_id" to "",
+                    "favourite_facility" to emptyArray,
+                )
+
+                // Create new user document in Firestore
+                userRef.document(email).set(user).addOnSuccessListener {
+                    Log.e("Firebase Auth", "Success creating user in Firestore")
+                    Toast.makeText(this.context, "Sign up success!", Toast.LENGTH_SHORT).show()
+                    // Switch to user login once success register
+                    findNavController().navigate(R.id.action_userRegisterFragment_to_userLoginFragment)
+                }.addOnFailureListener {
+                    Log.e("Firestore", "Failed to create user in Firestore!")
+                }
+            } else {
+                Toast.makeText(context, "Email is already exist", Toast.LENGTH_SHORT).show()
+                Log.e("Firebase Auth", "Failed to create user in firebase Auth!")
+            }
+        }
+    }
 }
