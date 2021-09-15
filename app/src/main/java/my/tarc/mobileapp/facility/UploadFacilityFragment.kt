@@ -1,9 +1,12 @@
 package my.tarc.mobileapp.facility
 
+import android.app.Activity.RESULT_OK
+import android.content.ContentResolver
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,11 +21,13 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUploadFacilityBinding
+import my.tarc.mobileapp.model.Facility
 
 class UploadFacilityFragment : Fragment() {
 
     // Firestore database
     private val db = Firebase.firestore
+    private val facilityRef = db.collection("facility")
 
     // Firebase storage
     private val storage = Firebase.storage("gs://mobile-app-f3440.appspot.com")
@@ -96,28 +101,9 @@ class UploadFacilityFragment : Fragment() {
             }
         }
 
-        // Verify user input and Upload it to Firestore Database
+        //
         binding.btnUploadFacilityUpload.setOnClickListener{
-            val errorFound: Boolean = facilityValidation()
-            // Retrieve Facility Name Value
-
-            // Retrieve Spinner Value (St and Ct)
-
-            // Retrieve Spinner Value (Oku Feature)
-
-            // Retrieve Street Address
-
-            // Retrieve City, State, Code
-
-            // If okay, upload to Firestore database
-
-
-            // If no error navigate back to facility category
-            if (!errorFound){
-                //Display successful message
-                Toast.makeText(activity, "Uploaded Successful", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_uploadFacilityFragment_to_facilityCategory)
-            }
+            if (!facilityValidation()) newFacility()
         }
 
     }
@@ -129,16 +115,16 @@ class UploadFacilityFragment : Fragment() {
         intent.type = "image/png"
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
         intent.action = Intent.ACTION_GET_CONTENT
-        // Deprecated issues
+
         startActivityForResult(Intent.createChooser(intent,"Select Image(s)"), PICK_IMAGES_CODE)
     }
 
     // Display Image
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        //Deprecated issues
+
         super.onActivityResult(requestCode, resultCode, data)
 
-        //if(requestCode == PICK_IMAGES_CODE){
+        if(requestCode == PICK_IMAGES_CODE && resultCode == RESULT_OK){
 
             if(data!!.clipData != null){
                 //picked multiple images
@@ -160,7 +146,7 @@ class UploadFacilityFragment : Fragment() {
                 binding.imgSwitcherFacility.setImageURI(imageUri)
                 position = 0
             }
-        //}
+        }
     }
 
     // Facility Details Validation
@@ -189,11 +175,49 @@ class UploadFacilityFragment : Fragment() {
             Toast.makeText(activity, "Invalid State", Toast.LENGTH_SHORT).show()
             textState.requestFocus()
             error = true
-        }else if (textZipCode.text.isEmpty()){
+        }else if (textZipCode.text.isEmpty() || textZipCode.text.length < 5){
             Toast.makeText(activity, "Invalid Zip Code", Toast.LENGTH_SHORT).show()
             textZipCode.requestFocus()
             error = true
         }
         return error
     }
+
+    private fun newFacility() {
+        val facilityName = binding.txtFacilityName.text.toString()
+        val startTime = binding.spinnerST.selectedItem.toString()
+        val closeTime = binding.spinnerCT.selectedItem.toString()
+        val okuFeature = binding.txtOKUFeature.selectedItem.toString()
+        val streetAddress = binding.txtFacilityAddress.text.toString()
+        val city = binding.txtFacilityCity.text.toString()
+        val state = binding.txtFacilityState.text.toString()
+        val zipCode = binding.txtFacilityZipCode.text.toString()
+
+
+        // Create New Facility
+        val facility = hashMapOf(
+            "name" to facilityName,
+            "starting_hour" to startTime,
+            "closing_hour" to closeTime,
+            "oku_feature" to okuFeature,
+            "address_street" to streetAddress,
+            "address_city" to city,
+            "address_state" to state,
+            "address_postcode" to zipCode
+        )
+
+        facilityRef.document(facilityName).set(facility).addOnSuccessListener {
+            Toast.makeText(this.context, "Uploaded successful!", Toast.LENGTH_SHORT).show()
+            // Navigate back to facility category once uploaded
+            findNavController().navigate(R.id.action_uploadFacilityFragment_to_facilityCategory)
+        }.addOnFailureListener {
+            Log.e("Firestore", "Failed to create facility in Firestore!")
+        }
+    }
+
+    private fun uploadFacilityImg(){
+        // Upload multiple facility images
+    }
+
 }
+

@@ -111,23 +111,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtUserPwd"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:ems="10"
         android:hint="@string/txtView_password_label"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewPwd"
-        app:passwordToggleEnabled="true"/>
-
+        app:passwordToggleEnabled="true" />
 
     <LinearLayout
         android:id="@+id/userProfile_linearLayout2"
