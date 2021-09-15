@@ -4,47 +4,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserRegisterFragment">
+
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="257dp"
-        android:layout_height="244dp"
+        android:layout_width="258dp"
+        android:layout_height="228dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
 
-        android:src="@drawable/login"/>
+        android:layout_marginTop="23dp"
+        android:src="@drawable/login" />
 
     <TextView
         android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="268dp"
+        android:layout_marginTop="17dp"
         android:layout_marginEnd="8dp"
         android:text="@string/welcome"
-        android:layout_centerHorizontal="true"
         android:textColor="#191818"
         android:textSize="34sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="69dp"
         android:layout_marginEnd="8dp"
         android:text="@string/registertxt" />
 
     <RelativeLayout
+        android:id="@+id/registeruser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
         android:layout_marginLeft="62dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="31dp"
         android:layout_marginRight="62dp"
         android:background="@drawable/blue_border_rounded_cornwe">
-
 
 
         <EditText
@@ -75,10 +79,12 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/registeremail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/registeruser"
         android:layout_marginLeft="62dp"
-        android:layout_marginTop="430dp"
+        android:layout_marginTop="14dp"
         android:layout_marginRight="62dp"
         android:background="@drawable/blue_border_rounded_cornwe">
 
@@ -111,10 +117,12 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/registerpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/registeremail"
         android:layout_marginLeft="62dp"
-        android:layout_marginTop="490dp"
+        android:layout_marginTop="14dp"
         android:layout_marginRight="62dp"
         android:background="@drawable/blue_border_rounded_cornwe">
 
@@ -147,33 +155,31 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/registerpass"
         android:layout_marginLeft="62dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="120dp"
         android:background="@drawable/blue_fill__rounded_color"
         android:gravity="center"
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
         android:text="@string/signup"
+
+
         android:textColor="#ffffff"
-        android:textSize="12dp"
-
-
-        />
+        android:textSize="12dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/signup"
         android:layout_marginLeft="62dp"
-        android:layout_marginRight="62dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="15dp"
 
+        android:layout_marginRight="62dp"
         android:paddingLeft="40dp"
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
@@ -185,11 +191,10 @@
         android:id="@+id/adminlogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/signup"
         android:layout_marginLeft="162dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="60dp"
         android:clickable="true"
         android:paddingLeft="50dp"
         android:paddingTop="14dp"
@@ -202,11 +207,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/adminlogin"
         android:layout_marginLeft="52dp"
+        android:layout_marginTop="-14dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="30dp"
         android:paddingLeft="40dp"
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
@@ -218,11 +222,10 @@
         android:id="@+id/userlogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/adminlogin"
         android:layout_marginLeft="187dp"
+        android:layout_marginTop="-14dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="30dp"
         android:clickable="true"
         android:paddingLeft="50dp"
         android:paddingTop="14dp"
