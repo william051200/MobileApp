@@ -14,7 +14,7 @@ class FacilityAdapter(private val facilityList: ArrayList<Facility>) :
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val facilityImage: ImageView = itemView.findViewById(R.id.facilityLayout_imageView)
-        val facilityName: TextView = itemView.findViewById(R.id.feedbackLayout_txtFeedbackName)
+        val facilityName: TextView = itemView.findViewById(R.id.facilityLayout_txtFacilityName)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

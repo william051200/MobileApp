@@ -12,12 +12,12 @@
         android:layout_marginStart="24dp"
         android:text="Feedback"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/facilityLayout_guideline"
+        app:layout_constraintBottom_toTopOf="@+id/feedbackLayout_guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/facilityLayout_guideline"
+        android:id="@+id/feedbackLayout_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
