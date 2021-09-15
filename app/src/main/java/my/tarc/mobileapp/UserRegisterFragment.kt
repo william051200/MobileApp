@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import my.tarc.mobileapp.databinding.FragmentAdminBinding
 import my.tarc.mobileapp.databinding.FragmentRegisterBinding
+import my.tarc.mobileapp.databinding.FragmentUserLoginBinding
 
 
-class AdminLoginFragment : Fragment() {
-
-    private var _binding: FragmentAdminBinding? = null
+class UserRegisterFragment : Fragment() {
+    private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +24,7 @@ class AdminLoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentAdminBinding.inflate(inflater, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -33,11 +32,12 @@ class AdminLoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Navigate to facility category page
-        binding.userlogin.setOnClickListener {
-            findNavController().navigate(R.id.action_adminLoginFragment_to_userLoginFragment)
+        binding.adminlogin.setOnClickListener {
+            findNavController().navigate(R.id.action_userRegisterFragment_to_adminLoginFragment)
         }
-        binding.adminhomepage.setOnClickListener{
-            findNavController().navigate(R.id.action_adminLoginFragment_to_adminHomepageFragment)
+
+        binding.userlogin.setOnClickListener{
+            findNavController().navigate(R.id.action_userRegisterFragment_to_userLoginFragment)
         }
 
 

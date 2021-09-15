@@ -113,13 +113,14 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/adminhomepage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="62dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="190dp"
+        android:layout_marginBottom="180dp"
         android:background="@drawable/blue_fill__rounded_color"
         android:gravity="center"
         android:paddingTop="14dp"
@@ -136,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="62dp"
+        android:layout_marginLeft="52dp"
         android:layout_marginRight="62dp"
         android:layout_marginBottom="90dp"
         android:paddingLeft="60dp"
@@ -152,7 +153,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="162dp"
+        android:layout_marginLeft="152dp"
         android:layout_marginRight="62dp"
         android:layout_marginBottom="90dp"
         android:clickable="true"

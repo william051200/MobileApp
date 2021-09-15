@@ -33,6 +33,14 @@ class UserLoginFragment : Fragment() {
         binding.loginUserBtnLogin.setOnClickListener {
             findNavController().navigate(R.id.action_userLoginFragment_to_facilityCategory)
         }
+
+        binding.adminloginnav.setOnClickListener{
+            findNavController().navigate(R.id.action_userLoginFragment_to_adminLoginFragment)
+        }
+
+        binding.signupnav.setOnClickListener{
+            findNavController().navigate(R.id.action_userLoginFragment_to_userRegisterFragment)
+        }
     }
 
 }

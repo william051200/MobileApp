@@ -92,6 +92,7 @@
     //Register
     <string name="registertxt">Create your account here</string>\
     <string name="signup">Sign up</string>
+    <string name="usertxt">Already have an account?</string>
 
     //Admin
     <string name="admintxt">Login as admin</string>

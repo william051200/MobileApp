@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/favouriteListFragment">
+    app:startDestination="@id/userLoginFragment">
     <fragment
         android:id="@+id/facilityListAdminFragment"
         android:name="my.tarc.mobileapp.FacilityListAdminFragment"
@@ -132,5 +132,20 @@
         <action
             android:id="@+id/action_userLoginFragment_to_adminLoginFragment"
             app:destination="@id/adminLoginFragment" />
+        <action
+            android:id="@+id/action_userLoginFragment_to_userRegisterFragment"
+            app:destination="@id/userRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userRegisterFragment"
+        android:name="my.tarc.mobileapp.UserRegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_userRegisterFragment_to_adminLoginFragment"
+            app:destination="@id/adminLoginFragment" />
+        <action
+            android:id="@+id/action_userRegisterFragment_to_userLoginFragment"
+            app:destination="@id/userLoginFragment" />
     </fragment>
 </navigation>

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterFragment">
+    tools:context=".UserRegisterFragment">
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="257dp"
@@ -197,6 +197,40 @@
         android:text="@string/adminnav"
         android:textColor="	#0693EF"
         android:textSize="12dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginBottom="30dp"
+        android:paddingLeft="40dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:text="@string/usertxt"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/userlogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="187dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        android:paddingLeft="50dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:text="@string/adminnav"
+        android:textColor="	#0693EF"
+        android:textSize="12dp" />
+
 
 
 </RelativeLayout>
