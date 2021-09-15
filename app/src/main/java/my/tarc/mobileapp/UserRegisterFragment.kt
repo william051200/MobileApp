@@ -101,7 +101,6 @@ class UserRegisterFragment : Fragment() {
 
                 // Generate new user
                 val user = hashMapOf(
-                    "email" to email,
                     "user_type" to "user",
                     "full_name" to fullName,
                     "profile_pic_id" to "",
