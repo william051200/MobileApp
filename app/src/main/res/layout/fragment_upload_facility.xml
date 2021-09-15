@@ -54,7 +54,7 @@
         android:id="@+id/textViewST"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="2dp"
         android:text="@string/txtView_start_time_label"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,11 +64,12 @@
         android:id="@+id/textViewCT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="50dp"
         android:text="@string/txtView_close_time_label"
         app:layout_constraintBottom_toBottomOf="@+id/textViewST"
         app:layout_constraintStart_toEndOf="@+id/textViewST"
-        app:layout_constraintTop_toTopOf="@+id/textViewST" />
+        app:layout_constraintTop_toTopOf="@+id/textViewST"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewState"
@@ -110,12 +111,13 @@
         android:id="@+id/textViewFeature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="50dp"
         android:text="@string/txtView_oku_feature_label"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewCT"
         app:layout_constraintStart_toEndOf="@+id/textViewCT"
-        app:layout_constraintTop_toTopOf="@+id/textViewCT" />
+        app:layout_constraintTop_toTopOf="@+id/textViewCT"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnUpload_Facility_Cancel"
@@ -132,7 +134,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtFacility_State" />
 
     <Button
-        android:id="@+id/btnUpload_Facility_Save"
+        android:id="@+id/btnUpload_Facility_Upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -161,6 +163,8 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewFacilityName" />
@@ -169,7 +173,7 @@
         android:id="@+id/spinnerST"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="2dp"
         android:entries="@array/spinner_operation_hours"
         android:minHeight="48dp"
@@ -180,7 +184,7 @@
         android:id="@+id/spinnerCT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         android:entries="@array/spinner_operation_hours"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerST"
@@ -213,6 +217,8 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLabelAddress" />
@@ -229,6 +235,8 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCity" />
 
@@ -242,6 +250,8 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintBottom_toBottomOf="@+id/txtFacility_City"
         app:layout_constraintStart_toEndOf="@+id/txtFacility_City"
         app:layout_constraintTop_toTopOf="@+id/txtFacility_City" />
@@ -256,6 +266,9 @@
         android:inputType="number"
         android:minHeight="48dp"
         android:textSize="14sp"
+        android:maxLength="5"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintBottom_toBottomOf="@+id/txtFacility_State"
         app:layout_constraintStart_toEndOf="@+id/txtFacility_State"
         app:layout_constraintTop_toTopOf="@+id/txtFacility_State" />
@@ -264,12 +277,13 @@
         android:id="@+id/txtOKU_Feature"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="15dp"
         android:entries="@array/spinner_oku_feature"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerCT"
         app:layout_constraintStart_toEndOf="@+id/spinnerCT"
-        app:layout_constraintTop_toTopOf="@+id/spinnerCT" />
+        app:layout_constraintTop_toTopOf="@+id/spinnerCT"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_Previous_Img"
