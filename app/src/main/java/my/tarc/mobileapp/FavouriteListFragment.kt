@@ -25,7 +25,7 @@ class FavouriteListFragment : Fragment() {
 
     // Firebase storage
     private val storage = Firebase.storage("gs://mobile-app-f3440.appspot.com")
-    private var storageRef = storage.reference.child("Facility images")
+    private var storageRef = storage.reference.child("Facility Images")
 
     // Binding
     private var _binding: FragmentFavouriteListBinding? = null
