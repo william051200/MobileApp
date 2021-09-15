@@ -1,4 +1,9 @@
 package my.tarc.mobileapp.model
 
-class User(val name: String, val userType : String, val favoriteFacilities : ArrayList<Facility>) {
+class User(
+    val email: String,
+    val name: String,
+    val userType: String,
+    val favoriteFacilities: ArrayList<Facility>
+) {
 }

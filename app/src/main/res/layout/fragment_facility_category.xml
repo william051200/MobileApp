@@ -109,7 +109,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:drawableStart="@drawable/ic_profile"
+            android:drawableLeft="@drawable/ic_profile"
             android:paddingLeft="35dp"
             android:paddingRight="35dp"
             android:text="@string/my_profile_label"

@@ -9,6 +9,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import my.tarc.mobileapp.facility.FacilityAdapter
+import my.tarc.mobileapp.model.Address
 import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.model.Feedback
 
@@ -26,8 +27,10 @@ class FacilityViewModel : ViewModel() {
     private val mutableSelectedFeedback = MutableLiveData<Feedback>()
     val selectedFeedback: LiveData<Feedback> get() = mutableSelectedFeedback
 
-    private val mutableFacilityList = MutableLiveData<List<Facility>>()
-    val facilityList: LiveData<List<Facility>> get() = mutableFacilityList
+    private val mutableFacilityList = MutableLiveData<ArrayList<Facility>>()
+    val facilityList: LiveData<ArrayList<Facility>> get() = mutableFacilityList
+
+    val toolBarTitle = MutableLiveData<String>()
 
     fun setFacility(facility: Facility) {
         mutableSelectedFacility.value = facility
@@ -37,16 +40,7 @@ class FacilityViewModel : ViewModel() {
         mutableSelectedFeedback.value = feedback
     }
 
-    fun getAllFacility(){
-        db.collection("facility")
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    var id = document.get("id").toString()
-                    var name = document.get("name").toString()
-                    var address = document.get("address").toString()
-//                    var
-                }
-            }
+    fun setTitle(title: String) {
+        toolBarTitle.value = title
     }
 }

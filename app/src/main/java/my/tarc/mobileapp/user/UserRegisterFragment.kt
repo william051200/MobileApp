@@ -108,7 +108,6 @@ class UserRegisterFragment : Fragment() {
                 val user = hashMapOf(
                     "user_type" to "user",
                     "full_name" to fullName,
-                    "profile_pic_id" to "",
                     "favourite_facility" to emptyArray,
                 )
 
