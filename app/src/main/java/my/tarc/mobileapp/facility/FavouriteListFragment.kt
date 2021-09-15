@@ -101,8 +101,8 @@ class FavouriteListFragment : Fragment() {
                 for (document in documents) {
                     var facilityId = document.get("id").toString()
                     var facilityName = document.get("name").toString()
-                    val docMap = document.get("address") as Map<String, *>
-                    val facilityState = docMap["state"] as String
+                    val address = document.get("address") as Map<String, *>
+                    val facilityState = address["state"] as String
 
                     var bmp: Bitmap? = null
                     val imageReference = storageRef.child(facilityId).child("0.png")
