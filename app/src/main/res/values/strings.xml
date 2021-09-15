@@ -67,6 +67,10 @@
     <string name="exampleZipcode_label">Eg: 12345</string>
     <string-array name="spinner_oku_feature">
         <item>None</item>
+        <item>OKU Parking</item>
+        <item>OKU Toilet</item>
+        <item>OKU Seat</item>
+        <item>Wheelchair</item>
     </string-array>
 
     //Facility Category

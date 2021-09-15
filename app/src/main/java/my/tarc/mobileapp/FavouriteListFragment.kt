@@ -25,7 +25,7 @@ class FavouriteListFragment : Fragment() {
 
     // Firebase storage
     private val storage = Firebase.storage("gs://mobile-app-f3440.appspot.com")
-    private var storageRef = storage.reference.child("Facility images")
+    private var storageRef = storage.reference.child("Facility Images")
 
     // Binding
     private var _binding: FragmentFavouriteListBinding? = null
@@ -90,11 +90,9 @@ class FavouriteListFragment : Fragment() {
                 for (document in documents) {
                     var facilityId = document.get("id").toString()
                     var facilityName = document.get("name").toString()
-                    var facilityImage = document.get("image").toString()
-                    var firstImage = facilityImage.substring(1, facilityImage.indexOf(".png"))
 
                     var bmp: Bitmap? = null
-                    val imageReference = storageRef.child(facilityId).child("$firstImage.png")
+                    val imageReference = storageRef.child(facilityId).child("0.png")
                     val ONE_MEGABYTE: Long = 1024 * 1024
 
                     imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
