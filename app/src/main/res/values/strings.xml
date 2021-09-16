@@ -10,8 +10,6 @@
     <string-array name="spinner_sort_user">
         <item>Sort ascending</item>
         <item>Sort descending</item>
-        <!--        <item>Sort nearest</item>-->
-        <!--        <item>Sort furthest</item>-->
     </string-array>
     <string-array name="spinner_sort_admin">
         <item>Sort ascending</item>
@@ -19,10 +17,10 @@
     </string-array>
     <string-array name="spinner_filter_category">
         <item>All</item>
-        <item>Toilet</item>
-        <item>Parking</item>
-        <item>Park</item>
-        <item>Bus station</item>
+        <item>OKU Parking</item>
+        <item>OKU Toilet</item>
+        <item>OKU Seat</item>
+        <item>Wheelchair</item>
     </string-array>
     <string-array name="spinner_filter_location">
         <item>All</item>

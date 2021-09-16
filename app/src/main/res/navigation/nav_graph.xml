@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/uploadFacilityFragment">
+    app:startDestination="@id/userLoginFragment">
     <fragment
         android:id="@+id/facilityDetailsFragment"
         android:name="my.tarc.mobileapp.facility.FacilityDetailsFragment"
@@ -153,7 +153,7 @@
         android:id="@+id/feedbackListFragment"
         android:name="my.tarc.mobileapp.facility.FeedbackListFragment"
         android:label="fragment_feedback_list"
-        tools:layout="@layout/fragment_feedback_list"/>
+        tools:layout="@layout/fragment_feedback_list" />
     <fragment
         android:id="@+id/adminFacilityDetailFragment"
         android:name="my.tarc.mobileapp.facility.AdminFacilityDetailFragment"
@@ -178,7 +178,7 @@
         android:id="@+id/adminPendingFacilityFragment"
         android:name="my.tarc.mobileapp.facility.AdminPendingFacilityFragment"
         android:label="fragment_admin_pending_facility"
-        tools:layout="@layout/fragment_admin_pending_facility" >
+        tools:layout="@layout/fragment_admin_pending_facility">
         <action
             android:id="@+id/action_adminPendingFacilityFragment_to_facilityListFragment"
             app:destination="@id/facilityListFragment" />
