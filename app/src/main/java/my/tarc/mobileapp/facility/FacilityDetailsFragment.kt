@@ -12,8 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.firestore.ktx.firestore
@@ -23,6 +22,7 @@ import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentFacilityDetailsBinding
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
 import my.tarc.mobileapp.viewmodel.UserViewModel
+import org.w3c.dom.Text
 
 class FacilityDetailsFragment : Fragment() {
 
@@ -213,15 +213,29 @@ class FacilityDetailsFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
 
-//        val btnDelete: Button = view.findViewById(R.id.dialogDeleteFacility_btnDelete)
-//        val btnCancel: Button = view.findViewById(R.id.dialogDeleteFacility_btnCancel)
+        val btnSubmit: Button = view.findViewById(R.id.dialogSubmitFeedback_btnSubmit)
+        val btnCancel: Button = view.findViewById(R.id.dialogSubmitFeedback_btnCancel)
 
-//        btnCancel.setOnClickListener {
-//            dialog.dismiss()
-//        }
-//
-//        btnDelete.setOnClickListener {
-//            deleteFacility()
-//        }
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnSubmit.setOnClickListener {
+           var txtComment: TextView = view.findViewById(R.id.dialogSubmitFeedback_btnSubmit)
+           var txtSuggestion: TextView = view.findViewById(R.id.dialogSubmitFeedback_txtSuggestion)
+           var type: Spinner = view.findViewById(R.id.filterDialog_spinnerFeedbackType)
+
+            if(txtComment.text.isEmpty()) txtComment.setError("Comment cannot be empty!")
+            if(txtSuggestion.text.isEmpty()) txtComment.setError("Suggestion cannot be empty!")
+
+            // Generate new user
+            val feedback = hashMapOf(
+                "comment" to txtComment.text.toString(),
+                "facility" to facilityViewModel.selectedFacility.value?.id.toString(),
+                "suggestion" to txtSuggestion.text.toString(),
+                "type" to type.selectedItem.toString(),
+            )
+            db.collection("feedback").add(feedback)
+        }
     }
 }

@@ -27,7 +27,7 @@ class FeedbackAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = feedbackList[position]
-        holder.feedbackTitle.text = currentItem.title
+        holder.feedbackTitle.text = currentItem.type
         holder.itemView.setOnClickListener{listener(currentItem)}
     }
 

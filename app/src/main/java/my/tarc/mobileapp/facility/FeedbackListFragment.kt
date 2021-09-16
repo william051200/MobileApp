@@ -124,7 +124,8 @@ class FeedbackListFragment : Fragment() {
 
         dialog.show()
 
-//        btnAccept.setOnClickListener {
+        //TODO(ACCEPT BUTTON IN FEEDBACK DETAILS)
+        btnAccept.setOnClickListener {
 //
 //            // Update the selected facility's
 //            val facilityRef = db.collection("facility").document(feedback.facility)
@@ -152,8 +153,9 @@ class FeedbackListFragment : Fragment() {
 //            }
 //
 //            dialog.dismiss()
-//        }
+        }
 
+        //TODO(CHANGE DOCUMENT ID)
         btnDelete.setOnClickListener {
             // Update the selected facility's
             db.collection("feedback").document(feedback.id).delete().addOnSuccessListener {
