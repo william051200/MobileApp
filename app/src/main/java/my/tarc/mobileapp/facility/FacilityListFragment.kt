@@ -166,8 +166,10 @@ class FacilityListFragment : Fragment() {
                             facilityViewModel.setFacility(facility)
                             if (userViewModel.activeUser.value!!.userType == "user")
                                 findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
-                            else
+                            else if (facilityViewModel.toolBarTitle.value == "Facility List")
                                 findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
+                            else
+                                findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
                         }
                     }
                 }

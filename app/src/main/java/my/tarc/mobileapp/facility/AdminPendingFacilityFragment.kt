@@ -19,10 +19,10 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import my.tarc.mobileapp.R
-import my.tarc.mobileapp.databinding.FragmentAdminFacilityDetailBinding
+import my.tarc.mobileapp.databinding.FragmentAdminPendingFacilityBinding
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
 
-class AdminFacilityDetailFragment : Fragment() {
+class AdminPendingFacilityFragment : Fragment() {
 
     // Firestore database
     private val db = Firebase.firestore
@@ -35,7 +35,7 @@ class AdminFacilityDetailFragment : Fragment() {
     private val facilityViewModel: FacilityViewModel by activityViewModels()
 
     // Binding
-    private var _binding: FragmentAdminFacilityDetailBinding? = null
+    private var _binding: FragmentAdminPendingFacilityBinding? = null
     private val binding get() = _binding!!
 
     //Store uris of picked Images
@@ -48,7 +48,7 @@ class AdminFacilityDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAdminFacilityDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentAdminPendingFacilityBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -58,16 +58,16 @@ class AdminFacilityDetailFragment : Fragment() {
         loadFacilityDetail()
 
         // Image switcher
-        binding.adminFacilityDetailImageSwitcher.setFactory { ImageView(activity?.applicationContext) }
+        binding.adminPendingFacilityImageSwitcher.setFactory { ImageView(activity?.applicationContext) }
 
         // Store image list
         images = ArrayList()
 
         // next image
-        binding.adminFacilityDetailBtnNextImage.setOnClickListener {
+        binding.adminPendingFacilityBtnNextImage.setOnClickListener {
             if (position < images.size - 1) {
                 position++
-                binding.adminFacilityDetailImageSwitcher.setImageDrawable(images[position])
+                binding.adminPendingFacilityImageSwitcher.setImageDrawable(images[position])
             } else {
                 //Display no more image
                 Toast.makeText(activity, "No more images", Toast.LENGTH_SHORT).show()
@@ -75,48 +75,33 @@ class AdminFacilityDetailFragment : Fragment() {
         }
 
         // previous image
-        binding.adminFacilityDetailBtnPreviousImg.setOnClickListener {
+        binding.adminPendingFacilityBtnPreviousImg.setOnClickListener {
             if (position > 0) {
                 position--
-                binding.adminFacilityDetailImageSwitcher.setImageDrawable(images!![position])
+                binding.adminPendingFacilityImageSwitcher.setImageDrawable(images!![position])
             } else {
                 //Display no more image
                 Toast.makeText(activity, "No more images", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Navigate to selected facility feedback list
-        binding.adminFacilityDetailBtnViewfeedback.setOnClickListener {
-            findNavController().navigate(R.id.action_adminFacilityDetailFragment_to_eachFacilityFeedbackListFragment)
-        }
+        // Approve facility
+        binding.adminPendingFacilityBtnApprove.setOnClickListener { approveFacility() }
 
-        // Navigate to edit this facility
-        binding.adminFacilityDetailBtnEdit.setOnClickListener {
-            findNavController().navigate(R.id.action_adminFacilityDetailFragment_to_editFacilityFragment)
-        }
-
-        // Delete this facility
-        binding.adminFacilityDetailBtnDelete.setOnClickListener {
-            openDeleteFacilityDialog()
-        }
+        // Deny facility
+        binding.adminPendingFacilityBtnDeny.setOnClickListener { denyFacility() }
     }
 
     private fun loadFacilityDetail() {
-        // Need feedback
-        // Set features to null if nothing
         var id: String = facilityViewModel.selectedFacility.value!!.id
         var name: String
-        var rating: Long
         var address: String
         var operatingHours: String
         var feature: String
-        var feedbackList: ArrayList<String>
 
         db.collection("facility").document(id).get().addOnSuccessListener {
             name = it.get("name") as String
-            rating = it.get("rating") as Long
             feature = it.get("oku_feature") as String
-            feedbackList = it.get("feedbacks") as ArrayList<String>
 
             // Address
             var street: String = it.get("address_street") as String
@@ -130,20 +115,10 @@ class AdminFacilityDetailFragment : Fragment() {
             var closeTime: String = it.get("closing_hour") as String
             operatingHours = "$startTime - $closeTime"
 
-            binding.adminFacilityDetailTxtFacilityName.text = name
-            binding.adminFacilityDetailRatingBar.rating = rating.toFloat()
-            binding.adminFacilityDetailRatingCount.text = "(${rating})"
-            binding.adminFacilityDetailTxtFacilityAddress.text = address
-            binding.adminFacilityDetailTxtOperatingHours.text = operatingHours
-            binding.adminFacilityDetailTxtFacilityFeatures.text = feature
-
-            if (feedbackList?.size > 0) {
-                binding.adminFacilityDetailBtnViewfeedback.visibility = View.VISIBLE
-                binding.view2.visibility = View.VISIBLE
-            } else {
-                binding.adminFacilityDetailBtnViewfeedback.visibility = View.INVISIBLE
-                binding.view2.visibility = View.INVISIBLE
-            }
+            binding.adminPendingFacilityTxtFacilityName.text = name
+            binding.adminPendingFacilityTxtFacilityAddress.text = address
+            binding.adminPendingFacilityTxtOperatingHours.text = operatingHours
+            binding.adminPendingFacilityTxtFacilityFeatures.text = feature
         }
 
         storageRef.child(id).listAll().addOnSuccessListener {
@@ -157,26 +132,22 @@ class AdminFacilityDetailFragment : Fragment() {
                     bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
                     val drawable: Drawable = BitmapDrawable(bmp)
                     images?.add(drawable)
-                    binding.adminFacilityDetailImageSwitcher.setImageDrawable(images[0])
+                    binding.adminPendingFacilityImageSwitcher.setImageDrawable(images[0])
                 }
             }
         }
     }
 
-    private fun deleteFacility() {
+    private fun approveFacility() {
         var id: String = facilityViewModel.selectedFacility.value!!.id
 
-        db.collection("facility").document(id).delete().addOnSuccessListener {
-            storageRef.child(id).delete().addOnSuccessListener {
-                Toast.makeText(context, "Deleted facility", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_adminFacilityDetailFragment_to_facilityListFragment)
-            }
-        }
+        db.collection("facility").document(id).update("status", "Approved")
+        Toast.makeText(context, "Approved facility", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_adminPendingFacilityFragment_to_facilityListFragment)
     }
 
-    // Open delete facility dialog
-    private fun openDeleteFacilityDialog() {
-        val view = View.inflate(this.context, R.layout.fragment_dialog_delete_facility, null)
+    private fun denyFacility() {
+        val view = View.inflate(this.context, R.layout.fragment_dialog_deny_facility, null)
 
         val builder = AlertDialog.Builder(this.context)
         builder.setView(view)
@@ -184,15 +155,22 @@ class AdminFacilityDetailFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
 
-        val btnDelete: Button = view.findViewById(R.id.dialogDeleteFacility_btnDelete)
-        val btnCancel: Button = view.findViewById(R.id.dialogDeleteFacility_btnCancel)
+        val btnDeny: Button = view.findViewById(R.id.dialogDeclineFacility_btnDeny)
+        val btnCancel: Button = view.findViewById(R.id.dialogDeclineFacility_btnCancel)
 
         btnCancel.setOnClickListener {
             dialog.dismiss()
         }
 
-        btnDelete.setOnClickListener {
-            deleteFacility()
+        btnDeny.setOnClickListener {
+            var id: String = facilityViewModel.selectedFacility.value!!.id
+
+            db.collection("facility").document(id).delete().addOnSuccessListener {
+                storageRef.child(id).delete().addOnSuccessListener {
+                    Toast.makeText(context, "Denied facility", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_adminPendingFacilityFragment_to_facilityListFragment)
+                }
+            }
         }
     }
 

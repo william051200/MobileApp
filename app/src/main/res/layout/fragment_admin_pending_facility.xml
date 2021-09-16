@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".facility.AdminPendingFacilityFragment">
+
+    <Button
+        android:id="@+id/adminPendingFacility_btnPreviousImg"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/round_button"
+        android:shadowColor="#DCDCDC"
+        android:textColor="#191111"
+        app:backgroundTint="#2196F3"
+        app:icon="@drawable/ic_back"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#DCDCDC"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/adminPendingFacility_btnNextImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/round_button"
+        app:backgroundTint="#2196F3"
+        app:icon="@drawable/ic_next"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageSwitcher
+        android:id="@+id/adminPendingFacility_imageSwitcher"
+        android:layout_width="0dp"
+        android:layout_height="275dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageSwitcher>
+
+    <TextView
+        android:id="@+id/adminPendingFacility_txtFacilityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adminPendingFacility_imageSwitcher" />
+
+    <TextView
+        android:id="@+id/textViewLabelAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adminPendingFacility_txtFacilityName" />
+
+    <TextView
+        android:id="@+id/textViewLabelHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/hours"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelAddress" />
+
+    <TextView
+        android:id="@+id/adminPendingFacility_txtOperatingHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textColor="#99000000"
+        app:layout_constraintStart_toEndOf="@+id/textViewLabelHours"
+        app:layout_constraintTop_toTopOf="@+id/textViewLabelHours" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adminPendingFacility_txtOperatingHours" />
+
+    <TextView
+        android:id="@+id/textViewFeature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Features:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <Button
+        android:id="@+id/adminPendingFacility_btnDeny"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/deny"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        app:backgroundTint="#B73333"
+        app:icon="@drawable/ic_iconoir_delete_circled_outline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/adminPendingFacility_btnApprove"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/approve"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        app:backgroundTint="#0693EF"
+        app:icon="@drawable/ic_teenyicons_tick_circle_outline_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/adminPendingFacility_txtFacilityAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textColor="#99000000"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewLabelAddress"
+        app:layout_constraintStart_toEndOf="@+id/textViewLabelAddress"
+        app:layout_constraintTop_toTopOf="@+id/textViewLabelAddress" />
+
+    <TextView
+        android:id="@+id/adminPendingFacility_txtFacilityFeatures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="TextView"
+        android:textColor="#11A604"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewTick"
+        app:layout_constraintStart_toEndOf="@+id/imageViewTick"
+        app:layout_constraintTop_toTopOf="@+id/imageViewTick" />
+
+    <ImageView
+        android:id="@+id/imageViewTick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFeature"
+        app:layout_constraintStart_toEndOf="@+id/textViewFeature"
+        app:layout_constraintTop_toTopOf="@+id/textViewFeature"
+        app:srcCompat="@drawable/ic_teenyicons_tick_circle_outline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="275dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

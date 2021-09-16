@@ -7,9 +7,11 @@
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/facility_layout.xml" value="0.245018115942029" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_facility_detail.xml" value="0.4" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_homepage.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_pending_facility.xml" value="0.4" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_decline_facility.xml" value="0.4" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_delete_facility.xml" value="0.245018115942029" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_delete_image.xml" value="0.245018115942029" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_feedback.xml" value="0.161231884057971" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_feedback.xml" value="0.264" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_each_facility_feedback_list.xml" value="0.245018115942029" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_edit_facility.xml" value="0.245018115942029" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_facility_details.xml" value="0.4" />

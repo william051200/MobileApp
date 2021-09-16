@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout4"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".facility.DialogDeleteFacilityFragment">
+    tools:context=".facility.DialogDenyFacilityFragment">
 
     <TextView
         android:id="@+id/textView4"
@@ -13,19 +13,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="@string/delete_this_facility"
+        android:text="Deny this facility?"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/dialogDeleteFacility_btnDelete"
+        android:id="@+id/dialogDeclineFacility_btnDeny"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/delete"
+        android:text="Deny"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#B73333"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/dialogDeleteFacility_btnCancel"
+        android:id="@+id/dialogDeclineFacility_btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -44,9 +44,9 @@
         android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#737373"
-        app:layout_constraintBottom_toBottomOf="@+id/dialogDeleteFacility_btnDelete"
+        app:layout_constraintBottom_toBottomOf="@+id/dialogDeclineFacility_btnDeny"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/dialogDeleteFacility_btnDelete"
-        app:layout_constraintTop_toTopOf="@+id/dialogDeleteFacility_btnDelete" />
+        app:layout_constraintEnd_toStartOf="@+id/dialogDeclineFacility_btnDeny"
+        app:layout_constraintTop_toTopOf="@+id/dialogDeclineFacility_btnDeny" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
