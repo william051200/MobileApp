@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -114,7 +115,7 @@
 
     </RelativeLayout>
 
-    <TextView
+    <Button
         android:id="@+id/userLogin_btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -125,11 +126,12 @@
         android:background="@drawable/blue_fill__rounded_color"
         android:clickable="true"
         android:gravity="center"
-        android:paddingTop="14dp"
-        android:paddingBottom="14dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:text="@string/signin"
         android:textColor="#ffffff"
-        android:textSize="12dp" />
+        android:textSize="12dp"
+        app:backgroundTint="#0693EF" />
 
 
     <TextView
@@ -167,10 +169,10 @@
         android:id="@+id/textViewAdmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/textViewNoAccount"
         android:layout_marginLeft="62dp"
+        android:layout_marginTop="-20dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="60dp"
         android:paddingLeft="40dp"
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
@@ -182,8 +184,10 @@
         android:id="@+id/userLogin_btnAdminLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewNoAccount"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="162dp"
+        android:layout_marginTop="-20dp"
         android:layout_marginRight="62dp"
         android:layout_marginBottom="60dp"
         android:clickable="true"
