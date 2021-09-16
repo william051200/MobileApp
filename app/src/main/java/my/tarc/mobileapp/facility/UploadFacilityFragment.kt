@@ -43,6 +43,9 @@ class UploadFacilityFragment : Fragment() {
     // Current position of selected image
     private var position = 0
 
+    // Facility Status
+    private val statusFac: String = "Pending"
+
     //request code to pick image
     private val PICK_IMAGES_CODE = 0
 
@@ -192,6 +195,7 @@ class UploadFacilityFragment : Fragment() {
         val city = binding.txtFacilityCity.text.toString()
         val state = binding.txtFacilityState.text.toString()
         val zipCode = binding.txtFacilityZipCode.text.toString()
+        val status = statusFac
 
 
         // Create New Facility
@@ -203,7 +207,8 @@ class UploadFacilityFragment : Fragment() {
             "address_street" to streetAddress,
             "address_city" to city,
             "address_state" to state,
-            "address_postcode" to zipCode
+            "address_postcode" to zipCode,
+            "status" to status
         )
 
         facilityRef.document(facilityName).set(facility).addOnSuccessListener {
