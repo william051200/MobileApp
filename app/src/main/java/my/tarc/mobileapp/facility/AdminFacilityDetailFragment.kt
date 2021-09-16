@@ -1,6 +1,8 @@
 package my.tarc.mobileapp.facility
 
 import android.app.AlertDialog
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -99,14 +101,21 @@ class AdminFacilityDetailFragment : Fragment() {
                 binding.adminFacilityDetailTxtFacilityFeatures.text = feature
             }
 
-        val imageReference = storageRef.child(id).child("0.png")
 
         storageRef.child(id).listAll().addOnSuccessListener {
-            Log.e("test", it.items.size.toString())
-        }
-            .addOnFailureListener {
-                // Uh-oh, an error occurred!
+            var size: Int = it.items.size
+            for (i in 0..size) {
+                var bmp: Bitmap? = null
+                val imageReference = storageRef.child(id).child("$i.png")
+                val ONE_MEGABYTE: Long = 1024 * 1024
+
+                imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
+                    bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+                    binding.adminFacilityDetailImageView.setImageBitmap(bmp)
+                }
             }
+        }
+
     }
 
     // Open delete facility dialog
