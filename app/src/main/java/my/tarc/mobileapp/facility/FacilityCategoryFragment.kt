@@ -18,8 +18,6 @@ class FacilityCategoryFragment : Fragment() {
     private var _binding: FragmentFacilityCategoryBinding? = null
     private val binding get() = _binding!!
 
-    private val userViewModel: UserViewModel by activityViewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,12 +28,6 @@ class FacilityCategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        Log.e("user", userViewModel.activeUser.value!!.email)
-        Log.e("user", userViewModel.activeUser.value!!.name)
-        Log.e("user", userViewModel.activeUser.value!!.password)
-        Log.e("user", userViewModel.activeUser.value!!.favoriteFacilities.size.toString())
-        Log.e("user", userViewModel.activeUser.value!!.userType)
 
         // Navigate to favourite category page
         binding.btnFavoriteCategory.setOnClickListener {
