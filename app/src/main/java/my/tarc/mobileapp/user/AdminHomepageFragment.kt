@@ -6,13 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentAdminHomepageBinding
+import my.tarc.mobileapp.viewmodel.FacilityViewModel
 
 class AdminHomepageFragment : Fragment() {
     private var _binding: FragmentAdminHomepageBinding? = null
     private val binding get() = _binding!!
+    private val facilityViewModel: FacilityViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,16 +46,19 @@ class AdminHomepageFragment : Fragment() {
 
         // Navigate to all facility page
         btnAllFacility.setOnClickListener {
+            facilityViewModel.toolBarTitle.value = "Facility List"
             findNavController().navigate(R.id.action_adminHomepageFragment_to_facilityListFragment)
         }
 
         // Navigate to pending approvals page
         btnPendingApprovals.setOnClickListener {
+            facilityViewModel.toolBarTitle.value = "Pending Approvals"
             findNavController().navigate(R.id.action_adminHomepageFragment_to_facilityListFragment)
         }
 
         // Navigate to feedback list page
         btnFeedbackList.setOnClickListener {
+            facilityViewModel.toolBarTitle.value = "Feedback List"
             findNavController().navigate(R.id.action_adminHomepageFragment_to_feedbackListFragment)
         }
     }
