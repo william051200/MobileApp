@@ -4,18 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".facility.FacilityDetailsFragment" >
+    tools:context=".facility.FacilityDetailsFragment">
 
-    <ImageView
-        android:id="@+id/imageView3"
+    <Button
+        android:id="@+id/facilityDetail_btnPreviousImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/round_button"
+        android:shadowColor="#DCDCDC"
+        android:textColor="#191111"
+        app:backgroundTint="#2196F3"
+        app:icon="@drawable/ic_back"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#DCDCDC"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/facilityDetail_btnNextImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/round_button"
+        app:backgroundTint="#2196F3"
+        app:icon="@drawable/ic_next"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageSwitcher
+        android:id="@+id/facilityDetail_imageSwitcher"
         android:layout_width="0dp"
         android:layout_height="275dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"></ImageSwitcher>
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/facilityDetail_txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -23,10 +52,10 @@
         android:text="TextView"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/facilityDetail_imageSwitcher" />
 
     <RatingBar
-        android:id="@+id/smallRating"
+        android:id="@+id/facilityDetail_ratingBar"
         style="?android:attr/ratingBarStyleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,17 +64,17 @@
         android:progressTint="#FFCC01"
         android:rating="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+        app:layout_constraintTop_toBottomOf="@+id/facilityDetail_txtName" />
 
     <TextView
-        android:id="@+id/textViewRatingCount"
+        android:id="@+id/facilityDetail_txtRatingCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/smallRating"
-        app:layout_constraintStart_toEndOf="@+id/smallRating"
-        app:layout_constraintTop_toTopOf="@+id/smallRating" />
+        app:layout_constraintBottom_toBottomOf="@+id/facilityDetail_ratingBar"
+        app:layout_constraintStart_toEndOf="@+id/facilityDetail_ratingBar"
+        app:layout_constraintTop_toTopOf="@+id/facilityDetail_ratingBar" />
 
     <TextView
         android:id="@+id/textViewLabelAddress"
@@ -55,7 +84,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/address"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/smallRating" />
+        app:layout_constraintTop_toBottomOf="@+id/facilityDetail_ratingBar" />
 
     <TextView
         android:id="@+id/textViewLabelHours"
@@ -68,7 +97,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewLabelAddress" />
 
     <TextView
-        android:id="@+id/textViewHours"
+        android:id="@+id/facilityDetail_txtOperationHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -87,7 +116,7 @@
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHours" />
+        app:layout_constraintTop_toBottomOf="@+id/facilityDetail_txtOperationHours" />
 
     <View
         android:id="@+id/view2"
@@ -117,10 +146,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        app:srcCompat="@drawable/ic_teenyicons_tick_circle_outline"
         app:layout_constraintBottom_toBottomOf="@+id/textViewFeature"
         app:layout_constraintStart_toEndOf="@+id/textViewFeature"
-        app:layout_constraintTop_toTopOf="@+id/textViewFeature" />
+        app:layout_constraintTop_toTopOf="@+id/textViewFeature"
+        app:srcCompat="@drawable/ic_teenyicons_tick_circle_outline" />
 
     <TextView
         android:id="@+id/facilityDetail_txtFeature"
@@ -134,52 +163,25 @@
         app:layout_constraintTop_toTopOf="@+id/textViewFeature" />
 
     <TextView
-        android:id="@+id/facilityDetail_btnViewfeedback"
+        android:id="@+id/facilityDetail_btnSubmitfeedback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:text="@string/feedback"
+        android:text="Submit a feedback"
         android:textColor="#0693EF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
-
-    <Button
-        android:id="@+id/facilityDetail_btnDeny"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/delete"
-        android:textAllCaps="false"
-        android:textSize="12sp"
-        app:backgroundTint="#B73333"
-        app:icon="@drawable/ic_iconoir_delete_circled_outline"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/facilityDetail_btnApprove"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/edit"
-        android:textAllCaps="false"
-        android:textSize="12sp"
-        app:backgroundTint="#0693EF"
-        app:icon="@drawable/ic_edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/facilityDetail_btnUnfavourite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewName"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/facilityDetail_txtName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewName"
+        app:layout_constraintTop_toTopOf="@+id/facilityDetail_txtName"
         app:srcCompat="@drawable/ic_unfavorite_button" />
 
     <ImageView
@@ -187,13 +189,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        app:srcCompat="@drawable/ic_favorite_button"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewName"
+        app:layout_constraintBottom_toBottomOf="@+id/facilityDetail_txtName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewName" />
+        app:layout_constraintTop_toTopOf="@+id/facilityDetail_txtName"
+        app:srcCompat="@drawable/ic_favorite_button" />
 
     <TextView
-        android:id="@+id/textViewAddress"
+        android:id="@+id/facilityDetail_txtAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -204,7 +206,7 @@
         app:layout_constraintTop_toTopOf="@+id/textViewLabelAddress" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/facilityDetail_btnNavigate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -217,4 +219,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="275dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

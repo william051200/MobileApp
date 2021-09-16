@@ -102,8 +102,6 @@ class AdminFacilityDetailFragment : Fragment() {
     }
 
     private fun loadFacilityDetail() {
-        // Need feedback
-        // Set features to null if nothing
         var id: String = facilityViewModel.selectedFacility.value!!.id
         var name: String
         var rating: Long
@@ -195,5 +193,4 @@ class AdminFacilityDetailFragment : Fragment() {
             deleteFacility()
         }
     }
-
 }

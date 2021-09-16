@@ -153,11 +153,7 @@
         android:id="@+id/feedbackListFragment"
         android:name="my.tarc.mobileapp.facility.FeedbackListFragment"
         android:label="fragment_feedback_list"
-        tools:layout="@layout/fragment_feedback_list">
-        <action
-            android:id="@+id/action_feedbackListFragment_to_facilityDetailsFragment"
-            app:destination="@id/facilityDetailsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_feedback_list"/>
     <fragment
         android:id="@+id/adminFacilityDetailFragment"
         android:name="my.tarc.mobileapp.facility.AdminFacilityDetailFragment"
