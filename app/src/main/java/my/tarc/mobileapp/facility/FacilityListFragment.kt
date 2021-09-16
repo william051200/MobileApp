@@ -165,6 +165,11 @@ class FacilityListFragment : Fragment() {
         query
             .get()
             .addOnSuccessListener { documents ->
+                if (documents.size() < 1) {
+                    binding.facilityListTxtNoData.visibility = View.VISIBLE
+                    binding.facilityListTxtNoData.text = "No facility"
+                } else binding.facilityListTxtNoData.visibility = View.INVISIBLE
+
                 for (document in documents) {
                     var facilityId = document.get("id").toString()
                     var facilityName = document.get("name").toString()
