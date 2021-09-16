@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.model.Facility
 
-class FacilityAdapter(private val facilityList: ArrayList<Facility>) :
+class FacilityAdapter(
+    private val facilityList: ArrayList<Facility>,
+    private val listener: (Facility) -> Unit
+) :
     RecyclerView.Adapter<FacilityAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -27,6 +30,7 @@ class FacilityAdapter(private val facilityList: ArrayList<Facility>) :
         val currentItem = facilityList[position]
         holder.facilityImage.setImageBitmap(currentItem.picture)
         holder.facilityName.text = currentItem.name
+        holder.itemView.setOnClickListener{listener(currentItem)}
     }
 
     override fun getItemCount(): Int {

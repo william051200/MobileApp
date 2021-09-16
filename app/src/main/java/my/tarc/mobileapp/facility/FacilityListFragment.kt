@@ -97,7 +97,7 @@ class FacilityListFragment : Fragment() {
                 id: Long
             ) {
                 sortFacility()
-                recyclerView.adapter = FacilityAdapter(facilityList)
+                recyclerView.adapter = FacilityAdapter(facilityList) { _ -> }
             }
         }
 
@@ -162,7 +162,11 @@ class FacilityListFragment : Fragment() {
                         collectedFacilityList.add(facility)
                         facilityList.add(facility)
                         sortFacility()
-                        recyclerView.adapter = FacilityAdapter(facilityList)
+                        recyclerView.adapter = FacilityAdapter(facilityList) { facility ->
+                            // Pass selected facility to facility_details
+                            facilityViewModel.setFacility(facility)
+                            findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
+                        }
                     }
                 }
             }
@@ -218,7 +222,9 @@ class FacilityListFragment : Fragment() {
             filterCategory = spinnerCategory.selectedItem.toString()
             filterLocation = spinnerLocation.selectedItem.toString()
             filterFacility()
-            recyclerView.adapter = FacilityAdapter(facilityList)
+            recyclerView.adapter = FacilityAdapter(facilityList) { _ ->
+
+            }
             dialog.dismiss()
         }
     }
