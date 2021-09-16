@@ -171,7 +171,7 @@ class FacilityListFragment : Fragment() {
                 } else binding.facilityListTxtNoData.visibility = View.INVISIBLE
 
                 for (document in documents) {
-                    var facilityId = document.get("id").toString()
+                    var facilityId = document.id
                     var facilityName = document.get("name").toString()
                     var facilityState = document.get("address_state").toString()
 

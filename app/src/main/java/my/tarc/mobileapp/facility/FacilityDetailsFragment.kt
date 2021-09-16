@@ -1,27 +1,28 @@
 package my.tarc.mobileapp.facility
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentFacilityDetailsBinding
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
+import my.tarc.mobileapp.viewmodel.UserViewModel
 
 class FacilityDetailsFragment : Fragment() {
 
@@ -34,6 +35,7 @@ class FacilityDetailsFragment : Fragment() {
 
     // view model
     private val facilityViewModel: FacilityViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
 
     // Binding
     private var _binding: FragmentFacilityDetailsBinding? = null
@@ -44,6 +46,8 @@ class FacilityDetailsFragment : Fragment() {
 
     // Current position of selected image
     private var position = 0
+
+    private lateinit var address: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,25 +71,25 @@ class FacilityDetailsFragment : Fragment() {
         images = ArrayList()
 
         // Rating bar
-        binding.facilityDetailRatingBar.setOnTouchListener(View.OnTouchListener { v, event ->
-            if (event.action == MotionEvent.ACTION_UP) {
-                Log.e("test", v.toString())
-            }
-            return@OnTouchListener true
-        })
+//        binding.facilityDetailRatingBar.setOnTouchListener(View.OnTouchListener { v, event ->
+//            if (event.action == MotionEvent.ACTION_UP) {
+//                Log.e("test", v.toString())
+//            }
+//            return@OnTouchListener true
+//        })
 
-        // Unfavourite this facility
+        // favourite this facility
         binding.facilityDetailBtnFavourite.setOnClickListener {
             binding.facilityDetailBtnUnfavourite.visibility = View.VISIBLE
             binding.facilityDetailBtnFavourite.visibility = View.INVISIBLE
-            favouriteFacility()
+            handleFavouriteFacility("favourite")
         }
 
-        // Favourite this facility
+        // unfavourite this facility
         binding.facilityDetailBtnUnfavourite.setOnClickListener {
             binding.facilityDetailBtnUnfavourite.visibility = View.INVISIBLE
             binding.facilityDetailBtnFavourite.visibility = View.VISIBLE
-            unfavouriteFacility()
+            handleFavouriteFacility("unfavourite")
         }
 
         // next image
@@ -117,17 +121,26 @@ class FacilityDetailsFragment : Fragment() {
 
         // Navigate to map
         binding.facilityDetailBtnNavigate.setOnClickListener {
-            findNavController().navigate(R.id.action_adminFacilityDetailFragment_to_editFacilityFragment)
+            val uri: Uri =
+                Uri.parse("https://www.google.co.in/maps/dir/Your Location/${address}")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            intent.setPackage("com.google.android.apps.maps")
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
         }
     }
 
     private fun loadFacilityDetail() {
+        var email: String = userViewModel.activeUser.value!!.email
         var id: String = facilityViewModel.selectedFacility.value!!.id
         var name: String
         var rating: String
-        var address: String
         var operatingHours: String
         var feature: String
+
+//        db.collection("user").document(email).get().addOnSuccessListener {
+//            collectedFacilityId = it.get("favourite_facility") as ArrayList<String>
+//        }
 
         db.collection("facility").document(id).get().addOnSuccessListener {
             name = it.get("name") as String
@@ -171,12 +184,23 @@ class FacilityDetailsFragment : Fragment() {
         }
     }
 
-    private fun favouriteFacility() {
+    private fun handleFavouriteFacility(type: String) {
+        var email: String = userViewModel.activeUser.value!!.email
+        var collectedFacilityId = ArrayList<String>()
 
-    }
+        db.collection("user").document(email).get().addOnSuccessListener {
+            collectedFacilityId = it.get("favourite_facility") as ArrayList<String>
+        }
 
-    private fun unfavouriteFacility() {
+        if (type == "favourite") {
+            collectedFacilityId.add(facilityViewModel.selectedFacility.value!!.id)
+            Toast.makeText(context, "Added to your favourite", Toast.LENGTH_SHORT).show()
+        } else {
+            collectedFacilityId.remove(facilityViewModel.selectedFacility.value!!.id)
+            Toast.makeText(context, "Removed from your favourite", Toast.LENGTH_SHORT).show()
+        }
 
+        db.collection("user").document(email).update("favourite_facility", collectedFacilityId)
     }
 
     // Open submit feedback dialog

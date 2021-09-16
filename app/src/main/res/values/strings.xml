@@ -17,10 +17,10 @@
     </string-array>
     <string-array name="spinner_filter_category">
         <item>All</item>
-        <item>OKU Parking</item>
         <item>OKU Toilet</item>
-        <item>OKU Seat</item>
-        <item>Wheelchair</item>
+        <item>OKU Bus</item>
+        <item>OKU Park</item>
+        <item>OKU Parking</item>
     </string-array>
     <string-array name="spinner_filter_location">
         <item>All</item>
