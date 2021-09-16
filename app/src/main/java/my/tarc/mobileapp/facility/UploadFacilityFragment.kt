@@ -185,6 +185,7 @@ class UploadFacilityFragment : Fragment() {
         val state = binding.txtFacilityState.text.toString()
         val zipCode = binding.txtFacilityZipCode.text.toString()
         val status = statusFac
+        val facilityID = "dummy3"
         val imageId = UUID.randomUUID()
         val allFacImg = images
 
@@ -200,8 +201,13 @@ class UploadFacilityFragment : Fragment() {
             "address_postcode" to zipCode,
             "status" to status,
             "rating" to 0,
+            "id" to facilityID,
             "feedbacks" to ArrayList<String>(),
         )
+
+        images?.forEachIndexed { index, image ->
+            storageRef.child(facilityID).child("$index.png").putFile(image!!)
+        }
 
 //        facilityRef.document(uuid.toString()).set(facility).addOnSuccessListener {
 //            Toast.makeText(this.context, "Uploaded successful!", Toast.LENGTH_SHORT).show()
