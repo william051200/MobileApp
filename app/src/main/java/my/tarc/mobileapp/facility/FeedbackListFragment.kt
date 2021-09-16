@@ -167,9 +167,11 @@ class FeedbackListFragment : Fragment() {
                     var arrayStr = feedback.suggestion.split(",").toTypedArray()
                     // Address
                     var street: String = arrayStr[0]
-                    var postcode: String = arrayStr[1]
-                    var city: String = arrayStr[2]
-                    var state: String = arrayStr[3]
+                    var postcodeCity: String = arrayStr[1]
+                    var trimmedStr = postcodeCity.trim()
+                    var postcode = trimmedStr.substring(0,5)
+                    var city = trimmedStr.substring(5)
+                    var state: String = arrayStr[2]
 
                     facilityRef.update("address_city", city)
                     facilityRef.update("address_postcode", postcode)
