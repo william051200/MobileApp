@@ -1,14 +1,17 @@
 package my.tarc.mobileapp.facility
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentAdminFacilityDetailBinding
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
 
@@ -39,5 +42,72 @@ class AdminFacilityDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        loadFacilityDetail()
+
+        // Validate if this facility has feedback then show feedback button
+
+        binding.adminFacilityDetailBtnViewfeedback.setOnClickListener {
+            // view feedback
+        }
+
+        binding.adminFacilityDetailBtnEdit.setOnClickListener {
+            // navigate to where?
+        }
+
+        binding.adminFacilityDetailBtnDelete.setOnClickListener {
+            openDeleteFacilityDialog()
+        }
+    }
+
+    private fun loadFacilityDetail() {
+        // Need feedback
+        var id: String = "dummy1"
+        var name: String
+        var rating: Int
+        var address: String
+        var operatingHours: String
+        var feature: String
+
+        db.collection("facility").document(id).get()
+            .addOnSuccessListener {
+                name = it.get("name") as String
+                rating = it.get("rating") as Int
+                feature = it.get("oku_feature") as String
+
+                // Address
+                var street: String = it.get("address_street") as String
+                var postcode: String = it.get("address_postcode") as String
+                var city: String = it.get("address_city") as String
+                var state: String = it.get("address_state") as String
+                address = "$street, $postcode $city, $state"
+
+                // Operating hours
+                var startTime: String = it.get("starting_hour") as String
+                var closeTime: String = it.get("closing_hour") as String
+                operatingHours = "$startTime - $closeTime"
+
+            }
+    }
+
+    // Open delete facility dialog
+    private fun openDeleteFacilityDialog() {
+        val view = View.inflate(this.context, R.layout.fragment_dialog_filter, null)
+
+        val builder = AlertDialog.Builder(this.context)
+        builder.setView(view)
+
+        val dialog = builder.create()
+        dialog.show()
+
+        val btnDelete: Button = view.findViewById(R.id.dialogDeleteFacility_btnDelete)
+        val btnCancel: Button = view.findViewById(R.id.dialogDeleteFacility_btnCancel)
+
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnDelete.setOnClickListener {
+            // Delete facility and go back to last page
+        }
     }
 }

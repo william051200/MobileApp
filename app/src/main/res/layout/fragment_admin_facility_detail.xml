@@ -166,9 +166,20 @@
         android:id="@+id/adminFacilityDetail_txtFacilityFeatures"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textViewFeature"
-        app:layout_constraintTop_toTopOf="@+id/textViewFeature" />
+        android:textColor="#11A604"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewTick"
+        app:layout_constraintStart_toEndOf="@+id/imageViewTick"
+        app:layout_constraintTop_toTopOf="@+id/imageViewTick" />
 
+    <ImageView
+        android:id="@+id/imageViewTick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFeature"
+        app:layout_constraintStart_toEndOf="@+id/textViewFeature"
+        app:layout_constraintTop_toTopOf="@+id/textViewFeature"
+        app:srcCompat="@drawable/ic_teenyicons_tick_circle_outline" />
 </androidx.constraintlayout.widget.ConstraintLayout>
