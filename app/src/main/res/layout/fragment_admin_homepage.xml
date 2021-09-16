@@ -73,21 +73,11 @@
                 android:id="@+id/facility"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="30dp"
                 android:gravity="center"
                 android:text="@string/facility"
                 android:textColor="#0F124D"
                 android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/subFacility"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:gravity="center"
-                android:text="19 Facilities"
-                android:textColor="#A5A5A5"
-                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -123,21 +113,11 @@
                 android:id="@+id/pending"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="30dp"
                 android:gravity="center"
                 android:text="@string/pending"
                 android:textColor="#0F124D"
                 android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/subPending"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:gravity="center"
-                android:text="19 pendings"
-                android:textColor="#A5A5A5"
-                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -173,21 +153,11 @@
                 android:id="@+id/feedback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="30dp"
                 android:gravity="center"
                 android:text="@string/feedbacklist"
                 android:textColor="#0F124D"
                 android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/subFeedback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:gravity="center"
-                android:text="19 feedbacks"
-                android:textColor="#A5A5A5"
-                android:textSize="16sp" />
 
         </LinearLayout>
 

@@ -94,7 +94,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/hours"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLabelAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/adminFacilityDetail_txtFacilityAddress" />
 
     <TextView
         android:id="@+id/adminFacilityDetail_txtOperatingHours"
@@ -182,12 +182,11 @@
 
     <TextView
         android:id="@+id/adminFacilityDetail_txtFacilityAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:text="TextView"
         android:textColor="#99000000"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewLabelAddress"
         app:layout_constraintStart_toEndOf="@+id/textViewLabelAddress"
         app:layout_constraintTop_toTopOf="@+id/textViewLabelAddress" />
 

@@ -96,7 +96,16 @@ class FacilityListFragment : Fragment() {
                 id: Long
             ) {
                 sortFacility()
-                recyclerView.adapter = FacilityAdapter(facilityList) { _ -> }
+                recyclerView.adapter = FacilityAdapter(facilityList) { facility ->
+                    // Pass selected facility to facility_details
+                    facilityViewModel.setFacility(facility)
+                    if (userViewModel.activeUser.value!!.userType == "user")
+                        findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
+                    else if (facilityViewModel.toolBarTitle.value == "Facility List")
+                        findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
+                    else
+                        findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
+                }
             }
         }
 
@@ -114,21 +123,35 @@ class FacilityListFragment : Fragment() {
 
         // Get different facilities based on user type
         if (userViewModel.activeUser.value!!.userType == "user") {
-            var favouriteList:
-                    MutableList<String>? = null
+            var facilityType = facilityViewModel.selectedFacilityType.value
+            var tempFavouriteList: ArrayList<String>? = null
 
-            // Get user's favorite facility's id
-            db.collection("user").document(userViewModel.activeUser.value!!.email).get()
-                .addOnSuccessListener {
-                    favouriteList = (it.get("favourite_facility") as Array<String>).toMutableList()
+            if (facilityType == "favourite") {
+                var favouriteList:
+                        MutableList<String>? = null
+
+                // Get user's favorite facility's id
+                db.collection("user").document(userViewModel.activeUser.value!!.email).get()
+                    .addOnSuccessListener {
+                        tempFavouriteList = it.get("favourite_facility") as ArrayList<String>
+                        if (tempFavouriteList!!.isNotEmpty())
+                            favouriteList = (tempFavouriteList)?.toMutableList()
+                    }
+
+                userViewModel.activeUser.value!!.favoriteFacilities.forEach { facility ->
+                    facility.id
                 }
 
-            userViewModel.activeUser.value!!.favoriteFacilities.forEach { facility ->
-                facility.id
+                if (tempFavouriteList?.isNotEmpty() == true) {
+                    // Query that retrieves user's favorite facilities
+                    query = db.collection("facility").whereIn("id", favouriteList!!)
+                } else {
+                    query = db.collection("facility").whereEqualTo("id", "heheyougotnothinghehe")
+                }
+            } else {
+                query = db.collection("facility")
+                    .whereEqualTo("category", facilityType)
             }
-
-            // Query that retrieves user's favorite facilities
-            query = db.collection("facility").whereIn("id", favouriteList!!)
         } else {
             if (facilityViewModel.toolBarTitle.value == "Facility List") {
                 query = db.collection("facility")
@@ -142,6 +165,11 @@ class FacilityListFragment : Fragment() {
         query
             .get()
             .addOnSuccessListener { documents ->
+                if (documents.size() < 1) {
+                    binding.facilityListTxtNoData.visibility = View.VISIBLE
+                    binding.facilityListTxtNoData.text = "No facility"
+                } else binding.facilityListTxtNoData.visibility = View.INVISIBLE
+
                 for (document in documents) {
                     var facilityId = document.get("id").toString()
                     var facilityName = document.get("name").toString()
@@ -226,8 +254,15 @@ class FacilityListFragment : Fragment() {
             filterCategory = spinnerCategory.selectedItem.toString()
             filterLocation = spinnerLocation.selectedItem.toString()
             filterFacility()
-            recyclerView.adapter = FacilityAdapter(facilityList) { _ ->
-
+            recyclerView.adapter = FacilityAdapter(facilityList) { facility ->
+                // Pass selected facility to facility_details
+                facilityViewModel.setFacility(facility)
+                if (userViewModel.activeUser.value!!.userType == "user")
+                    findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
+                else if (facilityViewModel.toolBarTitle.value == "Facility List")
+                    findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
+                else
+                    findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
             }
             dialog.dismiss()
         }

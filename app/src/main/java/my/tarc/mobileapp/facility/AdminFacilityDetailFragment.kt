@@ -102,11 +102,9 @@ class AdminFacilityDetailFragment : Fragment() {
     }
 
     private fun loadFacilityDetail() {
-        // Need feedback
-        // Set features to null if nothing
         var id: String = facilityViewModel.selectedFacility.value!!.id
         var name: String
-        var rating: Long
+        var rating: String
         var address: String
         var operatingHours: String
         var feature: String
@@ -114,7 +112,7 @@ class AdminFacilityDetailFragment : Fragment() {
 
         db.collection("facility").document(id).get().addOnSuccessListener {
             name = it.get("name") as String
-            rating = it.get("rating") as Long
+            rating = it.get("rating") as String
             feature = it.get("oku_feature") as String
             feedbackList = it.get("feedbacks") as ArrayList<String>
 
@@ -132,7 +130,7 @@ class AdminFacilityDetailFragment : Fragment() {
 
             binding.adminFacilityDetailTxtFacilityName.text = name
             binding.adminFacilityDetailRatingBar.rating = rating.toFloat()
-            binding.adminFacilityDetailRatingCount.text = "(${rating})"
+            binding.adminFacilityDetailRatingCount.text = rating
             binding.adminFacilityDetailTxtFacilityAddress.text = address
             binding.adminFacilityDetailTxtOperatingHours.text = operatingHours
             binding.adminFacilityDetailTxtFacilityFeatures.text = feature
@@ -195,5 +193,4 @@ class AdminFacilityDetailFragment : Fragment() {
             deleteFacility()
         }
     }
-
 }

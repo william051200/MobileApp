@@ -8,37 +8,37 @@
     tools:context=".facility.FacilityCategoryFragment">
 
     <Button
-        android:id="@+id/btn_BusStop_Category"
+        android:id="@+id/facilityCategory_btnWheelchair"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="70dp"
         android:drawableTop="@drawable/ic_bus"
-        android:text="@string/bus_station_label"
+        android:text="Wheelchair"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Parking_Category"
+        app:layout_constraintTop_toBottomOf="@+id/facilityCategory_btnParking"
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/btn_Park_Category"
+        android:id="@+id/facilityCategory_btnSeat"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="70dp"
         android:layout_marginTop="16dp"
         android:drawableTop="@drawable/ic_park"
-        android:text="@string/okuPark_label"
+        android:text="Seat"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Toilet_Category"
+        app:layout_constraintTop_toBottomOf="@+id/facilityCategory_btnToilet"
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/btn_Parking_Category"
+        android:id="@+id/facilityCategory_btnParking"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="100dp"
@@ -53,7 +53,7 @@
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/btn_Favorite_Category"
+        android:id="@+id/facilityCategory_btnFavourite"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="70dp"
@@ -64,11 +64,11 @@
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Park_Category"
+        app:layout_constraintTop_toBottomOf="@+id/facilityCategory_btnSeat"
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/btn_Toilet_Category"
+        android:id="@+id/facilityCategory_btnToilet"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="70dp"

@@ -5,7 +5,22 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
     tools:context=".facility.UploadFacilityFragment">
+
+    <TextView
+        android:id="@+id/UploadFacility_btnfeedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:clickable="true"
+        android:minHeight="48dp"
+        android:paddingTop="10dp"
+        android:text="@string/txtViewFeedback"
+        android:textColor="#0693EF"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerRating"
+        app:layout_constraintStart_toEndOf="@+id/spinnerRating"
+        app:layout_constraintTop_toTopOf="@+id/spinnerRating" />
 
     <ImageSwitcher
         android:id="@+id/imgSwitcher_Facility"
@@ -33,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="@string/txtView_facility_name_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,20 +90,19 @@
         android:id="@+id/textViewState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="117dp"
+        android:layout_marginStart="180dp"
         android:text="@string/txtView_state_label"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewCity"
         app:layout_constraintStart_toEndOf="@+id/textViewCity"
         app:layout_constraintTop_toTopOf="@+id/textViewCity"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewLabelAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:text="@string/txtView_address_label"
         android:textSize="16sp"
@@ -100,7 +114,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="12dp"
         android:text="@string/txtView_city_label"
         android:textSize="16sp"
@@ -124,20 +137,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="2dp"
         android:text="@string/btn_cancel"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#737373"
         app:cornerRadius="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFacility_State" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategory" />
+
+    <Button
+        android:id="@+id/btn_Previous_Img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/round_button"
+        android:shadowColor="#DCDCDC"
+        android:textColor="#191111"
+        app:backgroundTint="#2196F3"
+        app:icon="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="@+id/imgSwitcher_Facility"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#DCDCDC"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btn_Next_Img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/round_button"
+        app:backgroundTint="#2196F3"
+        app:icon="@drawable/ic_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/btnUpload_Facility_Upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="20dp"
         android:padding="10dp"
         android:text="@string/btnUpload"
@@ -147,7 +189,7 @@
         app:cornerRadius="12dp"
         app:icon="@drawable/ic_upload"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFacility_State" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerRating" />
 
     <EditText
         android:id="@+id/txtFacility_Name"
@@ -159,12 +201,12 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:ems="10"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:hint="@string/txtView_facility_name_label"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewFacilityName" />
@@ -195,83 +237,47 @@
         android:id="@+id/textViewZipcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="107dp"
+        android:layout_marginStart="180dp"
         android:text="@string/txtView_zipcode_label"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewState"
-        app:layout_constraintStart_toEndOf="@+id/textViewState"
-        app:layout_constraintTop_toTopOf="@+id/textViewState"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/textViewLabelAddress"
+        app:layout_constraintStart_toEndOf="@+id/textViewLabelAddress"
+        app:layout_constraintTop_toTopOf="@+id/textViewLabelAddress"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/txtFacility_Address"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:ems="10"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:hint="@string/exampleAddress_label"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="14sp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLabelAddress" />
-
-    <EditText
-        android:id="@+id/txtFacility_City"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="2dp"
-        android:ems="10"
-        android:hint="@string/exampleCity_label"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textSize="14sp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCity" />
-
-    <EditText
-        android:id="@+id/txtFacility_State"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:ems="10"
-        android:hint="@string/exampleState_label"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textSize="14sp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        app:layout_constraintBottom_toBottomOf="@+id/txtFacility_City"
-        app:layout_constraintStart_toEndOf="@+id/txtFacility_City"
-        app:layout_constraintTop_toTopOf="@+id/txtFacility_City" />
 
     <EditText
         android:id="@+id/txtFacility_Zip_Code"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="40dp"
         android:ems="10"
-        android:hint="@string/exampleZipcode_label"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:textSize="14sp"
-        android:maxLength="5"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        app:layout_constraintBottom_toBottomOf="@+id/txtFacility_State"
-        app:layout_constraintStart_toEndOf="@+id/txtFacility_State"
-        app:layout_constraintTop_toTopOf="@+id/txtFacility_State" />
+        android:hint="@string/exampleZipcode_label"
+        android:inputType="number"
+        android:maxLength="5"
+        android:minHeight="48dp"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtFacility_Address"
+        app:layout_constraintStart_toEndOf="@+id/txtFacility_Address"
+        app:layout_constraintTop_toTopOf="@+id/txtFacility_Address"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
         android:id="@+id/txtOKU_Feature"
@@ -285,34 +291,73 @@
         app:layout_constraintTop_toTopOf="@+id/spinnerCT"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/btn_Previous_Img"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="55dp"
-        android:background="@drawable/round_button"
-        android:shadowColor="#DCDCDC"
-        android:textColor="#191111"
-        app:backgroundTint="#2196F3"
-        app:icon="@drawable/ic_back"
-        app:layout_constraintStart_toStartOf="@+id/imgSwitcher_Facility"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="#DCDCDC"
-        tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/btn_Next_Img"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/round_button"
-        app:backgroundTint="#2196F3"
-        app:icon="@drawable/ic_next"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+    <Spinner
+        android:id="@+id/spinnerCity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:entries="@array/spinner_City"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCity" />
+
+    <Spinner
+        android:id="@+id/spinnerState"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:entries="@array/spinner_State"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerCity"
+        app:layout_constraintStart_toEndOf="@+id/spinnerCity"
+        app:layout_constraintTop_toTopOf="@+id/spinnerCity"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/txtView_facilityCategory"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCity" />
+
+    <Spinner
+        android:id="@+id/spinnerCategory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:entries="@array/spinner_facilityCategory"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCategory" />
+
+    <TextView
+        android:id="@+id/textViewRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:text="@string/txtView_rating"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewCategory"
+        app:layout_constraintStart_toEndOf="@+id/textViewCategory"
+        app:layout_constraintTop_toTopOf="@+id/textViewCategory"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Spinner
+        android:id="@+id/spinnerRating"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:entries="@array/spinner_rating"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerCategory"
+        app:layout_constraintStart_toEndOf="@+id/spinnerCategory"
+        app:layout_constraintTop_toTopOf="@+id/spinnerCategory"
+        app:layout_constraintVertical_bias="0.541" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

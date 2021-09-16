@@ -14,10 +14,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
+import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUploadFacilityBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -97,8 +99,7 @@ class UploadFacilityFragment : Fragment() {
 
         //
         binding.btnUploadFacilityUpload.setOnClickListener {
-//            if (!facilityValidation()) newFacility()
-            newFacility()
+            if (!facilityValidation()) newFacility()
         }
 
     }
@@ -145,8 +146,6 @@ class UploadFacilityFragment : Fragment() {
     private fun facilityValidation(): Boolean {
         val textFacilityName: TextView = binding.txtFacilityName
         val textStreetAddress: TextView = binding.txtFacilityAddress
-        val textCity: TextView = binding.txtFacilityCity
-        val textState: TextView = binding.txtFacilityState
         val textZipCode: TextView = binding.txtFacilityZipCode
         var error: Boolean = false
 
@@ -158,14 +157,6 @@ class UploadFacilityFragment : Fragment() {
             Toast.makeText(activity, "Invalid Street Address", Toast.LENGTH_SHORT).show()
             textStreetAddress.requestFocus()
             error = true
-        } else if (textCity.text.isEmpty()) {
-            Toast.makeText(activity, "Invalid City", Toast.LENGTH_SHORT).show()
-            textCity.requestFocus()
-            error = true
-        } else if (textState.text.isEmpty()) {
-            Toast.makeText(activity, "Invalid State", Toast.LENGTH_SHORT).show()
-            textState.requestFocus()
-            error = true
         } else if (textZipCode.text.isEmpty() || textZipCode.text.length < 5) {
             Toast.makeText(activity, "Invalid Zip Code", Toast.LENGTH_SHORT).show()
             textZipCode.requestFocus()
@@ -175,20 +166,22 @@ class UploadFacilityFragment : Fragment() {
     }
 
     private fun newFacility() {
-        Log.e("pick image", images?.size.toString())
+//        Log.e("pick image", images?.size.toString())
 
         val facilityName = binding.txtFacilityName.text.toString()
         val startTime = binding.spinnerST.selectedItem.toString()
         val closeTime = binding.spinnerCT.selectedItem.toString()
         val okuFeature = binding.txtOKUFeature.selectedItem.toString()
         val streetAddress = binding.txtFacilityAddress.text.toString()
-        val city = binding.txtFacilityCity.text.toString()
-        val state = binding.txtFacilityState.text.toString()
+        val city = binding.spinnerCity.selectedItem.toString()
+        val state = binding.spinnerState.selectedItem.toString()
         val zipCode = binding.txtFacilityZipCode.text.toString()
+        val category = binding.spinnerCategory.selectedItem.toString()
+        val rating = binding.spinnerRating.selectedItem.toString()
         val status = statusFac
-        val facilityID = "dummy3"
+        val facilityID = "dummy5"
         val imageId = UUID.randomUUID()
-        val allFacImg = images
+
 
         // Create New Facility
         val facility = hashMapOf(
@@ -201,22 +194,23 @@ class UploadFacilityFragment : Fragment() {
             "address_state" to state,
             "address_postcode" to zipCode,
             "status" to status,
-            "rating" to 0,
+            "rating" to rating,
             "id" to facilityID,
             "feedbacks" to ArrayList<String>(),
+            "category" to category
         )
 
         images?.forEachIndexed { index, image ->
             storageRef.child(facilityID).child("$index.png").putFile(image!!)
         }
 
-//        facilityRef.document(uuid.toString()).set(facility).addOnSuccessListener {
-//            Toast.makeText(this.context, "Uploaded successful!", Toast.LENGTH_SHORT).show()
-//            // Navigate back to facility category once uploaded
-//            findNavController().navigate(R.id.action_uploadFacilityFragment_to_facilityCategory)
-//        }.addOnFailureListener {
-//            Log.e("Firestore", "Failed to create facility in Firestore!")
-//        }
+        facilityRef.document(facilityID).set(facility).addOnSuccessListener {
+            Toast.makeText(this.context, "Uploaded successful!", Toast.LENGTH_SHORT).show()
+            // Navigate back to facility category once uploaded
+            findNavController().navigate(R.id.action_uploadFacilityFragment_to_facilityCategory)
+        }.addOnFailureListener {
+            Log.e("Firestore", "Failed to create facility in Firestore!")
+        }
     }
 }
 
