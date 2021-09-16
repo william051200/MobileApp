@@ -16,6 +16,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import my.tarc.mobileapp.databinding.FragmentUploadFacilityBinding
 import java.util.*
@@ -30,7 +31,7 @@ class UploadFacilityFragment : Fragment() {
 
     // Firebase storage
     private val storage = Firebase.storage("gs://mobile-app-f3440.appspot.com")
-    private var storageRef = storage.reference.child("Facility images")
+    private var storageRef = storage.reference.child("Facility Images")
 
     //Binding fragment
     private var _binding: FragmentUploadFacilityBinding? = null
