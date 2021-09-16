@@ -6,14 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".facility.AdminFacilityDetailFragment">
 
-    <ImageView
-        android:id="@+id/adminFacilityDetail_imageView"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/adminFacilityDetail_btnPreviousImg"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/round_button"
+        android:shadowColor="#DCDCDC"
+        android:textColor="#191111"
+        app:backgroundTint="#2196F3"
+        app:icon="@drawable/ic_back"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#DCDCDC"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/adminFacilityDetail_btnNextImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/round_button"
+        app:backgroundTint="#2196F3"
+        app:icon="@drawable/ic_next"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageSwitcher
+        android:id="@+id/adminFacilityDetail_imageSwitcher"
+        android:layout_width="0dp"
         android:layout_height="275dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="fitXY" />
+        app:layout_constraintTop_toTopOf="parent"></ImageSwitcher>
 
     <TextView
         android:id="@+id/adminFacilityDetail_txtFacilityName"
@@ -24,7 +52,7 @@
         android:text="TextView"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminFacilityDetail_imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/adminFacilityDetail_imageSwitcher" />
 
     <RatingBar
         android:id="@+id/adminFacilityDetail_ratingBar"
@@ -183,4 +211,11 @@
         app:layout_constraintStart_toEndOf="@+id/textViewFeature"
         app:layout_constraintTop_toTopOf="@+id/textViewFeature"
         app:srcCompat="@drawable/ic_teenyicons_tick_circle_outline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="275dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

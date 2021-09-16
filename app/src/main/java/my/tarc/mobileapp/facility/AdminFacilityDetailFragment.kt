@@ -3,12 +3,15 @@ package my.tarc.mobileapp.facility
 import android.app.AlertDialog
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.firestore.ktx.firestore
@@ -17,6 +20,7 @@ import com.google.firebase.storage.ktx.storage
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentAdminFacilityDetailBinding
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
+
 
 class AdminFacilityDetailFragment : Fragment() {
 
@@ -34,6 +38,12 @@ class AdminFacilityDetailFragment : Fragment() {
     private var _binding: FragmentAdminFacilityDetailBinding? = null
     private val binding get() = _binding!!
 
+    //Store uris of picked Images
+    private lateinit var images: ArrayList<Drawable>
+
+    // Current position of selected image
+    private var position = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,6 +56,34 @@ class AdminFacilityDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         loadFacilityDetail()
+
+        // Image switcher
+        binding.adminFacilityDetailImageSwitcher.setFactory { ImageView(activity?.applicationContext) }
+
+        // Store image list
+        images = ArrayList()
+
+        // next image
+        binding.adminFacilityDetailBtnNextImage.setOnClickListener {
+            if (position < images.size - 1) {
+                position++
+                binding.adminFacilityDetailImageSwitcher.setImageDrawable(images[position])
+            } else {
+                //Display no more image
+                Toast.makeText(activity, "No more images", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // previous image
+        binding.adminFacilityDetailBtnPreviousImg.setOnClickListener {
+            if (position > 0) {
+                position--
+                binding.adminFacilityDetailImageSwitcher.setImageDrawable(images!![position])
+            } else {
+                //Display no more image
+                Toast.makeText(activity, "No more images", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         // Validate if this facility has feedback then show feedback button
 
@@ -64,7 +102,6 @@ class AdminFacilityDetailFragment : Fragment() {
 
     private fun loadFacilityDetail() {
         // Need feedback
-        // Need images
         // Set features to null if nothing
 
         var id: String = "dummy1"
@@ -76,7 +113,6 @@ class AdminFacilityDetailFragment : Fragment() {
 
         db.collection("facility").document(id).get()
             .addOnSuccessListener {
-                Log.e("test", it.get("rating").toString())
                 name = it.get("name") as String
                 rating = it.get("rating") as Long
                 feature = it.get("oku_feature") as String
@@ -95,27 +131,27 @@ class AdminFacilityDetailFragment : Fragment() {
 
                 binding.adminFacilityDetailTxtFacilityName.text = name
                 binding.adminFacilityDetailRatingBar.rating = rating.toFloat()
-                binding.adminFacilityDetailRatingCount.text = rating.toString()
+                binding.adminFacilityDetailRatingCount.text = "(${rating.toString()})"
                 binding.adminFacilityDetailTxtFacilityAddress.text = address
                 binding.adminFacilityDetailTxtOperatingHours.text = operatingHours
                 binding.adminFacilityDetailTxtFacilityFeatures.text = feature
             }
 
-
         storageRef.child(id).listAll().addOnSuccessListener {
             var size: Int = it.items.size
             for (i in 0..size) {
                 var bmp: Bitmap? = null
-                val imageReference = storageRef.child(id).child("$i.png")
                 val ONE_MEGABYTE: Long = 1024 * 1024
+                val imageReference = storageRef.child(id).child("$i.png")
 
                 imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
                     bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                    binding.adminFacilityDetailImageView.setImageBitmap(bmp)
+                    val drawable: Drawable = BitmapDrawable(bmp)
+                    images?.add(drawable)
+                    binding.adminFacilityDetailImageSwitcher.setImageDrawable(images[0])
                 }
             }
         }
-
     }
 
     // Open delete facility dialog
