@@ -206,7 +206,7 @@ class UploadFacilityFragment : Fragment() {
         )
 
         images?.forEachIndexed { index, image ->
-            storageRef.child("$index.png").putFile(image!!)
+            storageRef.child(facilityID).child("$index.png").putFile(image!!)
         }
 
 //        facilityRef.document(uuid.toString()).set(facility).addOnSuccessListener {
