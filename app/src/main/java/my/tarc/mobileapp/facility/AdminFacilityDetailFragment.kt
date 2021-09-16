@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -140,9 +139,13 @@ class AdminFacilityDetailFragment : Fragment() {
                 binding.adminFacilityDetailTxtOperatingHours.text = operatingHours
                 binding.adminFacilityDetailTxtFacilityFeatures.text = feature
 
-                if (feedbackList?.size > 0)
+                if (feedbackList?.size > 0) {
                     binding.adminFacilityDetailBtnViewfeedback.visibility = View.VISIBLE
-                else binding.adminFacilityDetailBtnViewfeedback.visibility = View.INVISIBLE
+                    binding.view2.visibility = View.VISIBLE
+                } else {
+                    binding.adminFacilityDetailBtnViewfeedback.visibility = View.INVISIBLE
+                    binding.view2.visibility = View.INVISIBLE
+                }
             }
 
         storageRef.child(id).listAll().addOnSuccessListener {
