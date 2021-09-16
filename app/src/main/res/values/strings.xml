@@ -172,6 +172,7 @@
     <string name="category">CATEGORY</string>
     <string name="view">View</string>
     <string name="delete_this_facility">Delete this facility?</string>
+    <string name="title_activity_maps">Maps</string>
 </resources>
 
 
