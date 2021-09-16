@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/favouriteList_frameLayout"
+    android:id="@+id/facilityList_frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".facility.FacilityListFragment">
 
     <LinearLayout
-        android:id="@+id/favouriteList_linearLayout"
+        android:id="@+id/facilityList_linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -17,14 +17,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Spinner
-            android:id="@+id/favouriteList_spinnerSort"
+            android:id="@+id/facilityList_spinnerSort"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:entries="@array/spinner_sort_user" />
 
         <Button
-            android:id="@+id/favouriteList_btnFilter"
+            android:id="@+id/facilityList_btnFilter"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/favouriteList_linearLayout2"
+        android:id="@+id/facilityList_linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/favouriteList_btnFacilityCategory"
+            android:id="@+id/facilityList_btnFacilityCategory"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
             app:backgroundTint="#0693EF" />
 
         <Button
-            android:id="@+id/favouriteList_btnMyProfile"
+            android:id="@+id/facilityList_btnMyProfile"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -75,13 +75,13 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favouriteList_recycleView"
+        android:id="@+id/facilityList_recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/favouriteList_linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/facilityList_linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favouriteList_linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/facilityList_linearLayout"
         tools:listitem="@layout/facility_layout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

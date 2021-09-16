@@ -43,12 +43,12 @@ class AdminHomepageFragment : Fragment() {
 
         // Navigate to all facility page
         btnAllFacility.setOnClickListener {
-            findNavController().navigate(R.id.action_adminHomepageFragment_to_adminAllFacilityFragment)
+            findNavController().navigate(R.id.action_adminHomepageFragment_to_facilityListFragment)
         }
 
         // Navigate to pending approvals page
         btnPendingApprovals.setOnClickListener {
-            findNavController().navigate(R.id.action_adminHomepageFragment_to_adminPendingApprovalsFragment)
+            findNavController().navigate(R.id.action_adminHomepageFragment_to_facilityListFragment)
         }
 
         // Navigate to feedback list page
