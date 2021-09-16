@@ -3,16 +3,16 @@ package my.tarc.mobileapp.model
 import android.graphics.Bitmap
 
 class Facility(
-    val id: String,
-    val name: String,
-    val address: Address,
-    val category: String,
-    val feedbacks: Array<Feedback>,
-    val okuFeature: String,
-    val startingHour: String,
-    val closingHour: String,
-    val rating: Int,
-    val status: String
+    var id: String,
+    var name: String,
+    var address: Address,
+    var category: String,
+    var feedbacks: Array<Feedback>,
+    var okuFeature: String,
+    var startingHour: String,
+    var closingHour: String,
+    var rating: Int,
+    var status: String
 ) {
     var picture: Bitmap? = null
 

@@ -38,6 +38,12 @@
         <item>Selangor</item>
         <item>Terengganu</item>
     </string-array>
+    <string-array name="spinner_feedback_type">
+        <item>Incorrect Name</item>
+        <item>Incorrect Operation Hours</item>
+        <item>Incorrect Address</item>
+        <item>Incorrect OKU Feature</item>
+    </string-array>
 
     //Common
     <string name="delete">Delete</string>
@@ -175,13 +181,13 @@
     //Submit Feedback Dialog
     <string name="cancel">Cancel</string>
     <string name="submit">Submit</string>
-    <string name="title">Title</string>
+    <string name="feedback_type">Feedback Type</string>
     <string name="comment">Comment</string>
     <string name="suggested_edit">Suggested Edit</string>
     <string name="hint">Enter something</string>
 
     //Feedback Dialog
-    <string name="edit_facility">Edit Facility</string>
+    <string name="accept">Accept</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

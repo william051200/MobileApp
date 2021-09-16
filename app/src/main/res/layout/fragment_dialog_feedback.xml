@@ -7,15 +7,27 @@
     tools:context=".facility.DialogFeedbackFragment">
 
     <TextView
-        android:id="@+id/textViewLabelComment"
+        android:id="@+id/feedback_txtFacilityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
+        android:text="TextView"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewLabelComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:text="Comment"
         android:textColor="#99000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/feedback_txtFacilityName" />
 
     <TextView
         android:id="@+id/textViewLabelSuggestedEdit"
@@ -26,23 +38,23 @@
         android:text="@string/suggested_edit"
         android:textColor="#99000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialogFeedback_txtFeedbackComment" />
+        app:layout_constraintTop_toBottomOf="@+id/dialogFeedback_txtCurrentInfo" />
 
     <Button
-        android:id="@+id/dialogFeedback_btnEdit"
+        android:id="@+id/dialogFeedback_btnAccept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/edit_facility"
+        android:text="@string/accept"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
         app:icon="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialogFeedback_txtCurrentInfo" />
+        app:layout_constraintTop_toBottomOf="@+id/dialogFeedback_txtSuggestion" />
 
     <Button
         android:id="@+id/dialogFeedback_btnDelete"
@@ -54,9 +66,9 @@
         android:textSize="12sp"
         app:backgroundTint="#B73333"
         app:icon="@drawable/ic_iconoir_delete_circled_outline"
-        app:layout_constraintBottom_toBottomOf="@+id/dialogFeedback_btnEdit"
-        app:layout_constraintEnd_toStartOf="@+id/dialogFeedback_btnEdit"
-        app:layout_constraintTop_toTopOf="@+id/dialogFeedback_btnEdit" />
+        app:layout_constraintBottom_toBottomOf="@+id/dialogFeedback_btnAccept"
+        app:layout_constraintEnd_toStartOf="@+id/dialogFeedback_btnAccept"
+        app:layout_constraintTop_toTopOf="@+id/dialogFeedback_btnAccept" />
 
     <TextView
         android:id="@+id/dialogFeedback_txtFeedbackComment"
@@ -109,5 +121,5 @@
         android:layout_marginTop="16dp"
         android:text="Current info"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialogFeedback_txtSuggestion" />
+        app:layout_constraintTop_toBottomOf="@+id/dialogFeedback_txtFeedbackComment" />
 </androidx.constraintlayout.widget.ConstraintLayout>
