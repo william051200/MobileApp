@@ -2,6 +2,7 @@ package my.tarc.mobileapp.facility
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,17 +62,21 @@ class AdminFacilityDetailFragment : Fragment() {
 
     private fun loadFacilityDetail() {
         // Need feedback
+        // Need images
+        // Set features to null if nothing
+
         var id: String = "dummy1"
         var name: String
-        var rating: Int
+        var rating: Long
         var address: String
         var operatingHours: String
         var feature: String
 
         db.collection("facility").document(id).get()
             .addOnSuccessListener {
+                Log.e("test", it.get("rating").toString())
                 name = it.get("name") as String
-                rating = it.get("rating") as Int
+                rating = it.get("rating") as Long
                 feature = it.get("oku_feature") as String
 
                 // Address
@@ -86,6 +91,12 @@ class AdminFacilityDetailFragment : Fragment() {
                 var closeTime: String = it.get("closing_hour") as String
                 operatingHours = "$startTime - $closeTime"
 
+                binding.adminFacilityDetailTxtFacilityName.text = name
+                binding.adminFacilityDetailRatingBar.rating = rating.toFloat()
+                binding.adminFacilityDetailRatingCount.text = rating.toString()
+                binding.adminFacilityDetailTxtFacilityAddress.text = address
+                binding.adminFacilityDetailTxtOperatingHours.text = operatingHours
+                binding.adminFacilityDetailTxtFacilityFeatures.text = feature
             }
     }
 
