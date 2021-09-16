@@ -98,6 +98,15 @@ class AdminFacilityDetailFragment : Fragment() {
                 binding.adminFacilityDetailTxtOperatingHours.text = operatingHours
                 binding.adminFacilityDetailTxtFacilityFeatures.text = feature
             }
+
+        val imageReference = storageRef.child(id).child("0.png")
+
+        storageRef.child(id).listAll().addOnSuccessListener {
+            Log.e("test", it.items.size.toString())
+        }
+            .addOnFailureListener {
+                // Uh-oh, an error occurred!
+            }
     }
 
     // Open delete facility dialog

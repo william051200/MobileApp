@@ -110,31 +110,27 @@ class UserLoginFragment : Fragment() {
 
     private fun getUserFromFirestore(email: String, password: String) {
         var userFavouriteFacilityList = ArrayList<Facility>()
-        var facilityList = ArrayList<String>()
-        var fullName: String = ""
 
         // Get user
         db.collection("user").document(email).get().addOnSuccessListener {
-            fullName = it.get("full_name").toString()
-            var tempFacilityList: ArrayList<String> =
-                it.get("favourite_facility") as ArrayList<String>
+            var fullName: String = it.get("full_name").toString()
+            var facilityList: ArrayList<String> = it.get("favourite_facility") as ArrayList<String>
 
-            if (tempFacilityList.size > 0) facilityList = tempFacilityList
-        }
-
-        // Get favourite facility
-        if (facilityList.size > 0) {
-            facilityList.map { eachFacility ->
-                db.collection("facility").document(eachFacility).get()
-                    .addOnSuccessListener { collectedFacility ->
-                        var facility = Facility(collectedFacility.id)
-                        userFavouriteFacilityList.add(facility)
-                    }
+            // Get favourite facility
+            if (facilityList.size > 0) {
+                facilityList.map { eachFacility ->
+                    db.collection("facility").document(eachFacility).get()
+                        .addOnSuccessListener { collectedFacility ->
+                            var facility = Facility(collectedFacility.id)
+                            userFavouriteFacilityList.add(facility)
+                        }
+                }
             }
+
+            // Set user to user view model
+            var user = User(email, fullName, "user", userFavouriteFacilityList, password)
+            userViewModel.setUser(user)
         }
 
-        // Set user to user view model
-        var user = User(email, fullName, "user", userFavouriteFacilityList, password)
-        userViewModel.setUser(user)
     }
 }
