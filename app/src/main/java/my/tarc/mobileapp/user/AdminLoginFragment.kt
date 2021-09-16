@@ -15,6 +15,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentAdminLoginBinding
+import my.tarc.mobileapp.model.AppPreferences
 import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.model.User
 import my.tarc.mobileapp.viewmodel.UserViewModel
@@ -49,14 +50,27 @@ class AdminLoginFragment : Fragment() {
         // Initialize Firebase Auth
         auth = Firebase.auth
 
+        if (AppPreferences.isLogin) {
+            // Directly login the user if previous session is present
+            logIn(AppPreferences.email, AppPreferences.password)
+            binding.adminuser.visibility = View.INVISIBLE
+            binding.adminpass.visibility = View.INVISIBLE
+            binding.adminLoginBtnLogIn.visibility = View.INVISIBLE
+            binding.textViewNotAdmin.visibility = View.INVISIBLE
+            binding.adminLoginBtnUserLogin.visibility = View.INVISIBLE
+            binding.textView3.text = "Logging in, please wait for a moment"
+        } else {
+            // Login to user account
+            binding.adminLoginBtnLogIn.setOnClickListener {
+                if (!validation()) logIn(
+                    binding.adminLoginTxtEmail.text.toString(),
+                    binding.adminLoginTxtPassword.text.toString()
+                )
+            }
+        }
         // Switch to user login
         binding.adminLoginBtnUserLogin.setOnClickListener {
             findNavController().navigate(R.id.action_adminLoginFragment_to_userLoginFragment)
-        }
-
-        // Login as admin, navigate to admin category
-        binding.adminLoginBtnLogIn.setOnClickListener {
-            if (!validation()) logIn()
         }
     }
 
@@ -79,9 +93,8 @@ class AdminLoginFragment : Fragment() {
         return error
     }
 
-    private fun logIn() {
-        var email = binding.adminLoginTxtEmail.text.toString()
-        var password = binding.adminLoginTxtPassword.text.toString()
+    private fun logIn(email: String, password: String) {
+
         var emptyList = ArrayList<Facility>()
 
         // Login to Firebase auth

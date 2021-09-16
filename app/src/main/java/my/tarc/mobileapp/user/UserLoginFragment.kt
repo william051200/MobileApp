@@ -56,6 +56,14 @@ class UserLoginFragment : Fragment() {
         if (AppPreferences.isLogin) {
             // Directly login the user if previous session is present
             logIn(AppPreferences.email, AppPreferences.password)
+            binding.loginuser.visibility = View.INVISIBLE
+            binding.passworduser.visibility = View.INVISIBLE
+            binding.userLoginBtnLogin.visibility = View.INVISIBLE
+            binding.textViewAdmin.visibility = View.INVISIBLE
+            binding.textViewNoAccount.visibility = View.INVISIBLE
+            binding.userLoginBtnSignUp.visibility = View.INVISIBLE
+            binding.userLoginBtnAdminLogin.visibility = View.INVISIBLE
+            binding.textView3.text = "Logging in, please wait for a moment"
         } else {
             // Login to user account
             binding.userLoginBtnLogin.setOnClickListener {

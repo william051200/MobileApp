@@ -156,7 +156,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="@string/exampleState_label"
+        android:text="@string/txtView_state_label"
         android:textColor="#11A604"
         app:layout_constraintBottom_toBottomOf="@+id/textViewFeature"
         app:layout_constraintStart_toEndOf="@+id/imageViewTick"

@@ -83,9 +83,21 @@
     </string-array>
     <string name="exampleAddress_label">Eg: Street Address</string>
     <string name="txtView_city_label">City</string>
-    <string name="exampleCity_label">Eg: George Town</string>
+    <string-array name="spinner_City">
+        <item>George Town</item>
+        <item>Alor Star</item>
+        <item>Ipoh</item>
+        <item>Kuching</item>
+        <item>Kuantan</item>
+    </string-array>
     <string name="txtView_state_label">State</string>
-    <string name="exampleState_label">Eg: Pulau Pinang</string>
+    <string-array name="spinner_State">
+        <item>Pulau Pinang</item>
+        <item>Kedah</item>
+        <item>Perak</item>
+        <item>Sarawak</item>
+        <item>Pahang</item>
+    </string-array>
     <string name="txtView_zipcode_label">Zip Code</string>
     <string name="exampleZipcode_label">Eg: 12345</string>
     <string-array name="spinner_oku_feature">
@@ -95,6 +107,24 @@
         <item>OKU Seat</item>
         <item>Wheelchair</item>
     </string-array>
+    <string name="txtView_facilityCategory">Category</string>
+    <string-array name="spinner_facilityCategory">
+        <item>OKU Toilet</item>
+        <item>OKU Bus</item>
+        <item>OKU Park</item>
+        <item>OKU Parking</item>
+    </string-array>
+    <string name="txtView_feedback">Feedback</string>
+    <string name="txtView_rating">Rating</string>
+    <string-array name="spinner_rating">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="txtViewFeedback">Feedback</string>
+
 
     //Facility Category
     <string name="okuToilet_label">OKU Toilet</string>

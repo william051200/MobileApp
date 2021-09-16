@@ -20,7 +20,7 @@ import my.tarc.mobileapp.R
 
 class Maps : AppCompatActivity(), OnMapReadyCallback {
 
-    var currentLocation : Location? = null
+    var currentLocation: Location? = null
     var fusedLocationProviderClient: FusedLocationProviderClient? = null
     val REQUEST_CODE = 101
 
@@ -36,19 +36,26 @@ class Maps : AppCompatActivity(), OnMapReadyCallback {
 
     private fun fetchLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_COARSE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
+            != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            )
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                REQUEST_CODE
+            )
             return
         }
 
         val task = fusedLocationProviderClient!!.lastLocation
         task.addOnSuccessListener { location ->
-            if (location != null){
+            if (location != null) {
                 currentLocation = location
-                val supportMapFragment = (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?)
+                val supportMapFragment =
+                    (supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?)
                 supportMapFragment!!.getMapAsync(this@Maps)
             }
         }
@@ -59,15 +66,15 @@ class Maps : AppCompatActivity(), OnMapReadyCallback {
         val lat = currentLocation!!.latitude
         val long = currentLocation!!.longitude
 
-        val facility = LatLng(lat-0.0001, long-0.0005)
+        val facility = LatLng(lat - 0.0001, long - 0.0005)
 
-        val facility1 = LatLng(lat-0.0008, long-0.0010)
+        val facility1 = LatLng(lat - 0.0008, long - 0.0010)
 
-        val facility2 = LatLng(lat-0.0020, long-0.0015)
+        val facility2 = LatLng(lat - 0.0020, long - 0.0015)
 
-        val facility3 = LatLng(lat-0.0030, long-0.0020)
+        val facility3 = LatLng(lat - 0.0030, long - 0.0020)
 
-        val facility4 = LatLng(lat-0.0040, long-0.0025)
+        val facility4 = LatLng(lat - 0.0040, long - 0.0025)
 
         googleMap.addMarker(
             MarkerOptions()
@@ -98,18 +105,23 @@ class Maps : AppCompatActivity(), OnMapReadyCallback {
 
         val markerOptions = MarkerOptions().position(latLng).title("I Am Here!")
         googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15f))
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
 
         googleMap.addMarker(markerOptions)
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        when(requestCode){
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
             REQUEST_CODE -> {
-                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     fetchLocation()
                 }
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }}
+    }
+}
