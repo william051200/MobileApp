@@ -133,12 +133,14 @@ class FeedbackListFragment : Fragment() {
             val facilityRef = db.collection("facility").document(feedback.facility)
             when (feedback.type) {
                 "Incorrect Name" -> {
-                    facilityRef.update("name", feedback.suggestion)
-                    Toast.makeText(
-                        context,
-                        "Facility Name Updated",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    facilityRef.update("name", feedback.suggestion).addOnSuccessListener {
+                        Toast.makeText(
+                            context,
+                            "Facility Name Updated",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        deleteFeedback(feedback.id)
+                    }
                 }
                 "Incorrect Operation Hours" -> {
                     // Operating hours
@@ -152,12 +154,14 @@ class FeedbackListFragment : Fragment() {
                         )
 
                     facilityRef.update("starting_hour", startTime)
-                    facilityRef.update("closing_hour", closeTime)
-                    Toast.makeText(
-                        context,
-                        "Facility Operating Hours Updated",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    facilityRef.update("closing_hour", closeTime).addOnSuccessListener {
+                        Toast.makeText(
+                            context,
+                            "Facility Operating Hours Updated",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        deleteFeedback(feedback.id)
+                    }
                 }
                 "Incorrect Address" -> {
                     var arrayStr = feedback.suggestion.split(",").toTypedArray()
@@ -170,22 +174,28 @@ class FeedbackListFragment : Fragment() {
                     facilityRef.update("address_city", city)
                     facilityRef.update("address_postcode", postcode)
                     facilityRef.update("address_state", state)
-                    facilityRef.update("address_street", street)
-                    Toast.makeText(
-                        context,
-                        "Facility Address Updated",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    facilityRef.update("address_street", street).addOnSuccessListener {
+                        Toast.makeText(
+                            context,
+                            "Facility Address Updated",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        deleteFeedback(feedback.id)
+                    }
                 }
                 "Incorrect Oku Feature" -> {
                     var suggestion = feedback.suggestion
                     if (suggestion == "None" || suggestion == "OKU Parking" || suggestion == "OKU Toilet" || suggestion == "OKU Seat" || suggestion == "Wheelchair") {
                         facilityRef.update("oku_feature", feedback.suggestion)
-                        Toast.makeText(
-                            context,
-                            "Facility OKU Feature Updated",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                            .addOnSuccessListener {
+                                Toast.makeText(
+                                    context,
+                                    "Facility OKU Feature Updated",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                deleteFeedback(feedback.id)
+                            }
+
                     } else {
                         Toast.makeText(
                             context,
@@ -196,17 +206,19 @@ class FeedbackListFragment : Fragment() {
 
                 }
             }
-
             dialog.dismiss()
         }
 
-        //TODO(CHANGE DOCUMENT ID)
         btnDelete.setOnClickListener {
-            // Update the selected facility's
-            db.collection("feedback").document(feedback.id).delete().addOnSuccessListener {
-                Toast.makeText(context, "Feedback Deleted", Toast.LENGTH_SHORT).show()
-            }
+            deleteFeedback(feedback.id)
             dialog.dismiss()
+        }
+    }
+
+    private fun deleteFeedback(feedbackID: String) {
+        // Delete the feedback
+        db.collection("feedback").document(feedbackID).delete().addOnSuccessListener {
+            Toast.makeText(context, "Feedback Deleted", Toast.LENGTH_SHORT).show()
         }
     }
 

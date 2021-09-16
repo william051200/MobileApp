@@ -242,6 +242,7 @@ class FacilityDetailsFragment : Fragment() {
                 "type" to type.selectedItem.toString(),
             )
             db.collection("feedback").add(feedback)
+            dialog.dismiss()
         }
     }
 }
