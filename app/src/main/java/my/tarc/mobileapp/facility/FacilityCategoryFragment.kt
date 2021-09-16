@@ -43,15 +43,15 @@ class FacilityCategoryFragment : Fragment() {
             findNavController().navigate(R.id.action_facilityCategory_to_facilityListFragment)
         }
 
-        // Navigate to seat page
-        binding.facilityCategoryBtnSeat.setOnClickListener {
-            facilityViewModel.setFacilityType("OKU Seat")
+        // Navigate to park page
+        binding.facilityCategoryBtnPark.setOnClickListener {
+            facilityViewModel.setFacilityType("OKU Park")
             findNavController().navigate(R.id.action_facilityCategory_to_facilityListFragment)
         }
 
-        // Navigate to wheelchair page
-        binding.facilityCategoryBtnWheelchair.setOnClickListener {
-            facilityViewModel.setFacilityType("Wheelchair")
+        // Navigate to bus station page
+        binding.facilityCategoryBtnBusStation.setOnClickListener {
+            facilityViewModel.setFacilityType("OKU Bus")
             findNavController().navigate(R.id.action_facilityCategory_to_facilityListFragment)
         }
 
