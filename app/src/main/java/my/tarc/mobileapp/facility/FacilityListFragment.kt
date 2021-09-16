@@ -124,6 +124,7 @@ class FacilityListFragment : Fragment() {
         // Get different facilities based on user type
         if (userViewModel.activeUser.value!!.userType == "user") {
             var facilityType = facilityViewModel.selectedFacilityType.value
+            var tempFavouriteList: ArrayList<String>? = null
 
             if (facilityType == "favourite") {
                 var favouriteList:
@@ -132,16 +133,21 @@ class FacilityListFragment : Fragment() {
                 // Get user's favorite facility's id
                 db.collection("user").document(userViewModel.activeUser.value!!.email).get()
                     .addOnSuccessListener {
-                        favouriteList =
-                            (it.get("favourite_facility") as Array<String>).toMutableList()
+                        tempFavouriteList = it.get("favourite_facility") as ArrayList<String>
+                        if (tempFavouriteList!!.isNotEmpty())
+                            favouriteList = (tempFavouriteList)?.toMutableList()
                     }
 
                 userViewModel.activeUser.value!!.favoriteFacilities.forEach { facility ->
                     facility.id
                 }
 
-                // Query that retrieves user's favorite facilities
-                query = db.collection("facility").whereIn("id", favouriteList!!)
+                if (tempFavouriteList?.isNotEmpty() == true) {
+                    // Query that retrieves user's favorite facilities
+                    query = db.collection("facility").whereIn("id", favouriteList!!)
+                } else {
+                    query = db.collection("facility").whereEqualTo("id", "heheyougotnothinghehe")
+                }
             } else {
                 query = db.collection("facility")
                     .whereEqualTo("category", facilityType)
