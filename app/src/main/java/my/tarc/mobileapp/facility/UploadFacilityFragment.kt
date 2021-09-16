@@ -96,7 +96,8 @@ class UploadFacilityFragment : Fragment() {
 
         //
         binding.btnUploadFacilityUpload.setOnClickListener {
-            if (!facilityValidation()) newFacility()
+//            if (!facilityValidation()) newFacility()
+            newFacility()
         }
 
     }
@@ -141,7 +142,6 @@ class UploadFacilityFragment : Fragment() {
 
     // Facility Details Validation
     private fun facilityValidation(): Boolean {
-        // Haven't include spinner validation yet
         val textFacilityName: TextView = binding.txtFacilityName
         val textStreetAddress: TextView = binding.txtFacilityAddress
         val textCity: TextView = binding.txtFacilityCity
@@ -185,9 +185,8 @@ class UploadFacilityFragment : Fragment() {
         val state = binding.txtFacilityState.text.toString()
         val zipCode = binding.txtFacilityZipCode.text.toString()
         val status = statusFac
-        val uuid = UUID.randomUUID()
-//        val imageId =
-
+        val imageId = UUID.randomUUID()
+        val allFacImg = images
 
         // Create New Facility
         val facility = hashMapOf(
@@ -212,10 +211,5 @@ class UploadFacilityFragment : Fragment() {
 //            Log.e("Firestore", "Failed to create facility in Firestore!")
 //        }
     }
-
-    private fun uploadFacilityImg() {
-        // Upload multiple facility images
-    }
-
 }
 

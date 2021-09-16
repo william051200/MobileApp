@@ -16,6 +16,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUserLoginBinding
+import my.tarc.mobileapp.model.AppPreferences
 import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.model.User
 import my.tarc.mobileapp.viewmodel.UserViewModel
@@ -52,9 +53,17 @@ class UserLoginFragment : Fragment() {
         // Initialize Firebase Auth
         auth = Firebase.auth
 
-        // Login to user account
-        binding.userLoginBtnLogin.setOnClickListener {
-            if (!validation()) logIn()
+        if (AppPreferences.isLogin) {
+            // Directly login the user if previous session is present
+            logIn(AppPreferences.email, AppPreferences.password)
+        } else {
+            // Login to user account
+            binding.userLoginBtnLogin.setOnClickListener {
+                if (!validation()) logIn(
+                    binding.userLoginTxtEmail.text.toString(),
+                    binding.userLoginTxtPassword.text.toString()
+                )
+            }
         }
 
         // Switch to admin login
@@ -87,9 +96,7 @@ class UserLoginFragment : Fragment() {
         return error
     }
 
-    private fun logIn() {
-        var email = binding.userLoginTxtEmail.text.toString()
-        var password = binding.userLoginTxtPassword.text.toString()
+    private fun logIn(email: String, password: String) {
 
         // Login to Firebase auth
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener() { task ->
@@ -98,6 +105,11 @@ class UserLoginFragment : Fragment() {
                 Toast.makeText(context, "Login success", Toast.LENGTH_SHORT).show()
 
                 getUserFromFirestore(email, password)
+
+                // Store user's session when successfully logged in
+                AppPreferences.isLogin = true
+                AppPreferences.email = email
+                AppPreferences.password = password
 
                 findNavController().navigate(R.id.action_userLoginFragment_to_facilityCategory)
                 (activity as AppCompatActivity?)!!.supportActionBar!!.show()
@@ -131,6 +143,5 @@ class UserLoginFragment : Fragment() {
             var user = User(email, fullName, "user", userFavouriteFacilityList, password)
             userViewModel.setUser(user)
         }
-
     }
 }

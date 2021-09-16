@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -23,12 +24,17 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUserProfileBinding
+import my.tarc.mobileapp.viewmodel.UserViewModel
+import org.w3c.dom.Text
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
 class UserProfileFragment : Fragment() {
+    // Connect To User viewModel
+    private val userViewModel: UserViewModel by activityViewModels()
+
     //Binding fragment
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
@@ -60,10 +66,25 @@ class UserProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        /* Validate whether any user data retrieved from userViewModel
+        Log.e("user", userViewModel.activeUser.value!!.name)
+        Log.e("user", userViewModel.activeUser.value!!.email)
+        Log.e("user", userViewModel.activeUser.value!!.password)*/
+
+        val userName:String = userViewModel.activeUser.value!!.name
+        val email:String = userViewModel.activeUser.value!!.email
+        val pwd:String = userViewModel.activeUser.value!!.password
+
+        binding.txtUserName.setText(userName)
+        binding.txtUserEmail.setText(email)
+        binding.txtUserPwd.setText(pwd)
+
 
         // Navigate to Facility Category
         binding.userProfileBtnFacilityCategory.setOnClickListener {
@@ -113,10 +134,8 @@ class UserProfileFragment : Fragment() {
         progressDialog.setCancelable(false)
         progressDialog.show()
 
-        val formatter = SimpleDateFormat("yyyy_MM_dd_mm_ss", Locale.getDefault())
-        val now = Date()
-        val fileName = formatter.format(now)
-        val storageRef = FirebaseStorage.getInstance().getReference("User Images/$fileName")
+        val email = userViewModel.activeUser.value!!.email
+        val storageRef = FirebaseStorage.getInstance().getReference("User Images/$email.png")
 
         storageRef.putFile(imageUri).addOnSuccessListener {
             Toast.makeText(this.context, "Profile Updated", Toast.LENGTH_SHORT).show()
