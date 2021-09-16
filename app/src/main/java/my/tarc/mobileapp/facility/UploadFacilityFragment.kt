@@ -1,6 +1,7 @@
 package my.tarc.mobileapp.facility
 
 import android.app.Activity.RESULT_OK
+import android.app.ProgressDialog
 import android.content.ContentResolver
 import android.content.Intent
 import android.net.Uri
@@ -18,10 +19,14 @@ import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUploadFacilityBinding
 import my.tarc.mobileapp.model.Facility
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class UploadFacilityFragment : Fragment() {
 
