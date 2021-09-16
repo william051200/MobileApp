@@ -32,12 +32,11 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="320dp"
-        android:layout_centerHorizontal="true"
         android:layout_marginEnd="8dp"
-        android:text="@string/logintext"
-        />
+        android:text="@string/logintext" />
 
     <RelativeLayout
         android:id="@+id/loginuser"
@@ -134,6 +133,7 @@
 
 
     <TextView
+        android:id="@+id/textViewNoAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/userLogin_btnLogin"
@@ -164,6 +164,7 @@
         android:textSize="12dp" />
 
     <TextView
+        android:id="@+id/textViewAdmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
