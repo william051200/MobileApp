@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/feedbackListFragment">
+    app:startDestination="@id/adminFacilityDetailFragment">
     <fragment
         android:id="@+id/facilityDetailsFragment"
         android:name="my.tarc.mobileapp.facility.FacilityDetailsFragment"
@@ -42,14 +42,14 @@
             android:id="@+id/action_facilityCategory_to_navigationFragment"
             app:destination="@id/navigationFragment" />
         <action
-            android:id="@+id/action_facilityCategory_to_favouriteListFragment"
-            app:destination="@id/facilityListFragment" />
-        <action
             android:id="@+id/action_facilityCategory_to_userProfile"
             app:destination="@id/userProfile" />
         <action
             android:id="@+id/action_facilityCategory_to_uploadFacilityFragment"
             app:destination="@id/uploadFacilityFragment" />
+        <action
+            android:id="@+id/action_facilityCategory_to_facilityListFragment"
+            app:destination="@id/facilityListFragment" />
     </fragment>
     <fragment
         android:id="@+id/facilityListFragment"
@@ -68,6 +68,9 @@
         <action
             android:id="@+id/action_facilityListFragment_to_uploadFacilityFragment"
             app:destination="@id/uploadFacilityFragment" />
+        <action
+            android:id="@+id/action_facilityListFragment_to_adminFacilityDetailFragment"
+            app:destination="@id/adminFacilityDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminHomepageFragment"
@@ -77,6 +80,9 @@
         <action
             android:id="@+id/action_adminHomepageFragment_to_feedbackListFragment"
             app:destination="@id/feedbackListFragment" />
+        <action
+            android:id="@+id/action_adminHomepageFragment_to_facilityListFragment"
+            app:destination="@id/facilityListFragment" />
     </fragment>
     <dialog
         android:id="@+id/dialogFilterFragment"
@@ -87,7 +93,11 @@
         android:id="@+id/editFacilityFragment"
         android:name="my.tarc.mobileapp.facility.EditFacilityFragment"
         android:label="fragment_edit_facility"
-        tools:layout="@layout/fragment_edit_facility"/>
+        tools:layout="@layout/fragment_edit_facility">
+        <action
+            android:id="@+id/action_editFacilityFragment_to_facilityDetailsFragment"
+            app:destination="@id/facilityDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/uploadFacilityFragment"
         android:name="my.tarc.mobileapp.facility.UploadFacilityFragment"
@@ -140,9 +150,14 @@
         android:id="@+id/feedbackListFragment"
         android:name="my.tarc.mobileapp.facility.FeedbackListFragment"
         android:label="fragment_feedback_list"
-        tools:layout="@layout/fragment_feedback_list" >
+        tools:layout="@layout/fragment_feedback_list">
         <action
             android:id="@+id/action_feedbackListFragment_to_facilityDetailsFragment"
             app:destination="@id/facilityDetailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/adminFacilityDetailFragment"
+        android:name="my.tarc.mobileapp.facility.AdminFacilityDetailFragment"
+        android:label="fragment_admin_facility_detail"
+        tools:layout="@layout/fragment_admin_facility_detail" />
 </navigation>

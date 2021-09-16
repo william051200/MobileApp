@@ -171,6 +171,7 @@
     <string name="apply">Apply</string>
     <string name="category">CATEGORY</string>
     <string name="view">View</string>
+    <string name="delete_this_facility">Delete this facility?</string>
 </resources>
 
 

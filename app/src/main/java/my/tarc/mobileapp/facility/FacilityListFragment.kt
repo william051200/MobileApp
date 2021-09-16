@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,9 +20,9 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentFacilityListBinding
+import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
 import my.tarc.mobileapp.viewmodel.UserViewModel
 
@@ -44,7 +45,7 @@ class FacilityListFragment : Fragment() {
     // Recycle view
     private lateinit var collectedFacilityList: ArrayList<Facility>
     private lateinit var facilityList: ArrayList<Facility>
-    private lateinit var recycleView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
 
     private lateinit var spinner: Spinner
     private lateinit var sort: String
@@ -61,26 +62,27 @@ class FacilityListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         // Set toolbar title dynamically
         activity?.title = facilityViewModel.toolBarTitle.value
 
         // Set bottom tab's visibility dynamically
         if (userViewModel.activeUser.value!!.userType == "admin") {
-            binding.favouriteListLinearLayout2.visibility = View.INVISIBLE
+            binding.facilityListLinearLayout2.visibility = View.INVISIBLE
         }
 
         // Recycle view
-        recycleView = binding.favouriteListRecycleView
-        recycleView.layoutManager = LinearLayoutManager(this.context)
-        recycleView.setHasFixedSize(true)
-        facilityList = arrayListOf<Facility>()
-        collectedFacilityList = arrayListOf<Facility>()
+        recyclerView = binding.facilityListRecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(this.context)
+        recyclerView.setHasFixedSize(true)
+        facilityList = arrayListOf()
+        collectedFacilityList = arrayListOf()
 
         // Get data from firebase
         getFacilitiesFromFirebase()
 
         //Spinner
-        spinner = binding.favouriteListSpinnerSort
+        spinner = binding.facilityListSpinnerSort
 
         // Get sorting type (default: ascending)
         sort = spinner.getItemAtPosition(0).toString()
@@ -95,15 +97,15 @@ class FacilityListFragment : Fragment() {
                 id: Long
             ) {
                 sortFacility()
-                recycleView.adapter = FacilityAdapter(facilityList)
+                recyclerView.adapter = FacilityAdapter(facilityList)
             }
         }
 
         // Open filter dialog
-        binding.favouriteListBtnFilter.setOnClickListener { openFilterDialog() }
+        binding.facilityListBtnFilter.setOnClickListener { openFilterDialog() }
 
         // Navigate to user profile page
-        binding.favouriteListBtnMyProfile.setOnClickListener {
+        binding.facilityListBtnMyProfile.setOnClickListener {
             findNavController().navigate(R.id.action_facilityListFragment_to_userProfile)
         }
     }
@@ -160,7 +162,7 @@ class FacilityListFragment : Fragment() {
                         collectedFacilityList.add(facility)
                         facilityList.add(facility)
                         sortFacility()
-                        recycleView.adapter = FacilityAdapter(facilityList)
+                        recyclerView.adapter = FacilityAdapter(facilityList)
                     }
                 }
             }
@@ -216,7 +218,7 @@ class FacilityListFragment : Fragment() {
             filterCategory = spinnerCategory.selectedItem.toString()
             filterLocation = spinnerLocation.selectedItem.toString()
             filterFacility()
-            recycleView.adapter = FacilityAdapter(facilityList)
+            recyclerView.adapter = FacilityAdapter(facilityList)
             dialog.dismiss()
         }
     }

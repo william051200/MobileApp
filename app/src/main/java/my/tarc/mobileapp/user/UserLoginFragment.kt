@@ -8,12 +8,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUserLoginBinding
+import my.tarc.mobileapp.model.Facility
+import my.tarc.mobileapp.model.User
+import my.tarc.mobileapp.viewmodel.UserViewModel
 
 
 class UserLoginFragment : Fragment() {
@@ -23,6 +28,12 @@ class UserLoginFragment : Fragment() {
 
     // Firebase authentication
     private lateinit var auth: FirebaseAuth
+
+    // Firestore database
+    private val db = Firebase.firestore
+
+    // Set login user
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,6 +96,9 @@ class UserLoginFragment : Fragment() {
             if (task.isSuccessful) {
                 Log.e("Firebase Auth", "Login success")
                 Toast.makeText(context, "Login success", Toast.LENGTH_SHORT).show()
+
+                getUserFromFirestore(email, password)
+
                 findNavController().navigate(R.id.action_userLoginFragment_to_facilityCategory)
                 (activity as AppCompatActivity?)!!.supportActionBar!!.show()
             } else {
@@ -92,5 +106,35 @@ class UserLoginFragment : Fragment() {
                 Toast.makeText(context, "Wrong email or password", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun getUserFromFirestore(email: String, password: String) {
+        var userFavouriteFacilityList = ArrayList<Facility>()
+        var facilityList = ArrayList<String>()
+        var fullName: String = ""
+
+        // Get user
+        db.collection("user").document(email).get().addOnSuccessListener {
+            fullName = it.get("full_name").toString()
+            var tempFacilityList: ArrayList<String> =
+                it.get("favourite_facility") as ArrayList<String>
+
+            if (tempFacilityList.size > 0) facilityList = tempFacilityList
+        }
+
+        // Get favourite facility
+        if (facilityList.size > 0) {
+            facilityList.map { eachFacility ->
+                db.collection("facility").document(eachFacility).get()
+                    .addOnSuccessListener { collectedFacility ->
+                        var facility = Facility(collectedFacility.id)
+                        userFavouriteFacilityList.add(facility)
+                    }
+            }
+        }
+
+        // Set user to user view model
+        var user = User(email, fullName, "user", userFavouriteFacilityList, password)
+        userViewModel.setUser(user)
     }
 }

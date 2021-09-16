@@ -4,6 +4,7 @@ class User(
     val email: String,
     val name: String,
     val userType: String,
-    val favoriteFacilities: ArrayList<Facility>
+    val favoriteFacilities: ArrayList<Facility>,
+    val password: String
 ) {
 }

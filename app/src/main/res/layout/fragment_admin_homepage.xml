@@ -8,14 +8,12 @@
     tools:context=".user.AdminHomepageFragment">
 
 
-
-
     <TextView
         android:id="@+id/hi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:text="@string/welcomeadmin"
         android:textColor="#0F124D"
@@ -31,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:text="@string/actiontxt"
@@ -49,13 +47,13 @@
         android:layout_width="296dp"
         android:layout_height="90dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/custom_admin_action"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/actiontext">
 
         <ImageView
             android:id="@+id/facilities"
@@ -101,7 +99,7 @@
         android:layout_width="296dp"
         android:layout_height="90dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/custom_admin_action"
         android:orientation="horizontal"
@@ -151,7 +149,7 @@
         android:layout_width="296dp"
         android:layout_height="90dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/custom_admin_action"
         android:clickable="true"

@@ -8,12 +8,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentAdminLoginBinding
+import my.tarc.mobileapp.model.Facility
+import my.tarc.mobileapp.model.User
+import my.tarc.mobileapp.viewmodel.UserViewModel
 
 class AdminLoginFragment : Fragment() {
     // Binding
@@ -22,6 +26,9 @@ class AdminLoginFragment : Fragment() {
 
     // Firebase authentication
     private lateinit var auth: FirebaseAuth
+
+    // Set login admin
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,12 +82,18 @@ class AdminLoginFragment : Fragment() {
     private fun logIn() {
         var email = binding.adminLoginTxtEmail.text.toString()
         var password = binding.adminLoginTxtPassword.text.toString()
+        var emptyList = ArrayList<Facility>()
 
         // Login to Firebase auth
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener() { task ->
             if (task.isSuccessful) {
                 Log.e("Firebase Auth", "Login success")
                 Toast.makeText(context, "Login success", Toast.LENGTH_SHORT).show()
+
+                // Set admin to user view model
+                var user = User("", "", "admin", emptyList, "")
+                userViewModel.setUser(user)
+
                 findNavController().navigate(R.id.action_adminLoginFragment_to_adminHomepageFragment)
                 (activity as AppCompatActivity?)!!.supportActionBar!!.show()
             } else {
