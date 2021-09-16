@@ -213,7 +213,9 @@ class UploadFacilityFragment : Fragment() {
             "address_city" to city,
             "address_state" to state,
             "address_postcode" to zipCode,
-            "status" to status
+            "status" to status,
+            "rating" to 0,
+            "feedbacks" to ArrayList<String>(),
         )
 
         facilityRef.document(facilityName).set(facility).addOnSuccessListener {
