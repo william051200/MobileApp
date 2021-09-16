@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".facility.PendingFacilityFragment" >
+    tools:context=".facility.AdminFacilityDetailFragment">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/adminFacilityDetail_imageView"
         android:layout_width="0dp"
         android:layout_height="275dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/adminFacilityDetail_txtFacilityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -23,17 +23,39 @@
         android:text="TextView"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/adminFacilityDetail_imageView" />
+
+    <RatingBar
+        android:id="@+id/adminFacilityDetail_ratingBar"
+        style="?android:attr/ratingBarStyleIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:progressTint="#FFCC01"
+        android:rating="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adminFacilityDetail_txtFacilityName" />
+
+    <TextView
+        android:id="@+id/adminFacilityDetail_ratingCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/adminFacilityDetail_ratingBar"
+        app:layout_constraintStart_toEndOf="@+id/adminFacilityDetail_ratingBar"
+        app:layout_constraintTop_toTopOf="@+id/adminFacilityDetail_ratingBar" />
 
     <TextView
         android:id="@+id/textViewLabelAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/address"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+        app:layout_constraintTop_toBottomOf="@+id/adminFacilityDetail_ratingBar" />
 
     <TextView
         android:id="@+id/textViewLabelHours"
@@ -46,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewLabelAddress" />
 
     <TextView
-        android:id="@+id/textViewHours"
+        android:id="@+id/adminFacilityDetail_txtOperatingHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -65,20 +87,20 @@
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHours" />
+        app:layout_constraintTop_toBottomOf="@+id/adminFacilityDetail_txtOperatingHours" />
 
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="9dp"
         android:layout_marginEnd="24dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facilityDetail_txtFeature" />
+        app:layout_constraintTop_toBottomOf="@+id/adminFacilityDetail_txtFacilityFeatures" />
 
     <TextView
         android:id="@+id/textViewFeature"
@@ -86,58 +108,67 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="Features:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
-    <ImageView
-        android:id="@+id/imageViewTick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:src="@drawable/ic_teenyicons_tick_circle_outline"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewFeature"
-        app:layout_constraintStart_toEndOf="@+id/textViewFeature"
-        app:layout_constraintTop_toTopOf="@+id/textViewFeature" />
-
     <TextView
-        android:id="@+id/facilityDetail_txtFeature"
+        android:id="@+id/adminFacilityDetail_btnViewfeedback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="@string/exampleState_label"
-        android:textColor="#11A604"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewFeature"
-        app:layout_constraintStart_toEndOf="@+id/imageViewTick"
-        app:layout_constraintTop_toTopOf="@+id/textViewFeature" />
-
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/feedback"
+        android:textColor="#0693EF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <Button
-        android:id="@+id/facilityDetail_btnDeny"
+        android:id="@+id/adminFacilityDetail_btnDelete"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="16dp"
-        android:drawableLeft="@drawable/ic_iconoir_delete_circled_outline"
-        android:text="@string/deny"
+        android:text="@string/delete"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#B73333"
+        app:icon="@drawable/ic_iconoir_delete_circled_outline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/facilityDetail_btnApprove"
+        android:id="@+id/adminFacilityDetail_btnEdit"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
-        android:drawableLeft="@drawable/ic_teenyicons_tick_circle_outline_white"
-        android:text="@string/approve"
+        android:text="@string/edit"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="#0693EF"
+        app:icon="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/adminFacilityDetail_txtFacilityAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:textColor="#99000000"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewLabelAddress"
+        app:layout_constraintStart_toEndOf="@+id/textViewLabelAddress"
+        app:layout_constraintTop_toTopOf="@+id/textViewLabelAddress" />
+
+    <TextView
+        android:id="@+id/adminFacilityDetail_txtFacilityFeatures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/textViewFeature"
+        app:layout_constraintTop_toTopOf="@+id/textViewFeature" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

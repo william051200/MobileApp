@@ -9,17 +9,10 @@ import androidx.fragment.app.activityViewModels
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import my.tarc.mobileapp.R
-import my.tarc.mobileapp.databinding.FragmentFacilityDetailsBinding
-import my.tarc.mobileapp.databinding.FragmentFacilityListBinding
+import my.tarc.mobileapp.databinding.FragmentAdminFacilityDetailBinding
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
-import my.tarc.mobileapp.viewmodel.UserViewModel
 
-class FacilityDetailsFragment : Fragment() {
-
-    // Binding
-    private var _binding: FragmentFacilityDetailsBinding? = null
-    private val binding get() = _binding!!
+class AdminFacilityDetailFragment : Fragment() {
 
     // Firestore database
     private val db = Firebase.firestore
@@ -28,19 +21,23 @@ class FacilityDetailsFragment : Fragment() {
     private val storage = Firebase.storage("gs://mobile-app-f3440.appspot.com")
     private var storageRef = storage.reference.child("Facility Images")
 
-    // View model
-    private val userViewModel: UserViewModel by activityViewModels()
+    // view model
     private val facilityViewModel: FacilityViewModel by activityViewModels()
+
+    // Binding
+    private var _binding: FragmentAdminFacilityDetailBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentFacilityDetailsBinding.inflate(inflater, container, false)
+        _binding = FragmentAdminFacilityDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 }
