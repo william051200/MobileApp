@@ -221,12 +221,18 @@ class FacilityDetailsFragment : Fragment() {
         }
 
         btnSubmit.setOnClickListener {
-           var txtComment: TextView = view.findViewById(R.id.dialogSubmitFeedback_btnSubmit)
-           var txtSuggestion: TextView = view.findViewById(R.id.dialogSubmitFeedback_txtSuggestion)
-           var type: Spinner = view.findViewById(R.id.filterDialog_spinnerFeedbackType)
+            var txtComment: TextView = view.findViewById(R.id.editTextComment)
+            var txtSuggestion: TextView = view.findViewById(R.id.editTextSuggestion)
+            var type: Spinner = view.findViewById(R.id.filterDialog_spinnerFeedbackType)
 
-            if(txtComment.text.isEmpty()) txtComment.setError("Comment cannot be empty!")
-            if(txtSuggestion.text.isEmpty()) txtComment.setError("Suggestion cannot be empty!")
+            if (txtComment.text.isEmpty()) {
+                txtComment.setError("Comment cannot be empty!")
+                return@setOnClickListener
+            }
+            if (txtSuggestion.text.isEmpty()) {
+                txtSuggestion.setError("Suggestion cannot be empty!")
+                return@setOnClickListener
+            }
 
             // Generate new user
             val feedback = hashMapOf(
