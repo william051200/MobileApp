@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -85,16 +87,17 @@ class AdminFacilityDetailFragment : Fragment() {
             }
         }
 
-        // Validate if this facility has feedback then show feedback button
-
+        // Navigate to selected facility feedback list
         binding.adminFacilityDetailBtnViewfeedback.setOnClickListener {
-            // view feedback
+            findNavController().navigate(R.id.action_adminFacilityDetailFragment_to_eachFacilityFeedbackListFragment)
         }
 
+        // Navigate to edit this facility
         binding.adminFacilityDetailBtnEdit.setOnClickListener {
-            // navigate to where?
+            findNavController().navigate(R.id.action_adminFacilityDetailFragment_to_editFacilityFragment)
         }
 
+        // Delete this facility
         binding.adminFacilityDetailBtnDelete.setOnClickListener {
             openDeleteFacilityDialog()
         }
@@ -109,12 +112,14 @@ class AdminFacilityDetailFragment : Fragment() {
         var address: String
         var operatingHours: String
         var feature: String
+        var feedbackList: ArrayList<String>
 
         db.collection("facility").document(id).get()
             .addOnSuccessListener {
                 name = it.get("name") as String
                 rating = it.get("rating") as Long
                 feature = it.get("oku_feature") as String
+                feedbackList = it.get("feedbacks") as ArrayList<String>
 
                 // Address
                 var street: String = it.get("address_street") as String
@@ -134,6 +139,10 @@ class AdminFacilityDetailFragment : Fragment() {
                 binding.adminFacilityDetailTxtFacilityAddress.text = address
                 binding.adminFacilityDetailTxtOperatingHours.text = operatingHours
                 binding.adminFacilityDetailTxtFacilityFeatures.text = feature
+
+                if (feedbackList?.size > 0)
+                    binding.adminFacilityDetailBtnViewfeedback.visibility = View.VISIBLE
+                else binding.adminFacilityDetailBtnViewfeedback.visibility = View.INVISIBLE
             }
 
         storageRef.child(id).listAll().addOnSuccessListener {

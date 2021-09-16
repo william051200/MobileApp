@@ -15,6 +15,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import my.tarc.mobileapp.R
 
 
 class Maps : AppCompatActivity(), OnMapReadyCallback {
@@ -111,4 +112,4 @@ class Maps : AppCompatActivity(), OnMapReadyCallback {
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
+    }}

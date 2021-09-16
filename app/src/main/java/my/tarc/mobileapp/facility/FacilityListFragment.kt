@@ -164,7 +164,10 @@ class FacilityListFragment : Fragment() {
                         recyclerView.adapter = FacilityAdapter(facilityList) { facility ->
                             // Pass selected facility to facility_details
                             facilityViewModel.setFacility(facility)
-                            findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
+                            if (userViewModel.activeUser.value!!.userType == "user")
+                                findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
+                            else
+                                findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
                         }
                     }
                 }
