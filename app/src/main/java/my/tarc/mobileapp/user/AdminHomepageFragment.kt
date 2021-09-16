@@ -35,11 +35,11 @@ class AdminHomepageFragment : Fragment() {
         val btnPendingApprovals = binding.adminHomeBtnPendingApprovals
         val btnFeedbackList = binding.adminHomeBtnFeedbackList
 
-        binding.hi.startAnimation(animationFadeIn)
-        binding.actiontext.startAnimation(animationFadeIn1)
-        btnAllFacility.startAnimation(animationFadeIn2)
-        btnPendingApprovals.startAnimation(animationFadeIn3)
-        btnFeedbackList.startAnimation(animationFadeIn4)
+//        binding.hi.startAnimation(animationFadeIn)
+//        binding.actiontext.startAnimation(animationFadeIn1)
+//        btnAllFacility.startAnimation(animationFadeIn2)
+//        btnPendingApprovals.startAnimation(animationFadeIn3)
+//        btnFeedbackList.startAnimation(animationFadeIn4)
 
         // Navigate to all facility page
         btnAllFacility.setOnClickListener {
