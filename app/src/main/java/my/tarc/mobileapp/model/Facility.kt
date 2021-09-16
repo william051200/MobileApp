@@ -29,8 +29,8 @@ class Facility(
         ""
     )
 
-    constructor(picture: Bitmap?, name: String, state: String) : this(
-        "",
+    constructor(picture: Bitmap?, name: String, state: String, id: String) : this(
+        id,
         name,
         Address("", 0, "", state),
         "",

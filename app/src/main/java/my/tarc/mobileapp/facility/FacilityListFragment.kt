@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -158,7 +157,7 @@ class FacilityListFragment : Fragment() {
 
                     imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
                         bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                        var facility = Facility(bmp, facilityName, facilityState)
+                        var facility = Facility(bmp, facilityName, facilityState, facilityId)
                         collectedFacilityList.add(facility)
                         facilityList.add(facility)
                         sortFacility()
