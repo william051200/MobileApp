@@ -96,7 +96,16 @@ class FacilityListFragment : Fragment() {
                 id: Long
             ) {
                 sortFacility()
-                recyclerView.adapter = FacilityAdapter(facilityList) { _ -> }
+                recyclerView.adapter = FacilityAdapter(facilityList) { facility ->
+                    // Pass selected facility to facility_details
+                    facilityViewModel.setFacility(facility)
+                    if (userViewModel.activeUser.value!!.userType == "user")
+                        findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
+                    else if (facilityViewModel.toolBarTitle.value == "Facility List")
+                        findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
+                    else
+                        findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
+                }
             }
         }
 
@@ -226,8 +235,15 @@ class FacilityListFragment : Fragment() {
             filterCategory = spinnerCategory.selectedItem.toString()
             filterLocation = spinnerLocation.selectedItem.toString()
             filterFacility()
-            recyclerView.adapter = FacilityAdapter(facilityList) { _ ->
-
+            recyclerView.adapter = FacilityAdapter(facilityList) { facility ->
+                // Pass selected facility to facility_details
+                facilityViewModel.setFacility(facility)
+                if (userViewModel.activeUser.value!!.userType == "user")
+                    findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
+                else if (facilityViewModel.toolBarTitle.value == "Facility List")
+                    findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
+                else
+                    findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
             }
             dialog.dismiss()
         }

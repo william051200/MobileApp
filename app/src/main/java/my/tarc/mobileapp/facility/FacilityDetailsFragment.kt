@@ -124,14 +124,14 @@ class FacilityDetailsFragment : Fragment() {
     private fun loadFacilityDetail() {
         var id: String = facilityViewModel.selectedFacility.value!!.id
         var name: String
-        var rating: Long
+        var rating: String
         var address: String
         var operatingHours: String
         var feature: String
 
         db.collection("facility").document(id).get().addOnSuccessListener {
             name = it.get("name") as String
-            rating = it.get("rating") as Long
+            rating = it.get("rating") as String
             feature = it.get("oku_feature") as String
 
             // Address
@@ -148,7 +148,7 @@ class FacilityDetailsFragment : Fragment() {
 
             binding.facilityDetailTxtName.text = name
             binding.facilityDetailRatingBar.rating = rating.toFloat()
-            binding.facilityDetailTxtRatingCount.text = "(${rating})"
+            binding.facilityDetailTxtRatingCount.text = rating
             binding.facilityDetailTxtAddress.text = address
             binding.facilityDetailTxtOperationHours.text = operatingHours
             binding.facilityDetailTxtFeature.text = feature
