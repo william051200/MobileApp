@@ -131,7 +131,7 @@ class AdminFacilityDetailFragment : Fragment() {
 
                 binding.adminFacilityDetailTxtFacilityName.text = name
                 binding.adminFacilityDetailRatingBar.rating = rating.toFloat()
-                binding.adminFacilityDetailRatingCount.text = "(${rating.toString()})"
+                binding.adminFacilityDetailRatingCount.text = "(${rating})"
                 binding.adminFacilityDetailTxtFacilityAddress.text = address
                 binding.adminFacilityDetailTxtOperatingHours.text = operatingHours
                 binding.adminFacilityDetailTxtFacilityFeatures.text = feature
