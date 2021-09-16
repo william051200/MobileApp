@@ -113,40 +113,39 @@ class AdminFacilityDetailFragment : Fragment() {
         var feature: String
         var feedbackList: ArrayList<String>
 
-        db.collection("facility").document(id).get()
-            .addOnSuccessListener {
-                name = it.get("name") as String
-                rating = it.get("rating") as Long
-                feature = it.get("oku_feature") as String
-                feedbackList = it.get("feedbacks") as ArrayList<String>
+        db.collection("facility").document(id).get().addOnSuccessListener {
+            name = it.get("name") as String
+            rating = it.get("rating") as Long
+            feature = it.get("oku_feature") as String
+            feedbackList = it.get("feedbacks") as ArrayList<String>
 
-                // Address
-                var street: String = it.get("address_street") as String
-                var postcode: String = it.get("address_postcode") as String
-                var city: String = it.get("address_city") as String
-                var state: String = it.get("address_state") as String
-                address = "$street, $postcode $city, $state"
+            // Address
+            var street: String = it.get("address_street") as String
+            var postcode: String = it.get("address_postcode") as String
+            var city: String = it.get("address_city") as String
+            var state: String = it.get("address_state") as String
+            address = "$street, $postcode $city, $state"
 
-                // Operating hours
-                var startTime: String = it.get("starting_hour") as String
-                var closeTime: String = it.get("closing_hour") as String
-                operatingHours = "$startTime - $closeTime"
+            // Operating hours
+            var startTime: String = it.get("starting_hour") as String
+            var closeTime: String = it.get("closing_hour") as String
+            operatingHours = "$startTime - $closeTime"
 
-                binding.adminFacilityDetailTxtFacilityName.text = name
-                binding.adminFacilityDetailRatingBar.rating = rating.toFloat()
-                binding.adminFacilityDetailRatingCount.text = "(${rating})"
-                binding.adminFacilityDetailTxtFacilityAddress.text = address
-                binding.adminFacilityDetailTxtOperatingHours.text = operatingHours
-                binding.adminFacilityDetailTxtFacilityFeatures.text = feature
+            binding.adminFacilityDetailTxtFacilityName.text = name
+            binding.adminFacilityDetailRatingBar.rating = rating.toFloat()
+            binding.adminFacilityDetailRatingCount.text = "(${rating})"
+            binding.adminFacilityDetailTxtFacilityAddress.text = address
+            binding.adminFacilityDetailTxtOperatingHours.text = operatingHours
+            binding.adminFacilityDetailTxtFacilityFeatures.text = feature
 
-                if (feedbackList?.size > 0) {
-                    binding.adminFacilityDetailBtnViewfeedback.visibility = View.VISIBLE
-                    binding.view2.visibility = View.VISIBLE
-                } else {
-                    binding.adminFacilityDetailBtnViewfeedback.visibility = View.INVISIBLE
-                    binding.view2.visibility = View.INVISIBLE
-                }
+            if (feedbackList?.size > 0) {
+                binding.adminFacilityDetailBtnViewfeedback.visibility = View.VISIBLE
+                binding.view2.visibility = View.VISIBLE
+            } else {
+                binding.adminFacilityDetailBtnViewfeedback.visibility = View.INVISIBLE
+                binding.view2.visibility = View.INVISIBLE
             }
+        }
 
         storageRef.child(id).listAll().addOnSuccessListener {
             var size: Int = it.items.size
@@ -165,9 +164,20 @@ class AdminFacilityDetailFragment : Fragment() {
         }
     }
 
+    private fun deleteFacility() {
+        var id: String = facilityViewModel.selectedFacility.value!!.id
+
+        db.collection("facility").document(id).delete().addOnSuccessListener {
+            storageRef.child(id).delete().addOnSuccessListener {
+                Toast.makeText(context, "Deleted facility", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_adminFacilityDetailFragment_to_facilityListFragment)
+            }
+        }
+    }
+
     // Open delete facility dialog
     private fun openDeleteFacilityDialog() {
-        val view = View.inflate(this.context, R.layout.fragment_dialog_filter, null)
+        val view = View.inflate(this.context, R.layout.fragment_dialog_delete_facility, null)
 
         val builder = AlertDialog.Builder(this.context)
         builder.setView(view)
@@ -183,7 +193,8 @@ class AdminFacilityDetailFragment : Fragment() {
         }
 
         btnDelete.setOnClickListener {
-            // Delete facility and go back to last page
+            deleteFacility()
         }
     }
+
 }

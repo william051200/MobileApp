@@ -166,6 +166,9 @@
         <action
             android:id="@+id/action_adminFacilityDetailFragment_to_eachFacilityFeedbackListFragment"
             app:destination="@id/eachFacilityFeedbackListFragment" />
+        <action
+            android:id="@+id/action_adminFacilityDetailFragment_to_facilityListFragment"
+            app:destination="@id/facilityListFragment" />
     </fragment>
     <fragment
         android:id="@+id/eachFacilityFeedbackListFragment"
