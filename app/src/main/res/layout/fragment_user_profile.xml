@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="32dp"
-        android:text="@string/btn_cancel"
+        android:text="Reset"
         android:textAllCaps="false"
         app:backgroundTint="#737373"
         app:layout_constraintBottom_toTopOf="@+id/userProfile_linearLayout2"

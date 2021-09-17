@@ -60,7 +60,6 @@ class UserProfileFragment : Fragment() {
         // Navigate to Facility Category
         binding.btnProfileSave.setOnClickListener {
             updateUserProfile()
-            findNavController().navigate(R.id.action_userProfile_to_facilityCategory)
         }
     }
 
