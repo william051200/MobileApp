@@ -68,36 +68,22 @@
         android:layout_width="0dp"
         android:layout_height="160dp"
         android:paddingTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_Pick_Facility_Image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-    <Button
-        android:id="@+id/btn_Pick_Facility_Image"
-        android:layout_width="97dp"
-        android:layout_height="48dp"
-        android:padding="10dp"
-        android:text="@string/btn_pickImage"
-        android:textSize="10sp"
-        app:backgroundTint="#0693EF"
-        app:cornerRadius="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewEdit_Facility_Image" />
-
     <TextView
         android:id="@+id/textViewFacilityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="20dp"
         android:text="@string/txtView_facility_name_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Pick_Facility_Image" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewEdit_Facility_Image" />
 
     <TextView
         android:id="@+id/textViewST"
@@ -280,7 +266,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Spinner
-        android:id="@+id/txtEdit_OKU_Feature"
+        android:id="@+id/spinnerEdit_OKU_Feature"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
