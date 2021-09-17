@@ -37,15 +37,6 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-
-            if (destination.id == R.id.facilityListFragment) {
-                title = facilityViewModel.toolBarTitle.toString()
-            } else {
-                title = "Facility List"
-            }
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

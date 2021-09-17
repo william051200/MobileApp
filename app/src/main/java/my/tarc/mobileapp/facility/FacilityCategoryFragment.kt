@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -25,6 +26,7 @@ class FacilityCategoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFacilityCategoryBinding.inflate(inflater, container, false)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         return binding.root
     }
 
@@ -58,6 +60,7 @@ class FacilityCategoryFragment : Fragment() {
         // Navigate to favourite category page
         binding.facilityCategoryBtnFavourite.setOnClickListener {
             facilityViewModel.setFacilityType("favourite")
+            facilityViewModel.setTitle("Favourite List")
             findNavController().navigate(R.id.action_facilityCategory_to_facilityListFragment)
         }
 
