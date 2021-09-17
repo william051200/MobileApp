@@ -104,7 +104,7 @@ class FacilityListFragment : Fragment() {
                     facilityViewModel.setFacility(facility)
                     if (userViewModel.activeUser.value!!.userType == "user")
                         findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
-                    else if (facilityViewModel.toolBarTitle.value == "Facility List")
+                    else if (facilityViewModel.toolBarTitle.value.toString().contains("Facility List"))
                         findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
                     else
                         findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
@@ -199,7 +199,7 @@ class FacilityListFragment : Fragment() {
             }
 
         } else {
-            if (facilityViewModel.toolBarTitle.value == "Facility List") {
+            if (facilityViewModel.toolBarTitle.value.toString().contains("Facility List")) {
                 query = db.collection("facility")
                     .whereEqualTo("status", "Approved")
             } else { // Get pending facilities
@@ -277,7 +277,7 @@ class FacilityListFragment : Fragment() {
                 facilityViewModel.setFacility(facility)
                 if (userViewModel.activeUser.value!!.userType == "user")
                     findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
-                else if (facilityViewModel.toolBarTitle.value == "Facility List")
+                else if (facilityViewModel.toolBarTitle.value.toString().contains("Facility List"))
                     findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
                 else
                     findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
@@ -318,7 +318,7 @@ class FacilityListFragment : Fragment() {
                         facilityViewModel.setFacility(facility)
                         if (userViewModel.activeUser.value!!.userType == "user")
                             findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
-                        else if (facilityViewModel.toolBarTitle.value == "Facility List")
+                        else if (facilityViewModel.toolBarTitle.value.toString().contains("Facility List"))
                             findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
                         else
                             findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
