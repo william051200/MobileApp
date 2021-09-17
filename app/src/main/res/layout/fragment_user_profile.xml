@@ -7,32 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".user.UserProfileFragment">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageViewProfile"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="70dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
     <TextView
         android:id="@+id/textViewFullName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:text="@string/txtView_full_name_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewProfile" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="@string/txtView_email_label"
         android:textSize="16sp"
@@ -43,7 +33,7 @@
         android:id="@+id/textViewPwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="@string/txtView_password_label"
         android:textSize="16sp"
@@ -54,36 +44,34 @@
         android:id="@+id/btnProfileCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/btn_cancel"
         android:textAllCaps="false"
         app:backgroundTint="#737373"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUserPwd" />
+        app:layout_constraintBottom_toTopOf="@+id/userProfile_linearLayout2"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnProfileSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/btn_save"
         android:textAllCaps="false"
         app:backgroundTint="#0693EF"
         app:icon="@drawable/ic_save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUserPwd" />
+        app:layout_constraintBottom_toTopOf="@+id/userProfile_linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/txtUserName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/txtView_full_name_label"
         android:inputType="textPersonName"
@@ -97,11 +85,9 @@
         android:id="@+id/txtUserEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="@string/txtView_email_label"
         android:inputType="textEmailAddress"
@@ -116,11 +102,12 @@
         android:id="@+id/txtUserPwd"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
-        android:inputType="textPassword"
+        android:hint="@string/txtView_password_label"
+        android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -153,29 +140,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:background="#0693EF"
             android:drawableLeft="@drawable/ic_profile"
             android:paddingLeft="35dp"
             android:paddingRight="35dp"
             android:text="@string/my_profile_label"
-            android:background="#0693EF"
             android:textAllCaps="false"
             android:textColor="#212121"
-            app:backgroundTint="#0693EF"  />
+            app:backgroundTint="#0693EF" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_UserProfile_Edit"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="120dp"
-        android:background="@drawable/round_button"
-        app:backgroundTint="#0693EF"
-        app:cornerRadius="20dp"
-        app:icon="@drawable/ic_edit_pen"
-        app:iconTint="#FBF8F8"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageViewProfile"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
