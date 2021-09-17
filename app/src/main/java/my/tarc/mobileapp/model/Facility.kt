@@ -11,7 +11,6 @@ class Facility(
     var okuFeature: String,
     var startingHour: String,
     var closingHour: String,
-    var rating: Int,
     var status: String
 ) {
     var picture: Bitmap? = null
@@ -25,7 +24,6 @@ class Facility(
         "",
         "",
         "",
-        -1,
         ""
     )
 
@@ -38,7 +36,6 @@ class Facility(
         "",
         "",
         "",
-        -1,
         ""
     ) {
         this.picture = picture
