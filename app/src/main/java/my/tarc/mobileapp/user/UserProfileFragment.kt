@@ -49,14 +49,16 @@ class UserProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_userProfile_to_facilityCategory)
         }
 
-        // Navigate to Facility Category
+        // Reset Profile
         binding.btnProfileCancel.setOnClickListener {
             if (!validation()) resetUserProfile()
+
         }
 
-        // Upload to firebase
+        // Navigate to Facility Category
         binding.btnProfileSave.setOnClickListener {
             updateUserProfile()
+            findNavController().navigate(R.id.action_userProfile_to_facilityCategory)
         }
     }
 

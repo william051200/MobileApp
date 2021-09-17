@@ -12,7 +12,7 @@
     <fragment
         android:id="@+id/userProfile"
         android:name="my.tarc.mobileapp.user.UserProfileFragment"
-        android:label="fragment_user_profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_user_login">
         <action
             android:id="@+id/action_userProfile_to_favouriteListFragment"
@@ -36,7 +36,7 @@
     <fragment
         android:id="@+id/facilityCategory"
         android:name="my.tarc.mobileapp.facility.FacilityCategoryFragment"
-        android:label="fragment_facility_category"
+        android:label="Category"
         tools:layout="@layout/fragment_facility_category">
         <action
             android:id="@+id/action_facilityCategory_to_navigationFragment"
@@ -78,7 +78,7 @@
     <fragment
         android:id="@+id/adminHomepageFragment"
         android:name="my.tarc.mobileapp.user.AdminHomepageFragment"
-        android:label="fragment_admin_homepage"
+        android:label="Homepage"
         tools:layout="@layout/fragment_admin_homepage">
         <action
             android:id="@+id/action_adminHomepageFragment_to_feedbackListFragment"
