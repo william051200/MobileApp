@@ -50,6 +50,7 @@ class AdminFacilityDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAdminFacilityDetailBinding.inflate(inflater, container, false)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Facility Details"
         return binding.root
     }
 

@@ -26,6 +26,7 @@ class FacilityCategoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFacilityCategoryBinding.inflate(inflater, container, false)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Facility Category"
                return binding.root
     }
 
