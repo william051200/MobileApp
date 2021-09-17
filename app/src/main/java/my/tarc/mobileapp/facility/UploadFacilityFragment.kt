@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUploadFacilityBinding
 import java.util.*
 import kotlin.collections.ArrayList

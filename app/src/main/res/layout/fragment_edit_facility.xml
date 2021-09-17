@@ -257,6 +257,7 @@
         android:layout_marginStart="38dp"
         android:ems="10"
         android:inputType="number"
+        android:maxLength="5"
         android:minHeight="48dp"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/txtEdit_Facility_Address"

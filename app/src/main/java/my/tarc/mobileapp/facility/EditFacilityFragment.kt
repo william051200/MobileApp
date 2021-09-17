@@ -110,8 +110,6 @@ class EditFacilityFragment : Fragment() {
         // Navigate to Admin Facility List
         binding.btnEditFacilitySave.setOnClickListener {
             if(!facilityValidation()) updateFacilityDetails()
-
-            findNavController().popBackStack()
         }
 
     }
@@ -175,6 +173,8 @@ class EditFacilityFragment : Fragment() {
             "category", facCategory)
             .addOnSuccessListener {
             Toast.makeText(this.context, "Facility Updated ", Toast.LENGTH_SHORT).show()
+                // Navigate back to facility details
+                findNavController().popBackStack()
         }
     }
 
