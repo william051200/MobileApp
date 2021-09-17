@@ -122,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/password_icon"
             android:background="@android:color/transparent"
-            android:hint="Password"
+            android:hint="Password (min 6 characters)"
             android:maxLines="1"
             android:paddingLeft="17dp"
             android:paddingTop="15dp"
