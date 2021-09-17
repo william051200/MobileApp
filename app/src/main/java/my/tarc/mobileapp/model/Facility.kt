@@ -27,6 +27,18 @@ class Facility(
         ""
     )
 
+    constructor(id: String, name: String) : this(
+        id,
+        name,
+        Address("", 0, "", ""),
+        "",
+        arrayOf(),
+        "",
+        "",
+        "",
+        ""
+    )
+
     constructor(picture: Bitmap?, name: String, state: String, id: String) : this(
         id,
         name,

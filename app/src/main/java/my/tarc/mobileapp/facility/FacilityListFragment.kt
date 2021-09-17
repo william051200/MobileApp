@@ -6,14 +6,13 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -28,6 +27,10 @@ import my.tarc.mobileapp.databinding.FragmentFacilityListBinding
 import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
 import my.tarc.mobileapp.viewmodel.UserViewModel
+import androidx.core.view.MenuItemCompat
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 
 class FacilityListFragment : Fragment() {
     // Firestore database
@@ -49,6 +52,7 @@ class FacilityListFragment : Fragment() {
     private lateinit var collectedFacilityList: ArrayList<Facility>
     private lateinit var facilityList: ArrayList<Facility>
     private lateinit var recyclerView: RecyclerView
+    private var facilityType: String? = null
 
     private lateinit var spinner: Spinner
     private lateinit var sort: String
@@ -65,6 +69,37 @@ class FacilityListFragment : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar!!.title =
             facilityViewModel.toolBarTitle.value.toString()
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        var searchItem: MenuItem = menu.findItem(R.id.action_search) as MenuItem
+        searchItem.isVisible = true
+
+        val searchView: SearchView = MenuItemCompat.getActionView(searchItem) as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(strQuery: String?): Boolean {
+                // Filter recyclerview based on query
+                query = db.collection("facility")
+                    .whereEqualTo("category", facilityType).whereEqualTo("name", strQuery)
+                populateAdapter()
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+//                // Filter recyclerview based on query
+//                query = db.collection("facility")
+//                    .whereEqualTo("category", facilityType).whereEqualTo("name", strQuery)
+//                populateAdapter()
+                return false
+            }
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -103,7 +138,9 @@ class FacilityListFragment : Fragment() {
                     facilityViewModel.setFacility(facility)
                     if (userViewModel.activeUser.value!!.userType == "user")
                         findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
-                    else if (facilityViewModel.toolBarTitle.value.toString().contains("Facility List"))
+                    else if (facilityViewModel.toolBarTitle.value.toString()
+                            .contains("Facility List")
+                    )
                         findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
                     else
                         findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
@@ -134,7 +171,7 @@ class FacilityListFragment : Fragment() {
         facilityList.clear()
         // Get different facilities based on user type
         if (userViewModel.activeUser.value?.userType == "user") {
-            var facilityType = facilityViewModel.selectedFacilityType.value
+            facilityType = facilityViewModel.selectedFacilityType.value
             var tempFavouriteList: ArrayList<String>? = null
 
             if (facilityType == "favourite") {
@@ -306,10 +343,6 @@ class FacilityListFragment : Fragment() {
                 var facilityName = document.get("name").toString()
                 var facilityState = document.get("address_state").toString()
 
-                //TODO(CHANGE TO USING MAP FIELD)
-                //                    val address = document.get("address") as Map<String, *>
-                //                    val facilityState = address["state"] as String
-
                 var bmp: Bitmap? = null
                 val imageReference = storageRef.child(facilityId).child("0.png")
                 val ONE_MEGABYTE: Long = 1024 * 1024
@@ -325,7 +358,9 @@ class FacilityListFragment : Fragment() {
                         facilityViewModel.setFacility(facility)
                         if (userViewModel.activeUser.value!!.userType == "user")
                             findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
-                        else if (facilityViewModel.toolBarTitle.value.toString().contains("Facility List"))
+                        else if (facilityViewModel.toolBarTitle.value.toString()
+                                .contains("Facility List")
+                        )
                             findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
                         else
                             findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
