@@ -177,10 +177,8 @@ class UploadFacilityFragment : Fragment() {
         val state = binding.spinnerState.selectedItem.toString()
         val zipCode = binding.txtFacilityZipCode.text.toString()
         val category = binding.spinnerCategory.selectedItem.toString()
-        val rating = binding.spinnerRating.selectedItem.toString()
         val status = statusFac
-        val facilityID = "dummy5"
-        val imageId = UUID.randomUUID()
+        val facilityID = UUID.randomUUID()
 
 
         // Create New Facility
@@ -194,17 +192,15 @@ class UploadFacilityFragment : Fragment() {
             "address_state" to state,
             "address_postcode" to zipCode,
             "status" to status,
-            "rating" to rating,
-            "id" to facilityID,
             "feedbacks" to ArrayList<String>(),
             "category" to category
         )
 
         images?.forEachIndexed { index, image ->
-            storageRef.child(facilityID).child("$index.png").putFile(image!!)
+            storageRef.child(facilityID.toString()).child("$index.png").putFile(image!!)
         }
 
-        facilityRef.document(facilityID).set(facility).addOnSuccessListener {
+        facilityRef.document(facilityID.toString()).set(facility).addOnSuccessListener {
             Toast.makeText(this.context, "Uploaded successful!", Toast.LENGTH_SHORT).show()
             // Navigate back to facility category once uploaded
             findNavController().navigate(R.id.action_uploadFacilityFragment_to_facilityCategory)
