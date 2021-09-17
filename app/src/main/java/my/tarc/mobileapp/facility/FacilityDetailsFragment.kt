@@ -241,7 +241,9 @@ class FacilityDetailsFragment : Fragment() {
                 "suggestion" to txtSuggestion.text.toString(),
                 "type" to type.selectedItem.toString(),
             )
-            db.collection("feedback").add(feedback)
+            db.collection("feedback").add(feedback).addOnSuccessListener {
+                Toast.makeText(context, "Feedback submitted", Toast.LENGTH_SHORT).show()
+            }
             dialog.dismiss()
         }
     }
