@@ -77,7 +77,7 @@
         <item>9pm</item>
         <item>10pm</item>
     </string-array>
-    <string name="exampleAddress_label">Eg: Street Address</string>
+    <string name="exampleAddress_label">Street Address</string>
     <string name="txtView_city_label">City</string>
     <string-array name="spinner_City">
         <item>George Town</item>
@@ -95,7 +95,7 @@
         <item>Pahang</item>
     </string-array>
     <string name="txtView_zipcode_label">Zip Code</string>
-    <string name="exampleZipcode_label">Eg: 12345</string>
+    <string name="exampleZipcode_label">5 digits</string>
     <string-array name="spinner_oku_feature">
         <item>None</item>
         <item>OKU Parking</item>
