@@ -3,14 +3,15 @@ package my.tarc.mobileapp.facility
 import android.app.AlertDialog
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -58,14 +59,13 @@ class FacilityListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFacilityListBinding.inflate(inflater, container, false)
+        // Set toolbar title dynamically
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = facilityViewModel.toolBarTitle.value.toString()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Set toolbar title dynamically
-        activity?.title = facilityViewModel.toolBarTitle.value
 
         // Set bottom tab's visibility dynamically
         if (userViewModel.activeUser.value?.userType == "admin") {

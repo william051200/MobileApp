@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -16,10 +17,15 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import my.tarc.mobileapp.databinding.ActivityMainBinding
 import my.tarc.mobileapp.model.AppPreferences
+import my.tarc.mobileapp.viewmodel.FacilityViewModel
+import my.tarc.mobileapp.viewmodel.UserViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    private val userViewModel: UserViewModel by viewModels()
+    private val facilityViewModel: FacilityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.userLoginFragment)
                 true
             }
-            R.id.action_uploadFacility ->{
+            R.id.action_uploadFacility -> {
                 findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.uploadFacilityFragment)
                 true
             }
@@ -67,4 +73,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+
 }
