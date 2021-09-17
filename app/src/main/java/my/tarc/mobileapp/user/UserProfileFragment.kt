@@ -31,7 +31,7 @@ class UserProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "User Profile"
         return binding.root
     }
 
