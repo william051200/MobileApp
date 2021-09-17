@@ -11,24 +11,12 @@
         android:id="@+id/editFacility_btnViewFeedbacks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="36dp"
         android:clickable="true"
         android:minHeight="48dp"
         android:paddingTop="12dp"
         android:text="@string/feedback"
         android:textColor="#0693EF"
-        app:layout_constraintBottom_toBottomOf="@+id/editFacility_spinnerRating"
-        app:layout_constraintStart_toEndOf="@+id/editFacility_spinnerRating"
-        app:layout_constraintTop_toTopOf="@+id/editFacility_spinnerRating"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Spinner
-        android:id="@+id/editFacility_spinnerRating"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:entries="@array/spinner_rating"
-        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/EditFacility_spinnerCategory"
         app:layout_constraintStart_toEndOf="@+id/EditFacility_spinnerCategory"
         app:layout_constraintTop_toTopOf="@+id/EditFacility_spinnerCategory" />
@@ -42,18 +30,6 @@
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCategory2" />
-
-    <TextView
-        android:id="@+id/textViewRating2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:text="@string/txtView_rating"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewCategory2"
-        app:layout_constraintStart_toEndOf="@+id/textViewCategory2"
-        app:layout_constraintTop_toTopOf="@+id/textViewCategory2"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewCategory2"

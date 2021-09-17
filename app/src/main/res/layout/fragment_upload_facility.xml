@@ -12,20 +12,23 @@
         android:id="@+id/UploadFacility_btnfeedback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="36dp"
         android:clickable="true"
         android:minHeight="48dp"
         android:paddingTop="10dp"
         android:text="@string/txtViewFeedback"
         android:textColor="#0693EF"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerRating"
-        app:layout_constraintStart_toEndOf="@+id/spinnerRating"
-        app:layout_constraintTop_toTopOf="@+id/spinnerRating" />
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerCategory"
+        app:layout_constraintStart_toEndOf="@+id/spinnerCategory"
+        app:layout_constraintTop_toTopOf="@+id/spinnerCategory"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageSwitcher
         android:id="@+id/imgSwitcher_Facility"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="160dp"
+        android:scaleType="fitXY"
+        android:layout_gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -179,7 +182,6 @@
         android:id="@+id/btnUpload_Facility_Upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:layout_marginEnd="20dp"
         android:padding="10dp"
         android:text="@string/btnUpload"
@@ -189,7 +191,7 @@
         app:cornerRadius="12dp"
         app:icon="@drawable/ic_upload"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerRating" />
+        tools:layout_editor_absoluteY="634dp" />
 
     <EditText
         android:id="@+id/txtFacility_Name"
@@ -334,30 +336,6 @@
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCategory" />
-
-    <TextView
-        android:id="@+id/textViewRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:text="@string/txtView_rating"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewCategory"
-        app:layout_constraintStart_toEndOf="@+id/textViewCategory"
-        app:layout_constraintTop_toTopOf="@+id/textViewCategory"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Spinner
-        android:id="@+id/spinnerRating"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:entries="@array/spinner_rating"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerCategory"
-        app:layout_constraintStart_toEndOf="@+id/spinnerCategory"
-        app:layout_constraintTop_toTopOf="@+id/spinnerCategory"
-        app:layout_constraintVertical_bias="0.541" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
