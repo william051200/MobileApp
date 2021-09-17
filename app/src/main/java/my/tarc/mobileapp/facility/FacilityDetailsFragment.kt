@@ -12,7 +12,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -216,6 +215,7 @@ class FacilityDetailsFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
 
+        val feedbackID: String = UUID.randomUUID().toString()
         val btnSubmit: Button = view.findViewById(R.id.dialogSubmitFeedback_btnSubmit)
         val btnCancel: Button = view.findViewById(R.id.dialogSubmitFeedback_btnCancel)
         var spinnerType: Spinner = view.findViewById(R.id.dialogSubmitFeedback_spinnerFeedbackType)
@@ -369,12 +369,19 @@ class FacilityDetailsFragment : Fragment() {
 
             // Generate new feedback
             val feedback = hashMapOf(
+                "type" to spinnerType.selectedItem.toString(),
                 "comment" to txtComment.text.toString(),
                 "facility" to facilityViewModel.selectedFacility.value?.id.toString(),
-                "suggestion" to txtSuggestion.text.toString(),
-                "type" to type.selectedItem.toString(),
+                "name" to newName,
+                "starting_hour" to newStartingHour,
+                "closing_hour" to newClosingHour,
+                "address_street" to newAddressStreet,
+                "address_postcode" to newAddressPostcode,
+                "address_city" to newAddressCity,
+                "address_state" to newAddressState,
+                "oku_feature" to newOKUFeature,
             )
-            db.collection("feedback").add(feedback).addOnSuccessListener {
+            db.collection("feedback").document(feedbackID).set(feedback).addOnSuccessListener {
                 Toast.makeText(context, "Feedback submitted", Toast.LENGTH_SHORT).show()
             }
             dialog.dismiss()
