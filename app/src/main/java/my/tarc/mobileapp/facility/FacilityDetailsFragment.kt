@@ -369,7 +369,6 @@ class FacilityDetailsFragment : Fragment() {
 
             // Generate new feedback
             val feedback = hashMapOf(
-                "id" to feedbackID,
                 "type" to spinnerType.selectedItem.toString(),
                 "comment" to txtComment.text.toString(),
                 "facility" to facilityViewModel.selectedFacility.value?.id.toString(),
