@@ -1,9 +1,11 @@
 package my.tarc.mobileapp.facility
 
 import android.app.AlertDialog
+import android.content.ContentValues.TAG
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -80,9 +82,6 @@ class FacilityListFragment : Fragment() {
         facilityList = arrayListOf()
         collectedFacilityList = arrayListOf()
 
-        // Get data from firebase
-        getFacilitiesFromFirebase()
-
         //Spinner
         spinner = binding.facilityListSpinnerSort
 
@@ -119,9 +118,20 @@ class FacilityListFragment : Fragment() {
         binding.facilityListBtnMyProfile.setOnClickListener {
             findNavController().navigate(R.id.action_facilityListFragment_to_userProfile)
         }
+
+        // Listen to changes in Firestore and update recyclerview in real time
+        db.collection("facility")
+            .addSnapshotListener { value, e ->
+                if (e != null) {
+                    Log.w(TAG, "Listen failed.", e)
+                    return@addSnapshotListener
+                }
+                getFacilitiesFromFirebase()
+            }
     }
 
     private fun getFacilitiesFromFirebase() {
+        facilityList.clear()
         // Get different facilities based on user type
         if (userViewModel.activeUser.value?.userType == "user") {
             var facilityType = facilityViewModel.selectedFacilityType.value
@@ -184,14 +194,11 @@ class FacilityListFragment : Fragment() {
 
                                     }
                             }
-
                         } else {
                             binding.facilityListTxtNoData.visibility = View.VISIBLE
                             binding.facilityListTxtNoData.text = "No facility"
                         }
                     }
-
-
             } else {
                 query = db.collection("facility")
                     .whereEqualTo("category", facilityType).whereEqualTo("status", "Approved")

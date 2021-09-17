@@ -1,7 +1,9 @@
 package my.tarc.mobileapp.facility
 
 import android.app.AlertDialog
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,8 +49,15 @@ class FeedbackListFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         feedbackList = arrayListOf()
 
-        // Get data from firebase
-        getFeedbacksFromFirebase()
+        // Listen to changes in Firestore and update recyclerview in real time
+        db.collection("feedback")
+            .addSnapshotListener { value, e ->
+                if (e != null) {
+                    Log.w(ContentValues.TAG, "Listen failed.", e)
+                    return@addSnapshotListener
+                }
+                getFeedbacksFromFirebase()
+            }
     }
 
     private fun getFeedbacksFromFirebase() {
@@ -232,7 +241,7 @@ class FeedbackListFragment : Fragment() {
                         }
                 }
             }
-            getFeedbacksFromFirebase()
+
             dialog.dismiss()
         }
 
@@ -246,7 +255,6 @@ class FeedbackListFragment : Fragment() {
         // Delete the feedback
         db.collection("feedback").document(feedbackID).delete().addOnSuccessListener {
             Toast.makeText(context, "Feedback Deleted", Toast.LENGTH_SHORT).show()
-            getFeedbacksFromFirebase()
         }
     }
 
