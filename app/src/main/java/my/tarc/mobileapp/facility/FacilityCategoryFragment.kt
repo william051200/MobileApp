@@ -36,28 +36,28 @@ class FacilityCategoryFragment : Fragment() {
         // Navigate to toilet page
         binding.facilityCategoryBtnToilet.setOnClickListener {
             facilityViewModel.setFacilityType("OKU Toilet")
-            facilityViewModel.setTitle("Facility List")
+            facilityViewModel.setTitle("Facility List - OKU Toilet")
             findNavController().navigate(R.id.action_facilityCategory_to_facilityListFragment)
         }
 
         // Navigate to parking page
         binding.facilityCategoryBtnParking.setOnClickListener {
             facilityViewModel.setFacilityType("OKU Parking")
-            facilityViewModel.setTitle("Facility List")
+            facilityViewModel.setTitle("Facility List - OKU Parking")
             findNavController().navigate(R.id.action_facilityCategory_to_facilityListFragment)
         }
 
         // Navigate to park page
         binding.facilityCategoryBtnPark.setOnClickListener {
             facilityViewModel.setFacilityType("OKU Park")
-            facilityViewModel.setTitle("Facility List")
+            facilityViewModel.setTitle("Facility List- OKU Park")
             findNavController().navigate(R.id.action_facilityCategory_to_facilityListFragment)
         }
 
         // Navigate to bus station page
         binding.facilityCategoryBtnBusStation.setOnClickListener {
             facilityViewModel.setFacilityType("OKU Bus")
-            facilityViewModel.setTitle("Facility List")
+            facilityViewModel.setTitle("Facility List - OKU Bus")
             findNavController().navigate(R.id.action_facilityCategory_to_facilityListFragment)
         }
 
