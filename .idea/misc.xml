@@ -3,10 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_edit_facility.xml" value="0.4" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_facility_details.xml" value="0.15670289855072464" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_upload_facility.xml" value="0.25" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.23641304347826086" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/activity_maps.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/content_main.xml" value="0.23641304347826086" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/facility_layout.xml" value="0.245018115942029" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_facility_detail.xml" value="0.4" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_homepage.xml" value="0.4" />
@@ -27,6 +26,7 @@
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_upload_facility.xml" value="0.245018115942029" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_user_login.xml" value="0.264" />
         <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_user_profile.xml" value="0.264" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/menu/menu_main.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
