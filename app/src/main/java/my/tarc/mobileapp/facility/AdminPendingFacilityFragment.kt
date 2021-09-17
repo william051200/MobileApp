@@ -123,7 +123,7 @@ class AdminPendingFacilityFragment : Fragment() {
 
         storageRef.child(id).listAll().addOnSuccessListener {
             var size: Int = it.items.size
-            for (i in 0..size) {
+            for (i in 0 until size) {
                 var bmp: Bitmap? = null
                 val ONE_MEGABYTE: Long = 1024 * 1024
                 val imageReference = storageRef.child(id).child("$i.png")

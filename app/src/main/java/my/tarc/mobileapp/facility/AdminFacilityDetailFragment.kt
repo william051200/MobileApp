@@ -142,7 +142,7 @@ class AdminFacilityDetailFragment : Fragment() {
 
         storageRef.child(id).listAll().addOnSuccessListener {
             var size: Int = it.items.size
-            for (i in 0..size) {
+            for (i in 0 until size) {
                 var bmp: Bitmap? = null
                 val ONE_MEGABYTE: Long = 1024 * 1024
                 val imageReference = storageRef.child(id).child("$i.png")
@@ -153,17 +153,6 @@ class AdminFacilityDetailFragment : Fragment() {
                     images?.add(drawable)
                     binding.adminFacilityDetailImageSwitcher.setImageDrawable(images[0])
                 }
-            }
-        }
-    }
-
-    private fun deleteFacility() {
-        var id: String = facilityViewModel.selectedFacility.value!!.id
-
-        db.collection("facility").document(id).delete().addOnSuccessListener {
-            storageRef.child(id).delete().addOnSuccessListener {
-                Toast.makeText(context, "Deleted facility", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_adminFacilityDetailFragment_to_facilityListFragment)
             }
         }
     }
@@ -186,7 +175,47 @@ class AdminFacilityDetailFragment : Fragment() {
         }
 
         btnDelete.setOnClickListener {
-            deleteFacility()
+            var id: String = facilityViewModel.selectedFacility.value!!.id
+
+            // delete related feedback
+            db.collection("feedback").get().addOnSuccessListener { documents ->
+                for (document in documents) {
+                    if (document.get("facility").toString() == id) {
+                        db.collection("feedback").document(document.id).delete()
+                    }
+                }
+            }
+
+            // remove from user favourite
+            db.collection("user").get().addOnSuccessListener { documents ->
+                for (document in documents) {
+                    var favouriteList = document.get("favourite_facility") as ArrayList<String>
+                    var userId = document.id
+                    if (favouriteList.size > 0) {
+                        favouriteList.map { eachFavourite ->
+                            if (eachFavourite == id) {
+                                favouriteList.remove(id)
+                                db.collection("user").document(userId)
+                                    .update("favourite_facility", favouriteList)
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            // delete data in Firebase storage and Firestore
+            db.collection("facility").document(id).delete().addOnSuccessListener {
+                storageRef.child(id).listAll().addOnSuccessListener {
+                    var size: Int = it.items.size
+                    for (i in 0 until size) {
+                        storageRef.child(id).child("$i.png").delete()
+                    }
+                    Toast.makeText(context, "Deleted facility", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                    findNavController().navigate(R.id.action_adminFacilityDetailFragment_to_facilityListFragment)
+                }
+            }
         }
     }
 }
