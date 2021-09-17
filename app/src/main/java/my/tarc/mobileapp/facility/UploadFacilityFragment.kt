@@ -18,9 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
-import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUploadFacilityBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -205,7 +203,7 @@ class UploadFacilityFragment : Fragment() {
         facilityRef.document(facilityID.toString()).set(facility).addOnSuccessListener {
             Toast.makeText(this.context, "Uploaded successful!", Toast.LENGTH_SHORT).show()
             // Navigate back to facility category once uploaded
-            findNavController().navigate(R.id.action_uploadFacilityFragment_to_facilityCategory)
+            findNavController().popBackStack()
         }.addOnFailureListener {
             Log.e("Firestore", "Failed to create facility in Firestore!")
         }

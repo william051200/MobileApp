@@ -25,22 +25,10 @@
             app:destination="@id/facilityCategory" />
     </fragment>
     <fragment
-        android:id="@+id/navigationFragment"
-        android:name="my.tarc.mobileapp.facility.NavigationFragment"
-        android:label="fragment_navigation"
-        tools:layout="@layout/fragment_navigation">
-        <action
-            android:id="@+id/action_navigationFragment_to_facilityDetailsFragment"
-            app:destination="@id/facilityDetailsFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/facilityCategory"
         android:name="my.tarc.mobileapp.facility.FacilityCategoryFragment"
         android:label="Category"
         tools:layout="@layout/fragment_facility_category">
-        <action
-            android:id="@+id/action_facilityCategory_to_navigationFragment"
-            app:destination="@id/navigationFragment" />
         <action
             android:id="@+id/action_facilityCategory_to_userProfile"
             app:destination="@id/userProfile" />
