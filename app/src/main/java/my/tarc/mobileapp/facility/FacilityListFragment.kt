@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -250,8 +251,17 @@ class FacilityListFragment : Fragment() {
         val btnOk: Button = view.findViewById(R.id.filterDialog_btnApply)
         val spinnerCategory: Spinner = view.findViewById(R.id.filterDialog_spinnerCategory)
         val spinnerLocation: Spinner = view.findViewById(R.id.filterDialog_spinnerLocation)
+        var txtCategory: TextView = view.findViewById(R.id.filterDialog_txtCategory)
+
+        if (userViewModel.activeUser.value!!.userType == "user" && facilityViewModel.selectedFacilityType.value != "favourite") {
+            spinnerCategory.visibility = View.INVISIBLE
+            txtCategory.visibility = View.INVISIBLE
+        }
+
         btnOk.setOnClickListener {
-            filterCategory = spinnerCategory.selectedItem.toString()
+            if (!(userViewModel.activeUser.value!!.userType == "user" && facilityViewModel.selectedFacilityType.value != "favourite")) {
+                filterCategory = spinnerCategory.selectedItem.toString()
+            } else filterCategory = "All"
             filterLocation = spinnerLocation.selectedItem.toString()
             filterFacility()
             recyclerView.adapter = FacilityAdapter(facilityList) { facility ->

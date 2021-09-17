@@ -3,108 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/MobileApp/app/src/main/res/drawable/ic_back.xml" value="0.290625" />
-        <entry key="..\:/MobileApp/app/src/main/res/drawable/ic_edit.xml" value="0.290625" />
-        <entry key="..\:/MobileApp/app/src/main/res/drawable/ic_edit_pen.xml" value="0.290625" />
-        <entry key="..\:/MobileApp/app/src/main/res/drawable/ic_next.xml" value="0.290625" />
-        <entry key="..\:/MobileApp/app/src/main/res/drawable/ic_parking.xml" value="0.290625" />
-        <entry key="..\:/MobileApp/app/src/main/res/drawable/ic_save.xml" value="0.290625" />
-        <entry key="..\:/MobileApp/app/src/main/res/drawable/ic_upload_img_facility.xml" value="0.15989583333333332" />
-        <entry key="..\:/MobileApp/app/src/main/res/drawable/round_button.xml" value="0.290625" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/activity_login.xml" value="0.1693840579710145" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.1693840579710145" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/facility_layout.xml" value="0.1693840579710145" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_admin.xml" value="0.1693840579710145" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_delete_image_dialog.xml" value="0.24094202898550723" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_edit_facility.xml" value="0.4" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_edit_facility2.xml" value="0.24094202898550723" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_facility_category.xml" value="0.264" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_facility_details.xml" value="0.1693840579710145" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_facility_list_admin.xml" value="0.1693840579710145" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_facility_list_user.xml" value="0.1693840579710145" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_feedback_dialog.xml" value="0.1693840579710145" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_pending_facility.xml" value="0.1693840579710145" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_register.xml" value="0.1693840579710145" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_submit_feedback_dialog.xml" value="0.1693840579710145" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_upload_facility.xml" value="0.4" />
-        <entry key="..\:/MobileApp/app/src/main/res/layout/fragment_user_profile.xml" value="0.4" />
-        <entry key="..\:/MobileApp/app/src/main/res/menu/menu_main.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/drawable/ic_bus.xml" value="0.2703125" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/drawable/icon_filter.xml" value="0.2703125" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/activity_favourite_list.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/activity_feedback_list.xml" value="0.264" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/activity_pending_approvals.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/activity_upload_facility.xml" value="0.4" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/activity_user_profile.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/facility_layout.xml" value="0.4" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_filter.xml" value="0.4" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_edit_facility.xml" value="0.223731884057971" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_facility_category.xml" value="0.2477355072463768" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_facility_list.xml" value="0.2477355072463768" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_facility_list_admin.xml" value="0.21875" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_favourite_list.xml" value="0.264" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_feedback_dialog.xml" value="0.223731884057971" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_feedback_list.xml" value="0.23505434782608695" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_navigation.xml" value="0.223731884057971" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_pending_approvals.xml" value="0.264" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_upload_facility.xml" value="0.264" />
-        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_user_profile.xml" value="0.2477355072463768" />
-        <entry key="..\:/Users/ooije/Desktop/MobileApp/app/src/main/res/drawable/ic_park.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_edit.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_edit_pen.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_favorite.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_favorite_button.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_iconoir_delete_circled_outline.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_profile.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_save.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_teenyicons_tick_circle_outline.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_teenyicons_tick_circle_outline_white.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/drawable/ic_toilet.xml" value="0.21614583333333334" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/activity_login.xml" value="0.19444444444444445" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.15925925925925927" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/content_main.xml" value="0.15925925925925927" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/facility_layout.xml" value="0.12129629629629629" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/facility_name.xml" value="0.2" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/feedback_layout.xml" value="0.1" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_admin.xml" value="0.12129629629629629" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_admin_all_facility.xml" value="0.12962962962962962" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_admin_facility_detail.xml" value="0.2" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_admin_login.xml" value="0.2" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_admin_pending_approvals.xml" value="0.12962962962962962" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_dialog_deny_facility.xml" value="0.2" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_dialog_feedback.xml" value="0.22" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_dialog_filter.xml" value="0.2" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_dialog_submit_feedback.xml" value="0.22" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_each_facility_feedback_list.xml" value="0.2" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_edit_facility.xml" value="0.2" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_facility_category.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_facility_details.xml" value="0.14666666666666667" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_facility_list.xml" value="0.2" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_facility_list_admin.xml" value="0.22" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_facility_list_user.xml" value="0.12129629629629629" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_favourite_list.xml" value="0.22" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_feedback_dialog.xml" value="0.1" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_login_page.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_navigation.xml" value="0.12239583333333333" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_pending_facility.xml" value="0.22" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_register.xml" value="0.2" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_splash_screen.xml" value="0.1" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_submit_feedback_dialog.xml" value="0.1" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_upload_facility.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_user_login.xml" value="0.22" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fragment_user_profile.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/layout/fuck.xml" value="0.2" />
-        <entry key="..\:/Users/ooije/Desktop/On-going Projects/MobileApp/app/src/main/res/menu/menu_main.xml" value="0.18055555555555555" />
-        <entry key="..\:/Users/tiens/Desktop/MobileApp/app/src/main/res/drawable/blue_fill__rounded_color.xml" value="0.25" />
-        <entry key="..\:/Users/tiens/Desktop/MobileApp/app/src/main/res/drawable/custom_admin_action.xml" value="0.25" />
-        <entry key="..\:/Users/tiens/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_homepage.xml" value="0.264" />
-        <entry key="..\:/Users/tiens/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_login.xml" value="0.12360688956433637" />
-        <entry key="..\:/Users/tiens/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_filter.xml" value="0.264" />
-        <entry key="..\:/Users/tiens/Desktop/MobileApp/app/src/main/res/layout/fragment_register.xml" value="0.12360688956433637" />
-        <entry key="..\:/Users/tiens/Desktop/MobileApp/app/src/main/res/layout/fragment_user_login.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/activity_maps.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/facility_layout.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_facility_detail.xml" value="0.4" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_homepage.xml" value="0.4" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_admin_pending_facility.xml" value="0.4" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_decline_facility.xml" value="0.4" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_delete_facility.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_delete_image.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_feedback.xml" value="0.264" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_filter.xml" value="0.23641304347826086" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_dialog_submit_feedback.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_each_facility_feedback_list.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_edit_facility.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_facility_category.xml" value="0.4" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_facility_details.xml" value="0.264" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_facility_list.xml" value="0.2" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_pending_facility.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_upload_facility.xml" value="0.245018115942029" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_user_login.xml" value="0.13229166666666667" />
+        <entry key="..\:/Users/Asus/Desktop/MobileApp/app/src/main/res/layout/fragment_user_profile.xml" value="0.11458333333333333" />
       </map>
     </option>
   </component>
