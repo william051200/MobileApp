@@ -94,7 +94,7 @@
         <item>Sarawak</item>
         <item>Pahang</item>
     </string-array>
-    <string name="txtView_zipcode_label">Zip Code</string>
+    <string name="txtView_zipcode_label">PostCode</string>
     <string name="exampleZipcode_label">5 digits</string>
     <string-array name="spinner_oku_feature">
         <item>None</item>

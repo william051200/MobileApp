@@ -59,32 +59,23 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_Pick_Facility_Image" />
 
     <TextView
-        android:id="@+id/textViewOperationHour"
+        android:id="@+id/textViewST"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
-        android:text="@string/txtView_operationHrs_label"
+        android:text="@string/txtView_start_time_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFacility_Name" />
 
     <TextView
-        android:id="@+id/textViewST"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="2dp"
-        android:text="@string/txtView_start_time_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewOperationHour" />
-
-    <TextView
         android:id="@+id/textViewCT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="42dp"
         android:text="@string/txtView_close_time_label"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewST"
         app:layout_constraintStart_toEndOf="@+id/textViewST"
         app:layout_constraintTop_toTopOf="@+id/textViewST"
@@ -128,7 +119,7 @@
         android:id="@+id/textViewFeature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="43dp"
         android:text="@string/txtView_oku_feature_label"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewCT"
@@ -141,7 +132,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="6dp"
         android:text="@string/btn_cancel"
         android:textAllCaps="false"
         android:textSize="12sp"
@@ -183,7 +174,7 @@
         android:id="@+id/btnUpload_Facility_Upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="20dp"
         android:padding="10dp"
         android:text="@string/btnUpload"
