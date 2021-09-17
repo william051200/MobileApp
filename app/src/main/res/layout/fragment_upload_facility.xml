@@ -8,21 +8,6 @@
     android:clickable="true"
     tools:context=".facility.UploadFacilityFragment">
 
-    <TextView
-        android:id="@+id/UploadFacility_btnfeedback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:clickable="true"
-        android:minHeight="48dp"
-        android:paddingTop="10dp"
-        android:text="@string/txtViewFeedback"
-        android:textColor="#0693EF"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerCategory"
-        app:layout_constraintStart_toEndOf="@+id/spinnerCategory"
-        app:layout_constraintTop_toTopOf="@+id/spinnerCategory"
-        app:layout_constraintVertical_bias="0.0" />
-
     <ImageSwitcher
         android:id="@+id/imgSwitcher_Facility"
         android:layout_width="match_parent"
@@ -182,7 +167,7 @@
         app:cornerRadius="12dp"
         app:icon="@drawable/ic_upload"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UploadFacility_btnfeedback" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategory" />
 
     <EditText
         android:id="@+id/txtFacility_Name"
