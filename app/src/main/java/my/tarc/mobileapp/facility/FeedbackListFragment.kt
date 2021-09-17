@@ -55,6 +55,7 @@ class FeedbackListFragment : Fragment() {
     }
 
     private fun getFeedbacksFromFirebase() {
+        feedbackList.clear()
         db.collection("feedback").get().addOnSuccessListener { documents ->
             for (document in documents) {
                 var feedbackType = document.get("type").toString()
@@ -208,6 +209,7 @@ class FeedbackListFragment : Fragment() {
 
                 }
             }
+            getFeedbacksFromFirebase()
             dialog.dismiss()
         }
 
@@ -221,6 +223,7 @@ class FeedbackListFragment : Fragment() {
         // Delete the feedback
         db.collection("feedback").document(feedbackID).delete().addOnSuccessListener {
             Toast.makeText(context, "Feedback Deleted", Toast.LENGTH_SHORT).show()
+            getFeedbacksFromFirebase()
         }
     }
 
