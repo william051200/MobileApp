@@ -78,15 +78,23 @@ class UserRegisterFragment : Fragment() {
 
         if (fullName.isEmpty()) {
             Toast.makeText(context, "Invalid full name", Toast.LENGTH_SHORT).show()
+            binding.registerTxtFullName.setError("Full name cannot be empty!")
             error = true
-        } else if (email.isEmpty() || !pattern.matcher(email).matches()) {
+        } else if (email.isEmpty()) {
             Toast.makeText(context, "Invalid email", Toast.LENGTH_SHORT).show()
+            binding.registerTxtEmail.setError("Email cannot be empty!")
+            error = true
+        } else if (!pattern.matcher(email).matches()) {
+            Toast.makeText(context, "Invalid email", Toast.LENGTH_SHORT).show()
+            binding.registerTxtEmail.setError("Email must be in correct format!")
             error = true
         } else if (password.isEmpty()) {
             Toast.makeText(context, "Invalid password", Toast.LENGTH_SHORT).show()
+            binding.registerTxtPassword.setError("Password cannot be empty!")
             error = true
         } else if (password.length < 8) {
             Toast.makeText(context, "Password is too weak", Toast.LENGTH_SHORT).show()
+            binding.registerTxtPassword.setError("Password must be more than 8 characters!")
             error = true
         }
 

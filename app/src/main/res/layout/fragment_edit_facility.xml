@@ -99,34 +99,23 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_Pick_Facility_Image" />
 
     <TextView
-        android:id="@+id/textViewOperationHour"
+        android:id="@+id/textViewST"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="12dp"
-        android:text="@string/txtView_operationHrs_label"
+        android:text="@string/txtView_start_time_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEdit_Facility_Name" />
 
     <TextView
-        android:id="@+id/textViewST"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="2dp"
-        android:text="@string/txtView_start_time_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewOperationHour" />
-
-    <TextView
         android:id="@+id/textViewCT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
+        android:layout_marginStart="40dp"
         android:text="@string/txtView_close_time_label"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewST"
         app:layout_constraintStart_toEndOf="@+id/textViewST"
         app:layout_constraintTop_toTopOf="@+id/textViewST"
@@ -172,20 +161,20 @@
         android:id="@+id/textViewFeature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="42dp"
         android:text="@string/txtView_oku_feature_label"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewCT"
         app:layout_constraintStart_toEndOf="@+id/textViewCT"
         app:layout_constraintTop_toTopOf="@+id/textViewCT"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnEdit_Facility_Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="6dp"
         android:text="@string/btn_cancel"
         android:textAllCaps="false"
         android:textSize="12sp"
@@ -198,7 +187,7 @@
         android:id="@+id/btnEdit_Facility_Save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="20dp"
         android:text="@string/btn_save"
         android:textAllCaps="false"
@@ -278,7 +267,7 @@
         android:id="@+id/txtEdit_Facility_Zip_Code"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="38dp"
         android:ems="10"
         android:inputType="number"
         android:minHeight="48dp"

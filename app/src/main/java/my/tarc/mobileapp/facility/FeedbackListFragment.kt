@@ -6,21 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentFeedbackListBinding
-import my.tarc.mobileapp.model.Address
 import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.model.Feedback
-import org.w3c.dom.Text
 
 class FeedbackListFragment : Fragment() {
     // Firestore database
@@ -170,7 +166,7 @@ class FeedbackListFragment : Fragment() {
                     var street: String = arrayStr[0]
                     var postcodeCity: String = arrayStr[1]
                     var trimmedStr = postcodeCity.trim()
-                    var postcode = trimmedStr.substring(0,5)
+                    var postcode = trimmedStr.substring(0, 5)
                     var city = trimmedStr.substring(5)
                     var state: String = arrayStr[2]
 

@@ -4,13 +4,13 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentEditFacilityBinding
@@ -43,11 +43,6 @@ class EditFacilityFragment : Fragment() {
         return binding.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,18 +54,16 @@ class EditFacilityFragment : Fragment() {
         binding.imageViewEditFacilityImage.setFactory { ImageView(activity?.applicationContext) }
 
         //Pick Image
-        binding.btnPickFacilityImage.setOnClickListener{
+        binding.btnPickFacilityImage.setOnClickListener {
             pickImagesIntent()
         }
 
         //Next Image
         binding.btnNextImg.setOnClickListener {
-            if(position < images!!.size-1){
+            if (position < images!!.size - 1) {
                 position++
                 binding.imageViewEditFacilityImage.setImageURI(images!![position])
-            }
-            else
-            {
+            } else {
                 //Display no more image
                 Toast.makeText(activity, "No more images...", Toast.LENGTH_SHORT).show()
             }
@@ -78,12 +71,10 @@ class EditFacilityFragment : Fragment() {
 
         //Previous Image
         binding.btnPreviousImg.setOnClickListener {
-            if(position > 0){
+            if (position > 0) {
                 position--
                 binding.imageViewEditFacilityImage.setImageURI(images!![position])
-            }
-            else
-            {
+            } else {
                 //Display no more image
                 Toast.makeText(activity, "No more images...", Toast.LENGTH_SHORT).show()
             }
@@ -102,7 +93,8 @@ class EditFacilityFragment : Fragment() {
         // Navigate to Admin Facility List
         binding.btnEditFacilitySave.setOnClickListener {
 
-            Toast.makeText(activity, "Facility Details Update Successful", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Facility Details Update Successful", Toast.LENGTH_SHORT)
+                .show()
 
             findNavController().navigate(R.id.action_editFacilityFragment_to_facilityDetailsFragment)
         }
@@ -110,13 +102,13 @@ class EditFacilityFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
-    private fun pickImagesIntent (){
+    private fun pickImagesIntent() {
         val intent = Intent()
         intent.type = "image/png"
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
         intent.action = Intent.ACTION_GET_CONTENT
         // Deprecated issues
-        startActivityForResult(Intent.createChooser(intent,"Select Image(s)"), PICK_IMAGES_CODE)
+        startActivityForResult(Intent.createChooser(intent, "Select Image(s)"), PICK_IMAGES_CODE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -125,11 +117,11 @@ class EditFacilityFragment : Fragment() {
 
         //if(requestCode == PICK_IMAGES_CODE){
 
-        if(data!!.clipData != null){
+        if (data!!.clipData != null) {
             //picked multiple images
             //get number of picked images
             val count = data.clipData!!.itemCount
-            for(i in 0 until count){
+            for (i in 0 until count) {
                 val imageUri = data.clipData!!.getItemAt(i).uri
                 //add image to list
                 images!!.add(imageUri)
@@ -137,8 +129,7 @@ class EditFacilityFragment : Fragment() {
             // set first image from array list to image switcher
             binding.imageViewEditFacilityImage.setImageURI(images!![0])
             position = 0
-        }
-        else{
+        } else {
             //picked single image
             val imageUri = data.data
             //set image to image switcher

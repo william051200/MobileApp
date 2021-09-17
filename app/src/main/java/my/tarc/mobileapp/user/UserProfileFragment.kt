@@ -82,6 +82,7 @@ class UserProfileFragment : Fragment() {
         if (fullName.isEmpty()) {
             Toast.makeText(context, "Invalid full name", Toast.LENGTH_SHORT).show()
             error = true
+            binding.txtUserEmail.setError("Full name cannot be empty!")
         }
 
         return error

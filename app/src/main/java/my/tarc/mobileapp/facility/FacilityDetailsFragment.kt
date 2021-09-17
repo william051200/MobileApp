@@ -8,7 +8,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,6 @@ import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentFacilityDetailsBinding
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
 import my.tarc.mobileapp.viewmodel.UserViewModel
-import org.w3c.dom.Text
 
 class FacilityDetailsFragment : Fragment() {
 
@@ -60,6 +58,7 @@ class FacilityDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        loadFavourite()
         loadFacilityDetail()
 
         // Image switcher
@@ -121,15 +120,10 @@ class FacilityDetailsFragment : Fragment() {
     }
 
     private fun loadFacilityDetail() {
-        var email: String = userViewModel.activeUser.value!!.email
         var id: String = facilityViewModel.selectedFacility.value!!.id
         var name: String
         var operatingHours: String
         var feature: String
-
-//        db.collection("user").document(email).get().addOnSuccessListener {
-//            collectedFacilityId = it.get("favourite_facility") as ArrayList<String>
-//        }
 
         db.collection("facility").document(id).get().addOnSuccessListener {
             name = it.get("name") as String
@@ -170,23 +164,42 @@ class FacilityDetailsFragment : Fragment() {
         }
     }
 
-    private fun handleFavouriteFacility(type: String) {
+    private fun loadFavourite() {
         var email: String = userViewModel.activeUser.value!!.email
-        var collectedFacilityId = ArrayList<String>()
+        var facilityid: String = facilityViewModel.selectedFacility.value!!.id
+        var favouriteList = ArrayList<String>()
 
         db.collection("user").document(email).get().addOnSuccessListener {
-            collectedFacilityId = it.get("favourite_facility") as ArrayList<String>
+            favouriteList = it.get("favourite_facility") as ArrayList<String>
+            if (favouriteList.size > 0) {
+                favouriteList.map { eachFavourite ->
+                    if (eachFavourite == facilityid) {
+                        binding.facilityDetailBtnUnfavourite.visibility = View.VISIBLE
+                        binding.facilityDetailBtnFavourite.visibility = View.INVISIBLE
+                    }
+                }
+            }
         }
+    }
 
-        if (type == "favourite") {
-            collectedFacilityId.add(facilityViewModel.selectedFacility.value!!.id)
-            Toast.makeText(context, "Added to your favourite", Toast.LENGTH_SHORT).show()
-        } else {
-            collectedFacilityId.remove(facilityViewModel.selectedFacility.value!!.id)
-            Toast.makeText(context, "Removed from your favourite", Toast.LENGTH_SHORT).show()
+    private fun handleFavouriteFacility(type: String) {
+        var email: String = userViewModel.activeUser.value!!.email
+        var facilityid: String = facilityViewModel.selectedFacility.value!!.id
+        var favouriteList = ArrayList<String>()
+
+        db.collection("user").document(email).get().addOnSuccessListener {
+            favouriteList = it.get("favourite_facility") as ArrayList<String>
+
+            if (type == "favourite") {
+                favouriteList.add(facilityid)
+                db.collection("user").document(email).update("favourite_facility", favouriteList)
+                Toast.makeText(context, "Added to your favourite", Toast.LENGTH_SHORT).show()
+            } else {
+                favouriteList.remove(facilityid)
+                db.collection("user").document(email).update("favourite_facility", favouriteList)
+                Toast.makeText(context, "Removed from your favourite", Toast.LENGTH_SHORT).show()
+            }
         }
-
-        db.collection("user").document(email).update("favourite_facility", collectedFacilityId)
     }
 
     // Open submit feedback dialog
@@ -213,14 +226,16 @@ class FacilityDetailsFragment : Fragment() {
 
             if (txtComment.text.isEmpty()) {
                 txtComment.setError("Comment cannot be empty!")
+                Toast.makeText(context, "Invalid comment", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             if (txtSuggestion.text.isEmpty()) {
                 txtSuggestion.setError("Suggestion cannot be empty!")
+                Toast.makeText(context, "Invalid suggestion", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Generate new user
+            // Generate new feedback
             val feedback = hashMapOf(
                 "comment" to txtComment.text.toString(),
                 "facility" to facilityViewModel.selectedFacility.value?.id.toString(),
