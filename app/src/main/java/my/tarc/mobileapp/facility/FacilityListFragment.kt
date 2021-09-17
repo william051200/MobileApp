@@ -65,7 +65,7 @@ class FacilityListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Set toolbar title dynamically
-        activity?.title = facilityViewModel.toolBarTitle.value
+        //activity?.title = facilityViewModel.toolBarTitle.value
 
         // Set bottom tab's visibility dynamically
         if (userViewModel.activeUser.value?.userType == "admin") {

@@ -46,19 +46,19 @@ class AdminHomepageFragment : Fragment() {
 
         // Navigate to all facility page
         btnAllFacility.setOnClickListener {
-            facilityViewModel.toolBarTitle.value = "Facility List"
+            facilityViewModel.setTitle("Facility List")
             findNavController().navigate(R.id.action_adminHomepageFragment_to_facilityListFragment)
         }
 
         // Navigate to pending approvals page
         btnPendingApprovals.setOnClickListener {
-            facilityViewModel.toolBarTitle.value = "Pending Approvals"
+            facilityViewModel.setTitle("Pending Approvals")
             findNavController().navigate(R.id.action_adminHomepageFragment_to_facilityListFragment)
         }
 
         // Navigate to feedback list page
         btnFeedbackList.setOnClickListener {
-            facilityViewModel.toolBarTitle.value = "Feedback List"
+            facilityViewModel.setTitle("Feedback List")
             findNavController().navigate(R.id.action_adminHomepageFragment_to_feedbackListFragment)
         }
     }
