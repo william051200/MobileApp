@@ -167,8 +167,14 @@ class AdminPendingFacilityFragment : Fragment() {
         btnDeny.setOnClickListener {
             var id: String = facilityViewModel.selectedFacility.value!!.id
 
+            // delete data in Firebase storage and Firestore
             db.collection("facility").document(id).delete().addOnSuccessListener {
-                storageRef.child(id).delete().addOnSuccessListener {
+                storageRef.child(id).listAll().addOnSuccessListener {
+                    var size: Int = it.items.size
+                    for (i in 0 until size) {
+                        storageRef.child(id).child("$i.png").delete()
+                    }
+                    dialog.dismiss()
                     Toast.makeText(context, "Denied facility", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_adminPendingFacilityFragment_to_facilityListFragment)
                 }
