@@ -15,7 +15,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentFeedbackListBinding
-import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.model.Feedback
 
 class FeedbackListFragment : Fragment() {
@@ -124,11 +123,17 @@ class FeedbackListFragment : Fragment() {
         textViewComment.text = feedback.comment
         textViewSuggestion.text = feedback.suggestion
 
-        var facility = Facility(feedback.facility)
+        var facilityName: String = ""
+
+        db.collection("facility").document(feedback.facility).get()
+            .addOnSuccessListener { eachFacility ->
+                if (eachFacility.id == feedback.facility)
+                    facilityName = eachFacility.get("name") as String
+            }
 
         // Get the associated facility
         db.collection("facility").document(feedback.facility).get().addOnSuccessListener {
-            textViewFacilityName.text = facility.name
+            textViewFacilityName.text = facilityName
 
             // Populate current_info based on the feedback's type
             when (feedback.type) {
