@@ -6,20 +6,6 @@
     android:layout_height="wrap_content"
     tools:context=".facility.DialogSubmitFeedbackFragment">
 
-    <Spinner
-        android:id="@+id/filterDialog_spinnerFeedbackType"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:entries="@array/spinner_feedback_type"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLabelType"
-        tools:ignore="DuplicateSpeakableTextCheck" />
-
     <TextView
         android:id="@+id/textViewLabelType"
         android:layout_width="wrap_content"
@@ -35,18 +21,17 @@
         android:id="@+id/textViewLabelComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="@string/comment"
         android:textColor="#99000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filterDialog_spinnerFeedbackType" />
+        app:layout_constraintStart_toStartOf="@+id/dialogSubmitFeedback_spinnerFeedbackType"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_spinnerFeedbackType" />
 
     <Button
         android:id="@+id/dialogSubmitFeedback_btnSubmit"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:text="@string/submit"
@@ -56,7 +41,7 @@
         app:icon="@drawable/ic_upload"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSuggestion" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelSuggestion" />
 
     <Button
         android:id="@+id/dialogSubmitFeedback_btnCancel"
@@ -78,38 +63,230 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="@string/suggested_edit"
+        android:text="Edit suggestion"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextComment" />
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_txtComment" />
 
     <EditText
-        android:id="@+id/editTextComment"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
+        android:id="@+id/dialogSubmitFeedback_txtName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
+        android:hint="Name"
+        android:minHeight="48dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewLabelSuggestion"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_lblName"
+        tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
+
+    <TextView
+        android:id="@+id/dialogSubmitFeedback_lblStreet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="Street"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLabelComment"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelSuggestion" />
+
+    <TextView
+        android:id="@+id/dialogSubmitFeedback_lblPostcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Postcode"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/dialogSubmitFeedback_txtStreet"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_txtStreet" />
+
+    <TextView
+        android:id="@+id/dialogSubmitFeedback_lblCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="City"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/dialogSubmitFeedback_txtPostcode"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_txtPostcode" />
+
+    <TextView
+        android:id="@+id/dialogSubmitFeedback_lblState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="State"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/dialogSubmitFeedback_spinnerCity"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_spinnerCity" />
+
+    <EditText
+        android:id="@+id/dialogSubmitFeedback_txtStreet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:hint="Street"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dialogSubmitFeedback_lblStreet"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_lblStreet"
+        tools:ignore="DuplicateClickableBoundsCheck" />
+
+    <EditText
+        android:id="@+id/dialogSubmitFeedback_txtPostcode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:hint="Postcode"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dialogSubmitFeedback_lblPostcode"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_lblPostcode"
+        tools:ignore="DuplicateClickableBoundsCheck" />
+
+    <Spinner
+        android:id="@+id/dialogSubmitFeedback_spinnerCity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:entries="@array/spinner_City"
+        android:minHeight="48dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dialogSubmitFeedback_lblCity"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_lblCity" />
+
+    <Spinner
+        android:id="@+id/dialogSubmitFeedback_spinnerState"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:entries="@array/spinner_State"
+        android:minHeight="48dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dialogSubmitFeedback_lblState"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_lblState" />
+
+    <TextView
+        android:id="@+id/dialogSubmitFeedback_lblName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Name"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/textViewLabelSuggestion"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelSuggestion" />
+
+    <TextView
+        android:id="@+id/dialogSubmitFeedback_lblStartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/txtView_start_time_label"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelSuggestion" />
+
+    <TextView
+        android:id="@+id/dialogSubmitFeedback_lblCloseTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/txtView_close_time_label"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/dialogSubmitFeedback_spinnerStartTime"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_spinnerStartTime" />
+
+    <Spinner
+        android:id="@+id/dialogSubmitFeedback_spinnerStartTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:entries="@array/spinner_operation_hours"
+        android:minHeight="48dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dialogSubmitFeedback_lblStartTime"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_lblStartTime" />
+
+    <Spinner
+        android:id="@+id/dialogSubmitFeedback_spinnerCloseTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:entries="@array/spinner_operation_hours"
+        android:minHeight="48dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dialogSubmitFeedback_lblCloseTime"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_lblCloseTime" />
+
+    <TextView
+        android:id="@+id/dialogSubmitFeedback_lblOKUFeature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/txtView_oku_feature_label"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelSuggestion" />
+
+    <Spinner
+        android:id="@+id/dialogSubmitFeedback_spinnerFeature"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:entries="@array/spinner_oku_feature"
+        android:minHeight="48dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dialogSubmitFeedback_lblOKUFeature"
+        app:layout_constraintTop_toBottomOf="@+id/dialogSubmitFeedback_lblOKUFeature" />
+
+    <Spinner
+        android:id="@+id/dialogSubmitFeedback_spinnerFeedbackType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:entries="@array/spinner_feedback_type"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewLabelType"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelType"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextSuggestion"
-        android:layout_width="330dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
+        android:id="@+id/dialogSubmitFeedback_txtComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:width="300dp"
         android:ems="10"
         android:gravity="start|top"
+        android:hint="Comment"
         android:inputType="textMultiLine"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLabelSuggestion"
+        app:layout_constraintStart_toStartOf="@+id/textViewLabelComment"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelComment"
         tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
