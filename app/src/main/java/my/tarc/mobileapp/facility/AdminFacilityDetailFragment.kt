@@ -215,7 +215,7 @@ class AdminFacilityDetailFragment : Fragment() {
                     }
                     Toast.makeText(context, "Deleted facility", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
-                    findNavController().navigate(R.id.action_adminFacilityDetailFragment_to_facilityListFragment)
+                    findNavController().popBackStack()
                 }
             }
         }

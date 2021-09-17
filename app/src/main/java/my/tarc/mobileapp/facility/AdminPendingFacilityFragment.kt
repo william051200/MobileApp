@@ -145,7 +145,7 @@ class AdminPendingFacilityFragment : Fragment() {
 
         db.collection("facility").document(id).update("status", "Approved")
         Toast.makeText(context, "Approved facility", Toast.LENGTH_SHORT).show()
-        findNavController().navigate(R.id.action_adminPendingFacilityFragment_to_facilityListFragment)
+        findNavController().popBackStack()
     }
 
     private fun denyFacility() {
@@ -176,7 +176,7 @@ class AdminPendingFacilityFragment : Fragment() {
                     }
                     dialog.dismiss()
                     Toast.makeText(context, "Denied facility", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_adminPendingFacilityFragment_to_facilityListFragment)
+                    findNavController().popBackStack()
                 }
             }
         }
