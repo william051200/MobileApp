@@ -50,7 +50,6 @@ class AdminPendingFacilityFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentAdminPendingFacilityBinding.inflate(inflater, container, false)
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         return binding.root
     }
 

@@ -58,7 +58,7 @@ class UploadFacilityFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentUploadFacilityBinding.inflate(inflater, container, false)
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Upload Facility"
         return binding.root
     }
 

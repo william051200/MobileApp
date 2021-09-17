@@ -41,7 +41,6 @@ class EditFacilityFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentEditFacilityBinding.inflate(inflater, container, false)
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         return binding.root
     }
 

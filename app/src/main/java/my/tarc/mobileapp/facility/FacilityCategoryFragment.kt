@@ -26,8 +26,7 @@ class FacilityCategoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFacilityCategoryBinding.inflate(inflater, container, false)
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
-        return binding.root
+               return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
