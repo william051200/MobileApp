@@ -15,7 +15,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentFeedbackListBinding
-import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.model.Feedback
 
 class FeedbackListFragment : Fragment() {
@@ -58,8 +57,41 @@ class FeedbackListFragment : Fragment() {
                 var feedbackId = document.id
                 var facility = document.get("facility").toString()
                 var comment = document.get("comment").toString()
-                var suggestion = document.get("suggestion").toString()
-                var feedback = Feedback(comment, feedbackId, facility, feedbackType, suggestion)
+                var newName: String = document.get("name").toString()
+                var newStartingHour: String = document.get("starting_hour").toString()
+                var newClosingHour: String = document.get("closing_hour").toString()
+                var newStreet: String = document.get("address_street").toString()
+                var newPostcode: String = document.get("address_postcode").toString()
+                var newCity: String = document.get("address_city").toString()
+                var newState: String = document.get("address_state").toString()
+                var newOKUFeature: String = document.get("oku_feature").toString()
+                var suggestion: String = ""
+
+                if (feedbackType == "Incorrect Name") {
+                    suggestion = newName
+                } else if (feedbackType == "Incorrect Operation Hours") {
+                    suggestion = "$newStartingHour - $newClosingHour"
+                } else if (feedbackType == "Incorrect Address") {
+                    suggestion = "$newStreet, $newPostcode $newCity, $newState"
+                } else if (feedbackType == "Incorrect OKU Feature") {
+                    suggestion = newOKUFeature
+                }
+
+                var feedback = Feedback(
+                    comment,
+                    feedbackId,
+                    facility,
+                    feedbackType,
+                    suggestion,
+                    newName,
+                    newStartingHour,
+                    newClosingHour,
+                    newStreet,
+                    newPostcode,
+                    newCity,
+                    newState,
+                    newOKUFeature
+                )
                 feedbackList.add(feedback)
             }
             recyclerView.adapter = FeedbackAdapter(feedbackList) { feedback ->
@@ -91,11 +123,17 @@ class FeedbackListFragment : Fragment() {
         textViewComment.text = feedback.comment
         textViewSuggestion.text = feedback.suggestion
 
-        var facility = Facility(feedback.facility)
+        var facilityName: String = ""
+
+        db.collection("facility").document(feedback.facility).get()
+            .addOnSuccessListener { eachFacility ->
+                if (eachFacility.id == feedback.facility)
+                    facilityName = eachFacility.get("name") as String
+            }
 
         // Get the associated facility
         db.collection("facility").document(feedback.facility).get().addOnSuccessListener {
-            textViewFacilityName.text = facility.name
+            textViewFacilityName.text = facilityName
 
             // Populate current_info based on the feedback's type
             when (feedback.type) {
@@ -116,7 +154,7 @@ class FeedbackListFragment : Fragment() {
                     var address = "$street, $postcode $city, $state"
                     textViewCurrentInfo.text = address
                 }
-                "Incorrect Oku Feature" -> textViewCurrentInfo.text =
+                "Incorrect OKU Feature" -> textViewCurrentInfo.text =
                     it.get("oku_feature").toString()
             }
         }
@@ -130,79 +168,66 @@ class FeedbackListFragment : Fragment() {
             val facilityRef = db.collection("facility").document(feedback.facility)
             when (feedback.type) {
                 "Incorrect Name" -> {
-                    facilityRef.update("name", feedback.suggestion).addOnSuccessListener {
-                        Toast.makeText(
-                            context,
-                            "Facility Name Updated",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    // update name
+                    facilityRef.update("name", feedback.newName).addOnSuccessListener {
+                        Toast.makeText(context, "Facility Name Updated", Toast.LENGTH_SHORT).show()
                         deleteFeedback(feedback.id)
                     }
                 }
                 "Incorrect Operation Hours" -> {
-                    // Operating hours
-                    var trimmedSuggestion = feedback.suggestion.trim()
-                    var startTime: String =
-                        trimmedSuggestion.substring(0, feedback.suggestion.indexOf("-"))
-                    var closeTime: String =
-                        trimmedSuggestion.substring(
-                            feedback.suggestion.indexOf("-") + 1,
-                            trimmedSuggestion.length
-                        )
+                    // update starting hour
+                    facilityRef.update("starting_hour", feedback.newStartingHour)
+                        .addOnSuccessListener {
 
-                    facilityRef.update("starting_hour", startTime)
-                    facilityRef.update("closing_hour", closeTime).addOnSuccessListener {
-                        Toast.makeText(
-                            context,
-                            "Facility Operating Hours Updated",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        deleteFeedback(feedback.id)
-                    }
+                            // update closing hour
+                            facilityRef.update("closing_hour", feedback.newClosingHour)
+                                .addOnSuccessListener {
+                                    Toast.makeText(
+                                        context,
+                                        "Facility Operating Hours Updated",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    deleteFeedback(feedback.id)
+                                }
+                        }
                 }
                 "Incorrect Address" -> {
-                    var arrayStr = feedback.suggestion.split(",").toTypedArray()
-                    // Address
-                    var street: String = arrayStr[0]
-                    var postcodeCity: String = arrayStr[1]
-                    var trimmedStr = postcodeCity.trim()
-                    var postcode = trimmedStr.substring(0, 5)
-                    var city = trimmedStr.substring(5)
-                    var state: String = arrayStr[2]
+                    // update city
+                    facilityRef.update("address_city", feedback.newCity).addOnSuccessListener {
 
-                    facilityRef.update("address_city", city)
-                    facilityRef.update("address_postcode", postcode)
-                    facilityRef.update("address_state", state)
-                    facilityRef.update("address_street", street).addOnSuccessListener {
-                        Toast.makeText(
-                            context,
-                            "Facility Address Updated",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        deleteFeedback(feedback.id)
+                        // update postcode
+                        facilityRef.update("address_postcode", feedback.newPostcode)
+                            .addOnSuccessListener {
+
+                                // update state
+                                facilityRef.update("address_state", feedback.newState)
+                                    .addOnSuccessListener {
+
+                                        // update street
+                                        facilityRef.update("address_street", feedback.newStreet)
+                                            .addOnSuccessListener {
+                                                Toast.makeText(
+                                                    context,
+                                                    "Facility Address Updated",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                                deleteFeedback(feedback.id)
+                                            }
+                                    }
+                            }
                     }
                 }
-                "Incorrect Oku Feature" -> {
-                    var suggestion = feedback.suggestion
-                    if (suggestion == "None" || suggestion == "OKU Parking" || suggestion == "OKU Toilet" || suggestion == "OKU Seat" || suggestion == "Wheelchair") {
-                        facilityRef.update("oku_feature", feedback.suggestion)
-                            .addOnSuccessListener {
-                                Toast.makeText(
-                                    context,
-                                    "Facility OKU Feature Updated",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                deleteFeedback(feedback.id)
-                            }
-
-                    } else {
-                        Toast.makeText(
-                            context,
-                            "Invalid OKU Feature, Update Failed",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-
+                "Incorrect OKU Feature" -> {
+                    // update oku feature
+                    facilityRef.update("oku_feature", feedback.newOKUFeature)
+                        .addOnSuccessListener {
+                            Toast.makeText(
+                                context,
+                                "Facility OKU Feature Updated",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            deleteFeedback(feedback.id)
+                        }
                 }
             }
             getFeedbacksFromFirebase()

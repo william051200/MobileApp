@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.firebase.firestore.ktx.firestore
@@ -22,6 +23,8 @@ import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentFacilityDetailsBinding
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
 import my.tarc.mobileapp.viewmodel.UserViewModel
+import java.util.*
+import kotlin.collections.ArrayList
 
 class FacilityDetailsFragment : Fragment() {
 
@@ -53,7 +56,6 @@ class FacilityDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentFacilityDetailsBinding.inflate(inflater, container, false)
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         return binding.root
     }
 
@@ -216,25 +218,153 @@ class FacilityDetailsFragment : Fragment() {
 
         val btnSubmit: Button = view.findViewById(R.id.dialogSubmitFeedback_btnSubmit)
         val btnCancel: Button = view.findViewById(R.id.dialogSubmitFeedback_btnCancel)
+        var spinnerType: Spinner = view.findViewById(R.id.dialogSubmitFeedback_spinnerFeedbackType)
+        var txtComment: TextView = view.findViewById(R.id.dialogSubmitFeedback_txtComment)
+        var selectedType: String = spinnerType.selectedItem.toString()
+        val params = btnSubmit.layoutParams as ConstraintLayout.LayoutParams
+
+        // Incorrect name
+        val lblName: TextView = view.findViewById(R.id.dialogSubmitFeedback_lblName)
+        val txtName: TextView = view.findViewById(R.id.dialogSubmitFeedback_txtName)
+
+        // Incorrect operation hours
+        val lblStartTime: TextView = view.findViewById(R.id.dialogSubmitFeedback_lblStartTime)
+        val lblCloseTime: TextView = view.findViewById(R.id.dialogSubmitFeedback_lblCloseTime)
+        val spinnerStartTime: Spinner =
+            view.findViewById(R.id.dialogSubmitFeedback_spinnerStartTime)
+        val spinnerCloseTime: Spinner =
+            view.findViewById(R.id.dialogSubmitFeedback_spinnerCloseTime)
+
+        // Incorrect address
+        val lblStreet: TextView = view.findViewById(R.id.dialogSubmitFeedback_lblStreet)
+        val lblPostCode: TextView = view.findViewById(R.id.dialogSubmitFeedback_lblPostcode)
+        val lblCity: TextView = view.findViewById(R.id.dialogSubmitFeedback_lblCity)
+        val lblState: TextView = view.findViewById(R.id.dialogSubmitFeedback_lblState)
+        val txtStreet: TextView = view.findViewById(R.id.dialogSubmitFeedback_txtStreet)
+        val txtPostCode: TextView = view.findViewById(R.id.dialogSubmitFeedback_txtPostcode)
+        val spinnerCity: Spinner = view.findViewById(R.id.dialogSubmitFeedback_spinnerCity)
+        val spinnerState: Spinner = view.findViewById(R.id.dialogSubmitFeedback_spinnerState)
+
+        // Incorrect OKU Feature
+        val lblOKUFeature: TextView = view.findViewById(R.id.dialogSubmitFeedback_lblOKUFeature)
+        val spinnerOKUFeature: Spinner = view.findViewById(R.id.dialogSubmitFeedback_spinnerFeature)
 
         btnCancel.setOnClickListener {
             dialog.dismiss()
         }
 
-        btnSubmit.setOnClickListener {
-            var txtComment: TextView = view.findViewById(R.id.editTextComment)
-            var txtSuggestion: TextView = view.findViewById(R.id.editTextSuggestion)
-            var type: Spinner = view.findViewById(R.id.filterDialog_spinnerFeedbackType)
+        // Hide all new input fields
+        fun hideAll() {
+            lblName.visibility = View.INVISIBLE
+            txtName.visibility = View.INVISIBLE
+            lblStartTime.visibility = View.INVISIBLE
+            lblCloseTime.visibility = View.INVISIBLE
+            spinnerStartTime.visibility = View.INVISIBLE
+            spinnerCloseTime.visibility = View.INVISIBLE
+            lblStreet.visibility = View.INVISIBLE
+            lblPostCode.visibility = View.INVISIBLE
+            lblCity.visibility = View.INVISIBLE
+            lblState.visibility = View.INVISIBLE
+            txtStreet.visibility = View.INVISIBLE
+            txtPostCode.visibility = View.INVISIBLE
+            spinnerCity.visibility = View.INVISIBLE
+            spinnerState.visibility = View.INVISIBLE
+            lblOKUFeature.visibility = View.INVISIBLE
+            spinnerOKUFeature.visibility = View.INVISIBLE
+        }
 
+        // Handle spinner feedback type
+        spinnerType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                selectedType = spinnerType.selectedItem.toString()
+                hideAll()
+                if (selectedType == "Incorrect Name") {
+                    lblName.visibility = View.VISIBLE
+                    txtName.visibility = View.VISIBLE
+                    params.topToBottom = txtName.id
+                } else if (selectedType == "Incorrect Operation Hours") {
+                    lblStartTime.visibility = View.VISIBLE
+                    lblCloseTime.visibility = View.VISIBLE
+                    spinnerStartTime.visibility = View.VISIBLE
+                    spinnerCloseTime.visibility = View.VISIBLE
+                    params.topToBottom = spinnerCloseTime.id
+                } else if (selectedType == "Incorrect Address") {
+                    lblStreet.visibility = View.VISIBLE
+                    lblPostCode.visibility = View.VISIBLE
+                    lblCity.visibility = View.VISIBLE
+                    lblState.visibility = View.VISIBLE
+                    txtStreet.visibility = View.VISIBLE
+                    txtPostCode.visibility = View.VISIBLE
+                    spinnerCity.visibility = View.VISIBLE
+                    spinnerState.visibility = View.VISIBLE
+                    params.topToBottom = spinnerState.id
+                } else if (selectedType == "Incorrect OKU Feature") {
+                    lblOKUFeature.visibility = View.VISIBLE
+                    spinnerOKUFeature.visibility = View.VISIBLE
+                    params.topToBottom = spinnerOKUFeature.id
+                }
+            }
+        }
+
+        // Initialise new data input
+        var newName: String = ""
+        var newStartingHour: String = ""
+        var newClosingHour: String = ""
+        var newAddressStreet: String = ""
+        var newAddressPostcode: String = ""
+        var newAddressCity: String = ""
+        var newAddressState: String = ""
+        var newOKUFeature: String = ""
+
+        btnSubmit.setOnClickListener {
+            // Validate comment
             if (txtComment.text.isEmpty()) {
                 txtComment.setError("Comment cannot be empty!")
                 Toast.makeText(context, "Invalid comment", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (txtSuggestion.text.isEmpty()) {
-                txtSuggestion.setError("Suggestion cannot be empty!")
-                Toast.makeText(context, "Invalid suggestion", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+
+            if (selectedType == "Incorrect Name") {
+                // Validate faciltiy name
+                if (txtName.text.isEmpty()) {
+                    txtComment.setError("Facility name cannot be empty!")
+                    Toast.makeText(context, "Invalid name", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                newName = txtName.text.toString()
+
+            } else if (selectedType == "Incorrect Operation Hours") {
+                newStartingHour = spinnerStartTime.selectedItem.toString()
+                newClosingHour = spinnerCloseTime.selectedItem.toString()
+
+            } else if (selectedType == "Incorrect Address") {
+                // Validate address street
+                if (txtStreet.text.isEmpty()) {
+                    txtComment.setError("Address street cannot be empty!")
+                    Toast.makeText(context, "Invalid street", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+                // Validate address postcode
+                if (txtPostCode.text.isEmpty()) {
+                    txtComment.setError("Address postcode cannot be empty!")
+                    Toast.makeText(context, "Invalid postcode", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                newAddressStreet = txtStreet.text.toString()
+                newAddressPostcode = txtPostCode.text.toString()
+                newAddressCity = spinnerCity.selectedItem.toString()
+                newAddressState = spinnerState.selectedItem.toString()
+
+            } else if (selectedType == "Incorrect OKU Feature") {
+                newOKUFeature = spinnerOKUFeature.selectedItem.toString()
             }
 
             // Generate new feedback

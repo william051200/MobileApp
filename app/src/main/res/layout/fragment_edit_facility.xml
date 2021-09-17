@@ -67,6 +67,7 @@
         android:id="@+id/imageViewEdit_Facility_Image"
         android:layout_width="0dp"
         android:layout_height="160dp"
+        android:paddingTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_Pick_Facility_Image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

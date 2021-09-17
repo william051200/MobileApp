@@ -97,7 +97,6 @@
     <string name="txtView_zipcode_label">PostCode</string>
     <string name="exampleZipcode_label">5 digits</string>
     <string-array name="spinner_oku_feature">
-        <item>None</item>
         <item>OKU Parking</item>
         <item>OKU Toilet</item>
         <item>OKU Seat</item>
@@ -120,7 +119,6 @@
         <item>5</item>
     </string-array>
     <string name="txtViewFeedback">Feedback</string>
-
 
     //Facility Category
     <string name="okuToilet_label">OKU Toilet</string>

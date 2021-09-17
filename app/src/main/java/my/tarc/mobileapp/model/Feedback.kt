@@ -5,7 +5,13 @@ class Feedback(
     val id: String,
     val facility: String,
     val type: String,
-    val suggestion: String
-) {
-    constructor(id: String, facility: String, type: String) : this("", "", facility, type, "") {}
-}
+    val suggestion: String,
+    val newName: String,
+    val newStartingHour: String,
+    val newClosingHour: String,
+    val newStreet: String,
+    val newPostcode: String,
+    val newCity: String,
+    val newState: String,
+    val newOKUFeature: String,
+) {}
