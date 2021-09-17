@@ -54,37 +54,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/adminFacilityDetail_imageSwitcher" />
 
-    <RatingBar
-        android:id="@+id/adminFacilityDetail_ratingBar"
-        style="?android:attr/ratingBarStyleIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:progressTint="#FFCC01"
-        android:rating="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminFacilityDetail_txtFacilityName" />
-
-    <TextView
-        android:id="@+id/adminFacilityDetail_ratingCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/adminFacilityDetail_ratingBar"
-        app:layout_constraintStart_toEndOf="@+id/adminFacilityDetail_ratingBar"
-        app:layout_constraintTop_toTopOf="@+id/adminFacilityDetail_ratingBar" />
-
     <TextView
         android:id="@+id/textViewLabelAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/address"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminFacilityDetail_ratingBar" />
+        app:layout_constraintTop_toBottomOf="@+id/adminFacilityDetail_txtFacilityName" />
 
     <TextView
         android:id="@+id/textViewLabelHours"

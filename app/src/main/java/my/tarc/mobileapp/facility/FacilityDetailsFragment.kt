@@ -59,8 +59,6 @@ class FacilityDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.facilityDetailBtnUnfavourite.visibility = View.INVISIBLE
-        binding.facilityDetailTxtRatingCount.text = "Rate this facility"
 
         loadFacilityDetail()
 
@@ -69,14 +67,6 @@ class FacilityDetailsFragment : Fragment() {
 
         // Store image list
         images = ArrayList()
-
-        // Rating bar
-//        binding.facilityDetailRatingBar.setOnTouchListener(View.OnTouchListener { v, event ->
-//            if (event.action == MotionEvent.ACTION_UP) {
-//                Log.e("test", v.toString())
-//            }
-//            return@OnTouchListener true
-//        })
 
         // favourite this facility
         binding.facilityDetailBtnFavourite.setOnClickListener {
@@ -134,7 +124,6 @@ class FacilityDetailsFragment : Fragment() {
         var email: String = userViewModel.activeUser.value!!.email
         var id: String = facilityViewModel.selectedFacility.value!!.id
         var name: String
-        var rating: String
         var operatingHours: String
         var feature: String
 
@@ -144,7 +133,6 @@ class FacilityDetailsFragment : Fragment() {
 
         db.collection("facility").document(id).get().addOnSuccessListener {
             name = it.get("name") as String
-            rating = it.get("rating") as String
             feature = it.get("oku_feature") as String
 
             // Address
@@ -160,8 +148,6 @@ class FacilityDetailsFragment : Fragment() {
             operatingHours = "$startTime - $closeTime"
 
             binding.facilityDetailTxtName.text = name
-            binding.facilityDetailRatingBar.rating = rating.toFloat()
-            binding.facilityDetailTxtRatingCount.text = rating
             binding.facilityDetailTxtAddress.text = address
             binding.facilityDetailTxtOperationHours.text = operatingHours
             binding.facilityDetailTxtFeature.text = feature
