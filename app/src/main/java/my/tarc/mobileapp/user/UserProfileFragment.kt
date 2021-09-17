@@ -97,9 +97,9 @@ class UserProfileFragment : Fragment() {
         }
 
         // Pick image
-        binding.btnUserProfileEdit.setOnClickListener {
-            pickProfileImage()
-        }
+//        binding.btnUserProfileEdit.setOnClickListener {
+//            pickProfileImage()
+//        }
 
 
         // Upload to firebase
@@ -123,7 +123,7 @@ class UserProfileFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             imageUri = data?.data!!
-            binding.imageViewProfile.setImageURI(imageUri)
+            //binding.imageViewProfile.setImageURI(imageUri)
         }
     }
 
