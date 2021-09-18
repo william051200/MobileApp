@@ -87,15 +87,15 @@ class FacilityListFragment : Fragment() {
             override fun onQueryTextSubmit(strQuery: String?): Boolean {
                 // Filter recyclerview based on query
                 collectedFacilityList.clear()
-                if(strQuery!!.isNotEmpty()){
-                    facilityList.forEach{
-                        if(it.name.lowercase() == strQuery?.lowercase()){
+                if (strQuery!!.isNotEmpty()) {
+                    facilityList.forEach {
+                        if (it.name.lowercase() == strQuery?.lowercase()) {
                             collectedFacilityList.add(it)
                         }
                     }
 
                     recyclerView.adapter?.notifyDataSetChanged()
-                }else {
+                } else {
                     collectedFacilityList.clear()
                     collectedFacilityList.addAll(facilityList)
                     recyclerView.adapter?.notifyDataSetChanged()
@@ -106,15 +106,15 @@ class FacilityListFragment : Fragment() {
             override fun onQueryTextChange(newText: String): Boolean {
                 val searchText = newText!!.lowercase()
                 collectedFacilityList.clear()
-                if(searchText.isNotEmpty()){
-                    facilityList.forEach{
-                        if(it.name.startsWith(searchText, true)){
+                if (searchText.isNotEmpty()) {
+                    facilityList.forEach {
+                        if (it.name.startsWith(searchText, true)) {
                             collectedFacilityList.add(it)
                         }
                     }
 
                     recyclerView.adapter?.notifyDataSetChanged()
-                }else{
+                } else {
                     collectedFacilityList.clear()
                     collectedFacilityList.addAll(facilityList)
                     recyclerView.adapter?.notifyDataSetChanged()
@@ -207,36 +207,50 @@ class FacilityListFragment : Fragment() {
                         favouriteList = it.get("favourite_facility") as ArrayList<String>
                         if (favouriteList!!.isNotEmpty()) {
                             binding.facilityListTxtNoData.visibility = View.INVISIBLE
-                            for(favourite in favouriteList!!){
-                                db.collection("facility").document(favourite).get().addOnSuccessListener {
-                                    var facilityId = it.id
-                                    var facilityName = it.get("name").toString()
-                                    var facilityState = it.get("address_state").toString()
+                            for (favourite in favouriteList!!) {
+                                db.collection("facility").document(favourite).get()
+                                    .addOnSuccessListener {
+                                        var facilityId = it.id
+                                        var facilityName = it.get("name").toString()
+                                        var facilityCategory = it.get("category").toString()
+                                        var facilityState = it.get("address_state").toString()
 
-                                    var bmp: Bitmap? = null
-                                    val imageReference = storageRef.child(facilityId).child("0.png")
-                                    val ONE_MEGABYTE: Long = 1024 * 1024
+                                        var bmp: Bitmap? = null
+                                        val imageReference =
+                                            storageRef.child(facilityId).child("0.png")
+                                        val ONE_MEGABYTE: Long = 1024 * 1024
 
-                                    imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
-                                        bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                                        var facility = Facility(bmp, facilityName, facilityState, facilityId)
-                                        facilityList.add(facility)
-                                        collectedFacilityList.add(facility)
-                                        sortFacility()
-                                        recyclerView.adapter = FacilityAdapter(collectedFacilityList) { facility ->
-                                            // Pass selected facility to facility_details
-                                            facilityViewModel.setFacility(facility)
-                                            if (userViewModel.activeUser.value!!.userType == "user")
-                                                findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
-                                            else if (facilityViewModel.toolBarTitle.value.toString()
-                                                    .contains("Facility List")
-                                            )
-                                                findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
-                                            else
-                                                findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
-                                        }
+                                        imageReference.getBytes(ONE_MEGABYTE)
+                                            .addOnSuccessListener { bytes ->
+                                                bmp = BitmapFactory.decodeByteArray(
+                                                    bytes,
+                                                    0,
+                                                    bytes.size
+                                                )
+                                                var facility = Facility(
+                                                    bmp,
+                                                    facilityName,
+                                                    facilityState,
+                                                    facilityId, facilityCategory
+                                                )
+                                                facilityList.add(facility)
+                                                collectedFacilityList.add(facility)
+                                                sortFacility()
+                                                recyclerView.adapter =
+                                                    FacilityAdapter(collectedFacilityList) { facility ->
+                                                        // Pass selected facility to facility_details
+                                                        facilityViewModel.setFacility(facility)
+                                                        if (userViewModel.activeUser.value!!.userType == "user")
+                                                            findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
+                                                        else if (facilityViewModel.toolBarTitle.value.toString()
+                                                                .contains("Facility List")
+                                                        )
+                                                            findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
+                                                        else
+                                                            findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
+                                                    }
+                                            }
                                     }
-                                }
 
                             }
                         } else {
@@ -278,7 +292,6 @@ class FacilityListFragment : Fragment() {
         var filteredCategory: ArrayList<Facility> = arrayListOf()
         var finalFilterList: ArrayList<Facility> = arrayListOf()
 
-        // Filter facility according to category
         if (filterCategory != "All") {
             collectedFacilityList.map {
                 if (it.category == filterCategory) filteredCategory.add(it)
@@ -327,7 +340,9 @@ class FacilityListFragment : Fragment() {
                 facilityViewModel.setFacility(facility)
                 if (userViewModel.activeUser.value!!.userType == "user")
                     findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
-                else if (facilityViewModel.toolBarTitle.value.toString().contains("Facility List"))
+                else if (facilityViewModel.toolBarTitle.value.toString()
+                        .contains("Facility List")
+                )
                     findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
                 else
                     findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
@@ -350,6 +365,7 @@ class FacilityListFragment : Fragment() {
             for (document in documents) {
                 var facilityId = document.id
                 var facilityName = document.get("name").toString()
+                var facilityCategory = document.get("category").toString()
                 var facilityState = document.get("address_state").toString()
 
                 var bmp: Bitmap? = null
@@ -358,7 +374,8 @@ class FacilityListFragment : Fragment() {
 
                 imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
                     bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                    var facility = Facility(bmp, facilityName, facilityState, facilityId)
+                    var facility =
+                        Facility(bmp, facilityName, facilityState, facilityId, facilityCategory)
                     collectedFacilityList.add(facility)
                     facilityList.add(facility)
                     sortFacility()
