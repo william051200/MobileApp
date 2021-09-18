@@ -81,22 +81,44 @@ class FacilityListFragment : Fragment() {
         var searchItem: MenuItem = menu.findItem(R.id.action_search) as MenuItem
         searchItem.isVisible = true
 
-        val searchView: SearchView = MenuItemCompat.getActionView(searchItem) as SearchView
+        val searchView: SearchView = searchItem.actionView as SearchView
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(strQuery: String?): Boolean {
                 // Filter recyclerview based on query
-                query = db.collection("facility")
-                    .whereEqualTo("category", facilityType).whereEqualTo("name", strQuery)
-                populateAdapter()
+                collectedFacilityList.clear()
+                if(strQuery!!.isNotEmpty()){
+                    facilityList.forEach{
+                        if(it.name.lowercase() == strQuery?.lowercase()){
+                            collectedFacilityList.add(it)
+                        }
+                    }
+
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }else {
+                    collectedFacilityList.clear()
+                    collectedFacilityList.addAll(facilityList)
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-//                // Filter recyclerview based on query
-//                query = db.collection("facility")
-//                    .whereEqualTo("category", facilityType).whereEqualTo("name", strQuery)
-//                populateAdapter()
+                val searchText = newText!!.lowercase()
+                collectedFacilityList.clear()
+                if(searchText.isNotEmpty()){
+                    facilityList.forEach{
+                        if(it.name.lowercase().contains(searchText)){
+                            collectedFacilityList.add(it)
+                        }
+                    }
+
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }else{
+                    collectedFacilityList.clear()
+                    collectedFacilityList.addAll(facilityList)
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }
                 return false
             }
         })
@@ -169,6 +191,7 @@ class FacilityListFragment : Fragment() {
 
     private fun getFacilitiesFromFirebase() {
         facilityList.clear()
+        collectedFacilityList.clear()
         // Get different facilities based on user type
         if (userViewModel.activeUser.value?.userType == "user") {
             facilityType = facilityViewModel.selectedFacilityType.value
@@ -217,7 +240,7 @@ class FacilityListFragment : Fragment() {
                                                 facilityList.add(facility)
                                                 sortFacility()
                                                 recyclerView.adapter =
-                                                    FacilityAdapter(facilityList) { facility ->
+                                                    FacilityAdapter(collectedFacilityList) { facility ->
                                                         // Pass selected facility to facility_details
                                                         facilityViewModel.setFacility(facility)
                                                         if (userViewModel.activeUser.value!!.userType == "user")
@@ -331,7 +354,6 @@ class FacilityListFragment : Fragment() {
     }
 
     private fun populateAdapter() {
-        facilityList.clear()
         query?.get()?.addOnSuccessListener { documents ->
             if (documents.size() < 1) {
                 binding.facilityListTxtNoData.visibility = View.VISIBLE
@@ -353,7 +375,7 @@ class FacilityListFragment : Fragment() {
                     collectedFacilityList.add(facility)
                     facilityList.add(facility)
                     sortFacility()
-                    recyclerView.adapter = FacilityAdapter(facilityList) { facility ->
+                    recyclerView.adapter = FacilityAdapter(collectedFacilityList) { facility ->
                         // Pass selected facility to facility_details
                         facilityViewModel.setFacility(facility)
                         if (userViewModel.activeUser.value!!.userType == "user")
