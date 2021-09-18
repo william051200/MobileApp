@@ -28,10 +28,6 @@ import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentEditFacilityBinding
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
 import my.tarc.mobileapp.viewmodel.UserViewModel
-import android.widget.ArrayAdapter
-
-
-
 
 class EditFacilityFragment : Fragment() {
     // Connect to Facility viewModel
@@ -120,11 +116,9 @@ class EditFacilityFragment : Fragment() {
             .addOnSuccessListener {
                 var facName: String = it.get("name") as String
                 var address: String = it.get("address_street") as String
-                var postCode: String = it.get("address_postcode") as String
 
                 binding.txtEditFacilityName.setText(facName)
                 binding.txtEditFacilityAddress.setText(address)
-                binding.txtEditFacilityZipCode.setText(postCode)
 
 
             }.addOnFailureListener{
