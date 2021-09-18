@@ -289,23 +289,26 @@ class FacilityListFragment : Fragment() {
 
     // Sort facility according to state
     private fun filterFacility() {
+        collectedFacilityList.clear()
+
         var filteredCategory: ArrayList<Facility> = arrayListOf()
         var finalFilterList: ArrayList<Facility> = arrayListOf()
 
         if (filterCategory != "All") {
-            collectedFacilityList.map {
+            facilityList.map {
                 if (it.category == filterCategory) filteredCategory.add(it)
             }
-        } else filteredCategory = collectedFacilityList
+        } else filteredCategory.addAll(facilityList)
+
 
         // Filter facility according to location
         if (filterLocation != "All") {
             filteredCategory.map {
-                if (it.address.state == filterLocation) finalFilterList.add(it)
+                if (it.address.state == filterLocation) collectedFacilityList.add(it)
             }
-        } else finalFilterList = filteredCategory
+        } else collectedFacilityList.addAll(filteredCategory)
 
-        facilityList = finalFilterList
+        recyclerView.adapter?.notifyDataSetChanged()
         sortFacility()
     }
 
@@ -335,7 +338,7 @@ class FacilityListFragment : Fragment() {
             } else filterCategory = "All"
             filterLocation = spinnerLocation.selectedItem.toString()
             filterFacility()
-            recyclerView.adapter = FacilityAdapter(facilityList) { facility ->
+            recyclerView.adapter = FacilityAdapter(collectedFacilityList) { facility ->
                 // Pass selected facility to facility_details
                 facilityViewModel.setFacility(facility)
                 if (userViewModel.activeUser.value!!.userType == "user")
