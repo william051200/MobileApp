@@ -221,6 +221,7 @@ class FacilityListFragment : Fragment() {
                                         bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
                                         var facility = Facility(bmp, facilityName, facilityState, facilityId)
                                         facilityList.add(facility)
+                                        collectedFacilityList.add(facility)
                                         sortFacility()
                                         recyclerView.adapter = FacilityAdapter(collectedFacilityList) { facility ->
                                             // Pass selected facility to facility_details
@@ -236,6 +237,7 @@ class FacilityListFragment : Fragment() {
                                         }
                                     }
                                 }
+
                             }
                         } else {
                             binding.facilityListTxtNoData.visibility = View.VISIBLE
