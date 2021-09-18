@@ -124,6 +124,10 @@ class EditFacilityFragment : Fragment() {
                 var postCode: String = it.get("address_postcode") as String
                 var closinghrs: String = it.get("closing_hour") as String
 
+                var adapter = binding.spinnerEditCT.adapter as ArrayAdapter<String>
+                var position = adapter.getPosition(closinghrs)
+                binding.spinnerEditCT.setSelection(position)
+
 //                val spinnerCT: Adapter = binding.spinnerEditCT.adapter
 //                spinnerCT.setSelection(((ArrayAdapter)spinnerCT.getAdapter().getPosition(closinghrs)))
 
