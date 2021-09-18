@@ -129,10 +129,12 @@ class FacilityDetailsFragment : Fragment() {
         var name: String
         var operatingHours: String
         var feature: String
+        var category: String
 
         db.collection("facility").document(id).get().addOnSuccessListener {
             name = it.get("name") as String
             feature = it.get("oku_feature") as String
+            category = it.get("category") as String
 
             // Address
             var street: String = it.get("address_street") as String
@@ -150,6 +152,7 @@ class FacilityDetailsFragment : Fragment() {
             binding.facilityDetailTxtAddress.text = address
             binding.facilityDetailTxtOperationHours.text = operatingHours
             binding.facilityDetailTxtFeature.text = feature
+            binding.facilityDetailTxtCategory.text = category
         }
 
         storageRef.child(id).listAll().addOnSuccessListener {
