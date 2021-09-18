@@ -160,8 +160,9 @@ class FeedbackListFragment : Fragment() {
                     newOKUFeature
                 )
                 feedbackList.add(feedback)
+                newFeedbackList.add(feedback)
             }
-            recyclerView.adapter = FeedbackAdapter(feedbackList) { feedback ->
+            recyclerView.adapter = FeedbackAdapter(newFeedbackList) { feedback ->
                 // Prompt dialog with the selected feedback's details
                 openFeedbackDialog(feedback)
             }
