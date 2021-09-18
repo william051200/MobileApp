@@ -50,12 +50,6 @@ class EditFacilityFragment : Fragment() {
     // Current position of selected image
     private var position = 0
 
-    // Current position of deleted image
-    private var deletePosition = 0
-
-    //request code to pick image
-    private val PICK_IMAGES_CODE = 0
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
