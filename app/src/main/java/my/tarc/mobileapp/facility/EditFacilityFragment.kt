@@ -1,5 +1,6 @@
 package my.tarc.mobileapp.facility
 
+import android.app.Activity
 import android.content.ClipData
 import android.content.Intent
 import android.graphics.Bitmap
@@ -121,6 +122,11 @@ class EditFacilityFragment : Fragment() {
                 var facName: String = it.get("name") as String
                 var address: String = it.get("address_street") as String
                 var postCode: String = it.get("address_postcode") as String
+                var closinghrs: String = it.get("closing_hour") as String
+
+//                val spinnerCT: Adapter = binding.spinnerEditCT.adapter
+//                spinnerCT.setSelection(((ArrayAdapter)spinnerCT.getAdapter().getPosition(closinghrs)))
+
 
                 binding.txtEditFacilityName.setText(facName)
                 binding.txtEditFacilityAddress.setText(address)
