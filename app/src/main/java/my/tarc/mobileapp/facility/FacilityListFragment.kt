@@ -175,7 +175,8 @@ class FacilityListFragment : Fragment() {
 
         // Navigate to user profile page
         binding.facilityListBtnMyProfile.setOnClickListener {
-            findNavController().navigate(R.id.action_facilityListFragment_to_userProfile)
+            findNavController().popBackStack()
+            findNavController().navigate(R.id.action_facilityCategory_to_userProfile)
         }
 
         // Listen to changes in Firestore and update recyclerview in real time

@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:gravity="center"
-                android:text="@string/facility"
+                android:text="Approved facilities"
                 android:textColor="#0F124D"
                 android:textSize="20sp" />
 

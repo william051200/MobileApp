@@ -11,7 +11,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUserProfileBinding
 import my.tarc.mobileapp.viewmodel.UserViewModel
 
@@ -48,7 +47,7 @@ class UserProfileFragment : Fragment() {
 
         // Navigate to Facility Category
         binding.userProfileBtnFacilityCategory.setOnClickListener {
-            findNavController().navigate(R.id.action_userProfile_to_facilityCategory)
+            findNavController().popBackStack()
         }
 
         // Reset Profile

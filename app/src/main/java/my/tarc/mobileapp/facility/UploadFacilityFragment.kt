@@ -13,12 +13,14 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentUploadFacilityBinding
+import my.tarc.mobileapp.viewmodel.UserViewModel
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -43,11 +45,11 @@ class UploadFacilityFragment : Fragment() {
     // Current position of selected image
     private var position = 0
 
-    // Facility Status
-    private val statusFac: String = "Pending"
-
     //request code to pick image
     private val PICK_IMAGES_CODE = 0
+
+    // view model
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -186,9 +188,12 @@ class UploadFacilityFragment : Fragment() {
         val state = binding.spinnerState.selectedItem.toString()
         val zipCode = binding.txtFacilityZipCode.text.toString()
         val category = binding.spinnerCategory.selectedItem.toString()
-        val status = statusFac
         val facilityID = UUID.randomUUID()
 
+        var status = "Pending"
+        if (userViewModel.activeUser.value!!.userType == "admin") {
+            status = "Approved"
+        }
 
         // Create New Facility
         val facility = hashMapOf(
@@ -211,6 +216,7 @@ class UploadFacilityFragment : Fragment() {
 
         facilityRef.document(facilityID.toString()).set(facility).addOnSuccessListener {
             Toast.makeText(this.context, "Uploaded successful!", Toast.LENGTH_SHORT).show()
+
             // Navigate back to facility category once uploaded
             findNavController().popBackStack()
         }.addOnFailureListener {
