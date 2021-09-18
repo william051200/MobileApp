@@ -335,7 +335,7 @@ class FacilityDetailsFragment : Fragment() {
             if (selectedType == "Incorrect Name") {
                 // Validate faciltiy name
                 if (txtName.text.isEmpty()) {
-                    txtComment.setError("Facility name cannot be empty!")
+                    txtName.setError("Facility name cannot be empty!")
                     Toast.makeText(context, "Invalid name", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
@@ -349,13 +349,13 @@ class FacilityDetailsFragment : Fragment() {
             } else if (selectedType == "Incorrect Address") {
                 // Validate address street
                 if (txtStreet.text.isEmpty()) {
-                    txtComment.setError("Address street cannot be empty!")
+                    txtStreet.setError("Address street cannot be empty!")
                     Toast.makeText(context, "Invalid street", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
                 // Validate address postcode
                 if (txtPostCode.text.isEmpty()) {
-                    txtComment.setError("Address postcode cannot be empty!")
+                    txtPostCode.setError("Address postcode cannot be empty!")
                     Toast.makeText(context, "Invalid postcode", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
