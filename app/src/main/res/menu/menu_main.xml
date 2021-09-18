@@ -10,7 +10,7 @@
         android:title="@string/search"
         android:visible="false"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="ifRoom|collapseActionView" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_uploadFacility"
         android:title="@string/upload_facility" />
