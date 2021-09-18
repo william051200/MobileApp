@@ -4,13 +4,12 @@ import android.app.AlertDialog
 import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,8 +29,61 @@ class FeedbackListFragment : Fragment() {
 
     // Recycler view
     private lateinit var feedbackList: ArrayList<Feedback>
+    private lateinit var newFeedbackList: ArrayList<Feedback>
     private lateinit var recyclerView: RecyclerView
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        var searchItem: MenuItem = menu.findItem(R.id.action_search) as MenuItem
+        searchItem.isVisible = true
+
+        val searchView: SearchView = searchItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(strQuery: String?): Boolean {
+                // Filter recyclerview based on query
+                newFeedbackList.clear()
+                if(strQuery!!.isNotEmpty()){
+                    feedbackList.forEach{
+                        if(it.type.lowercase() == strQuery?.lowercase()){
+                            newFeedbackList.add(it)
+                        }
+                    }
+
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }else {
+                    newFeedbackList.clear()
+                    newFeedbackList.addAll(feedbackList)
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                val searchText = newText!!.lowercase()
+                newFeedbackList.clear()
+                if(searchText.isNotEmpty()){
+                    feedbackList.forEach{
+                        if(it.type.startsWith(searchText, true)){
+                            newFeedbackList.add(it)
+                        }
+                    }
+
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }else{
+                    newFeedbackList.clear()
+                    newFeedbackList.addAll(feedbackList)
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }
+                return false
+            }
+        })
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,6 +100,7 @@ class FeedbackListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.setHasFixedSize(true)
         feedbackList = arrayListOf()
+        newFeedbackList = arrayListOf()
 
         // Listen to changes in Firestore and update recyclerview in real time
         db.collection("feedback")
@@ -61,7 +114,10 @@ class FeedbackListFragment : Fragment() {
     }
 
     private fun getFeedbacksFromFirebase() {
+        // Reset all current lists
+        newFeedbackList.clear()
         feedbackList.clear()
+
         db.collection("feedback").get().addOnSuccessListener { documents ->
             for (document in documents) {
                 var feedbackType = document.get("type").toString()

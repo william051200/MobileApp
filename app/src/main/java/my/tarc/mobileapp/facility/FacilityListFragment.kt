@@ -108,7 +108,7 @@ class FacilityListFragment : Fragment() {
                 collectedFacilityList.clear()
                 if(searchText.isNotEmpty()){
                     facilityList.forEach{
-                        if(it.name.lowercase().contains(searchText)){
+                        if(it.name.startsWith(searchText, true)){
                             collectedFacilityList.add(it)
                         }
                     }
@@ -190,69 +190,51 @@ class FacilityListFragment : Fragment() {
     }
 
     private fun getFacilitiesFromFirebase() {
+        // Reset current list
         facilityList.clear()
         collectedFacilityList.clear()
+
         // Get different facilities based on user type
         if (userViewModel.activeUser.value?.userType == "user") {
             facilityType = facilityViewModel.selectedFacilityType.value
-            var tempFavouriteList: ArrayList<String>? = null
+            var favouriteList: ArrayList<String>? = null
 
             if (facilityType == "favourite") {
-                var favouriteList:
-                        MutableList<String>? = null
-
                 // Get user's favorite facility's id
                 db.collection("user").document(userViewModel.activeUser.value!!.email).get()
                     .addOnSuccessListener {
-                        tempFavouriteList = it.get("favourite_facility") as ArrayList<String>
-                        if (tempFavouriteList!!.isNotEmpty()) {
-                            favouriteList = (tempFavouriteList)?.toMutableList()
+                        favouriteList = it.get("favourite_facility") as ArrayList<String>
+                        if (favouriteList!!.isNotEmpty()) {
                             binding.facilityListTxtNoData.visibility = View.INVISIBLE
-                            query = db.collection("facility")
-                                .whereEqualTo("status", "Approved")
-                            // Query that retrieves user's favorite facilities
-                            for (favourite in favouriteList!!) {
-                                db.collection("facility").document(favourite).get()
-                                    .addOnSuccessListener { it ->
-                                        var facilityId = it.id
-                                        var facilityName = it.get("name").toString()
-                                        var facilityState = it.get("address_state").toString()
+                            for(favourite in favouriteList!!){
+                                db.collection("facility").document(favourite).get().addOnSuccessListener {
+                                    var facilityId = it.id
+                                    var facilityName = it.get("name").toString()
+                                    var facilityState = it.get("address_state").toString()
 
-                                        var bmp: Bitmap? = null
-                                        val imageReference =
-                                            storageRef.child(facilityId).child("0.png")
-                                        val ONE_MEGABYTE: Long = 1024 * 1024
+                                    var bmp: Bitmap? = null
+                                    val imageReference = storageRef.child(facilityId).child("0.png")
+                                    val ONE_MEGABYTE: Long = 1024 * 1024
 
-                                        imageReference.getBytes(ONE_MEGABYTE)
-                                            .addOnSuccessListener { bytes ->
-                                                bmp = BitmapFactory.decodeByteArray(
-                                                    bytes,
-                                                    0,
-                                                    bytes.size
-                                                )
-                                                var facility = Facility(
-                                                    bmp,
-                                                    facilityName,
-                                                    facilityState,
-                                                    facilityId
-                                                )
-                                                collectedFacilityList.add(facility)
-                                                facilityList.add(facility)
-                                                sortFacility()
-                                                recyclerView.adapter =
-                                                    FacilityAdapter(collectedFacilityList) { facility ->
-                                                        // Pass selected facility to facility_details
-                                                        facilityViewModel.setFacility(facility)
-                                                        if (userViewModel.activeUser.value!!.userType == "user")
-                                                            findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
-                                                        else if (facilityViewModel.toolBarTitle.value == "Facility List")
-                                                            findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
-                                                        else
-                                                            findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
-                                                    }
-                                            }
-
+                                    imageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
+                                        bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+                                        var facility = Facility(bmp, facilityName, facilityState, facilityId)
+                                        facilityList.add(facility)
+                                        sortFacility()
+                                        recyclerView.adapter = FacilityAdapter(collectedFacilityList) { facility ->
+                                            // Pass selected facility to facility_details
+                                            facilityViewModel.setFacility(facility)
+                                            if (userViewModel.activeUser.value!!.userType == "user")
+                                                findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
+                                            else if (facilityViewModel.toolBarTitle.value.toString()
+                                                    .contains("Facility List")
+                                            )
+                                                findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
+                                            else
+                                                findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
+                                        }
                                     }
+                                }
                             }
                         } else {
                             binding.facilityListTxtNoData.visibility = View.VISIBLE
@@ -262,7 +244,7 @@ class FacilityListFragment : Fragment() {
             } else {
                 query = db.collection("facility")
                     .whereEqualTo("category", facilityType).whereEqualTo("status", "Approved")
-                populateAdapter()
+                populateRecyclerView()
             }
 
         } else {
@@ -274,10 +256,8 @@ class FacilityListFragment : Fragment() {
                     .whereEqualTo("status", "Pending")
             }
 
-            populateAdapter()
+            populateRecyclerView()
         }
-
-
     }
 
     // Update the facility list recycle view
@@ -353,7 +333,11 @@ class FacilityListFragment : Fragment() {
         }
     }
 
-    private fun populateAdapter() {
+    private fun populateRecyclerView() {
+        // Reset current list
+        facilityList.clear()
+        collectedFacilityList.clear()
+
         query?.get()?.addOnSuccessListener { documents ->
             if (documents.size() < 1) {
                 binding.facilityListTxtNoData.visibility = View.VISIBLE
