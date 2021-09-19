@@ -229,7 +229,7 @@ class UploadFacilityFragment : Fragment() {
         }
 
         facilityRef.document(facilityID.toString()).set(facility).addOnSuccessListener {
-            Toast.makeText(this.context, "Uploaded successful!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.context, "Upload successful!", Toast.LENGTH_SHORT).show()
 
             // Navigate back to facility category once uploaded
             findNavController().popBackStack()

@@ -27,10 +27,7 @@ import my.tarc.mobileapp.databinding.FragmentFacilityListBinding
 import my.tarc.mobileapp.model.Facility
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
 import my.tarc.mobileapp.viewmodel.UserViewModel
-import androidx.core.view.MenuItemCompat
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import com.google.firebase.firestore.ListenerRegistration
 
 class FacilityListFragment : Fragment() {
     // Firestore database
@@ -53,6 +50,7 @@ class FacilityListFragment : Fragment() {
     private lateinit var facilityList: ArrayList<Facility>
     private lateinit var recyclerView: RecyclerView
     private var facilityType: String? = null
+    private var listener : ListenerRegistration? = null
 
     private lateinit var spinner: Spinner
     private lateinit var sort: String
@@ -126,7 +124,6 @@ class FacilityListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // Set bottom tab's visibility dynamically
         if (userViewModel.activeUser.value?.userType == "admin") {
             binding.facilityListLinearLayout2.visibility = View.INVISIBLE
@@ -138,6 +135,20 @@ class FacilityListFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         facilityList = arrayListOf()
         collectedFacilityList = arrayListOf()
+
+        recyclerView.adapter =
+            FacilityAdapter(collectedFacilityList) { facility ->
+                // Pass selected facility to facility_details
+                facilityViewModel.setFacility(facility)
+                if (userViewModel.activeUser.value!!.userType == "user")
+                    findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
+                else if (facilityViewModel.toolBarTitle.value.toString()
+                        .contains("Facility List")
+                )
+                    findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
+                else
+                    findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
+            }
 
         //Spinner
         spinner = binding.facilityListSpinnerSort
@@ -155,18 +166,7 @@ class FacilityListFragment : Fragment() {
                 id: Long
             ) {
                 sortFacility()
-                recyclerView.adapter = FacilityAdapter(facilityList) { facility ->
-                    // Pass selected facility to facility_details
-                    facilityViewModel.setFacility(facility)
-                    if (userViewModel.activeUser.value!!.userType == "user")
-                        findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
-                    else if (facilityViewModel.toolBarTitle.value.toString()
-                            .contains("Facility List")
-                    )
-                        findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
-                    else
-                        findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
-                }
+                recyclerView.adapter?.notifyDataSetChanged()
             }
         }
 
@@ -180,7 +180,7 @@ class FacilityListFragment : Fragment() {
         }
 
         // Listen to changes in Firestore and update recyclerview in real time
-        db.collection("facility")
+        listener = db.collection("facility")
             .addSnapshotListener { value, e ->
                 if (e != null) {
                     Log.w(TAG, "Listen failed.", e)
@@ -188,6 +188,11 @@ class FacilityListFragment : Fragment() {
                 }
                 getFacilitiesFromFirebase()
             }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        listener?.remove()
     }
 
     private fun getFacilitiesFromFirebase() {
@@ -235,23 +240,10 @@ class FacilityListFragment : Fragment() {
                                                 )
                                                 facilityList.add(facility)
                                                 collectedFacilityList.add(facility)
+                                                recyclerView.adapter?.notifyDataSetChanged()
                                                 sortFacility()
-                                                recyclerView.adapter =
-                                                    FacilityAdapter(collectedFacilityList) { facility ->
-                                                        // Pass selected facility to facility_details
-                                                        facilityViewModel.setFacility(facility)
-                                                        if (userViewModel.activeUser.value!!.userType == "user")
-                                                            findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
-                                                        else if (facilityViewModel.toolBarTitle.value.toString()
-                                                                .contains("Facility List")
-                                                        )
-                                                            findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
-                                                        else
-                                                            findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
-                                                    }
                                             }
                                     }
-
                             }
                         } else {
                             binding.facilityListTxtNoData.visibility = View.VISIBLE
@@ -381,19 +373,8 @@ class FacilityListFragment : Fragment() {
                         Facility(bmp, facilityName, facilityState, facilityId, facilityCategory)
                     collectedFacilityList.add(facility)
                     facilityList.add(facility)
+                    recyclerView.adapter?.notifyDataSetChanged()
                     sortFacility()
-                    recyclerView.adapter = FacilityAdapter(collectedFacilityList) { facility ->
-                        // Pass selected facility to facility_details
-                        facilityViewModel.setFacility(facility)
-                        if (userViewModel.activeUser.value!!.userType == "user")
-                            findNavController().navigate(R.id.action_facilityListFragment_to_facilityDetailsFragment)
-                        else if (facilityViewModel.toolBarTitle.value.toString()
-                                .contains("Facility List")
-                        )
-                            findNavController().navigate(R.id.action_facilityListFragment_to_adminFacilityDetailFragment)
-                        else
-                            findNavController().navigate(R.id.action_facilityListFragment_to_adminPendingFacilityFragment)
-                    }
                 }
             }
         }
