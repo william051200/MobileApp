@@ -170,6 +170,10 @@ class FeedbackListFragment : Fragment() {
                 newFeedbackList.add(feedback)
                 recyclerView.adapter?.notifyDataSetChanged()
             }
+
+            if(newFeedbackList.size == 0){
+                recyclerView.adapter = null
+            }
             binding.feedbackListFeedbackCount.text = "Total feedbacks (${feedbackList.size})"
         }
     }
