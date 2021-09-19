@@ -102,6 +102,11 @@ class FeedbackListFragment : Fragment() {
         feedbackList = arrayListOf()
         newFeedbackList = arrayListOf()
 
+        recyclerView.adapter = FeedbackAdapter(newFeedbackList) { feedback ->
+            // Prompt dialog with the selected feedback's details
+            openFeedbackDialog(feedback)
+        }
+
         // Listen to changes in Firestore and update recyclerview in real time
         db.collection("feedback")
             .addSnapshotListener { value, e ->
@@ -161,10 +166,7 @@ class FeedbackListFragment : Fragment() {
                 )
                 feedbackList.add(feedback)
                 newFeedbackList.add(feedback)
-            }
-            recyclerView.adapter = FeedbackAdapter(newFeedbackList) { feedback ->
-                // Prompt dialog with the selected feedback's details
-                openFeedbackDialog(feedback)
+                recyclerView.adapter?.notifyDataSetChanged()
             }
             binding.feedbackListFeedbackCount.text = "Total feedbacks (${feedbackList.size})"
         }
