@@ -273,10 +273,12 @@ class FacilityListFragment : Fragment() {
     private fun sortFacility() {
         sort = spinner.selectedItem.toString()
         if (sort == "Sort ascending") {
-            facilityList.sortBy { it.name }
+            collectedFacilityList.sortBy { it.name }
         } else if (sort == "Sort descending") {
-            facilityList.sortByDescending { it.name }
+            collectedFacilityList.sortByDescending { it.name }
         }
+
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 
     // Sort facility according to state
