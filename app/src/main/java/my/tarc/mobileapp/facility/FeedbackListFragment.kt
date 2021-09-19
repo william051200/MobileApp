@@ -120,11 +120,6 @@ class FeedbackListFragment : Fragment() {
             }
     }
 
-    override fun onStop() {
-        super.onStop()
-        listener?.remove()
-    }
-
     private fun getFeedbacksFromFirebase() {
         // Reset all current lists
         newFeedbackList.clear()
