@@ -7,11 +7,13 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.ImageSwitcher
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -108,11 +110,15 @@ class UploadFacilityFragment : Fragment() {
             }
         }
 
-        //
+        // Validation and Upload facility data to firebase
         binding.btnUploadFacilityUpload.setOnClickListener {
             if (!facilityValidation()) newFacility()
         }
 
+        // Navigate back to Facility Category
+        binding.btnUploadFacilityCancel.setOnClickListener{
+            findNavController().popBackStack()
+        }
     }
 
     // Pick Image
@@ -158,9 +164,14 @@ class UploadFacilityFragment : Fragment() {
         val textFacilityName: TextView = binding.txtFacilityName
         val textStreetAddress: TextView = binding.txtFacilityAddress
         val textZipCode: TextView = binding.txtFacilityZipCode
+        val facImg: String = images?.size.toString()
         var error: Boolean = false
 
-        if (textFacilityName.text.isEmpty()) {
+        if (facImg == "0") {
+            Toast.makeText(activity, "Please upload image(s)", Toast.LENGTH_SHORT).show()
+            error = true
+        }
+        else if (textFacilityName.text.isEmpty()) {
             Toast.makeText(activity, "Invalid Facility Name", Toast.LENGTH_SHORT).show()
             textFacilityName.requestFocus()
             error = true
@@ -171,6 +182,9 @@ class UploadFacilityFragment : Fragment() {
         } else if (textZipCode.text.isEmpty() || textZipCode.text.length < 5) {
             Toast.makeText(activity, "Invalid Zip Code", Toast.LENGTH_SHORT).show()
             textZipCode.requestFocus()
+            error = true
+        } else if (position < images!!.size - 1){
+            Toast.makeText(activity, "Please upload image(s)", Toast.LENGTH_SHORT).show()
             error = true
         }
         return error
@@ -215,7 +229,7 @@ class UploadFacilityFragment : Fragment() {
         }
 
         facilityRef.document(facilityID.toString()).set(facility).addOnSuccessListener {
-            Toast.makeText(this.context, "Uploaded successful!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.context, "Upload successful!", Toast.LENGTH_SHORT).show()
 
             // Navigate back to facility category once uploaded
             findNavController().popBackStack()

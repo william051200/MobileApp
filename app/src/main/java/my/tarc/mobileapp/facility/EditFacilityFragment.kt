@@ -1,5 +1,6 @@
 package my.tarc.mobileapp.facility
 
+import android.app.Activity
 import android.content.ClipData
 import android.content.Intent
 import android.graphics.Bitmap
@@ -28,6 +29,10 @@ import my.tarc.mobileapp.R
 import my.tarc.mobileapp.databinding.FragmentEditFacilityBinding
 import my.tarc.mobileapp.viewmodel.FacilityViewModel
 import my.tarc.mobileapp.viewmodel.UserViewModel
+import android.widget.ArrayAdapter
+
+
+
 
 class EditFacilityFragment : Fragment() {
     // Connect to Facility viewModel
@@ -49,12 +54,6 @@ class EditFacilityFragment : Fragment() {
 
     // Current position of selected image
     private var position = 0
-
-    // Current position of deleted image
-    private var deletePosition = 0
-
-    //request code to pick image
-    private val PICK_IMAGES_CODE = 0
 
 
     override fun onCreateView(
@@ -122,15 +121,60 @@ class EditFacilityFragment : Fragment() {
             .addOnSuccessListener {
                 var facName: String = it.get("name") as String
                 var address: String = it.get("address_street") as String
+                var postCode: String = it.get("address_postcode") as String
+                var startinghrs: String = it.get("starting_hour") as String
+                var closinghrs: String = it.get("closing_hour") as String
+                var okuFeature: String = it.get("oku_feature") as String
+                var state: String = it.get("address_state") as String
+                var city: String = it.get("address_city") as String
+                var categoryFacility: String = it.get("category") as String
 
+                //Retrieve Spinner (Starting Hour)value
+                var adapterST = binding.spinnerEditST.adapter as ArrayAdapter<String>
+                //Set the string location within the adapter
+                var positionST = adapterST.getPosition(startinghrs)
+
+                //Retrieve Spinner (Closing Hour)value
+                var adapterCT = binding.spinnerEditCT.adapter as ArrayAdapter<String>
+                //Set the string location within the adapter
+                var positionCT = adapterCT.getPosition(closinghrs)
+
+                //Retrieve Spinner (OKU Feature) value
+                var adapterFeature = binding.spinnerEditOKUFeature.adapter as ArrayAdapter<String>
+                //Set the string location within the adapter
+                var positionFeature = adapterFeature.getPosition(okuFeature)
+
+                //Retrieve Spinner (City) value
+                var adapterCity = binding.EditFacilitySpinnerCity.adapter as ArrayAdapter<String>
+                //Set the string location within the adapter
+                var positionCity = adapterCity.getPosition(city)
+
+                //Retrieve Spinner (State) value
+                var adapterState = binding.EditFacilitySpinnerState.adapter as ArrayAdapter<String>
+                //Set the string location within the adapter
+                var positionState = adapterState.getPosition(state)
+
+                //Retrieve Spinner (Facility Category) value
+                var adapterCategory = binding.EditFacilitySpinnerCategory.adapter as ArrayAdapter<String>
+                //Set the string location within the adapter
+                var positionCategory = adapterCategory.getPosition(categoryFacility)
+
+                // Displayed all the data of the selected facility
                 binding.txtEditFacilityName.setText(facName)
                 binding.txtEditFacilityAddress.setText(address)
-
+                binding.txtEditFacilityZipCode.setText(postCode)
+                binding.spinnerEditST.setSelection(positionST)
+                binding.spinnerEditCT.setSelection(positionCT)
+                binding.spinnerEditOKUFeature.setSelection(positionFeature)
+                binding.EditFacilitySpinnerCity.setSelection(positionCity)
+                binding.EditFacilitySpinnerState.setSelection(positionState)
+                binding.EditFacilitySpinnerCategory.setSelection(positionCategory)
 
             }.addOnFailureListener{
                 Toast.makeText(this.context, "Failed to retrieve the facility data", Toast.LENGTH_SHORT).show()
             }
 
+        // Retrieve facility images from storage
         storageRef.child(facId).listAll().addOnSuccessListener {
             var size: Int = it.items.size
             for (i in 0 until size) {

@@ -13,6 +13,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import my.tarc.mobileapp.R
@@ -31,6 +32,7 @@ class FeedbackListFragment : Fragment() {
     private lateinit var feedbackList: ArrayList<Feedback>
     private lateinit var newFeedbackList: ArrayList<Feedback>
     private lateinit var recyclerView: RecyclerView
+    private var listener : ListenerRegistration? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,8 +104,13 @@ class FeedbackListFragment : Fragment() {
         feedbackList = arrayListOf()
         newFeedbackList = arrayListOf()
 
+        recyclerView.adapter = FeedbackAdapter(newFeedbackList) { feedback ->
+            // Prompt dialog with the selected feedback's details
+            openFeedbackDialog(feedback)
+        }
+
         // Listen to changes in Firestore and update recyclerview in real time
-        db.collection("feedback")
+        listener = db.collection("feedback")
             .addSnapshotListener { value, e ->
                 if (e != null) {
                     Log.w(ContentValues.TAG, "Listen failed.", e)
@@ -161,10 +168,7 @@ class FeedbackListFragment : Fragment() {
                 )
                 feedbackList.add(feedback)
                 newFeedbackList.add(feedback)
-            }
-            recyclerView.adapter = FeedbackAdapter(newFeedbackList) { feedback ->
-                // Prompt dialog with the selected feedback's details
-                openFeedbackDialog(feedback)
+                recyclerView.adapter?.notifyDataSetChanged()
             }
             binding.feedbackListFeedbackCount.text = "Total feedbacks (${feedbackList.size})"
         }

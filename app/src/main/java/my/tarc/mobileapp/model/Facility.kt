@@ -39,11 +39,11 @@ class Facility(
         ""
     )
 
-    constructor(picture: Bitmap?, name: String, state: String, id: String) : this(
+    constructor(picture: Bitmap?, name: String, state: String, id: String, category: String) : this(
         id,
         name,
         Address("", 0, "", state),
-        "",
+        category,
         arrayOf(),
         "",
         "",
