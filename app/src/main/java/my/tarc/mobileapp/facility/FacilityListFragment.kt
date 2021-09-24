@@ -186,6 +186,7 @@ class FacilityListFragment : Fragment() {
                     Log.w(TAG, "Listen failed.", e)
                     return@addSnapshotListener
                 }
+                listener?.remove()
                 getFacilitiesFromFirebase()
             }
     }

@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
     private val userViewModel: UserViewModel by viewModels()
     private val facilityViewModel: FacilityViewModel by viewModels()
 
+    // Firebase authentication
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppPreferences.init(this)
@@ -74,5 +77,8 @@ class MainActivity : AppCompatActivity() {
                 || super.onSupportNavigateUp()
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        auth.signOut()
+    }
 }
