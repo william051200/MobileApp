@@ -116,7 +116,6 @@ class FeedbackListFragment : Fragment() {
                     Log.w(ContentValues.TAG, "Listen failed.", e)
                     return@addSnapshotListener
                 }
-                recyclerView.adapter = null
                 getFeedbacksFromFirebase()
             }
     }
